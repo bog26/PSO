@@ -48,9 +48,11 @@ namespace PSO
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1184, 561);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(1200, 600);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form4";
+            this.Text = "Admin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

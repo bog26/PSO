@@ -54,7 +54,7 @@ namespace PSO
             this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client Account";
+            this.Text = "User Definition";
             this.ResumeLayout(false);
             this.PerformLayout();
 
