@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PSO
 {
-    public partial class Form2 : Form
+    public partial class Form2 : System.Windows.Forms.Form
     {
         public Form2()
         {
@@ -18,6 +18,21 @@ namespace PSO
         }
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

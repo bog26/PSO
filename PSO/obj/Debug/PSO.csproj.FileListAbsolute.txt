@@ -10,3 +10,5 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.exe
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.pdb
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form2.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form3.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form4.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form5.resources

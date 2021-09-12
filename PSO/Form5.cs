@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PSO
 {
-    public partial class Form3 : System.Windows.Forms.Form
+    public partial class Form5 : Form
     {
-        public Form3()
+        public Form5()
         {
             InitializeComponent();
         }

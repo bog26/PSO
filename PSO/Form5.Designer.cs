@@ -1,7 +1,7 @@
 ﻿
 namespace PSO
 {
-    partial class Form3
+    partial class Form5
     {
         /// <summary>
         /// Required designer variable.
@@ -35,26 +35,21 @@ namespace PSO
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(465, 50);
+            this.label1.Location = new System.Drawing.Point(481, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 25);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "NEW USER";
+            this.label1.Text = "CLIENT";
             // 
-            // Form3
+            // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1184, 561);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(1200, 600);
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
-            this.Name = "Form3";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client Account";
+            this.Name = "Form5";
+            this.Text = "Form5";
             this.ResumeLayout(false);
             this.PerformLayout();
 
