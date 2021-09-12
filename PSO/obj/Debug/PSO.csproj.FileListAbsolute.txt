@@ -1,0 +1,10 @@
+F:\C#\projects\PSO\PSO\bin\Debug\PSO.exe.config
+F:\C#\projects\PSO\PSO\bin\Debug\PSO.exe
+F:\C#\projects\PSO\PSO\bin\Debug\PSO.pdb
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.AssemblyReference.cache
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form1.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Properties.Resources.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.GenerateResource.cache
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.CoreCompileInputs.cache
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.exe
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.pdb
