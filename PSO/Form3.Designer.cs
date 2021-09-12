@@ -1,7 +1,7 @@
 ﻿
 namespace PSO
 {
-    partial class Form2
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace PSO
         {
             this.SuspendLayout();
             // 
-            // Form2
+            // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -39,10 +39,8 @@ namespace PSO
             this.ClientSize = new System.Drawing.Size(1184, 561);
             this.MaximumSize = new System.Drawing.Size(1200, 600);
             this.MinimumSize = new System.Drawing.Size(1200, 600);
-            this.Name = "Form2";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin Account";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Name = "Form3";
+            this.Text = "Client Account";
             this.ResumeLayout(false);
 
         }

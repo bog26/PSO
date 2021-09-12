@@ -44,10 +44,34 @@ namespace PSO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form2 f2 = new Form2();
-            f2.Show();
-            
+            if (textBox2.Text != String.Empty)
+            {
+                OpenUserWindow(CheckForAdminRights(textBox2.Text));
+            }
+        }
+        private bool CheckForAdminRights(string userName)
+        {
+            bool isAdmin = false;
+            if(userName == "admin")
+            {
+                isAdmin = true;
+            }
+            return isAdmin;
+        }
+        private void OpenUserWindow(bool userHasAdminRights)
+        {
+            if(userHasAdminRights)
+            {
+                this.Hide();
+                Form2 f2 = new Form2();
+                f2.Show();
+            }
+            else 
+            {
+                this.Hide();
+                Form3 f3 = new Form3();
+                f3.Show();
+            }
         }
     }
 }
