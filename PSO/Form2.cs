@@ -52,6 +52,7 @@ namespace PSO
             {
                 this.Hide();
                 Form4 f4 = new Form4();
+                f4.Text = "Logged as: " + textBox1.Text;
                 f4.Show();
             }
             else
