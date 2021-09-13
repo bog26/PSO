@@ -49,27 +49,14 @@ namespace PSO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //CreateUser();
-            //bool completeUserData = CheckFillDataCorrectness();
             if (CheckFillDataCorrectness())
             {
-                MessageBox.Show("input data is correct." );
-                if (CheckForExistingAdmin())    
-                {
-                    CreateAdmin();
-                    MessageBox.Show("Admin account succesfully created");
-                }
-                else
-                {
-                    CreateClient();
-                    MessageBox.Show("Client account succesfully created");
-                }
+                CreateUser();
             }
             else
             {
                 MessageBox.Show("input data is wrong");
             }
-
         }
         public bool CheckFillDataCorrectness()
         {
@@ -127,6 +114,22 @@ namespace PSO
             MessageBox.Show("Testing new client data: " + newClient.ClientPersonalData.FirstName + " "
                 + newClient.ClientPersonalData.LastName);
         }
+
+        public void CreateUser()
+        {
+            MessageBox.Show("input data is correct.");
+            if (CheckForExistingAdmin())
+            {
+                CreateAdmin();
+                MessageBox.Show("Admin account succesfully created");
+            }
+            else
+            {
+                CreateClient();
+                MessageBox.Show("Client account succesfully created");
+            }
+        }
+
         public UserPersonalData GatherUserData()
         {
             var userAddress = new UserAddress
