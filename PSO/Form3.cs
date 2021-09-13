@@ -50,77 +50,19 @@ namespace PSO
         private void button1_Click(object sender, EventArgs e)
         {
             //CreateUser();
-            bool completeUserData = CheckFillDataCorrectness();
-            if (completeUserData)
+            //bool completeUserData = CheckFillDataCorrectness();
+            if (CheckFillDataCorrectness())
             {
-                var admins = psContext.Admins.ToList();
- 
-                MessageBox.Show("input data is correct. "+ admins.Count+ " DB administrators");
-                if (admins.Count ==0)
+                MessageBox.Show("input data is correct." );
+                if (CheckForExistingAdmin())    
                 {
                     CreateAdmin();
-                    /*
-                    var newAdmin = new Admin();
-                    
-                    var adminAddress = new UserAddress
-                    { Street = textBox5.Text, StreetNr = int.Parse(textBox6.Text), City = textBox7.Text,
-                      Region = textBox8.Text, Country = textBox9.Text, PostalCode = int.Parse(textBox10.Text)
-                    };
-                    
-                    string AdminBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
-                    DateTime AdminBirthDate = Convert.ToDateTime(AdminBirthDateStr);
-
-                    //MessageBox.Show(AdminBirthDate.ToShortDateString());  //ok
-
-                    var adminPersonalData = new UserPersonalData 
-                    { FirstName = textBox2.Text, LastName = textBox3.Text, BirthDate = AdminBirthDate,
-                        Email = textBox4.Text, Telephone = textBox11.Text, Address = adminAddress };
-
-                    newAdmin.UserName = textBox1.Text;
-                    newAdmin.AdminPersonalData = adminPersonalData;
-
-                    //test:
-                    MessageBox.Show("new admin data: "+ newAdmin.AdminPersonalData.FirstName+ " "
-                        + newAdmin.AdminPersonalData.LastName);
-                    */
+                    MessageBox.Show("Admin account succesfully created");
                 }
                 else
                 {
                     CreateClient();
-                    /*
-                    var newClient = new Client();
-                    var clientAddress = new UserAddress
-                    {
-                        Street = textBox5.Text,
-                        StreetNr = int.Parse(textBox6.Text),
-                        City = textBox7.Text,
-                        Region = textBox8.Text,
-                        Country = textBox9.Text,
-                        PostalCode = int.Parse(textBox10.Text)
-                    };
-
-                    string clientBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
-                    DateTime clientBirthDate = Convert.ToDateTime(clientBirthDateStr);
-
-                    //MessageBox.Show(clientBirthDate.ToShortDateString());  //ok
-
-                    var clientPersonalData = new UserPersonalData
-                    {
-                        FirstName = textBox2.Text,
-                        LastName = textBox3.Text,
-                        BirthDate = clientBirthDate,
-                        Email = textBox4.Text,
-                        Telephone = textBox11.Text,
-                        Address = clientAddress
-                    };
-
-                    newClient.UserName = textBox1.Text;
-                    newClient.ClientPersonalData = clientPersonalData;
-
-                    //test:
-                    MessageBox.Show("new client data: " + newClient.ClientPersonalData.FirstName + " "
-                        + newClient.ClientPersonalData.LastName);
-                    */
+                    MessageBox.Show("Client account succesfully created");
                 }
             }
             else
@@ -128,7 +70,6 @@ namespace PSO
                 MessageBox.Show("input data is wrong");
             }
 
-            
         }
         public bool CheckFillDataCorrectness()
         {
@@ -152,66 +93,43 @@ namespace PSO
             return completeUserData;
         }
 
-
-
-        public void CreateUser()
+        public bool CheckForExistingAdmin()
         {
-            if(CheckIfUserIsAdmin())
+            bool existingAdmin = false;
+            var admins = psContext.Admins.ToList();
+            if (admins.Count != 0)
             {
-                Admin admin = new Admin(); //add arguments from text boxes
-               
+                existingAdmin = true;
             }
-            else
-            {
-                Client client = new Client(); //add arguments text boxes
-            }
+            MessageBox.Show("existing admins: "+ admins.Count);
+            return existingAdmin;
         }
-
-        //public IUser CreateAdmin()
         public void CreateAdmin()
         {
             var newAdmin = new Admin();
-
-            var adminAddress = new UserAddress
-            {
-                Street = textBox5.Text,
-                StreetNr = int.Parse(textBox6.Text),
-                City = textBox7.Text,
-                Region = textBox8.Text,
-                Country = textBox9.Text,
-                PostalCode = int.Parse(textBox10.Text)
-            };
-
-            string AdminBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
-            DateTime AdminBirthDate = Convert.ToDateTime(AdminBirthDateStr);
-
-            //MessageBox.Show(AdminBirthDate.ToShortDateString());  //ok
-
-            var adminPersonalData = new UserPersonalData
-            {
-                FirstName = textBox2.Text,
-                LastName = textBox3.Text,
-                BirthDate = AdminBirthDate,
-                Email = textBox4.Text,
-                Telephone = textBox11.Text,
-                Address = adminAddress
-            };
-
+            UserPersonalData userPersonalData = GatherUserData();
             newAdmin.UserName = textBox1.Text;
-            newAdmin.AdminPersonalData = adminPersonalData;
+            newAdmin.AdminPersonalData = userPersonalData;
 
             //test:
-            MessageBox.Show("new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
+            MessageBox.Show("Testing new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
                 + newAdmin.AdminPersonalData.LastName);
-
-
-            //   return admin;
         }
 
         public void CreateClient()
         {
             var newClient = new Client();
-            var clientAddress = new UserAddress
+            UserPersonalData userPersonalData = GatherUserData();
+            newClient.UserName = textBox1.Text;
+            newClient.ClientPersonalData = userPersonalData;
+
+            //test:
+            MessageBox.Show("Testing new client data: " + newClient.ClientPersonalData.FirstName + " "
+                + newClient.ClientPersonalData.LastName);
+        }
+        public UserPersonalData GatherUserData()
+        {
+            var userAddress = new UserAddress
             {
                 Street = textBox5.Text,
                 StreetNr = int.Parse(textBox6.Text),
@@ -221,43 +139,22 @@ namespace PSO
                 PostalCode = int.Parse(textBox10.Text)
             };
 
-            string clientBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
-            DateTime clientBirthDate = Convert.ToDateTime(clientBirthDateStr);
+            string userBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            DateTime userBirthDate = Convert.ToDateTime(userBirthDateStr);
 
             //MessageBox.Show(clientBirthDate.ToShortDateString());  //ok
 
-            var clientPersonalData = new UserPersonalData
+            var userPersonalData = new UserPersonalData
             {
                 FirstName = textBox2.Text,
                 LastName = textBox3.Text,
-                BirthDate = clientBirthDate,
+                BirthDate = userBirthDate,
                 Email = textBox4.Text,
                 Telephone = textBox11.Text,
-                Address = clientAddress
+                Address = userAddress
             };
-            newClient.UserName = textBox1.Text;
-            newClient.ClientPersonalData = clientPersonalData;
+            return userPersonalData;
 
-            //test:
-            MessageBox.Show("new client data: " + newClient.ClientPersonalData.FirstName + " "
-                + newClient.ClientPersonalData.LastName);
-        }
-
-
-        public bool CheckIfUserIsAdmin() 
-        {
-            bool isAdmin = false;
-
-            // TBD: check if there is no admin in DB >> isAdmin = true
-            return isAdmin;
-        }
-
-        public string GatherData(out UserPersonalData userInfo)
-        {
-            string name = String.Empty;
-            userInfo = new UserPersonalData();
-
-            return name;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
