@@ -50,12 +50,11 @@ namespace PSO
         private void button1_Click(object sender, EventArgs e)
         {
             //CreateUser();
-            bool completeUserData = CheckFillDataIntegrity();
+            bool completeUserData = CheckFillDataCorrectness();
             if (completeUserData)
             {
                 var admins = psContext.Admins.ToList();
-
-                 
+ 
                 MessageBox.Show("input data is correct. "+ admins.Count+ " DB administrators");
                 if (admins.Count ==0)
                 {
@@ -77,14 +76,45 @@ namespace PSO
 
                     newAdmin.UserName = textBox1.Text;
                     newAdmin.AdminPersonalData = adminPersonalData;
+
                     //test:
                     MessageBox.Show("new admin data: "+ newAdmin.AdminPersonalData.FirstName+ " "
                         + newAdmin.AdminPersonalData.LastName);
+                }
+                else
+                {
+                    var newClient = new Client();
+                    var clientAddress = new UserAddress
+                    {
+                        Street = textBox5.Text,
+                        StreetNr = int.Parse(textBox6.Text),
+                        City = textBox7.Text,
+                        Region = textBox8.Text,
+                        Country = textBox9.Text,
+                        PostalCode = int.Parse(textBox10.Text)
+                    };
 
+                    string clientBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
+                    DateTime clientBirthDate = Convert.ToDateTime(clientBirthDateStr);
 
+                    //MessageBox.Show(clientBirthDate.ToShortDateString());  //ok
 
+                    var clientPersonalData = new UserPersonalData
+                    {
+                        FirstName = textBox2.Text,
+                        LastName = textBox3.Text,
+                        BirthDate = clientBirthDate,
+                        Email = textBox4.Text,
+                        Telephone = textBox11.Text,
+                        Address = clientAddress
+                    };
 
+                    newClient.UserName = textBox1.Text;
+                    newClient.ClientPersonalData = clientPersonalData;
 
+                    //test:
+                    MessageBox.Show("new client data: " + newClient.ClientPersonalData.FirstName + " "
+                        + newClient.ClientPersonalData.LastName);
                 }
             }
             else
@@ -94,7 +124,7 @@ namespace PSO
 
             
         }
-        public bool CheckFillDataIntegrity()
+        public bool CheckFillDataCorrectness()
         {
             bool completeUserData = false;
             int StreetNr;

@@ -11,6 +11,11 @@ namespace PSO.Model
         public int Id { get; set; }
         public string UserName { get; set; }
         private UserPersonalData clientPersonalData;
+        public Client()
+        {
+
+        }
+        public UserPersonalData ClientPersonalData { get; set; }
         public void CreateClient(string chosenName, UserPersonalData personalInfo)
         {
             UserName = chosenName;

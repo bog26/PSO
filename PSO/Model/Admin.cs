@@ -11,7 +11,6 @@ namespace PSO.Model
         public int Id { get; set; }
         public string UserName { get; set; }
         private UserPersonalData adminPersonalData;
-
        public Admin()
         {
 
@@ -22,7 +21,6 @@ namespace PSO.Model
             UserName = chosenName;
             this.adminPersonalData = personalInfo;
         }
-
         public override string ToString()
         {
             return UserName;
