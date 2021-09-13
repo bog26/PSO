@@ -8,5 +8,7 @@ namespace PSO.Model
 {
     class Transaction
     {
+        public int Id { get; set; }
+        
     }
 }

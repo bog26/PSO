@@ -8,5 +8,7 @@ namespace PSO.Model
 {
     class Review
     {
+        public int Id { get; set; }
+        public string ReviewText { get; set; }
     }
 }
