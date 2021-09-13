@@ -17,3 +17,4 @@ F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.SqlServer.dll
 F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.xml
 F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.SqlServer.xml
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.CopyComplete
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClients.resources
