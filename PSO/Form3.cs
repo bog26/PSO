@@ -58,6 +58,8 @@ namespace PSO
                 MessageBox.Show("input data is correct. "+ admins.Count+ " DB administrators");
                 if (admins.Count ==0)
                 {
+                    CreateAdmin();
+                    /*
                     var newAdmin = new Admin();
                     
                     var adminAddress = new UserAddress
@@ -80,9 +82,12 @@ namespace PSO
                     //test:
                     MessageBox.Show("new admin data: "+ newAdmin.AdminPersonalData.FirstName+ " "
                         + newAdmin.AdminPersonalData.LastName);
+                    */
                 }
                 else
                 {
+                    CreateClient();
+                    /*
                     var newClient = new Client();
                     var clientAddress = new UserAddress
                     {
@@ -115,6 +120,7 @@ namespace PSO
                     //test:
                     MessageBox.Show("new client data: " + newClient.ClientPersonalData.FirstName + " "
                         + newClient.ClientPersonalData.LastName);
+                    */
                 }
             }
             else
@@ -160,7 +166,84 @@ namespace PSO
                 Client client = new Client(); //add arguments text boxes
             }
         }
-        
+
+        //public IUser CreateAdmin()
+        public void CreateAdmin()
+        {
+            var newAdmin = new Admin();
+
+            var adminAddress = new UserAddress
+            {
+                Street = textBox5.Text,
+                StreetNr = int.Parse(textBox6.Text),
+                City = textBox7.Text,
+                Region = textBox8.Text,
+                Country = textBox9.Text,
+                PostalCode = int.Parse(textBox10.Text)
+            };
+
+            string AdminBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            DateTime AdminBirthDate = Convert.ToDateTime(AdminBirthDateStr);
+
+            //MessageBox.Show(AdminBirthDate.ToShortDateString());  //ok
+
+            var adminPersonalData = new UserPersonalData
+            {
+                FirstName = textBox2.Text,
+                LastName = textBox3.Text,
+                BirthDate = AdminBirthDate,
+                Email = textBox4.Text,
+                Telephone = textBox11.Text,
+                Address = adminAddress
+            };
+
+            newAdmin.UserName = textBox1.Text;
+            newAdmin.AdminPersonalData = adminPersonalData;
+
+            //test:
+            MessageBox.Show("new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
+                + newAdmin.AdminPersonalData.LastName);
+
+
+            //   return admin;
+        }
+
+        public void CreateClient()
+        {
+            var newClient = new Client();
+            var clientAddress = new UserAddress
+            {
+                Street = textBox5.Text,
+                StreetNr = int.Parse(textBox6.Text),
+                City = textBox7.Text,
+                Region = textBox8.Text,
+                Country = textBox9.Text,
+                PostalCode = int.Parse(textBox10.Text)
+            };
+
+            string clientBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            DateTime clientBirthDate = Convert.ToDateTime(clientBirthDateStr);
+
+            //MessageBox.Show(clientBirthDate.ToShortDateString());  //ok
+
+            var clientPersonalData = new UserPersonalData
+            {
+                FirstName = textBox2.Text,
+                LastName = textBox3.Text,
+                BirthDate = clientBirthDate,
+                Email = textBox4.Text,
+                Telephone = textBox11.Text,
+                Address = clientAddress
+            };
+            newClient.UserName = textBox1.Text;
+            newClient.ClientPersonalData = clientPersonalData;
+
+            //test:
+            MessageBox.Show("new client data: " + newClient.ClientPersonalData.FirstName + " "
+                + newClient.ClientPersonalData.LastName);
+        }
+
+
         public bool CheckIfUserIsAdmin() 
         {
             bool isAdmin = false;
