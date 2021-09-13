@@ -8,5 +8,7 @@ namespace PSO.Model
 {
     class Admin : IUser
     {
+        public int Id { get; set; }
+        public string UserName { get; set; }
     }
 }

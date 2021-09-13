@@ -12,3 +12,8 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form2.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form3.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form4.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Form5.resources
+F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.dll
+F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.SqlServer.dll
+F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.xml
+F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.SqlServer.xml
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.CopyComplete
