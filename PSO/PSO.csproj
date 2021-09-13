@@ -122,6 +122,10 @@
     <Compile Include="Migrations\202109132245183_AddedPAsswords.designer.cs">
       <DependentUpon>202109132245183_AddedPAsswords.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109132301263_AddNewAdminAndClients.cs" />
+    <Compile Include="Migrations\202109132301263_AddNewAdminAndClients.designer.cs">
+      <DependentUpon>202109132301263_AddNewAdminAndClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -183,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109132245183_AddedPAsswords.resx">
       <DependentUpon>202109132245183_AddedPAsswords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109132301263_AddNewAdminAndClients.resx">
+      <DependentUpon>202109132301263_AddNewAdminAndClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

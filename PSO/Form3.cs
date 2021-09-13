@@ -17,7 +17,7 @@ namespace PSO
         public Form3()
         {
             InitializeComponent();
-            psContext = new psDBContext();
+            //psContext = new psDBContext();
             //var admins = psContext.Admins.ToList();
             //var clients = psContext.Clients.ToList();
         }
@@ -83,6 +83,7 @@ namespace PSO
         public bool CheckForExistingAdmin()
         {
             bool existingAdmin;
+            psContext = new psDBContext();
             var admins = psContext.Admins.ToList();
             if (admins.Count == 0)
             {
@@ -102,6 +103,9 @@ namespace PSO
             newAdmin.UserName = textBox1.Text;
             newAdmin.Password = textBox12.Text;
             newAdmin.AdminPersonalData = userPersonalData;
+            psContext = new psDBContext();
+            psContext.Admins.Add(newAdmin);
+            psContext.SaveChanges();
 
             //test:
             MessageBox.Show("Testing new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
@@ -115,6 +119,10 @@ namespace PSO
             newClient.UserName = textBox1.Text;
             newClient.Password = textBox12.Text;
             newClient.ClientPersonalData = userPersonalData;
+
+            psContext = new psDBContext();
+            psContext.Clients.Add(newClient);
+            psContext.SaveChanges();
 
             //test:
             MessageBox.Show("Testing new client data: " + newClient.ClientPersonalData.FirstName + " "
