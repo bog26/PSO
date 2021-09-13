@@ -8,6 +8,7 @@ namespace PSO.Model
 {
     public class UserAddress
     {
+        public int Id { get; set; }
         private string street;
         private int streetNr;
         private string city;

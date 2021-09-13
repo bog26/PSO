@@ -55,6 +55,8 @@ namespace PSO
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -339,12 +341,34 @@ namespace PSO
             this.monthCalendar1.TabIndex = 4;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label15.Location = new System.Drawing.Point(948, 136);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 20);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Telephone*";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label15.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(952, 174);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(144, 20);
+            this.textBox11.TabIndex = 5;
+            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.textBox11);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
@@ -359,6 +383,7 @@ namespace PSO
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -409,5 +434,7 @@ namespace PSO
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox11;
     }
 }

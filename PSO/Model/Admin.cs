@@ -12,11 +12,17 @@ namespace PSO.Model
         public string UserName { get; set; }
         private UserPersonalData adminPersonalData;
 
+       public Admin()
+        {
+
+        }
+        public UserPersonalData AdminPersonalData { get; set; }
         public void CreateAdmin(string chosenName, UserPersonalData personalInfo)
         {
             UserName = chosenName;
             this.adminPersonalData = personalInfo;
         }
+
         public override string ToString()
         {
             return UserName;

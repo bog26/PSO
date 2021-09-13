@@ -18,8 +18,8 @@ namespace PSO
         {
             InitializeComponent();
             psContext = new psDBContext();
-            var admins = psContext.Admins.ToList();
-            var clients = psContext.Clients.ToList();
+            //var admins = psContext.Admins.ToList();
+            //var clients = psContext.Clients.ToList();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -53,7 +53,39 @@ namespace PSO
             bool completeUserData = CheckFillDataIntegrity();
             if (completeUserData)
             {
-                MessageBox.Show("input data is correct");
+                var admins = psContext.Admins.ToList();
+
+                 
+                MessageBox.Show("input data is correct. "+ admins.Count+ " DB administrators");
+                if (admins.Count ==0)
+                {
+                    var newAdmin = new Admin();
+                    
+                    var adminAddress = new UserAddress
+                    { Street = textBox5.Text, StreetNr = int.Parse(textBox6.Text), City = textBox7.Text,
+                      Region = textBox8.Text, Country = textBox9.Text, PostalCode = int.Parse(textBox10.Text)
+                    };
+                    
+                    string AdminBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
+                    DateTime AdminBirthDate = Convert.ToDateTime(AdminBirthDateStr);
+
+                    //MessageBox.Show(AdminBirthDate.ToShortDateString());  //ok
+
+                    var adminPersonalData = new UserPersonalData 
+                    { FirstName = textBox2.Text, LastName = textBox3.Text, BirthDate = AdminBirthDate,
+                        Email = textBox4.Text, Telephone = textBox11.Text, Address = adminAddress };
+
+                    newAdmin.UserName = textBox1.Text;
+                    newAdmin.AdminPersonalData = adminPersonalData;
+                    //test:
+                    MessageBox.Show("new admin data: "+ newAdmin.AdminPersonalData.FirstName+ " "
+                        + newAdmin.AdminPersonalData.LastName);
+
+
+
+
+
+                }
             }
             else
             {
@@ -75,6 +107,7 @@ namespace PSO
                 && textBox6.Text != String.Empty
                 && textBox8.Text != String.Empty
                 && textBox10.Text != String.Empty
+                && textBox11.Text != String.Empty
                 && int.TryParse(textBox6.Text, out StreetNr)
                 && int.TryParse(textBox10.Text, out PostalCode))
             {
@@ -150,6 +183,11 @@ namespace PSO
         }
 
         private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
         {
 
         }
