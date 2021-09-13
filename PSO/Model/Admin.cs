@@ -10,5 +10,13 @@ namespace PSO.Model
     {
         public int Id { get; set; }
         public string UserName { get; set; }
+        private UserPersonalData adminPersonalData;
+
+        public void CreateAdmin(string chosenName, UserPersonalData personalInfo)
+        {
+            UserName = chosenName;
+            this.adminPersonalData = personalInfo;
+        }
+        //public string AdminPersonalData
     }
 }
