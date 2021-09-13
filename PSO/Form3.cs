@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PSO.Model;
 
 namespace PSO
 {
     public partial class Form3 : System.Windows.Forms.Form
     {
+        private psDBContext psContext;
         public Form3()
         {
             InitializeComponent();
+            psContext = new psDBContext();
+            var admins = psContext.Admins.ToList();
+            var clients = psContext.Clients.ToList();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -51,12 +56,12 @@ namespace PSO
         {
             if(CheckIfUserIsAdmin())
             {
-                Model.Admin admin = new Model.Admin(); //add arguments from text boxes
+                Admin admin = new Admin(); //add arguments from text boxes
                
             }
             else
             {
-                Model.Client client = new Model.Client(); //add arguments text boxes
+                Client client = new Client(); //add arguments text boxes
             }
         }
         
@@ -67,10 +72,10 @@ namespace PSO
             return isAdmin;
         }
 
-        public string GatherData(out Model.UserPersonalData userInfo)
+        public string GatherData(out UserPersonalData userInfo)
         {
             string name = String.Empty;
-            userInfo = new Model.UserPersonalData();
+            userInfo = new UserPersonalData();
 
             return name;
         }
