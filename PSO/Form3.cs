@@ -100,11 +100,12 @@ namespace PSO
             var newAdmin = new Admin();
             UserPersonalData userPersonalData = GatherUserData();
             newAdmin.UserName = textBox1.Text;
+            newAdmin.Password = textBox12.Text;
             newAdmin.AdminPersonalData = userPersonalData;
 
             //test:
             MessageBox.Show("Testing new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
-                + newAdmin.AdminPersonalData.LastName);
+                + newAdmin.AdminPersonalData.LastName + " password: "+ newAdmin.Password);
         }
 
         public void CreateClient()
@@ -112,11 +113,12 @@ namespace PSO
             var newClient = new Client();
             UserPersonalData userPersonalData = GatherUserData();
             newClient.UserName = textBox1.Text;
+            newClient.Password = textBox12.Text;
             newClient.ClientPersonalData = userPersonalData;
 
             //test:
             MessageBox.Show("Testing new client data: " + newClient.ClientPersonalData.FirstName + " "
-                + newClient.ClientPersonalData.LastName);
+                + newClient.ClientPersonalData.LastName + " password: " + newClient.Password);
         }
 
         public void CreateUser()
@@ -206,6 +208,16 @@ namespace PSO
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
         {
 
         }
