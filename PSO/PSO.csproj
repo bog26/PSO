@@ -114,6 +114,10 @@
     <Compile Include="Migrations\202109131618425_DataInput.designer.cs">
       <DependentUpon>202109131618425_DataInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109132133440_DataInputUpdate.cs" />
+    <Compile Include="Migrations\202109132133440_DataInputUpdate.designer.cs">
+      <DependentUpon>202109132133440_DataInputUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -169,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109131618425_DataInput.resx">
       <DependentUpon>202109131618425_DataInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109132133440_DataInputUpdate.resx">
+      <DependentUpon>202109132133440_DataInputUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

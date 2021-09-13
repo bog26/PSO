@@ -24,3 +24,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddTransactions.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddReviews.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddSuppliers.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DataInput.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DataInputUpdate.resources
