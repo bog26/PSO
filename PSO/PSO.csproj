@@ -76,6 +76,14 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\IUser.cs" />
+    <Compile Include="Model\Price.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\psDBContext.cs" />
+    <Compile Include="Model\StoreBalance.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -115,8 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
