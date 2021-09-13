@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class UserAddress
+    public class UserAddress
     {
         private string street;
         private int streetNr;
@@ -14,6 +14,16 @@ namespace PSO.Model
         private string region;
         private string country;
         private int postalCode;
+        public UserAddress()
+        {
+
+        }
+        public string Street { get; set; }
+        public int StreetNr { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
+        public int PostalCode { get; set; }
 
     }
 }

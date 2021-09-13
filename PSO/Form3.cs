@@ -51,22 +51,28 @@ namespace PSO
         {
             if(CheckIfUserIsAdmin())
             {
-
-                Model.Admin admin = new Model.Admin(); //add arguments
+                Model.Admin admin = new Model.Admin(); //add arguments from text boxes
                
             }
             else
             {
-                Model.Client client = new Model.Client(); //add arguments
+                Model.Client client = new Model.Client(); //add arguments text boxes
             }
         }
         
         public bool CheckIfUserIsAdmin() 
         {
-            
             bool isAdmin = false;
             // TBD: check if there is no admin in DB >> isAdmin = true
             return isAdmin;
+        }
+
+        public string GatherData(out Model.UserPersonalData userInfo)
+        {
+            string name = String.Empty;
+            userInfo = new Model.UserPersonalData();
+
+            return name;
         }
     }
 }
