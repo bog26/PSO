@@ -125,6 +125,8 @@
     <Compile Include="Model\StoreBalance.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\UserAddress.cs" />
+    <Compile Include="Model\UserPersonalData.cs" />
     <Compile Include="Model\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
