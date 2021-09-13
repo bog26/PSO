@@ -16,5 +16,9 @@ namespace PSO.Model
             UserName = chosenName;
             this.clientPersonalData = personalInfo;
         }
+        public override string ToString()
+        {
+            return UserName;
+        }
     }
 }

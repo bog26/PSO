@@ -49,8 +49,41 @@ namespace PSO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CreateUser();
+            //CreateUser();
+            bool completeUserData = CheckFillDataIntegrity();
+            if (completeUserData)
+            {
+                MessageBox.Show("input data is correct");
+            }
+            else
+            {
+                MessageBox.Show("input data is wrong");
+            }
+
+            
         }
+        public bool CheckFillDataIntegrity()
+        {
+            bool completeUserData = false;
+            int StreetNr;
+            int PostalCode;
+            if (textBox1.Text != String.Empty
+                && textBox2.Text != String.Empty
+                && textBox3.Text != String.Empty
+                && textBox4.Text != String.Empty
+                && textBox5.Text != String.Empty
+                && textBox6.Text != String.Empty
+                && textBox8.Text != String.Empty
+                && textBox10.Text != String.Empty
+                && int.TryParse(textBox6.Text, out StreetNr)
+                && int.TryParse(textBox10.Text, out PostalCode))
+            {
+                completeUserData = true;
+            }
+            return completeUserData;
+        }
+
+
 
         public void CreateUser()
         {
@@ -68,6 +101,7 @@ namespace PSO
         public bool CheckIfUserIsAdmin() 
         {
             bool isAdmin = false;
+
             // TBD: check if there is no admin in DB >> isAdmin = true
             return isAdmin;
         }
@@ -78,6 +112,46 @@ namespace PSO
             userInfo = new UserPersonalData();
 
             return name;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
