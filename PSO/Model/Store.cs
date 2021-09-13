@@ -8,5 +8,14 @@ namespace PSO.Model
 {
     class Store
     {
+        private Warehouse Warehouse;
+        private IBalance StoreBalance;
+        private Admin storeAdmin;
+        private List<Client> Clients;
+        private List<Transaction> Transactions;
+        private List<Review> ProductReviews;
+        private List<Supplier> Suppliers;
+
+
     }
 }

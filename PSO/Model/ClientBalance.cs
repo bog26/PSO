@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class ClientBalance
+    class ClientBalance : IBalance
     {
     }
 }
