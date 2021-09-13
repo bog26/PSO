@@ -9,5 +9,6 @@ namespace PSO.Model
 {
     class psDBContext : DbContext
     {
+        public DbSet<Client> Clients { get; set; }
     }
 }
