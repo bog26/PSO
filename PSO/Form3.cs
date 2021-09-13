@@ -82,9 +82,13 @@ namespace PSO
 
         public bool CheckForExistingAdmin()
         {
-            bool existingAdmin = false;
+            bool existingAdmin;
             var admins = psContext.Admins.ToList();
-            if (admins.Count != 0)
+            if (admins.Count == 0)
+            {
+                existingAdmin = false;
+            }
+            else 
             {
                 existingAdmin = true;
             }
@@ -118,15 +122,16 @@ namespace PSO
         public void CreateUser()
         {
             MessageBox.Show("input data is correct.");
-            if (CheckForExistingAdmin())
-            {
-                CreateAdmin();
-                MessageBox.Show("Admin account succesfully created");
-            }
-            else
+            bool alreadyExistingAdmin = CheckForExistingAdmin();
+            if (alreadyExistingAdmin)
             {
                 CreateClient();
                 MessageBox.Show("Client account succesfully created");
+            }
+            else
+            {
+                CreateAdmin();
+                MessageBox.Show("Admin account succesfully created");
             }
         }
 
