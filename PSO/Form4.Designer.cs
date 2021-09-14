@@ -29,6 +29,7 @@ namespace PSO
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -201,7 +202,7 @@ namespace PSO
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(44, 370);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(183, 183);
+            this.panel3.Size = new System.Drawing.Size(183, 188);
             this.panel3.TabIndex = 4;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -287,6 +288,8 @@ namespace PSO
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 561);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
