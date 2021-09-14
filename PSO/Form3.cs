@@ -14,9 +14,11 @@ namespace PSO
     public partial class Form3 : System.Windows.Forms.Form
     {
         private psDBContext psContext;
-        public Form3()
+        public bool ExecutedFromAdminAccount = false;
+        public Form3(bool fromAdminAccount)
         {
             InitializeComponent();
+            ExecutedFromAdminAccount = fromAdminAccount;
             //psContext = new psDBContext();
             //var admins = psContext.Admins.ToList();
             //var clients = psContext.Clients.ToList();
@@ -144,7 +146,7 @@ namespace PSO
         public void CreateUser()
         {
             bool alreadyExistingAdmin = CheckForExistingAdmin();
-            if (alreadyExistingAdmin)
+            if (alreadyExistingAdmin && !ExecutedFromAdminAccount)
             {
                 CreateClient();
                 MessageBox.Show("Client account succesfully created");

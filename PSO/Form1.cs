@@ -53,7 +53,8 @@ namespace PSO
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Form3 f3 = new Form3();
+            bool executedFromAdminAccount = false;
+            Form3 f3 = new Form3(executedFromAdminAccount);
             f3.Show();
         }
 
