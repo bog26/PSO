@@ -122,6 +122,7 @@ namespace PSO
             this.button4.TabIndex = 4;
             this.button4.Text = "User information";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -274,6 +275,7 @@ namespace PSO
             this.button14.TabIndex = 0;
             this.button14.Text = "Messages";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button1
             // 
@@ -283,6 +285,7 @@ namespace PSO
             this.button1.TabIndex = 5;
             this.button1.Text = "Edit user rights";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form4
             // 

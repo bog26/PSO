@@ -71,5 +71,32 @@ namespace PSO
             Form3 f3 = new Form3(executedFromAdminAccount);
             f3.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Label label15 = new Label();
+            Label label15 = new Label();
+
+            label15.AutoSize = true;
+            label15.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label15.ForeColor = SystemColors.HotTrack;
+            label15.BackColor = Color.LightGray;
+            label15.Location = new Point(230, 50);
+            label15.Name = "label1";
+            label15.Size = new Size(168, 24);
+            label15.TabIndex = 0;
+            label15.Text = "User info";
+            Form4.ActiveForm.Controls.Add(label15);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
