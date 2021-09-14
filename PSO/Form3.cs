@@ -51,6 +51,7 @@ namespace PSO
         {
             if (CheckFillDataCorrectness())
             {
+                MessageBox.Show("input data is correct.");
                 CreateUser();
             }
             else
@@ -131,7 +132,6 @@ namespace PSO
 
         public void CreateUser()
         {
-            MessageBox.Show("input data is correct.");
             bool alreadyExistingAdmin = CheckForExistingAdmin();
             if (alreadyExistingAdmin)
             {
