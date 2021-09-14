@@ -60,7 +60,7 @@ namespace PSO
         }
         public bool CheckFillDataCorrectness()
         {
-            bool completeUserData = false;
+            bool correctUserData = false;
             int StreetNr;
             int PostalCode;
             if (textBox1.Text != String.Empty
@@ -75,9 +75,9 @@ namespace PSO
                 && int.TryParse(textBox6.Text, out StreetNr)
                 && int.TryParse(textBox10.Text, out PostalCode))
             {
-                completeUserData = true;
+                correctUserData = true;
             }
-            return completeUserData;
+            return correctUserData;
         }
 
         public bool CheckForExistingAdmin()
