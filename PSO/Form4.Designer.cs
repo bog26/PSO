@@ -33,7 +33,6 @@ namespace PSO
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -52,6 +51,7 @@ namespace PSO
             this.button13 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,14 +72,14 @@ namespace PSO
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(44, 82);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(183, 151);
+            this.panel1.Size = new System.Drawing.Size(183, 160);
             this.panel1.TabIndex = 1;
             // 
             // label2
@@ -94,18 +94,9 @@ namespace PSO
             this.label2.Text = "Account administration";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(21, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Modify Account";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 95);
+            this.button2.Location = new System.Drawing.Point(21, 66);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 23);
             this.button2.TabIndex = 2;
@@ -115,7 +106,7 @@ namespace PSO
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(21, 124);
+            this.button3.Location = new System.Drawing.Point(21, 95);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 23);
             this.button3.TabIndex = 3;
@@ -150,9 +141,9 @@ namespace PSO
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(44, 239);
+            this.panel2.Location = new System.Drawing.Point(44, 236);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(183, 134);
+            this.panel2.Size = new System.Drawing.Size(183, 128);
             this.panel2.TabIndex = 3;
             // 
             // label3
@@ -201,9 +192,9 @@ namespace PSO
             this.panel3.Controls.Add(this.button10);
             this.panel3.Controls.Add(this.button9);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(44, 370);
+            this.panel3.Location = new System.Drawing.Point(44, 362);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(183, 188);
+            this.panel3.Size = new System.Drawing.Size(183, 189);
             this.panel3.TabIndex = 4;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -284,6 +275,15 @@ namespace PSO
             this.button14.Text = "Messages";
             this.button14.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(21, 125);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Edit user rights";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,7 +322,6 @@ namespace PSO
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
@@ -340,5 +339,6 @@ namespace PSO
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button1;
     }
 }
