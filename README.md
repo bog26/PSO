@@ -1,10 +1,10 @@
 # PSO
- Product Store One
+ Product Store One.
  
 Product Store Simulation app
 •	Windows forms app UI
 •	Link to MS SQL DB
-•	"code first" approach
+•	"code first" approach.
 
 As a Store administrator I want to
 •	add new products
@@ -14,7 +14,8 @@ As a Store administrator I want to
 •	modify product prices
 •	read product reviews
 •	use automated processes
-So that maximal profit can be obtained with lower costs
+So that maximal profit can be obtained with lower costs.
+
 As a Store client want to
 •	find products easily
 •	buy products
