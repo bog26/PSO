@@ -52,7 +52,21 @@ namespace PSO
             if (CheckFillDataCorrectness())
             {
                 MessageBox.Show("input data is correct.");
-                CreateUser();
+                //CreateUser();
+
+                
+                if(!InternalDBQueries.CheckForExistingUser(textBox1.Text))
+                {
+                    CreateUser();
+                }
+                else
+                {
+                    MessageBox.Show("user already existing");
+                }
+                 
+                 
+                
+
             }
             else
             {

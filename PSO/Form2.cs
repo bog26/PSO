@@ -37,7 +37,7 @@ namespace PSO
         {
 
         }
-     
+    
         private void OpenUserWindow(bool userHasAdminRights)
         {
             if (userHasAdminRights)
@@ -68,8 +68,6 @@ namespace PSO
                 {
                     MessageBox.Show("wrong user name or password");
                 }
-
-                //OpenUserWindow(InternalDBQueries.CheckForAdminRights(textBox1.Text));
             }
         }
     }
