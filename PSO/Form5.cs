@@ -21,5 +21,17 @@ namespace PSO
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
     }
 }

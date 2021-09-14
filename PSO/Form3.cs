@@ -63,10 +63,6 @@ namespace PSO
                 {
                     MessageBox.Show("user already existing");
                 }
-                 
-                 
-                
-
             }
             else
             {
