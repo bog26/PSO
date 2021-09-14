@@ -104,6 +104,7 @@ namespace PSO
             newAdmin.UserName = textBox1.Text;
             newAdmin.Password = textBox12.Text;
             newAdmin.AdminPersonalData = userPersonalData;
+
             psContext = new psDBContext();
             psContext.Admins.Add(newAdmin);
             psContext.SaveChanges();

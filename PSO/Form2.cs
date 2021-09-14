@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PSO.Model;
 
 namespace PSO
 {
@@ -36,16 +37,7 @@ namespace PSO
         {
 
         }
-
-        private bool CheckForAdminRights(string userName)
-        {
-            bool isAdmin = false;
-            if (userName == "admin")
-            {
-                isAdmin = true;
-            }
-            return isAdmin;
-        }
+     
         private void OpenUserWindow(bool userHasAdminRights)
         {
             if (userHasAdminRights)
@@ -68,7 +60,16 @@ namespace PSO
         {
             if (textBox1.Text != String.Empty)
             {
-                OpenUserWindow(CheckForAdminRights(textBox1.Text));
+                if(InternalDBQueries.CheckForExistingUser(textBox1.Text) && InternalDBQueries.CheckForCorrectPassword(textBox2.Text))
+                {
+                    OpenUserWindow(InternalDBQueries.CheckForAdminRights(textBox1.Text));
+                }
+                else
+                {
+                    MessageBox.Show("wrong user name or password");
+                }
+
+                //OpenUserWindow(InternalDBQueries.CheckForAdminRights(textBox1.Text));
             }
         }
     }
