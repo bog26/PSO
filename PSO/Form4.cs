@@ -78,6 +78,9 @@ namespace PSO
             Label label15 = new Label();
             DisplayNewLabel(label15, new int[2]{ 230,50 }, new int[2] { 168, 24 }, "User info");
 
+            DataGrid dataGridView1 = new DataGrid();
+            DisplayNewDataGrid(dataGridView1, new int[2] { 230, 90 }, new int[2] { 400, 460 });
+
         }
 
         private void button14_Click(object sender, EventArgs e)

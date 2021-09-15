@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PSO.Model
 {
     public class FormElementsDisplay
     {
-        public static  void DisplayNewLabel(Label label, int[] position, int[] size, string labelText)
+        public static void DisplayNewLabel(Label label, int[] position, int[] size, string labelText)
         {
             int posX = position[0];
             int posY = position[1];
@@ -27,6 +28,26 @@ namespace PSO.Model
             label.TabIndex = 0;
             label.Text = labelText;
             Form.ActiveForm.Controls.Add(label);
+        }
+        public static void DisplayNewDataGrid(DataGrid dataGrid, int[] position, int[] size)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+
+            dataGrid.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left) | AnchorStyles.Right));
+            //dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGrid.PreferredColumnWidth = (int)DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+            dataGrid.Location = new System.Drawing.Point(posX, posY);
+            
+            //dataGrid.Name = "dataGridView1";
+            dataGrid.Size = new System.Drawing.Size(length, hight);
+            dataGrid.TabIndex = 0;
+
+            Form.ActiveForm.Controls.Add(dataGrid);
         }
     }
 }
