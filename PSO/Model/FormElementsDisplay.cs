@@ -31,6 +31,7 @@ namespace PSO.Model
             label.Text = labelText;
             Form.ActiveForm.Controls.Add(label);
         }
+        /*
         public static void DisplayNewDataGrid(DataGrid dataGrid, int[] position, int[] size)
         {
             int posX = position[0];
@@ -38,6 +39,7 @@ namespace PSO.Model
             int length = size[0];
             int hight = size[1];
 
+             
             dataGrid.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
             | AnchorStyles.Left) | AnchorStyles.Right));
             //dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -51,9 +53,34 @@ namespace PSO.Model
 
             Form.ActiveForm.Controls.Add(dataGrid);
         }
+        */
+
+        public static void DisplayNewDataGridView(DataGridView dataGridView1, int[] position, int[] size)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
 
 
-        
+            dataGridView1.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left) | AnchorStyles.Right));
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //dataGridView1.PreferredColumnWidth = (int)DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+            dataGridView1.Location = new System.Drawing.Point(posX, posY);
+
+            //dataGrid.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(length, hight);
+            dataGridView1.TabIndex = 0;
+
+            Form.ActiveForm.Controls.Add(dataGridView1);
+        }
+
+
+
+
+
         public static BindingSource BindDataGrid()
         {
             psDBContext psContext = new psDBContext();
