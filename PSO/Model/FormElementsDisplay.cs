@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PSO.Model;
 
 
 namespace PSO.Model
 {
     public class FormElementsDisplay
     {
+        //private psDBContext psContext;
         public static void DisplayNewLabel(Label label, int[] position, int[] size, string labelText)
         {
             int posX = position[0];
@@ -49,5 +51,21 @@ namespace PSO.Model
 
             Form.ActiveForm.Controls.Add(dataGrid);
         }
+
+
+        
+        public static BindingSource BindDataGrid()
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            var query = from i in psContext.Admins
+                        orderby i.Id
+                        select new { i.Id, Name = i.AdminPersonalData.FirstName, LastName = i.AdminPersonalData.LastName };
+            binding.DataSource = query.ToList();
+            return binding;
+
+        }
+        
     }
 }

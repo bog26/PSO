@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PSO.Model.FormElementsDisplay;
+using PSO.Model;
 
 namespace PSO
 {
-    public partial class Form4 : System.Windows.Forms.Form
+    public partial class Form4 : Form
     {
+        //private psDBContext psContext;
         public Form4()
         {
             InitializeComponent();
@@ -76,10 +78,12 @@ namespace PSO
         private void button4_Click(object sender, EventArgs e)
         {
             Label label15 = new Label();
-            DisplayNewLabel(label15, new int[2]{ 230,50 }, new int[2] { 168, 24 }, "User info");
+            DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
 
             DataGrid dataGridView1 = new DataGrid();
             DisplayNewDataGrid(dataGridView1, new int[2] { 230, 90 }, new int[2] { 400, 460 });
+            dataGridView1.DataSource = BindDataGrid();
+            dataGridView1.Refresh();
 
         }
 
@@ -90,7 +94,8 @@ namespace PSO
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+ 
         }
+    
     }
 }
