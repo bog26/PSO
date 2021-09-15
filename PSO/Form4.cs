@@ -74,9 +74,11 @@ namespace PSO
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Label label15 = new Label();
+            DisplayUserInfo();
+        }
+        private void DisplayUserInfo()
+        {
             Label label15 = new Label();
-
             label15.AutoSize = true;
             label15.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label15.ForeColor = SystemColors.HotTrack;
@@ -87,6 +89,7 @@ namespace PSO
             label15.TabIndex = 0;
             label15.Text = "User info";
             Form4.ActiveForm.Controls.Add(label15);
+
         }
 
         private void button14_Click(object sender, EventArgs e)
