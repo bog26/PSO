@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PSO.Model.FormElementsDisplay;
 
 namespace PSO
 {
@@ -74,21 +75,8 @@ namespace PSO
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DisplayUserInfo();
-        }
-        private void DisplayUserInfo()
-        {
             Label label15 = new Label();
-            label15.AutoSize = true;
-            label15.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label15.ForeColor = SystemColors.HotTrack;
-            label15.BackColor = Color.LightGray;
-            label15.Location = new Point(230, 50);
-            label15.Name = "label1";
-            label15.Size = new Size(168, 24);
-            label15.TabIndex = 0;
-            label15.Text = "User info";
-            Form4.ActiveForm.Controls.Add(label15);
+            DisplayNewLabel(label15, new int[2]{ 230,50 }, new int[2] { 168, 24 }, "User info");
 
         }
 
