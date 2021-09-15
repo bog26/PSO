@@ -44,14 +44,16 @@ namespace PSO
             {
                 this.Hide();
                 Form4 f4 = new Form4();
-                f4.Text = "Logged as: " + textBox1.Text;
+                //f4.Text = "Logged as: " + textBox1.Text;
+                f4.Text = textBox1.Text;
                 f4.Show();
             }
             else
             {
                 this.Hide();
                 Form5 f5 = new Form5();
-                f5.Text = "Logged as: "+textBox1.Text;
+                //f5.Text = "Logged as: "+textBox1.Text;
+                f5.Text = textBox1.Text;
                 f5.Show();
             }
         }

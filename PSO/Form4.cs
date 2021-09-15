@@ -74,17 +74,32 @@ namespace PSO
             Form3 f3 = new Form3(executedFromAdminAccount);
             f3.Show();
         }
+        DataGridView dataGridView1 = new DataGridView();
+        DataGridView dataGridView2 = new DataGridView();
 
         private void button4_Click(object sender, EventArgs e)
         {
             Label label15 = new Label();
-            DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
-
-            DataGridView dataGridView1 = new DataGridView();
-            DisplayNewDataGridView(dataGridView1, new int[2] { 230, 90 }, new int[2] { 400, 460 });
-            dataGridView1.DataSource = BindDataGrid();
+            string loggedUser = ActiveForm.Text;
+            //DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
+            DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, loggedUser + " - personal info");
+            DisplayNewDataGridView(dataGridView1, new int[2] { 230, 90 }, new int[2] { 650, 45 });
+            dataGridView1.DataSource = BindCrtUserDataToGrid(loggedUser);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Refresh();
 
+            Label label16 = new Label();
+            DisplayNewLabel(label16, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
+            DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
+            dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.Refresh();
+
+
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("cell clicked");
         }
 
         private void button14_Click(object sender, EventArgs e)

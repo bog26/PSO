@@ -31,68 +31,80 @@ namespace PSO.Model
             label.Text = labelText;
             Form.ActiveForm.Controls.Add(label);
         }
-        /*
-        public static void DisplayNewDataGrid(DataGrid dataGrid, int[] position, int[] size)
+
+
+        public static void DisplayNewDataGridView(DataGridView dataGridView, int[] position, int[] size)
         {
             int posX = position[0];
             int posY = position[1];
             int length = size[0];
             int hight = size[1];
-
-             
-            dataGrid.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            dataGridView.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
             | AnchorStyles.Left) | AnchorStyles.Right));
-            //dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGrid.PreferredColumnWidth = (int)DataGridViewAutoSizeColumnMode.DisplayedCells;
-
-            dataGrid.Location = new System.Drawing.Point(posX, posY);
-            
-            //dataGrid.Name = "dataGridView1";
-            dataGrid.Size = new System.Drawing.Size(length, hight);
-            dataGrid.TabIndex = 0;
-
-            Form.ActiveForm.Controls.Add(dataGrid);
-        }
-        */
-
-        public static void DisplayNewDataGridView(DataGridView dataGridView1, int[] position, int[] size)
-        {
-            int posX = position[0];
-            int posY = position[1];
-            int length = size[0];
-            int hight = size[1];
-
-
-            dataGridView1.Anchor = (AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left) | AnchorStyles.Right));
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //dataGridView1.PreferredColumnWidth = (int)DataGridViewAutoSizeColumnMode.DisplayedCells;
-
-            dataGridView1.Location = new System.Drawing.Point(posX, posY);
-
-            //dataGrid.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(length, hight);
-            dataGridView1.TabIndex = 0;
-
-            Form.ActiveForm.Controls.Add(dataGridView1);
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(posX, posY);
+            dataGridView.Size = new Size(length, hight);
+            dataGridView.TabIndex = 0;
+            Form.ActiveForm.Controls.Add(dataGridView);
         }
 
-
-
-
-
-        public static BindingSource BindDataGrid()
+        
+        public static BindingSource BindAllUserDataToGrid()
         {
             psDBContext psContext = new psDBContext();
 
             BindingSource binding = new BindingSource();
             var query = from i in psContext.Admins
                         orderby i.Id
-                        select new { i.Id, Name = i.AdminPersonalData.FirstName, LastName = i.AdminPersonalData.LastName };
+                        select new { i.Id, UserName=i.UserName, Name = i.AdminPersonalData.FirstName, LastName = i.AdminPersonalData.LastName, 
+                                    BirthDate = i.AdminPersonalData.BirthDate, email = i.AdminPersonalData.Email, 
+                                    Telephone = i.AdminPersonalData.Telephone };
             binding.DataSource = query.ToList();
             return binding;
-
         }
         
+        public static BindingSource BindCrtUserDataToGrid(string userName)
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            var query = from i in psContext.Admins
+                        orderby i.Id
+                        where i.UserName == userName
+                        select new
+                        {
+                            i.Id,
+                            UserName = i.UserName,
+                            Name = i.AdminPersonalData.FirstName,
+                            LastName = i.AdminPersonalData.LastName,
+                            BirthDate = i.AdminPersonalData.BirthDate,
+                            email = i.AdminPersonalData.Email,
+                            Telephone = i.AdminPersonalData.Telephone
+                        };
+            binding.DataSource = query.ToList();
+            return binding;
+        }
+        public static BindingSource BindCrtUserAddressToGrid(string userName)
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            var query = from i in psContext.Admins
+                        orderby i.Id
+                        where i.UserName == userName
+                        select new
+                        {
+                            Street = i.AdminPersonalData.Address.Street,
+                            StreetNr = i.AdminPersonalData.Address.StreetNr,
+                            City = i.AdminPersonalData.Address.City,
+                            Region = i.AdminPersonalData.Address.Region,
+                            Country = i.AdminPersonalData.Address.Country,
+                            PostalCode = i.AdminPersonalData.Address.PostalCode
+                        };
+            binding.DataSource = query.ToList();
+            return binding;
+        }
+
+
     }
 }
