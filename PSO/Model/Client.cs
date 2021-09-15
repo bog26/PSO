@@ -11,16 +11,16 @@ namespace PSO.Model
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        private UserPersonalData clientPersonalData;
+        private UserPersonalData userInfo;
         public Client()
         {
 
         }
-        public UserPersonalData ClientPersonalData { get; set; }
+        public UserPersonalData UserInfo { get; set; }
         public void CreateClient(string chosenName, UserPersonalData personalInfo)
         {
             UserName = chosenName;
-            this.clientPersonalData = personalInfo;
+            this.userInfo = personalInfo;
         }
         public override string ToString()
         {

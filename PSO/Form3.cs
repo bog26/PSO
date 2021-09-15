@@ -115,15 +115,15 @@ namespace PSO
             UserPersonalData userPersonalData = GatherUserData();
             newAdmin.UserName = textBox1.Text;
             newAdmin.Password = textBox12.Text;
-            newAdmin.AdminPersonalData = userPersonalData;
+            newAdmin.UserInfo = userPersonalData;
 
             psContext = new psDBContext();
             psContext.Admins.Add(newAdmin);
             psContext.SaveChanges();
 
             //test:
-            MessageBox.Show("Testing new admin data: " + newAdmin.AdminPersonalData.FirstName + " "
-                + newAdmin.AdminPersonalData.LastName + " password: "+ newAdmin.Password);
+            MessageBox.Show("Testing new admin data: " + newAdmin.UserInfo.FirstName + " "
+                + newAdmin.UserInfo.LastName + " password: "+ newAdmin.Password);
         }
 
         public void CreateClient()
@@ -132,15 +132,15 @@ namespace PSO
             UserPersonalData userPersonalData = GatherUserData();
             newClient.UserName = textBox1.Text;
             newClient.Password = textBox12.Text;
-            newClient.ClientPersonalData = userPersonalData;
+            newClient.UserInfo = userPersonalData;
 
             psContext = new psDBContext();
             psContext.Clients.Add(newClient);
             psContext.SaveChanges();
 
             //test:
-            MessageBox.Show("Testing new client data: " + newClient.ClientPersonalData.FirstName + " "
-                + newClient.ClientPersonalData.LastName + " password: " + newClient.Password);
+            MessageBox.Show("Testing new client data: " + newClient.UserInfo.FirstName + " "
+                + newClient.UserInfo.LastName + " password: " + newClient.Password);
         }
 
         public void CreateUser()

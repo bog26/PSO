@@ -56,9 +56,9 @@ namespace PSO.Model
             BindingSource binding = new BindingSource();
             var query = from i in psContext.Admins
                         orderby i.Id
-                        select new { i.Id, UserName=i.UserName, Name = i.AdminPersonalData.FirstName, LastName = i.AdminPersonalData.LastName, 
-                                    BirthDate = i.AdminPersonalData.BirthDate, email = i.AdminPersonalData.Email, 
-                                    Telephone = i.AdminPersonalData.Telephone };
+                        select new { i.Id, UserName=i.UserName, Name = i.UserInfo.FirstName, LastName = i.UserInfo.LastName, 
+                                    BirthDate = i.UserInfo.BirthDate, email = i.UserInfo.Email, 
+                                    Telephone = i.UserInfo.Telephone };
             binding.DataSource = query.ToList();
             return binding;
         }
@@ -75,11 +75,11 @@ namespace PSO.Model
                         {
                             i.Id,
                             UserName = i.UserName,
-                            Name = i.AdminPersonalData.FirstName,
-                            LastName = i.AdminPersonalData.LastName,
-                            BirthDate = i.AdminPersonalData.BirthDate,
-                            email = i.AdminPersonalData.Email,
-                            Telephone = i.AdminPersonalData.Telephone
+                            Name = i.UserInfo.FirstName,
+                            LastName = i.UserInfo.LastName,
+                            BirthDate = i.UserInfo.BirthDate,
+                            email = i.UserInfo.Email,
+                            Telephone = i.UserInfo.Telephone
                         };
             binding.DataSource = query.ToList();
             return binding;
@@ -94,12 +94,12 @@ namespace PSO.Model
                         where i.UserName == userName
                         select new
                         {
-                            Street = i.AdminPersonalData.Address.Street,
-                            StreetNr = i.AdminPersonalData.Address.StreetNr,
-                            City = i.AdminPersonalData.Address.City,
-                            Region = i.AdminPersonalData.Address.Region,
-                            Country = i.AdminPersonalData.Address.Country,
-                            PostalCode = i.AdminPersonalData.Address.PostalCode
+                            Street = i.UserInfo.Address.Street,
+                            StreetNr = i.UserInfo.Address.StreetNr,
+                            City = i.UserInfo.Address.City,
+                            Region = i.UserInfo.Address.Region,
+                            Country = i.UserInfo.Address.Country,
+                            PostalCode = i.UserInfo.Address.PostalCode
                         };
             binding.DataSource = query.ToList();
             return binding;
