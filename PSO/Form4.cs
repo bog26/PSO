@@ -171,7 +171,8 @@ namespace PSO
             var psContext = new psDBContext();
             string loggedUser = ActiveForm.Text;
             var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-            var pdata = psContext.UserPersonalDatas.Find(crtUser.Id);
+            var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
+            //var pdata = psContext.UserPersonalDatas.Find(crtUser.Id);
 
             switch (choice)
                 {
