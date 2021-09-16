@@ -138,6 +138,8 @@ namespace PSO
                 string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
                 //MessageBox.Show(cellContent);
                 textBox1.Text = cellContent;
+                //int cellIndex = e.ColumnIndex;
+                //MessageBox.Show("cell index:"+cellIndex.ToString());
                 textBox1.Refresh();
 
                 //testonly>>
@@ -154,7 +156,53 @@ namespace PSO
         private void button15_Click(object sender, EventArgs e)
         {
             string value = textBox1.Text;
-            MessageBox.Show(value);
+            int activeCellIndex = dataGridView1.CurrentCell.ColumnIndex;
+            string activeColumn = dataGridView1.Columns[activeCellIndex].Name;
+            //MessageBox.Show("cell column index:"+activeCellIndex);
+           
+            MessageBox.Show("updating " + activeColumn+" with "+ value);
+            WriteToDB(activeColumn, value);
+            //WriteToDB();
+            dataGridView1.Refresh();
+        }
+
+        public static void WriteToDB(string choice, string text)
+        {
+            
+            string loggedUser = ActiveForm.Text;
+            var psContext = new psDBContext();
+            //var t = psContext.Admins.Find(1); // ok
+            
+            var t = psContext.Admins.Find(1);
+
+            var pd = psContext.UserPersonalDatas.Find(t.Id);
+
+
+            switch ( choice)
+                {
+                    case "FirstName":
+                    pd.FirstName = text;
+                    MessageBox.Show(choice +": "+ text);
+                    break;
+                case "LastName":
+                    pd.LastName = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "email":
+                    pd.Email = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "Telephone":
+                    pd.Telephone = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+            }
+
+            psContext.SaveChanges();
+            
+
+
+
         }
 
 

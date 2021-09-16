@@ -42,7 +42,7 @@ namespace PSO.Model
                              select new
                              {
                                  UserName = user.UserName,
-                                 Name = user.UserInfo.FirstName,
+                                 FirstName = user.UserInfo.FirstName,
                                  LastName = user.UserInfo.LastName,
                                  BirthDate = user.UserInfo.BirthDate,
                                  email = user.UserInfo.Email,
@@ -53,7 +53,7 @@ namespace PSO.Model
                               select new
                               {
                                   UserName = user.UserName,
-                                  Name = user.UserInfo.FirstName,
+                                  FirstName = user.UserInfo.FirstName,
                                   LastName = user.UserInfo.LastName,
                                   BirthDate = user.UserInfo.BirthDate,
                                   email = user.UserInfo.Email,

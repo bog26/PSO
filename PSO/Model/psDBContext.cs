@@ -15,6 +15,7 @@ namespace PSO.Model
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<UserPersonalData> UserPersonalDatas { get; set; }
 
     }
 }

@@ -28,3 +28,7 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DataInputUpdate.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddedPAsswords.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddNewAdminAndClients.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AdminClientClassesUserInfoChange.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewKeys.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewKeys1.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewDbSetUserPersonalDatas.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewDbSetUserPersonalDatas1.resources

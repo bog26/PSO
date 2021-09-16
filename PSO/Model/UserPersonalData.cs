@@ -14,6 +14,8 @@ namespace PSO.Model
         private DateTime birthDate;
         private string email;
         private string telephone;
+        public int AdminId;
+        public int ClientId;
         private UserAddress address;
         public UserPersonalData()
         {

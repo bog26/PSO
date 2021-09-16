@@ -130,6 +130,22 @@
     <Compile Include="Migrations\202109152052555_AdminClientClassesUserInfoChange.designer.cs">
       <DependentUpon>202109152052555_AdminClientClassesUserInfoChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109161545343_NewKeys.cs" />
+    <Compile Include="Migrations\202109161545343_NewKeys.designer.cs">
+      <DependentUpon>202109161545343_NewKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109161650194_NewKeys1.cs" />
+    <Compile Include="Migrations\202109161650194_NewKeys1.designer.cs">
+      <DependentUpon>202109161650194_NewKeys1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.cs" />
+    <Compile Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.designer.cs">
+      <DependentUpon>202109162131370_NewDbSetUserPersonalDatas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.cs" />
+    <Compile Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.designer.cs">
+      <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -200,6 +216,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109152052555_AdminClientClassesUserInfoChange.resx">
       <DependentUpon>202109152052555_AdminClientClassesUserInfoChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109161545343_NewKeys.resx">
+      <DependentUpon>202109161545343_NewKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109161650194_NewKeys1.resx">
+      <DependentUpon>202109161650194_NewKeys1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.resx">
+      <DependentUpon>202109162131370_NewDbSetUserPersonalDatas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.resx">
+      <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
