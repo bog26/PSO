@@ -48,7 +48,26 @@ namespace PSO.Model
             Form.ActiveForm.Controls.Add(dataGridView);
         }
 
-        
+        public static void DisplayNewTextBox(TextBox textBox, int[] position, int[] size, string labelText)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+
+
+            //label.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //label.ForeColor = SystemColors.HotTrack;
+            //label.BackColor = Color.LightGray;
+            textBox.Location = new Point(posX, posY);
+            textBox.Name = labelText;
+            textBox.Size = new Size(length, hight);
+            textBox.TabIndex = 0;
+            textBox.Text = labelText;
+            Form.ActiveForm.Controls.Add(textBox);
+        }
+
+
         public static BindingSource BindAllUserDataToGrid()
         {
             psDBContext psContext = new psDBContext();

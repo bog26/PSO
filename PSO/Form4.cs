@@ -76,6 +76,7 @@ namespace PSO
         }
         DataGridView dataGridView1 = new DataGridView();
         DataGridView dataGridView2 = new DataGridView();
+        TextBox textBox1 = new TextBox();
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -115,6 +116,15 @@ namespace PSO
             Label label7 = new Label();
             DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
 
+            //TextBox textBox1 = new TextBox();
+            DisplayNewTextBox(textBox1, new int[2] { 950, 115 }, new int[2] { 60, 24 }, "Value");
+            textBox1.TextChanged += new EventHandler(textBox1_TextChanged);
+            
+
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -128,7 +138,12 @@ namespace PSO
                 //testonly:>>
                 //Label label7 = new Label();
                 //DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
-                MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
+
+                //MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
+                MessageBox.Show(cellContent);
+                textBox1.Text = cellContent;
+                textBox1.Refresh();
+
                 //DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, cellContent);
 
                 //<<testonly:
