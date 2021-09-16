@@ -168,41 +168,31 @@ namespace PSO
 
         public static void WriteToDB(string choice, string text)
         {
-            
-            string loggedUser = ActiveForm.Text;
             var psContext = new psDBContext();
-            //var t = psContext.Admins.Find(1); // ok
-            
-            var t = psContext.Admins.Find(1);
+            string loggedUser = ActiveForm.Text;
+            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+            var pdata = psContext.UserPersonalDatas.Find(crtUser.Id);
 
-            var pd = psContext.UserPersonalDatas.Find(t.Id);
-
-
-            switch ( choice)
+            switch (choice)
                 {
                     case "FirstName":
-                    pd.FirstName = text;
+                    pdata.FirstName = text;
                     MessageBox.Show(choice +": "+ text);
                     break;
                 case "LastName":
-                    pd.LastName = text;
+                    pdata.LastName = text;
                     MessageBox.Show(choice + ": " + text);
                     break;
                 case "email":
-                    pd.Email = text;
+                    pdata.Email = text;
                     MessageBox.Show(choice + ": " + text);
                     break;
                 case "Telephone":
-                    pd.Telephone = text;
+                    pdata.Telephone = text;
                     MessageBox.Show(choice + ": " + text);
                     break;
             }
-
             psContext.SaveChanges();
-            
-
-
-
         }
 
 
