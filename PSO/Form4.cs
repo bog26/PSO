@@ -79,17 +79,34 @@ namespace PSO
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Label label15 = new Label();
+            Label label5 = new Label();
             string loggedUser = ActiveForm.Text;
             //DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
-            DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, loggedUser + " - personal info");
+            DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, loggedUser + " - personal info");
             DisplayNewDataGridView(dataGridView1, new int[2] { 230, 90 }, new int[2] { 650, 45 });
             dataGridView1.DataSource = BindCrtUserDataToGrid(loggedUser);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Refresh();
+            dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
 
-            Label label16 = new Label();
-            DisplayNewLabel(label16, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+
+                for (int i = 1; i < dataGridView1.ColumnCount; i++)
+                {
+                    row.Cells[i].ReadOnly = false;
+                    
+                    
+                }
+            }
+
+
+            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter; //new
+            //dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            //dataGridView1.Refresh();
+
+            Label label6 = new Label();
+            DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
             DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
             dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -99,7 +116,23 @@ namespace PSO
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            /* //ok
             MessageBox.Show("cell clicked");
+            Label label7 = new Label();
+            DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, "cell click");
+            */
+            MessageBox.Show("cell clicked");
+
+            /*
+            //dataGridView1.BeginEdit(true); 
+            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            if(e.ColumnIndex>=1)
+            //if (e!= null)
+            {
+                MessageBox.Show("cell clicked");
+            }
+            //MessageBox.Show("cell clicked");
+            */
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -111,6 +144,10 @@ namespace PSO
         {
  
         }
-    
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
