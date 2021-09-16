@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PSO.Model.FormElementsDisplay;
+using static PSO.Model.DBBindings;
 using PSO.Model;
 
 namespace PSO
@@ -77,10 +78,15 @@ namespace PSO
         DataGridView dataGridView1 = new DataGridView();
         DataGridView dataGridView2 = new DataGridView();
         TextBox textBox1 = new TextBox();
+        Label label5 = new Label();
+        Label label6 = new Label();
+        Label label7 = new Label();
+        Button button15 = new Button();
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Label label5 = new Label();
+            ShoWUserInformationFormElements();
+
             string loggedUser = ActiveForm.Text;
             //DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
             DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, loggedUser + " - personal info");
@@ -101,25 +107,23 @@ namespace PSO
                 }
             }
 
-
             //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter; //new
             //dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             //dataGridView1.Refresh();
 
-            Label label6 = new Label();
             DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
             DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
             dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.Refresh();
-
-            Label label7 = new Label();
+            
             DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
 
-            //TextBox textBox1 = new TextBox();
             DisplayNewTextBox(textBox1, new int[2] { 950, 115 }, new int[2] { 60, 24 }, "Value");
             textBox1.TextChanged += new EventHandler(textBox1_TextChanged);
-            
+
+            DisplayNewButton(button15, new int[2] { 1030, 115 }, new int[2] { 60, 23 }, "button15", "Update");
+            button15.Click += new EventHandler(button15_Click);
 
 
         }
@@ -129,49 +133,30 @@ namespace PSO
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             if (dataGridView1.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex>=1 )
             {
-                //MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
                 string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
-
-                //testonly:>>
-                //Label label7 = new Label();
-                //DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
-
-                //MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
-                MessageBox.Show(cellContent);
+                //MessageBox.Show(cellContent);
                 textBox1.Text = cellContent;
                 textBox1.Refresh();
 
-                //DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, cellContent);
-
-                //<<testonly:
+                //testonly>>
+                //<<testonly
             }
 
-            /* //ok
-            MessageBox.Show("cell clicked");
-            Label label7 = new Label();
-            DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, "cell click");
-            */
-            //MessageBox.Show("cell clicked");
-
-            /*
-            //dataGridView1.BeginEdit(true); 
-            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-            if(e.ColumnIndex>=1)
-            //if (e!= null)
-            {
-                MessageBox.Show("cell clicked");
-            }
-            //MessageBox.Show("cell clicked");
-            */
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-
+            HideUserInformationFormElements();
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string value = textBox1.Text;
+            MessageBox.Show(value);
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -179,6 +164,31 @@ namespace PSO
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ShoWUserInformationFormElements()
+        {
+            label5.Show();
+            dataGridView1.Show();
+            textBox1.Show();
+            label6.Show();
+            dataGridView2.Show();
+            label7.Show();
+            button15.Show();
+        }
+        private void HideUserInformationFormElements()
+        {
+            dataGridView1.Hide();
+            dataGridView2.Hide();
+            textBox1.Hide();
+            label5.Hide();
+            label6.Hide();
+            label7.Hide();
+            button15.Hide();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
         {
 
         }

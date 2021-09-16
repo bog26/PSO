@@ -67,79 +67,21 @@ namespace PSO.Model
             Form.ActiveForm.Controls.Add(textBox);
         }
 
-
-        public static BindingSource BindAllUserDataToGrid()
+        public static void DisplayNewButton(Button button, int[] position, int[] size, string name, string buttonText)
         {
-            psDBContext psContext = new psDBContext();
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
 
-            BindingSource binding = new BindingSource();
-            var query = from i in psContext.Admins
-                        orderby i.Id
-                        select new { i.Id, UserName=i.UserName, Name = i.UserInfo.FirstName, LastName = i.UserInfo.LastName, 
-                                    BirthDate = i.UserInfo.BirthDate, email = i.UserInfo.Email, 
-                                    Telephone = i.UserInfo.Telephone };
-            binding.DataSource = query.ToList();
-            return binding;
+            button.Location = new Point(posX, posY);
+            button.Name = name;
+            button.Size = new Size(length, hight);
+            //button.TabIndex = 0;
+            button.Text = buttonText;
+            button.UseVisualStyleBackColor = true;
+            Form.ActiveForm.Controls.Add(button);
         }
-        
-        public static BindingSource BindCrtUserDataToGrid(string userName)
-        {
-            psDBContext psContext = new psDBContext();
-            BindingSource binding = new BindingSource();
-
-            var queryAdmin = from user in psContext.Admins
-                        where user.UserName == userName
-                        select new
-                        {
-                            UserName = user.UserName,
-                            Name = user.UserInfo.FirstName,
-                            LastName = user.UserInfo.LastName,
-                            BirthDate = user.UserInfo.BirthDate,
-                            email = user.UserInfo.Email,
-                            Telephone = user.UserInfo.Telephone
-                        };
-            var queryClient = from user in psContext.Clients
-                             where user.UserName == userName
-                             select new
-                             {
-                                 UserName = user.UserName,
-                                 Name = user.UserInfo.FirstName,
-                                 LastName = user.UserInfo.LastName,
-                                 BirthDate = user.UserInfo.BirthDate,
-                                 email = user.UserInfo.Email,
-                                 Telephone = user.UserInfo.Telephone
-                             };
-
-            if(InternalDBQueries.CheckForAdminRights(userName))
-            {
-                binding.DataSource = queryAdmin.ToList();
-            }
-            else 
-            {
-                binding.DataSource = queryClient.ToList();
-            }
-            return binding;
-        }
-        public static BindingSource BindCrtUserAddressToGrid(string userName)
-        {
-            psDBContext psContext = new psDBContext();
-
-            BindingSource binding = new BindingSource();
-            var query = from user in psContext.Admins
-                        where user.UserName == userName
-                        select new
-                        {
-                            Street = user.UserInfo.Address.Street,
-                            StreetNr = user.UserInfo.Address.StreetNr,
-                            City = user.UserInfo.Address.City,
-                            Region = user.UserInfo.Address.Region,
-                            Country = user.UserInfo.Address.Country,
-                            PostalCode = user.UserInfo.Address.PostalCode
-                        };
-            binding.DataSource = query.ToList();
-            return binding;
-        }
-
 
     }
 }

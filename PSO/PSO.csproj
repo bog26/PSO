@@ -134,6 +134,7 @@
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\ClientBalance.cs" />
+    <Compile Include="Model\DBBindings.cs" />
     <Compile Include="Model\FormElementsDisplay.cs" />
     <Compile Include="Model\IBalance.cs" />
     <Compile Include="Model\InternalDBQueries.cs" />
