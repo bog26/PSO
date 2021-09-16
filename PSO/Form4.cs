@@ -112,16 +112,34 @@ namespace PSO
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.Refresh();
 
+            Label label7 = new Label();
+            DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
+
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (dataGridView1.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex>=1 )
+            {
+                //MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
+                string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
+
+                //testonly:>>
+                //Label label7 = new Label();
+                //DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
+                MessageBox.Show(dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString());
+                //DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, cellContent);
+
+                //<<testonly:
+            }
+
             /* //ok
             MessageBox.Show("cell clicked");
             Label label7 = new Label();
             DisplayNewLabel(label7, new int[2] { 950, 100 }, new int[2] { 168, 24 }, "cell click");
             */
-            MessageBox.Show("cell clicked");
+            //MessageBox.Show("cell clicked");
 
             /*
             //dataGridView1.BeginEdit(true); 
