@@ -62,7 +62,7 @@ namespace PSO
         {
             if (textBox1.Text != String.Empty)
             {
-                if(InternalDBQueries.CheckForExistingUser(textBox1.Text) && InternalDBQueries.CheckForCorrectPassword(textBox2.Text))
+                if(InternalDBQueries.CheckForExistingUser(textBox1.Text) && InternalDBQueries.CheckForCorrectPassword(textBox1.Text, textBox2.Text))
                 {
                     OpenUserWindow(InternalDBQueries.CheckForAdminRights(textBox1.Text));
                 }

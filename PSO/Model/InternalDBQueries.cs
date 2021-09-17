@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PSO.Model
 {
@@ -31,9 +32,31 @@ namespace PSO.Model
             }
             return exisitingUser;
         }
-        public static bool CheckForCorrectPassword(string password)
+        //public static bool CheckForCorrectPassword(string password)
+        public static bool CheckForCorrectPassword(string loggedUser, string password)
         {
+            var psContext = new psDBContext();
             bool correctPassword = false;
+            //string loggedUser = Form.ActiveForm.Text;
+
+            if (CheckForAdminRights(loggedUser))
+            {
+                var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+                if(crtUser.Password == password)
+                {
+                    correctPassword = true;
+                }
+            }
+            else
+            {
+                var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
+                if (crtUser.Password == password)
+                {
+                    correctPassword = true;
+                }
+            }
+
+            /*
             var psContext = new psDBContext();
             var admins = psContext.Admins.ToList();
             var clients = psContext.Clients.ToList();
@@ -51,6 +74,8 @@ namespace PSO.Model
                     correctPassword = true;
                 }
             }
+            */
+
             return correctPassword;
         }
 

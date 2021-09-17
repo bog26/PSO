@@ -87,6 +87,10 @@ namespace PSO
         Button button16 = new Button();
         Label label9 = new Label();
         Button button17 = new Button();
+        TextBox textBox3 = new TextBox(); //old pass
+        TextBox textBox4 = new TextBox(); //new pass
+        Button button18 = new Button();
+
 
 
 
@@ -191,12 +195,30 @@ namespace PSO
 
         private void button17_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("changing password");
+            textBox3.Show();
+            textBox4.Show();
+            button18.Show();
+            DisplayNewTextBox(textBox3, new int[2] { 390, 270 }, new int[2] { 120, 24 }, "old password");
+            textBox3.TextChanged += new EventHandler(textBox3_TextChanged);
+            DisplayNewTextBox(textBox4, new int[2] { 390, 300 }, new int[2] { 120, 24 }, "new password");
+            textBox4.TextChanged += new EventHandler(textBox4_TextChanged);
+
+            DisplayNewButton(button18, new int[2] { 520, 270 }, new int[2] { 100, 22 }, "button18", "Update Password");
+            button18.Click += new EventHandler(button18_Click);
+
+            
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 
-
-            private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
  
         }
@@ -214,20 +236,43 @@ namespace PSO
             dataGridView2.Show();
             label7.Show();
             button15.Show();
+            label9.Show();
+            button17.Show();
         }
         private void HideUserInformationFormElements()
         {
             dataGridView1.Hide();
             dataGridView2.Hide();
             textBox1.Hide();
+            textBox2.Hide();
             label5.Hide();
             label6.Hide();
             label7.Hide();
+            label8.Hide();
+            label9.Hide();
             button15.Hide();
+            button16.Hide();
+            button17.Hide();
+            textBox3.Hide();
+            textBox4.Hide();
+            button18.Hide();
+
         }
         private void button13_Click(object sender, EventArgs e)
         {
 
+        }
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if(InternalDBQueries.CheckForCorrectPassword(Form.ActiveForm.Text, textBox3.Text))
+            {
+                MessageBox.Show("correct password");
+            }
+            else 
+            {
+                MessageBox.Show("wrong password");
+            }
+            
         }
     }
 }
