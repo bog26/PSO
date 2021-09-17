@@ -85,6 +85,8 @@ namespace PSO
         Label label8 = new Label();
         TextBox textBox2 = new TextBox();
         Button button16 = new Button();
+        Label label9 = new Label();
+        Button button17 = new Button();
 
 
 
@@ -94,13 +96,13 @@ namespace PSO
 
             string loggedUser = ActiveForm.Text;
             //DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
-            DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, loggedUser + " - personal info");
+            DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "Personal info");
             DisplayNewDataGridView(dataGridView1, new int[2] { 230, 90 }, new int[2] { 650, 45 });
             dataGridView1.DataSource = BindCrtUserDataToGrid(loggedUser);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
 
-            DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
+            DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 },"Address");
             DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
             dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -123,6 +125,10 @@ namespace PSO
 
             DisplayNewButton(button16, new int[2] { 1030, 225 }, new int[2] { 60, 23 }, "button16", "Update");
             button16.Click += new EventHandler(button16_Click);
+
+            DisplayNewLabel(label9, new int[2] { 230, 270 }, new int[2] { 168, 24 }, "Password");
+            DisplayNewButton(button17, new int[2] { 230, 300 }, new int[2] { 120, 23 }, "button17", "Change Password");
+            button17.Click += new EventHandler(button17_Click);
 
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -183,7 +189,14 @@ namespace PSO
             dataGridView2.Refresh();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button17_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("changing password");
+        }
+
+
+
+            private void button1_Click(object sender, EventArgs e)
         {
  
         }
