@@ -37,5 +37,44 @@ namespace PSO.Model
             }
             psContext.SaveChanges();
         }
+        public static void WriteUserAddressToDB(string choice, string text)  //WIP
+        {
+            var psContext = new psDBContext();
+            string loggedUser = Form.ActiveForm.Text;
+            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+            //var personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
+            var personalAddr = psContext.UserAddresses.Find(crtUser.Id);
+            switch (choice)
+            {
+                case "Street":
+                    personalAddr.Street = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "StreetNr":
+                    personalAddr.StreetNr = int.Parse(text);
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "City":
+                    personalAddr.City = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "Region":
+                    personalAddr.Region = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "Country":
+                    personalAddr.Country = text;
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+                case "PostalCode":
+                    personalAddr.PostalCode = int.Parse(text);
+                    MessageBox.Show(choice + ": " + text);
+                    break;
+            }
+            psContext.SaveChanges();
+        }
+
+
+
     }
 }

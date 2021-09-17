@@ -146,6 +146,10 @@
     <Compile Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.designer.cs">
       <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109171155352_AddUserAddressId.cs" />
+    <Compile Include="Migrations\202109171155352_AddUserAddressId.designer.cs">
+      <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -229,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.resx">
       <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109171155352_AddUserAddressId.resx">
+      <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

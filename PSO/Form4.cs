@@ -82,6 +82,11 @@ namespace PSO
         Label label6 = new Label();
         Label label7 = new Label();
         Button button15 = new Button();
+        Label label8 = new Label();
+        TextBox textBox2 = new TextBox();
+        Button button16 = new Button();
+
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -99,8 +104,9 @@ namespace PSO
             DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
             dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.Refresh();
-            
+            dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView2_CellContentClick);
+            //dataGridView2.Refresh();
+
             DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
 
             DisplayNewTextBox(textBox1, new int[2] { 950, 115 }, new int[2] { 60, 24 }, "Value");
@@ -110,11 +116,28 @@ namespace PSO
             button15.Click += new EventHandler(button15_Click);
 
 
+            DisplayNewLabel(label8, new int[2] { 950, 200 }, new int[2] { 168, 24 }, "Value");
+
+            DisplayNewTextBox(textBox2, new int[2] { 950, 225 }, new int[2] { 60, 24 }, "Value");
+            textBox2.TextChanged += new EventHandler(textBox2_TextChanged);
+
+            DisplayNewButton(button16, new int[2] { 1030, 225 }, new int[2] { 60, 23 }, "button16", "Update");
+            button16.Click += new EventHandler(button16_Click);
+
+
+
+
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex>=1 )
@@ -122,6 +145,16 @@ namespace PSO
                 string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
                 textBox1.Text = cellContent;
                 textBox1.Refresh();
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.Rows[0].Cells[e.ColumnIndex].Value != null)
+            {
+                string cellContent = dataGridView2.Rows[0].Cells[e.ColumnIndex].Value.ToString();
+                textBox2.Text = cellContent;
+                textBox2.Refresh();
             }
         }
 
@@ -141,7 +174,19 @@ namespace PSO
             DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
             dataGridView1.Refresh();
         }
-        
+
+        private void button16_Click(object sender, EventArgs e) 
+        {
+            string value = textBox2.Text;
+            int activeCellIndex = dataGridView2.CurrentCell.ColumnIndex;
+            string activeColumn = dataGridView2.Columns[activeCellIndex].Name;
+
+            MessageBox.Show("updating " + activeColumn + " with " + value);
+            DBUpdates.WriteUserAddressToDB(activeColumn, value);
+            dataGridView2.Refresh();
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
  

@@ -12,6 +12,7 @@ namespace PSO.Model
         public string UserName { get; set; }
         public string Password { get; set; }
         public int UserPersonalDataId { get; set; }
+        public int UserAddressId { get; set; }
         private UserPersonalData userInfo;
         public Client()
         {
