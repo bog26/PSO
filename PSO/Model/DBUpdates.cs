@@ -102,6 +102,23 @@ namespace PSO.Model
                     break;
             }
         }
+        public static void WriteNewPassToDB(string newPass)
+        {
+            var psContext = new psDBContext();
+            string loggedUser = Form.ActiveForm.Text;
+
+            if (InternalDBQueries.CheckForAdminRights(loggedUser))
+            {
+                var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+                crtUser.Password = newPass;
+            }
+            else
+            {
+                var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
+                crtUser.Password = newPass;
+            }
+            psContext.SaveChanges();
+        }
 
 
 

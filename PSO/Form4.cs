@@ -266,7 +266,10 @@ namespace PSO
         {
             if(InternalDBQueries.CheckForCorrectPassword(Form.ActiveForm.Text, textBox3.Text))
             {
-                MessageBox.Show("correct password");
+                //MessageBox.Show("correct password");
+                string newPassVal = textBox4.Text;
+                DBUpdates.WriteNewPassToDB(newPassVal);
+                MessageBox.Show("password changed");
             }
             else 
             {
