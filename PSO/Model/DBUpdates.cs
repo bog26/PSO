@@ -9,69 +9,98 @@ namespace PSO.Model
 {
     public class DBUpdates
     {
-        public static void WriteUserPersonalDataToDB(string choice, string text)
+        public static void WriteUserPersonalDataToDB(string choice, string input)
         {
             var psContext = new psDBContext();
             string loggedUser = Form.ActiveForm.Text;
-            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-            var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
 
-            switch (choice)
+            if (InternalDBQueries.CheckForAdminRights(loggedUser))
             {
-                case "FirstName":
-                    pdata.FirstName = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-                case "LastName":
-                    pdata.LastName = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-                case "email":
-                    pdata.Email = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-                case "Telephone":
-                    pdata.Telephone = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
+                var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+                var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
+                UserPDataChange(pdata, choice, input);
+            }
+            else 
+            {
+                var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
+                var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
+                UserPDataChange(pdata, choice, input);
             }
             psContext.SaveChanges();
         }
-        public static void WriteUserAddressToDB(string choice, string text)  //WIP
+
+        public static void UserPDataChange(UserPersonalData userData, string choice, string change)
+        {
+            switch (choice)
+            {
+                case "FirstName":
+                    userData.FirstName = change;
+                    MessageBox.Show(choice + ": " + change);
+                    break;
+                case "LastName":
+                    userData.LastName = change;
+                    MessageBox.Show(choice + ": " + change);
+                    break;
+                case "email":
+                    userData.Email = change;
+                    MessageBox.Show(choice + ": " + change);
+                    break;
+                case "Telephone":
+                    userData.Telephone = change;
+                    MessageBox.Show(choice + ": " + change);
+                    break;    
+            }
+        }
+
+        public static void WriteUserAddressToDB(string choice, string input)  
         {
             var psContext = new psDBContext();
             string loggedUser = Form.ActiveForm.Text;
-            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-            //var personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
-            var personalAddr = psContext.UserAddresses.Find(crtUser.Id);
+
+            if (InternalDBQueries.CheckForAdminRights(loggedUser))
+            {
+                var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+                var personalAddr = psContext.UserAddresses.Find(crtUser.Id);
+                UserAddressChange(personalAddr, choice, input);
+            }
+            else
+            {
+                var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
+                var personalAddr = psContext.UserAddresses.Find(crtUser.Id);
+                UserAddressChange(personalAddr, choice, input);
+            }
+            psContext.SaveChanges();
+        }
+
+        public static void UserAddressChange(UserAddress userAddress, string choice, string change)
+        {
             switch (choice)
             {
                 case "Street":
-                    personalAddr.Street = text;
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.Street = change;
+                    MessageBox.Show(choice + ": " + change);
                     break;
                 case "StreetNr":
-                    personalAddr.StreetNr = int.Parse(text);
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.StreetNr = int.Parse(change);
+                    MessageBox.Show(choice + ": " + change);
                     break;
                 case "City":
-                    personalAddr.City = text;
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.City = change;
+                    MessageBox.Show(choice + ": " + change);
                     break;
                 case "Region":
-                    personalAddr.Region = text;
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.Region = change;
+                    MessageBox.Show(choice + ": " + change);
                     break;
                 case "Country":
-                    personalAddr.Country = text;
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.Country = change;
+                    MessageBox.Show(choice + ": " + change);
                     break;
                 case "PostalCode":
-                    personalAddr.PostalCode = int.Parse(text);
-                    MessageBox.Show(choice + ": " + text);
+                    userAddress.PostalCode = int.Parse(change);
+                    MessageBox.Show(choice + ": " + change);
                     break;
             }
-            psContext.SaveChanges();
         }
 
 

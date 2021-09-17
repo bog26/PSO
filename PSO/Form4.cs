@@ -124,9 +124,6 @@ namespace PSO
             DisplayNewButton(button16, new int[2] { 1030, 225 }, new int[2] { 60, 23 }, "button16", "Update");
             button16.Click += new EventHandler(button16_Click);
 
-
-
-
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -186,7 +183,6 @@ namespace PSO
             dataGridView2.Refresh();
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
  
@@ -216,7 +212,6 @@ namespace PSO
             label7.Hide();
             button15.Hide();
         }
-
         private void button13_Click(object sender, EventArgs e)
         {
 
