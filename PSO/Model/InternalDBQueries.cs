@@ -32,12 +32,11 @@ namespace PSO.Model
             }
             return exisitingUser;
         }
-        //public static bool CheckForCorrectPassword(string password)
+        
         public static bool CheckForCorrectPassword(string loggedUser, string password)
         {
             var psContext = new psDBContext();
             bool correctPassword = false;
-            //string loggedUser = Form.ActiveForm.Text;
 
             if (CheckForAdminRights(loggedUser))
             {
@@ -55,26 +54,6 @@ namespace PSO.Model
                     correctPassword = true;
                 }
             }
-
-            /*
-            var psContext = new psDBContext();
-            var admins = psContext.Admins.ToList();
-            var clients = psContext.Clients.ToList();
-            foreach (Admin admin in admins)
-            {
-                if (password == admin.Password)
-                {
-                    correctPassword = true;
-                }
-            }
-            foreach (Client client in clients)
-            {
-                if (password == client.Password)
-                {
-                    correctPassword = true;
-                }
-            }
-            */
 
             return correctPassword;
         }
