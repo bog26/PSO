@@ -95,22 +95,6 @@ namespace PSO
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
 
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-
-                for (int i = 1; i < dataGridView1.ColumnCount; i++)
-                {
-                    row.Cells[i].ReadOnly = false;
-                    
-                    
-                }
-            }
-
-            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter; //new
-            //dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            //dataGridView1.Refresh();
-
             DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 }, loggedUser + " - address");
             DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
             dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
@@ -136,16 +120,9 @@ namespace PSO
             if (dataGridView1.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex>=1 )
             {
                 string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
-                //MessageBox.Show(cellContent);
                 textBox1.Text = cellContent;
-                //int cellIndex = e.ColumnIndex;
-                //MessageBox.Show("cell index:"+cellIndex.ToString());
                 textBox1.Refresh();
-
-                //testonly>>
-                //<<testonly
             }
-
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -161,42 +138,10 @@ namespace PSO
             //MessageBox.Show("cell column index:"+activeCellIndex);
            
             MessageBox.Show("updating " + activeColumn+" with "+ value);
-            WriteToDB(activeColumn, value);
-            //WriteToDB();
+            DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
             dataGridView1.Refresh();
         }
-
-        public static void WriteToDB(string choice, string text)
-        {
-            var psContext = new psDBContext();
-            string loggedUser = ActiveForm.Text;
-            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-            var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
-            //var pdata = psContext.UserPersonalDatas.Find(crtUser.Id);
-
-            switch (choice)
-                {
-                    case "FirstName":
-                    pdata.FirstName = text;
-                    MessageBox.Show(choice +": "+ text);
-                    break;
-                case "LastName":
-                    pdata.LastName = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-                case "email":
-                    pdata.Email = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-                case "Telephone":
-                    pdata.Telephone = text;
-                    MessageBox.Show(choice + ": " + text);
-                    break;
-            }
-            psContext.SaveChanges();
-        }
-
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
  

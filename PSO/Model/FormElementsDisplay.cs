@@ -12,14 +12,12 @@ namespace PSO.Model
 {
     public class FormElementsDisplay
     {
-        //private psDBContext psContext;
         public static void DisplayNewLabel(Label label, int[] position, int[] size, string labelText)
         {
             int posX = position[0];
             int posY = position[1];
             int length = size[0];
             int hight = size[1];
-
             label.AutoSize = true;
             label.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label.ForeColor = SystemColors.HotTrack;
@@ -54,11 +52,6 @@ namespace PSO.Model
             int posY = position[1];
             int length = size[0];
             int hight = size[1];
-
-
-            //label.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //label.ForeColor = SystemColors.HotTrack;
-            //label.BackColor = Color.LightGray;
             textBox.Location = new Point(posX, posY);
             textBox.Name = labelText;
             textBox.Size = new Size(length, hight);
@@ -73,11 +66,9 @@ namespace PSO.Model
             int posY = position[1];
             int length = size[0];
             int hight = size[1];
-
             button.Location = new Point(posX, posY);
             button.Name = name;
             button.Size = new Size(length, hight);
-            //button.TabIndex = 0;
             button.Text = buttonText;
             button.UseVisualStyleBackColor = true;
             Form.ActiveForm.Controls.Add(button);
