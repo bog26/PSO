@@ -78,15 +78,6 @@ namespace PSO.Model
             var queryAdmin = from user in psContext.Admins
                         where user.UserName == userName
                         select new
-                        /*
-                        {
-                            Street = user.UserInfo.Address.Street,
-                            StreetNr = user.UserInfo.Address.StreetNr,
-                            City = user.UserInfo.Address.City,
-                            Region = user.UserInfo.Address.Region,
-                            Country = user.UserInfo.Address.Country,
-                            PostalCode = user.UserInfo.Address.PostalCode
-                        };*/
 
                         {
                             Street = user.UserAddress.Street,
@@ -100,15 +91,6 @@ namespace PSO.Model
             var queryClient = from user in psContext.Clients
                              where user.UserName == userName
                              select new
-                             /*
-                             {
-                                 Street = user.UserInfo.Address.Street,
-                                 StreetNr = user.UserInfo.Address.StreetNr,
-                                 City = user.UserInfo.Address.City,
-                                 Region = user.UserInfo.Address.Region,
-                                 Country = user.UserInfo.Address.Country,
-                                 PostalCode = user.UserInfo.Address.PostalCode
-                             };*/
                              {
                                  Street = user.UserAddress.Street,
                                  StreetNr = user.UserAddress.StreetNr,

@@ -33,6 +33,5 @@ namespace PSO.Model
         {
             return UserName;
         }
-        //public string AdminPersonalData
     }
 }

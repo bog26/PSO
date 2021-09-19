@@ -73,15 +73,11 @@ namespace PSO.Model
             psContext.SaveChanges();
         }
 
-
-        //public static void UserAddressChange(UserAddress userAddress, string choice, string change)
-        //public static void UserAddressChange(UserPersonalData userData, string choice, string change)
         public static void UserAddressChange(UserAddress userAddress, string choice, string change)
         {
             switch (choice)
             {
                 case "Street":
-                    //userData.Address.Street = change;
                     userAddress.Street = change;
                     MessageBox.Show(choice + ": " + change);
                     break;

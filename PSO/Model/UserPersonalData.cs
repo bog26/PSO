@@ -16,7 +16,6 @@ namespace PSO.Model
         private string telephone;
         public int AdminId;
         public int ClientId;
-        //public int UserAddressId;
         private UserAddress address;
         public UserPersonalData()
         {
@@ -27,7 +26,5 @@ namespace PSO.Model
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Telephone { get; set; }
-        //public UserAddress Address { get; set; }
-
     }
 }
