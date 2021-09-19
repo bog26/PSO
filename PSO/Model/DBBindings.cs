@@ -75,9 +75,10 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
 
             BindingSource binding = new BindingSource();
-            var query = from user in psContext.Admins
+            var queryAdmin = from user in psContext.Admins
                         where user.UserName == userName
                         select new
+                        /*
                         {
                             Street = user.UserInfo.Address.Street,
                             StreetNr = user.UserInfo.Address.StreetNr,
@@ -85,8 +86,48 @@ namespace PSO.Model
                             Region = user.UserInfo.Address.Region,
                             Country = user.UserInfo.Address.Country,
                             PostalCode = user.UserInfo.Address.PostalCode
+                        };*/
+
+                        {
+                            Street = user.UserAddress.Street,
+                            StreetNr = user.UserAddress.StreetNr,
+                            City = user.UserAddress.City,
+                            Region = user.UserAddress.Region,
+                            Country = user.UserAddress.Country,
+                            PostalCode = user.UserAddress.PostalCode
                         };
-            binding.DataSource = query.ToList();
+
+            var queryClient = from user in psContext.Clients
+                             where user.UserName == userName
+                             select new
+                             /*
+                             {
+                                 Street = user.UserInfo.Address.Street,
+                                 StreetNr = user.UserInfo.Address.StreetNr,
+                                 City = user.UserInfo.Address.City,
+                                 Region = user.UserInfo.Address.Region,
+                                 Country = user.UserInfo.Address.Country,
+                                 PostalCode = user.UserInfo.Address.PostalCode
+                             };*/
+                             {
+                                 Street = user.UserAddress.Street,
+                                 StreetNr = user.UserAddress.StreetNr,
+                                 City = user.UserAddress.City,
+                                 Region = user.UserAddress.Region,
+                                 Country = user.UserAddress.Country,
+                                 PostalCode = user.UserAddress.PostalCode
+                             };
+
+
+
+            if (InternalDBQueries.CheckForAdminRights(userName))
+            {
+                binding.DataSource = queryAdmin.ToList();
+            }
+            else
+            {
+                binding.DataSource = queryClient.ToList();
+            }
             return binding;
         }
     }

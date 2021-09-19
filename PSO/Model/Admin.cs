@@ -15,11 +15,15 @@ namespace PSO.Model
         public int UserAddressId { get; set; }
 
         private UserPersonalData userInfo;
-       public Admin()
+        private UserAddress userAddress;
+
+        public Admin()
         {
 
         }
         public UserPersonalData UserInfo { get; set; }
+        public UserAddress UserAddress { get; set; }
+
         public void CreateAdmin(string chosenName, UserPersonalData personalInfo)
         {
             UserName = chosenName;

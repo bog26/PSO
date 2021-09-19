@@ -113,9 +113,15 @@ namespace PSO
         {
             var newAdmin = new Admin();
             UserPersonalData userPersonalData = GatherUserData();
+            UserAddress userAddress = GatherUserAddress();
+
+            //newAdmin.UserAddress = userAddress;
+            
             newAdmin.UserName = textBox1.Text;
             newAdmin.Password = textBox12.Text;
             newAdmin.UserInfo = userPersonalData;
+            newAdmin.UserAddress = userAddress;
+            //newAdmin.UserInfo.Address = userAddress;
 
             psContext = new psDBContext();
             psContext.Admins.Add(newAdmin);
@@ -123,16 +129,22 @@ namespace PSO
 
             //test:
             MessageBox.Show("Testing new admin data: " + newAdmin.UserInfo.FirstName + " "
-                + newAdmin.UserInfo.LastName + " password: "+ newAdmin.Password);
+                + newAdmin.UserInfo.LastName + " password: "+ newAdmin.Password + "Street: "+ newAdmin.UserAddress.Street);
         }
 
         public void CreateClient()
         {
             var newClient = new Client();
             UserPersonalData userPersonalData = GatherUserData();
+            UserAddress userAddress = GatherUserAddress();
+
+            //newClient.UserAddress = userAddress;
+           
             newClient.UserName = textBox1.Text;
             newClient.Password = textBox12.Text;
             newClient.UserInfo = userPersonalData;
+            //newClient.UserInfo.Address = userAddress;
+            newClient.UserAddress = userAddress;
 
             psContext = new psDBContext();
             psContext.Clients.Add(newClient);
@@ -160,6 +172,9 @@ namespace PSO
 
         public UserPersonalData GatherUserData()
         {
+
+            var userAddress = GatherUserAddress();
+            /*
             var userAddress = new UserAddress
             {
                 Street = textBox5.Text,
@@ -169,6 +184,8 @@ namespace PSO
                 Country = textBox9.Text,
                 PostalCode = int.Parse(textBox10.Text)
             };
+            */
+
 
             string userBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
             DateTime userBirthDate = Convert.ToDateTime(userBirthDateStr);
@@ -182,10 +199,23 @@ namespace PSO
                 BirthDate = userBirthDate,
                 Email = textBox4.Text,
                 Telephone = textBox11.Text,
-                Address = userAddress
+                //Address = userAddress
             };
             return userPersonalData;
 
+        }
+        public UserAddress GatherUserAddress()
+        {
+            var userAddress = new UserAddress
+            {
+                Street = textBox5.Text,
+                StreetNr = int.Parse(textBox6.Text),
+                City = textBox7.Text,
+                Region = textBox8.Text,
+                Country = textBox9.Text,
+                PostalCode = int.Parse(textBox10.Text)
+            };
+            return userAddress;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

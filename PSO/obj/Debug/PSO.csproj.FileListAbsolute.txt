@@ -33,3 +33,8 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewKeys1.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewDbSetUserPersonalDatas.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.NewDbSetUserPersonalDatas1.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserAddressId.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddForeignKeysUserAddressIdAndUserPersonalDataId.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddFixUserAddressIdIssue3.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemoveUserAddressFromUserPersonalData.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserAddressId1.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserAddressIdToClient.resources

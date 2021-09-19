@@ -14,11 +14,13 @@ namespace PSO.Model
         public int UserPersonalDataId { get; set; }
         public int UserAddressId { get; set; }
         private UserPersonalData userInfo;
+        private UserAddress userAddress;
         public Client()
         {
 
         }
         public UserPersonalData UserInfo { get; set; }
+        public UserAddress UserAddress { get; set; }
         public void CreateClient(string chosenName, UserPersonalData personalInfo)
         {
             UserName = chosenName;

@@ -150,6 +150,26 @@
     <Compile Include="Migrations\202109171155352_AddUserAddressId.designer.cs">
       <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs" />
+    <Compile Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.designer.cs">
+      <DependentUpon>202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.cs" />
+    <Compile Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.designer.cs">
+      <DependentUpon>202109191057374_AddFixUserAddressIdIssue3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.cs" />
+    <Compile Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.designer.cs">
+      <DependentUpon>202109191508284_RemoveUserAddressFromUserPersonalData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109191542474_AddUserAddressId1.cs" />
+    <Compile Include="Migrations\202109191542474_AddUserAddressId1.designer.cs">
+      <DependentUpon>202109191542474_AddUserAddressId1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109192058213_AddUserAddressIdToClient.cs" />
+    <Compile Include="Migrations\202109192058213_AddUserAddressIdToClient.designer.cs">
+      <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -236,6 +256,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109171155352_AddUserAddressId.resx">
       <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.resx">
+      <DependentUpon>202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.resx">
+      <DependentUpon>202109191057374_AddFixUserAddressIdIssue3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.resx">
+      <DependentUpon>202109191508284_RemoveUserAddressFromUserPersonalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109191542474_AddUserAddressId1.resx">
+      <DependentUpon>202109191542474_AddUserAddressId1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109192058213_AddUserAddressIdToClient.resx">
+      <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

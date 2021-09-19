@@ -17,6 +17,7 @@ namespace PSO.Model
         private int postalCode;
         public int AdminId;
         public int ClientId;
+        //public int UserPersonalDataId;
         public UserAddress()
         {
 
