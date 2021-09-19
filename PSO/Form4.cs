@@ -232,10 +232,13 @@ namespace PSO
             label5.Show();
             dataGridView1.Show();
             textBox1.Show();
+            textBox2.Show();
             label6.Show();
             dataGridView2.Show();
             label7.Show();
+            label8.Show();
             button15.Show();
+            button16.Show();
             label9.Show();
             button17.Show();
         }

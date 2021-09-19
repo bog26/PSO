@@ -203,12 +203,15 @@ namespace PSO
             label5.Show();
             dataGridView1.Show();
             textBox1.Show();
+            textBox2.Show();
             label6.Show();
             dataGridView2.Show();
             label7.Show();
+            label8.Show();
             button11.Show();
             label9.Show();
             button12.Show();
+            button13.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
