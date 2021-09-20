@@ -186,6 +186,7 @@
     <Compile Include="Model\psDBContext.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="Model\ShoppingCart.cs" />
+    <Compile Include="Model\Status.cs" />
     <Compile Include="Model\Store.cs" />
     <Compile Include="Model\StoreBalance.cs" />
     <Compile Include="Model\Supplier.cs" />
