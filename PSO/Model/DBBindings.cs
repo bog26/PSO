@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 
 namespace PSO.Model
@@ -34,31 +35,42 @@ namespace PSO.Model
 
         public static BindingSource BindCrtUserDataToGrid(string userName)
         {
+            
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
 
+            //new
+            //var query = UserDataQuery(userName, psContext); // not ok
+            //binding.DataSource = query;
+            //new
+
+            
             var queryAdmin = from user in psContext.Admins
-                             where user.UserName == userName
-                             select new
-                             {
-                                 UserName = user.UserName,
-                                 FirstName = user.UserInfo.FirstName,
-                                 LastName = user.UserInfo.LastName,
-                                 BirthDate = user.UserInfo.BirthDate,
-                                 email = user.UserInfo.Email,
-                                 Telephone = user.UserInfo.Telephone
-                             };
-            var queryClient = from user in psContext.Clients
-                              where user.UserName == userName
-                              select new
-                              {
-                                  UserName = user.UserName,
-                                  FirstName = user.UserInfo.FirstName,
-                                  LastName = user.UserInfo.LastName,
-                                  BirthDate = user.UserInfo.BirthDate,
-                                  email = user.UserInfo.Email,
-                                  Telephone = user.UserInfo.Telephone
-                              };
+                                         where user.UserName == userName
+                                         select new
+                                         {
+                                             UserName = user.UserName,
+                                             FirstName = user.UserInfo.FirstName,
+                                             LastName = user.UserInfo.LastName,
+                                             BirthDate = user.UserInfo.BirthDate,
+                                             email = user.UserInfo.Email,
+                                             Telephone = user.UserInfo.Telephone
+                                         };
+                        var queryClient = from user in psContext.Clients
+                                          where user.UserName == userName
+                                          select new
+                                          {
+                                              UserName = user.UserName,
+                                              FirstName = user.UserInfo.FirstName,
+                                              LastName = user.UserInfo.LastName,
+                                              BirthDate = user.UserInfo.BirthDate,
+                                              email = user.UserInfo.Email,
+                                              Telephone = user.UserInfo.Telephone
+                                          };
+
+            //BindingSource binding = new BindingSource();
+            //var queryAdmin = UserQuery.UserDataQuery  //TBD
+
 
             if (InternalDBQueries.CheckForAdminRights(userName))
             {
@@ -69,8 +81,68 @@ namespace PSO.Model
                 binding.DataSource = queryClient.ToList();
             }
             return binding;
+           
+
+            /* //TBD
+            var query = UserDataQuery(userName, psContext); // not ok
+            binding.DataSource = query;
+
+            return binding;
+            */
+
+            //new
+            //return binding;
+            //new
+
         }
-        public static BindingSource BindCrtUserAddressToGrid(string userName)
+
+        //TBD:
+        private static IEnumerable<Object> UserDataQuery(string userName, psDBContext psContext)
+        {
+            IUser loggedUser;
+            if (InternalDBQueries.CheckForAdminRights(userName))
+            {
+                loggedUser = psContext.Admins.First(x => x.UserName == userName);
+            }
+            else
+            {
+                loggedUser = psContext.Clients.First(x => x.UserName == userName);
+            }
+
+            
+            var newData = new  //null obj
+            {
+                UserName = loggedUser.UserName,
+                FirstName = loggedUser.UserInfo.FirstName,
+                LastName = loggedUser.UserInfo.LastName,
+                BirthDate = loggedUser.UserInfo.BirthDate,
+                email = loggedUser.UserInfo.Email,
+                Telephone = loggedUser.UserInfo.Telephone
+            };
+            
+
+            if (loggedUser.GetType() == typeof(Admin) )
+            {
+                var query = from user in psContext.Admins
+                            where user.UserName == userName
+                            select newData
+                            ; 
+
+                return query;
+            }
+            else
+            {
+                var query = from user in psContext.Clients
+                            where user.UserName == userName
+                            select newData;
+                         
+                return query;
+            }
+           
+        }
+
+
+            public static BindingSource BindCrtUserAddressToGrid(string userName)
         {
             psDBContext psContext = new psDBContext();
 

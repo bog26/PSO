@@ -179,6 +179,7 @@
     <Compile Include="Model\FormElementsDisplay.cs" />
     <Compile Include="Model\IBalance.cs" />
     <Compile Include="Model\InternalDBQueries.cs" />
+    <Compile Include="Model\IQuery.cs" />
     <Compile Include="Model\IUser.cs" />
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\Product.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\UserAddress.cs" />
     <Compile Include="Model\UserPersonalData.cs" />
+    <Compile Include="Model\UserQuery.cs" />
     <Compile Include="Model\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
