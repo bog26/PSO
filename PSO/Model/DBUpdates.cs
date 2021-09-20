@@ -13,19 +13,19 @@ namespace PSO.Model
         {
             var psContext = new psDBContext();
             string loggedUser = Form.ActiveForm.Text;
+            UserPersonalData pdata;
 
             if (InternalDBQueries.CheckForAdminRights(loggedUser))
             {
                 var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-                var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
-                UserPDataChange(pdata, choice, input);
+                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
             }
             else 
             {
                 var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
-                var pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
-                UserPDataChange(pdata, choice, input);
+                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
             }
+            UserPDataChange(pdata, choice, input);
             psContext.SaveChanges();
         }
 
@@ -56,20 +56,18 @@ namespace PSO.Model
         {
             var psContext = new psDBContext();
             string loggedUser = Form.ActiveForm.Text;
-
+            UserAddress personalAddr;
             if (InternalDBQueries.CheckForAdminRights(loggedUser))
             {
                 var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-                var personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
-                UserAddressChange(personalAddr, choice, input);
-
+                personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
             }
             else
             {
                 var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
-                var personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
-                UserAddressChange(personalAddr, choice, input);
+                personalAddr = psContext.UserAddresses.Find(crtUser.UserAddressId);
             }
+            UserAddressChange(personalAddr, choice, input);
             psContext.SaveChanges();
         }
 

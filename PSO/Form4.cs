@@ -177,7 +177,8 @@ namespace PSO
             string activeColumn = dataGridView1.Columns[activeCellIndex].Name;
             //MessageBox.Show("cell column index:"+activeCellIndex);
            
-            MessageBox.Show("updating " + activeColumn+" with "+ value);
+            //MessageBox.Show("updating " + activeColumn+" with "+ value);
+            UpdateDataGridMessageBox(activeColumn, value);
             DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
             dataGridView1.Refresh();
         }
@@ -188,9 +189,16 @@ namespace PSO
             int activeCellIndex = dataGridView2.CurrentCell.ColumnIndex;
             string activeColumn = dataGridView2.Columns[activeCellIndex].Name;
 
-            MessageBox.Show("updating " + activeColumn + " with " + value);
+            //MessageBox.Show("updating " + activeColumn + " with " + value);
+            UpdateDataGridMessageBox(activeColumn, value);
+
             DBUpdates.WriteUserAddressToDB(activeColumn, value);
             dataGridView2.Refresh();
+        }
+
+        private void UpdateDataGridMessageBox(string column, string value)
+        {
+            MessageBox.Show("updating " + column + " with " + value);
         }
 
         private void button17_Click(object sender, EventArgs e)
