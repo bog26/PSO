@@ -18,6 +18,7 @@ namespace PSO.Model
 
         public int Stock { get; set; }
         public List <decimal>  Prices { get; set; }
+        public decimal crtClientPrice { get; set; }
 
         public List<string> Reviews { get; set; }  //obj
         public Product()

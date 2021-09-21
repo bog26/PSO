@@ -11,10 +11,10 @@ namespace PSO.Model
         private string crtStatus;
         private List<string> crtStatusList;
         private List<string> successfulTransactionStatuses = new List<string>()
-        { "OrderRequested", "OrderAccepted", "OrderShipped", "OrderReceived", "OrderCompleted"};
+        { "OrderRequested", "OrderAccepted", "ItemShipped", "ItemReceived", "OrderCompleted"};
         private List<string> returnTransactionStatuses = new List<string>()
         { "ReturnOrderRequested","ReturnOrderAccepted" ,"ReturnOrderStarted",
-            "ReturnOrderReceived", "ReturnOrderCompleted"};
+            "ItemReceived", "ReturnOrderCompleted"};
         private List<string> messageStatuses = new List<string>()
         { "sent", "received", "read"};
         public Status(Transaction tr)
@@ -31,10 +31,9 @@ namespace PSO.Model
         {
             if(this.crtStatusList == this.successfulTransactionStatuses)
             {
-                if(this.crtStatus == "OrderCompleted") // starts item return process
+                if(this.crtStatus == "OrderCompleted") 
                 {
-                    this.crtStatusList = this.returnTransactionStatuses;
-                    this.crtStatus = this.returnTransactionStatuses[0];
+                    StartReturnProcess();
                 }
                 else 
                 {
@@ -43,16 +42,21 @@ namespace PSO.Model
             }
             else 
             {
-                if (this.crtStatus != "ReturnOrderCompleted") // item return process not finished
+                if (this.crtStatus != "ReturnOrderCompleted") 
                 {
                     NextStatus();
                 }
             }
         }
-        public void NextStatus()
+        private void NextStatus()
         {
             int crtStatusIndex = this.crtStatusList.FindIndex(x => x == this.crtStatus);
             this.crtStatus = this.crtStatusList[crtStatusIndex++];
+        }
+        private void StartReturnProcess()
+        {
+            this.crtStatusList = this.returnTransactionStatuses;
+            this.crtStatus = this.returnTransactionStatuses[0];
         }
     }
     
