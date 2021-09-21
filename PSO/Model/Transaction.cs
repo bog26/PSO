@@ -9,6 +9,11 @@ namespace PSO.Model
     class Transaction
     {
         public int Id { get; set; }
-        
+        public DateTime TransactionStart { get; set; }
+        public DateTime TransactionEnd { get; set; }
+        public Status TransactionStatus { get; set; }
+        public decimal TotalCost { get; set; }
+        public int ClientId { get; set; }
+
     }
 }
