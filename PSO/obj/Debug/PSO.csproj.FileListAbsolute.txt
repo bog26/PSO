@@ -38,3 +38,5 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddFixUserAddressIdIssue3.resour
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemoveUserAddressFromUserPersonalData.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserAddressId1.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserAddressIdToClient.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserTransactionAndShoppingCart.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddShoppingCartToDBSet.resources

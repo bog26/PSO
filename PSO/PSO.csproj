@@ -170,6 +170,14 @@
     <Compile Include="Migrations\202109192058213_AddUserAddressIdToClient.designer.cs">
       <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.cs" />
+    <Compile Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.designer.cs">
+      <DependentUpon>202109211328417_AddUserTransactionAndShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109211333154_AddShoppingCartToDBSet.cs" />
+    <Compile Include="Migrations\202109211333154_AddShoppingCartToDBSet.designer.cs">
+      <DependentUpon>202109211333154_AddShoppingCartToDBSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -274,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109192058213_AddUserAddressIdToClient.resx">
       <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.resx">
+      <DependentUpon>202109211328417_AddUserTransactionAndShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109211333154_AddShoppingCartToDBSet.resx">
+      <DependentUpon>202109211333154_AddShoppingCartToDBSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

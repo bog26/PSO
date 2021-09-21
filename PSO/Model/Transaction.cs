@@ -14,6 +14,7 @@ namespace PSO.Model
         public Status TransactionStatus { get; set; }
         public decimal TotalCost { get; set; }
         public int ClientId { get; set; }
+        public int ShoppingCartId { get; set; }
 
     }
 }
