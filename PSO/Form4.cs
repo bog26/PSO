@@ -90,6 +90,7 @@ namespace PSO
         TextBox textBox3 = new TextBox(); //old pass
         TextBox textBox4 = new TextBox(); //new pass
         Button button18 = new Button();
+        Panel panel5 = new Panel();
 
 
 
@@ -290,6 +291,16 @@ namespace PSO
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

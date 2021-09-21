@@ -27,6 +27,10 @@ namespace PSO.Model
             get{ return this.crtStatus; }
             set {this.crtStatus = value; } 
         }
+        public override string ToString()
+        {
+            return this.crtStatus;
+        }
         public void ChangeTransactionStatus()
         {
             if(this.crtStatusList == this.successfulTransactionStatuses)

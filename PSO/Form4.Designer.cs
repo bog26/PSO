@@ -81,6 +81,7 @@ namespace PSO
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(183, 160);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button1
             // 
@@ -172,8 +173,9 @@ namespace PSO
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(123, 23);
             this.button7.TabIndex = 2;
-            this.button7.Text = "Add new product";
+            this.button7.Text = "Products";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 

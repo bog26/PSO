@@ -74,5 +74,10 @@ namespace PSO.Model
             Form.ActiveForm.Controls.Add(button);
         }
 
+        public static void DisplayNewPanel(Form form, Panel panel, int[] position, int[] size, string name)
+        {
+
+        }
+
     }
 }

@@ -20,6 +20,10 @@ namespace PSO.Model
             }
             return cost;
         }
+        public void AddItemToCart(KeyValuePair<Product, int> Item)
+        {
+            this.cartItems.Add(Item.Key, Item.Value);
+        }
         
     }
 }
