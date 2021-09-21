@@ -74,9 +74,32 @@ namespace PSO.Model
             Form.ActiveForm.Controls.Add(button);
         }
 
-        public static void DisplayNewPanel(Form form, Panel panel, int[] position, int[] size, string name)
+        public static void DisplayNewButtonOnPanel(Button button, Panel panel, int[] position, int[] size, string name, string buttonText)
         {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            button.Location = new Point(posX, posY);
+            button.Name = name;
+            button.Size = new Size(length, hight);
+            button.Text = buttonText;
+            button.UseVisualStyleBackColor = true;
+            panel.Controls.Add(button);
+            //Form.ActiveForm.panel.Controls.Add(button);
+        }
 
+
+        public static void DisplayNewPanel(Panel panel, int[] position, int[] size, string name)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            panel.Location = new Point(posX, posY);
+            panel.Name = name;
+            panel.Size = new Size(length, hight);
+            Form.ActiveForm.Controls.Add(panel);
         }
 
     }

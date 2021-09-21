@@ -91,6 +91,7 @@ namespace PSO
         TextBox textBox4 = new TextBox(); //new pass
         Button button18 = new Button();
         Panel panel5 = new Panel();
+        Button button19 = new Button();
 
 
 
@@ -297,9 +298,15 @@ namespace PSO
 
         private void button7_Click(object sender, EventArgs e)
         {
+            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 183, 160 }, "panel5");
+
+            DisplayNewButtonOnPanel(button19, panel5, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button19", "Add product");
+            button19.Click += new EventHandler(button19_Click);
+        }
+        private void button19_Click(object sender, EventArgs e)
+        {
 
         }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
