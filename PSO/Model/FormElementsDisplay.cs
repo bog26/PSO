@@ -90,7 +90,7 @@ namespace PSO.Model
         }
 
 
-        public static void DisplayNewPanel(Panel panel, int[] position, int[] size, string name)
+        public static void DisplayNewPanel(Panel panel, int[] position, int[] size, string name, bool withBorder)
         {
             int posX = position[0];
             int posY = position[1];
@@ -99,7 +99,16 @@ namespace PSO.Model
             panel.Location = new Point(posX, posY);
             panel.Name = name;
             panel.Size = new Size(length, hight);
+            if(withBorder)
+            {
+                panel.BorderStyle = BorderStyle.FixedSingle;
+            }
             Form.ActiveForm.Controls.Add(panel);
+        }
+
+        public static void clearPanel(Panel panel)
+        {
+            panel.Controls.Clear();
         }
 
     }

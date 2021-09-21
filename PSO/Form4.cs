@@ -92,7 +92,8 @@ namespace PSO
         Button button18 = new Button();
         Panel panel5 = new Panel();
         Button button19 = new Button();
-
+        Panel panel6 = new Panel();
+        Button button20 = new Button();
 
 
 
@@ -298,14 +299,21 @@ namespace PSO
 
         private void button7_Click(object sender, EventArgs e)
         {
-            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 183, 160 }, "panel5");
+            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 183, 160 }, "panel5", true);
 
-            DisplayNewButtonOnPanel(button19, panel5, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button19", "Add product");
+            DisplayNewButtonOnPanel(button19, panel5, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button19", "Add product manually");
             button19.Click += new EventHandler(button19_Click);
         }
         private void button19_Click(object sender, EventArgs e)
         {
+            DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 300 }, "panel6", true);
+            DisplayNewButtonOnPanel(button20, panel6, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button20", "Clear left panel");
+            button20.Click += new EventHandler(button20_Click);
 
+        }
+        private void button20_Click(object sender, EventArgs e)
+        {
+            clearPanel(panel5);
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
