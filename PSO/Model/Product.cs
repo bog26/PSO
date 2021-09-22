@@ -10,9 +10,13 @@ namespace PSO.Model
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
-        public string Manufacturer { get; set; }
+        public int ProductSubCategoryId { get; set; }
+        ProductSubCategory SubCategory { get; set; }
+        //public string Category { get; set; }
+        //public string SubCategory { get; set; }
+        public int ManufacturerId { get; set; }
+        Manufacturer Manufacturer { get; set; }
+        //public string Manufacturer { get; set; }
 
         public string Model { get; set; }
 

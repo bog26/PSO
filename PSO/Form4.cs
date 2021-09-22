@@ -95,10 +95,13 @@ namespace PSO
         Panel panel6 = new Panel();
         Button button20 = new Button();
         Panel panel7 = new Panel();
+        Label label10 = new Label();
+        Label label11 = new Label();
 
         private void button4_Click(object sender, EventArgs e)
         {
             panel5.Hide();
+            panel6.Hide();
             panel7.Show();
             DisplayNewPanel(panel7, new int[2] { 235, 46 }, new int[2] { 900, 350 }, "panel7", true);
             int[] panelItemsOriginCoord = new int[2] {5, 5};
@@ -337,23 +340,66 @@ namespace PSO
 
         private void button7_Click(object sender, EventArgs e)
         {
+            int[] panelItemsOriginCoord = new int[2] { 20, 20 };
+            int origX = panelItemsOriginCoord[0];
+            int origY = panelItemsOriginCoord[1];
+            int xMargin = 5;
+            int yMargin = 5;
+            int xItemsSpace = 40;
+            int yItemsSpace = 5;
+
             panel7.Hide();
             panel5.Show();
-            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 183, 160 }, "panel5", true);
+            panel6.Show();
+            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 180, 160 }, "panel5", true);
+            DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 300 }, "panel6", true);
 
-            DisplayNewButtonOnPanel(button19, panel5, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button19", "Add product manually");
+            int xPosButton19 = origX;
+            int yPosButton19 = origY;
+            int sizeXButton19 = 120;
+            int sizeYButton19 = 24;
+            DisplayNewButtonOnPanel(button19, panel5, new int[2] { origX, origY }, new int[2] { sizeXButton19, sizeYButton19 }, "button19", "Add product manually");
             button19.Click += new EventHandler(button19_Click);
+
+            int xPosButton20 = xPosButton19;
+            int yPosButton20 = yPosButton19 + sizeYButton19 + yItemsSpace;
+            int sizeXButton20 = 120;
+            int sizeYButton20 = 24;
+            DisplayNewButtonOnPanel(button20, panel5, new int[2] { xPosButton20, yPosButton20 }, new int[2] { sizeXButton20, sizeYButton20 }, "button20", "Products");
+            button20.Click += new EventHandler(button20_Click);
+
+
         }
         private void button19_Click(object sender, EventArgs e)
         {
-            DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 300 }, "panel6", true);
-            DisplayNewButtonOnPanel(button20, panel6, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button20", "Clear left panel");
-            button20.Click += new EventHandler(button20_Click);
+            int[] panelItemsOriginCoord = new int[2] { 20, 20 };
+            int origX = panelItemsOriginCoord[0];
+            int origY = panelItemsOriginCoord[1];
+            int xMargin = 5;
+            int yMargin = 5;
+            int xItemsSpace = 40;
+            int yItemsSpace = 5;
+
+            panel7.Hide();
+            panel6.Show();
+            clearPanel(panel6);
+
+            string label10Text = "Please fill in all required fields";
+            int xPosLabel10 = xMargin;
+            int yPosLabel10 = yMargin;
+            int sizeXLabel10 = ClaculateLabelLenght(label10Text);
+            int sizeYLabel10 = 24;
+            DisplayNewLabelOnPanel(label10, panel6, new int[2] { xPosLabel10, yPosLabel10 }, new int[2] { sizeXLabel10, sizeYLabel10 }, label10Text);
+
+           
 
         }
         private void button20_Click(object sender, EventArgs e)
         {
-            clearPanel(panel5);
+            panel7.Hide();
+            panel6.Show();
+            clearPanel(panel6);
+            
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

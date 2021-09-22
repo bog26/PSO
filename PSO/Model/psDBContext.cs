@@ -19,5 +19,9 @@ namespace PSO.Model
         public DbSet<UserAddress> UserAddresses { get; set; }
 
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ProductSubCategory> ProductSubCategories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+
     }
 }

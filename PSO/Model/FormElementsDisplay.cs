@@ -156,5 +156,11 @@ namespace PSO.Model
             panel.Controls.Clear();
         }
 
+        public static int ClaculateLabelLenght(string labelText)
+        {
+            int length = labelText.Length * 5;
+            return length;
+        }
+
     }
 }

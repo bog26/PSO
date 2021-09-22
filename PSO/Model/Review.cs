@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class Review
+    public class Review
     {
         public int Id { get; set; }
+        public int ReviewMark { get; set; }
         public string ReviewText { get; set; }
+        public int ClientId { get; set; }
+        public int ProductId { get; set; }
+
     }
 }

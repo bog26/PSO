@@ -86,97 +86,13 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109131157379_AddClients.cs" />
-    <Compile Include="Migrations\202109131157379_AddClients.designer.cs">
-      <DependentUpon>202109131157379_AddClients.cs</DependentUpon>
+    <Compile Include="Migrations\202109222111468_Reset.cs" />
+    <Compile Include="Migrations\202109222111468_Reset.designer.cs">
+      <DependentUpon>202109222111468_Reset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109131214521_AddAdmins.cs" />
-    <Compile Include="Migrations\202109131214521_AddAdmins.designer.cs">
-      <DependentUpon>202109131214521_AddAdmins.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131219294_AddProducts.cs" />
-    <Compile Include="Migrations\202109131219294_AddProducts.designer.cs">
-      <DependentUpon>202109131219294_AddProducts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131226254_AddTransactions.cs" />
-    <Compile Include="Migrations\202109131226254_AddTransactions.designer.cs">
-      <DependentUpon>202109131226254_AddTransactions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131228513_AddReviews.cs" />
-    <Compile Include="Migrations\202109131228513_AddReviews.designer.cs">
-      <DependentUpon>202109131228513_AddReviews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131231221_AddSuppliers.cs" />
-    <Compile Include="Migrations\202109131231221_AddSuppliers.designer.cs">
-      <DependentUpon>202109131231221_AddSuppliers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131618425_DataInput.cs" />
-    <Compile Include="Migrations\202109131618425_DataInput.designer.cs">
-      <DependentUpon>202109131618425_DataInput.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109132133440_DataInputUpdate.cs" />
-    <Compile Include="Migrations\202109132133440_DataInputUpdate.designer.cs">
-      <DependentUpon>202109132133440_DataInputUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109132245183_AddedPAsswords.cs" />
-    <Compile Include="Migrations\202109132245183_AddedPAsswords.designer.cs">
-      <DependentUpon>202109132245183_AddedPAsswords.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109132301263_AddNewAdminAndClients.cs" />
-    <Compile Include="Migrations\202109132301263_AddNewAdminAndClients.designer.cs">
-      <DependentUpon>202109132301263_AddNewAdminAndClients.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109152052555_AdminClientClassesUserInfoChange.cs" />
-    <Compile Include="Migrations\202109152052555_AdminClientClassesUserInfoChange.designer.cs">
-      <DependentUpon>202109152052555_AdminClientClassesUserInfoChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109161545343_NewKeys.cs" />
-    <Compile Include="Migrations\202109161545343_NewKeys.designer.cs">
-      <DependentUpon>202109161545343_NewKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109161650194_NewKeys1.cs" />
-    <Compile Include="Migrations\202109161650194_NewKeys1.designer.cs">
-      <DependentUpon>202109161650194_NewKeys1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.cs" />
-    <Compile Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.designer.cs">
-      <DependentUpon>202109162131370_NewDbSetUserPersonalDatas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.cs" />
-    <Compile Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.designer.cs">
-      <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109171155352_AddUserAddressId.cs" />
-    <Compile Include="Migrations\202109171155352_AddUserAddressId.designer.cs">
-      <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs" />
-    <Compile Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.designer.cs">
-      <DependentUpon>202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.cs" />
-    <Compile Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.designer.cs">
-      <DependentUpon>202109191057374_AddFixUserAddressIdIssue3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.cs" />
-    <Compile Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.designer.cs">
-      <DependentUpon>202109191508284_RemoveUserAddressFromUserPersonalData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109191542474_AddUserAddressId1.cs" />
-    <Compile Include="Migrations\202109191542474_AddUserAddressId1.designer.cs">
-      <DependentUpon>202109191542474_AddUserAddressId1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109192058213_AddUserAddressIdToClient.cs" />
-    <Compile Include="Migrations\202109192058213_AddUserAddressIdToClient.designer.cs">
-      <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.cs" />
-    <Compile Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.designer.cs">
-      <DependentUpon>202109211328417_AddUserTransactionAndShoppingCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109211333154_AddShoppingCartToDBSet.cs" />
-    <Compile Include="Migrations\202109211333154_AddShoppingCartToDBSet.designer.cs">
-      <DependentUpon>202109211333154_AddShoppingCartToDBSet.cs</DependentUpon>
+    <Compile Include="Migrations\202109222126417_AddRelations.cs" />
+    <Compile Include="Migrations\202109222126417_AddRelations.designer.cs">
+      <DependentUpon>202109222126417_AddRelations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
@@ -189,8 +105,11 @@
     <Compile Include="Model\InternalDBQueries.cs" />
     <Compile Include="Model\IQuery.cs" />
     <Compile Include="Model\IUser.cs" />
+    <Compile Include="Model\Manufacturer.cs" />
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ProductSubCategory.cs" />
     <Compile Include="Model\psDBContext.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="Model\ShoppingCart.cs" />
@@ -220,74 +139,11 @@
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131157379_AddClients.resx">
-      <DependentUpon>202109131157379_AddClients.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109222111468_Reset.resx">
+      <DependentUpon>202109222111468_Reset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131214521_AddAdmins.resx">
-      <DependentUpon>202109131214521_AddAdmins.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131219294_AddProducts.resx">
-      <DependentUpon>202109131219294_AddProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131226254_AddTransactions.resx">
-      <DependentUpon>202109131226254_AddTransactions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131228513_AddReviews.resx">
-      <DependentUpon>202109131228513_AddReviews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131231221_AddSuppliers.resx">
-      <DependentUpon>202109131231221_AddSuppliers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131618425_DataInput.resx">
-      <DependentUpon>202109131618425_DataInput.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109132133440_DataInputUpdate.resx">
-      <DependentUpon>202109132133440_DataInputUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109132245183_AddedPAsswords.resx">
-      <DependentUpon>202109132245183_AddedPAsswords.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109132301263_AddNewAdminAndClients.resx">
-      <DependentUpon>202109132301263_AddNewAdminAndClients.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109152052555_AdminClientClassesUserInfoChange.resx">
-      <DependentUpon>202109152052555_AdminClientClassesUserInfoChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109161545343_NewKeys.resx">
-      <DependentUpon>202109161545343_NewKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109161650194_NewKeys1.resx">
-      <DependentUpon>202109161650194_NewKeys1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109162131370_NewDbSetUserPersonalDatas.resx">
-      <DependentUpon>202109162131370_NewDbSetUserPersonalDatas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109162200497_NewDbSetUserPersonalDatas1.resx">
-      <DependentUpon>202109162200497_NewDbSetUserPersonalDatas1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109171155352_AddUserAddressId.resx">
-      <DependentUpon>202109171155352_AddUserAddressId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.resx">
-      <DependentUpon>202109191007215_AddForeignKeysUserAddressIdAndUserPersonalDataId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109191057374_AddFixUserAddressIdIssue3.resx">
-      <DependentUpon>202109191057374_AddFixUserAddressIdIssue3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109191508284_RemoveUserAddressFromUserPersonalData.resx">
-      <DependentUpon>202109191508284_RemoveUserAddressFromUserPersonalData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109191542474_AddUserAddressId1.resx">
-      <DependentUpon>202109191542474_AddUserAddressId1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109192058213_AddUserAddressIdToClient.resx">
-      <DependentUpon>202109192058213_AddUserAddressIdToClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109211328417_AddUserTransactionAndShoppingCart.resx">
-      <DependentUpon>202109211328417_AddUserTransactionAndShoppingCart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109211333154_AddShoppingCartToDBSet.resx">
-      <DependentUpon>202109211333154_AddShoppingCartToDBSet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109222126417_AddRelations.resx">
+      <DependentUpon>202109222126417_AddRelations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
