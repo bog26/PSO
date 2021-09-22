@@ -94,51 +94,92 @@ namespace PSO
         Button button19 = new Button();
         Panel panel6 = new Panel();
         Button button20 = new Button();
-
-
+        Panel panel7 = new Panel();
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ShoWUserInformationFormElements();
+            DisplayNewPanel(panel7, new int[2] { 235, 46 }, new int[2] { 900, 350 }, "panel7", true);
+            int[] panelItemsOriginCoord = new int[2] {5, 5};
+            int origX = panelItemsOriginCoord[0];
+            int origY = panelItemsOriginCoord[1];
+            int xMargin = 5;
+            int yMargin = 5;
+            int xItemsSpace = 40;
+            int yItemsSpace = 15;
+
+            int yPosLabel5 = origY + yMargin;
+            DisplayNewLabelOnPanel(label5, panel7, new int[2] { origX+ xMargin, yPosLabel5 }, new int[2] { 168, 24 }, "Personal info");
 
             string loggedUser = ActiveForm.Text;
-            //DisplayNewLabel(label15, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "User info");
-            DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "Personal info");
-            DisplayNewDataGridView(dataGridView1, new int[2] { 230, 90 }, new int[2] { 650, 45 });
+            int xPosDataGridView1 = origX + xMargin;
+            int yPosDataGridView1 = yPosLabel5 + yItemsSpace + 24;
+            int sizeXDataGridView1 = 650;
+            int sizeYDataGridView1 = 45;
+            DisplayNewDataGridViewOnPanel(dataGridView1, panel7, new int[2]
+                { xPosDataGridView1, yPosDataGridView1}, new int[2] { sizeXDataGridView1, sizeYDataGridView1 });
             dataGridView1.DataSource = BindCrtUserDataToGrid(loggedUser);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
 
-            DisplayNewLabel(label6, new int[2] { 230, 160 }, new int[2] { 168, 24 },"Address");
-            DisplayNewDataGridView(dataGridView2, new int[2] { 230, 200 }, new int[2] { 650, 45 });
-            dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
+            int yPosLabel6 = yPosDataGridView1 + yItemsSpace + sizeYDataGridView1;
+            int sizeXLabel6 = 168;
+            int sizeYLabel6 = 24;
+            DisplayNewLabelOnPanel(label6, panel7, new int[2] { origX + xMargin, yPosLabel6 }, new int[2] { sizeXLabel6, sizeYLabel6 }, "Address");
+
+            int xPosDataGridView2 = xPosDataGridView1;
+            int yPosDataGridView2 = yPosLabel6 + yItemsSpace + sizeYLabel6;
+            int sizeXDataGridView2 = 650;
+            int sizeYDataGridView2 = 45;
+            DisplayNewDataGridViewOnPanel(dataGridView2, panel7, new int[2]
+                { origX + xMargin, yPosDataGridView2}, new int[2] { sizeXDataGridView2, sizeYDataGridView2 });
+            dataGridView2.DataSource = BindCrtUserDataToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView2_CellContentClick);
-            //dataGridView2.Refresh();
+            dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
 
-            DisplayNewLabel(label7, new int[2] { 950, 90 }, new int[2] { 168, 24 }, "Value");
+            int xPosLabel7 = xPosDataGridView1 + sizeXDataGridView1 + xItemsSpace;
+            int yPosLabel7 = yPosDataGridView1;
+            int sizeXLabel7 = 168;
+            int sizeYLabel7 = 24;
+            DisplayNewLabelOnPanel(label7, panel7, new int[2] { xPosLabel7, yPosLabel7 }, new int[2] { sizeXLabel7, sizeYLabel7 }, "Value");
 
-            DisplayNewTextBox(textBox1, new int[2] { 950, 115 }, new int[2] { 60, 24 }, "Value");
+            int xPosTextBox1 = xPosLabel7;
+            int yPosTextBox1 = yPosLabel7+ sizeYLabel7 + 3;
+            int sizeXTextBox1 = 60;
+            int sizeYTextBox1 = 24;
+            DisplayNewTextBoxOnPanel(textBox1, panel7, new int[2] { xPosTextBox1, yPosTextBox1 }, new int[2] { sizeXTextBox1, sizeYTextBox1 }, "Value");
             textBox1.TextChanged += new EventHandler(textBox1_TextChanged);
 
-            DisplayNewButton(button15, new int[2] { 1030, 115 }, new int[2] { 60, 23 }, "button15", "Update");
+            int xPosButton15 = xPosTextBox1 + sizeXTextBox1 + 10;
+            int yPosButton15 = yPosTextBox1;
+            int sizeXButton15 = 60;
+            int sizeYButton15 = 24;
+            DisplayNewButtonOnPanel(button15, panel7, new int[2] { xPosButton15, yPosButton15 }, new int[2] { sizeXButton15, sizeYButton15 }, "button15", "Update");
             button15.Click += new EventHandler(button15_Click);
 
+            int xPosLabel8 = xPosDataGridView2 + sizeXDataGridView2 + xItemsSpace;
+            int yPosLabel8 = yPosDataGridView2;
+            int sizeXLabel8 = 168;
+            int sizeYLabel8 = 24;
+            DisplayNewLabelOnPanel(label8, panel7, new int[2] { xPosLabel8, yPosLabel8 }, new int[2] { sizeXLabel8, sizeYLabel8 }, "Value");
 
-            DisplayNewLabel(label8, new int[2] { 950, 200 }, new int[2] { 168, 24 }, "Value");
+            int xPosTextBox2 = xPosLabel8;
+            int yPosTextBox2 = yPosLabel8 + sizeYLabel8 + 3;
+            int sizeXTextBox2 = 60;
+            int sizeYTextBox2 = 24;
+            DisplayNewTextBoxOnPanel(textBox2, panel7, new int[2] { xPosTextBox2, yPosTextBox2 }, new int[2] { sizeXTextBox2, sizeYTextBox2 }, "Value");
+            textBox2.TextChanged += new EventHandler(textBox1_TextChanged);
 
-            DisplayNewTextBox(textBox2, new int[2] { 950, 225 }, new int[2] { 60, 24 }, "Value");
-            textBox2.TextChanged += new EventHandler(textBox2_TextChanged);
-
-            DisplayNewButton(button16, new int[2] { 1030, 225 }, new int[2] { 60, 23 }, "button16", "Update");
+            int xPosButton16 = xPosTextBox2 + sizeXTextBox2 + 10;
+            int yPosButton16 = yPosTextBox2;
+            int sizeXButton16 = 60;
+            int sizeYButton16 = 24;
+            DisplayNewButtonOnPanel(button16, panel7, new int[2] { xPosButton16, yPosButton16 }, new int[2] { sizeXButton16, sizeYButton16 }, "button16", "Update");
             button16.Click += new EventHandler(button16_Click);
 
-            DisplayNewLabel(label9, new int[2] { 230, 270 }, new int[2] { 168, 24 }, "Password");
-            DisplayNewButton(button17, new int[2] { 230, 300 }, new int[2] { 120, 23 }, "button17", "Change Password");
-            button17.Click += new EventHandler(button17_Click);
 
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+            private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
