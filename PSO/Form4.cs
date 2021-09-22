@@ -98,6 +98,8 @@ namespace PSO
 
         private void button4_Click(object sender, EventArgs e)
         {
+            panel5.Hide();
+            panel7.Show();
             DisplayNewPanel(panel7, new int[2] { 235, 46 }, new int[2] { 900, 350 }, "panel7", true);
             int[] panelItemsOriginCoord = new int[2] {5, 5};
             int origX = panelItemsOriginCoord[0];
@@ -132,9 +134,9 @@ namespace PSO
             int sizeYDataGridView2 = 45;
             DisplayNewDataGridViewOnPanel(dataGridView2, panel7, new int[2]
                 { origX + xMargin, yPosDataGridView2}, new int[2] { sizeXDataGridView2, sizeYDataGridView2 });
-            dataGridView2.DataSource = BindCrtUserDataToGrid(loggedUser);
+            dataGridView2.DataSource = BindCrtUserAddressToGrid(loggedUser);
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
+            dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView2_CellContentClick);
 
             int xPosLabel7 = xPosDataGridView1 + sizeXDataGridView1 + xItemsSpace;
             int yPosLabel7 = yPosDataGridView1;
@@ -167,7 +169,7 @@ namespace PSO
             int sizeXTextBox2 = 60;
             int sizeYTextBox2 = 24;
             DisplayNewTextBoxOnPanel(textBox2, panel7, new int[2] { xPosTextBox2, yPosTextBox2 }, new int[2] { sizeXTextBox2, sizeYTextBox2 }, "Value");
-            textBox2.TextChanged += new EventHandler(textBox1_TextChanged);
+            textBox2.TextChanged += new EventHandler(textBox2_TextChanged);
 
             int xPosButton16 = xPosTextBox2 + sizeXTextBox2 + 10;
             int yPosButton16 = yPosTextBox2;
@@ -176,10 +178,22 @@ namespace PSO
             DisplayNewButtonOnPanel(button16, panel7, new int[2] { xPosButton16, yPosButton16 }, new int[2] { sizeXButton16, sizeYButton16 }, "button16", "Update");
             button16.Click += new EventHandler(button16_Click);
 
+            int xPosLabel9 = xPosDataGridView2;
+            int yPosLabel9 = yPosDataGridView2 + sizeYDataGridView2 + yItemsSpace;
+            int sizeXLabel9 = 168;
+            int sizeYLabel9 = 24;
+            DisplayNewLabelOnPanel(label9, panel7, new int[2] { xPosLabel9, yPosLabel9 }, new int[2] { sizeXLabel9, sizeYLabel9 }, "Password");
+
+            int xPosButton17 = xPosLabel9;
+            int yPosButton17 = yPosLabel9 + sizeYLabel9 + yItemsSpace;
+            int sizeXButton17 = 120;
+            int sizeYButton17 = 24;
+            DisplayNewButtonOnPanel(button17, panel7, new int[2] { xPosButton17, yPosButton17 }, new int[2] { sizeXButton17, sizeYButton17 }, "button17", "Change Password");
+            button17.Click += new EventHandler(button17_Click);
 
         }
 
-            private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -245,21 +259,33 @@ namespace PSO
             MessageBox.Show("updating " + column + " with " + value);
         }
 
+
         private void button17_Click(object sender, EventArgs e)
         {
-            textBox3.Show();
-            textBox4.Show();
-            button18.Show();
-            DisplayNewTextBox(textBox3, new int[2] { 390, 270 }, new int[2] { 120, 24 }, "old password");
+
+            int xPosTextBox3 = label9.Location.X + label9.Size.Width + 45;
+            int yPosTextBox3 = label9.Location.Y;
+            int sizeXTextBox3 = 120;
+            int sizeYTextBox3 = 24;
+            DisplayNewTextBoxOnPanel(textBox3, panel7, new int[2] { xPosTextBox3, yPosTextBox3 }, new int[2] { sizeXTextBox3, sizeYTextBox3 }, "old password");
             textBox3.TextChanged += new EventHandler(textBox3_TextChanged);
-            DisplayNewTextBox(textBox4, new int[2] { 390, 300 }, new int[2] { 120, 24 }, "new password");
+
+            int xPosTextBox4 = xPosTextBox3;
+            int yPosTextBox4 = label9.Location.Y + 40;
+            int sizeXTextBox4 = 120;
+            int sizeYTextBox4 = 24;
+            DisplayNewTextBoxOnPanel(textBox4, panel7, new int[2] { xPosTextBox4, yPosTextBox4 }, new int[2] { sizeXTextBox4, sizeYTextBox4 }, "new password");
             textBox4.TextChanged += new EventHandler(textBox4_TextChanged);
 
-            DisplayNewButton(button18, new int[2] { 520, 270 }, new int[2] { 100, 22 }, "button18", "Update Password");
+            int xPosButton18 = xPosTextBox3 + sizeXTextBox3 + 10;
+            int yPosButton18 = yPosTextBox3;
+            int sizeXButton18 = 60;
+            int sizeYButton18 = 24;
+            DisplayNewButtonOnPanel(button18, panel7, new int[2] { xPosButton18, yPosButton18 }, new int[2] { sizeXButton18, sizeYButton18 }, "button18", "Update Password");
             button18.Click += new EventHandler(button18_Click);
 
-            
         }
+        
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -279,39 +305,10 @@ namespace PSO
         {
 
         }
-        private void ShoWUserInformationFormElements()
-        {
-            label5.Show();
-            dataGridView1.Show();
-            textBox1.Show();
-            textBox2.Show();
-            label6.Show();
-            dataGridView2.Show();
-            label7.Show();
-            label8.Show();
-            button15.Show();
-            button16.Show();
-            label9.Show();
-            button17.Show();
-        }
+    
         private void HideUserInformationFormElements()
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            textBox1.Hide();
-            textBox2.Hide();
-            label5.Hide();
-            label6.Hide();
-            label7.Hide();
-            label8.Hide();
-            label9.Hide();
-            button15.Hide();
-            button16.Hide();
-            button17.Hide();
-            textBox3.Hide();
-            textBox4.Hide();
-            button18.Hide();
-
+            clearPanel(panel7);
         }
         private void button13_Click(object sender, EventArgs e)
         {
@@ -340,6 +337,8 @@ namespace PSO
 
         private void button7_Click(object sender, EventArgs e)
         {
+            panel7.Hide();
+            panel5.Show();
             DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 183, 160 }, "panel5", true);
 
             DisplayNewButtonOnPanel(button19, panel5, new int[2] { 20, 20 }, new int[2] { 120, 24 }, "button19", "Add product manually");
