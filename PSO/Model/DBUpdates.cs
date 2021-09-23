@@ -122,6 +122,26 @@ namespace PSO.Model
             psContext.SaveChanges();
         }
 
+        public static void CreateNewCategory(string category)
+        {
+            var psContext = new psDBContext();
+
+            /*
+            var existingCategory = psContext.ProductCategories.First(x => x.Name == category); //not ok
+            if(existingCategory == null)
+            {
+                var newCategory = new ProductCategory();
+                newCategory.Name = category;
+                psContext.ProductCategories.Add(newCategory);
+            }
+            */
+            var newCategory = new ProductCategory();
+            newCategory.Name = category;
+            psContext.ProductCategories.Add(newCategory);
+
+            psContext.SaveChanges();
+        }
+
 
 
     }

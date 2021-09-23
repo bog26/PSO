@@ -164,7 +164,7 @@ namespace PSO
         public UserPersonalData GatherUserData()
         {
 
-            var userAddress = GatherUserAddress();
+            //var userAddress = GatherUserAddress();
 
             string userBirthDateStr = monthCalendar1.SelectionRange.Start.ToShortDateString();
             DateTime userBirthDate = Convert.ToDateTime(userBirthDateStr);

@@ -100,9 +100,11 @@ namespace PSO
         Label label12 = new Label();
         Label label13 = new Label();
         Label label14 = new Label();
+        Label label15 = new Label();
         Button button21 = new Button();
         Button button22 = new Button();
         Button button23 = new Button();
+        Button button24 = new Button();
         TextBox textBox5 = new TextBox();
         TextBox textBox6 = new TextBox();
         TextBox textBox7 = new TextBox();
@@ -443,6 +445,14 @@ namespace PSO
                 { sizeXTextBox5, sizeYTextBox5 }, "new category");
             textBox5.TextChanged += new EventHandler(textBox5_TextChanged);
 
+            int xPosButton22 = xPosTextBox5;
+            int yPosButton22 = yPosTextBox5 + sizeYTextBox5 + yItemsSpace;
+            int sizeXButton22 = 40;
+            int sizeYButton22 = 24;
+            DisplayNewButtonOnPanel(button22, panel6, new int[2] { xPosButton22, yPosButton22 }, new int[2]
+                { sizeXButton22, sizeYButton22 }, "button22", "Add");
+            button22.Click += new EventHandler(button22_Click);
+
 
 
             string label12Text = "Manufacturer";
@@ -460,6 +470,14 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox6, panel6, new int[2] { xPosTextBox6, yPosTextBox6 }, new int[2]
                 { sizeXTextBox6, sizeYTextBox6 }, "new manufacturer");
             textBox6.TextChanged += new EventHandler(textBox6_TextChanged);
+
+            int xPosButton23 = xPosTextBox6;
+            int yPosButton23 = yPosTextBox6 + sizeYTextBox6 + yItemsSpace;
+            int sizeXButton23 = 40;
+            int sizeYButton23 = 24;
+            DisplayNewButtonOnPanel(button23, panel6, new int[2] { xPosButton23, yPosButton23 }, new int[2]
+                { sizeXButton23, sizeYButton23 }, "button23", "Add");
+            button23.Click += new EventHandler(button23_Click);
 
 
         }
@@ -501,6 +519,14 @@ namespace PSO
             DisplayNewLabelOnPanel(label13, panel6, new int[2] { xPosLabel13, yPosLabel13 }, new int[2]
                 { sizeXLabel13, sizeYLabel13 }, label13Text);
 
+            string label15Text = "Category";
+            int xPosLabel15 = xPosLabel13 + sizeXLabel13 + 2 * xItemsSpace;
+            int yPosLabel15 = yPosLabel13;
+            int sizeXLabel15 = ClaculateLabelLenght(label13Text);
+            int sizeYLabel15 = 24;
+            DisplayNewLabelOnPanel(label15, panel6, new int[2] { xPosLabel15, yPosLabel15 }, new int[2]
+                { sizeXLabel15, sizeYLabel15 }, label15Text);
+
             int xPosTextBox7 = xPosLabel13;
             int yPosTextBox7 = yPosLabel13 + sizeYLabel13 + yItemsSpace;
             int sizeXTextBox7 = 120;
@@ -508,6 +534,14 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox7, panel6, new int[2] { xPosTextBox7, yPosTextBox7 }, new int[2]
                 { sizeXTextBox7, sizeYTextBox7 }, "new subcategory");
             textBox7.TextChanged += new EventHandler(textBox7_TextChanged);
+
+            int xPosButton24 = xPosTextBox7;
+            int yPosButton24 = yPosTextBox7 + sizeYTextBox7 + yItemsSpace;
+            int sizeXButton24 = 40;
+            int sizeYButton24 = 24;
+            DisplayNewButtonOnPanel(button24, panel6, new int[2] { xPosButton24, yPosButton24 }, new int[2]
+                { sizeXButton24, sizeYButton24 }, "button24", "Add");
+            button24.Click += new EventHandler(button24_Click);
 
 
 
@@ -533,7 +567,27 @@ namespace PSO
             clearPanel(panel6);
 
         }
-            private void panel1_Paint(object sender, PaintEventArgs e)
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            string newCategory = textBox5.Text;
+            if((newCategory!= string.Empty) && (newCategory != "new category") )
+            {
+                DBUpdates.CreateNewCategory(newCategory);
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
