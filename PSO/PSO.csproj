@@ -94,6 +94,62 @@
     <Compile Include="Migrations\202109222126417_AddRelations.designer.cs">
       <DependentUpon>202109222126417_AddRelations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\.cs" />
+    <Compile Include="Migrations\.designer.cs">
+      <DependentUpon>.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222151112_resetRelationships3.cs" />
+    <Compile Include="Migrations\202109222151112_resetRelationships3.designer.cs">
+      <DependentUpon>202109222151112_resetRelationships3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222155450_deleteShoppingCartIdFormTransaction.cs" />
+    <Compile Include="Migrations\202109222155450_deleteShoppingCartIdFormTransaction.designer.cs">
+      <DependentUpon>202109222155450_deleteShoppingCartIdFormTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222158413_deleteClientIdFormTransaction.cs" />
+    <Compile Include="Migrations\202109222158413_deleteClientIdFormTransaction.designer.cs">
+      <DependentUpon>202109222158413_deleteClientIdFormTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222215593_AddShoppingCartIdAndClientIdToTransaction.cs" />
+    <Compile Include="Migrations\202109222215593_AddShoppingCartIdAndClientIdToTransaction.designer.cs">
+      <DependentUpon>202109222215593_AddShoppingCartIdAndClientIdToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222218424_AddShoppingCartAndClientToTransaction.cs" />
+    <Compile Include="Migrations\202109222218424_AddShoppingCartAndClientToTransaction.designer.cs">
+      <DependentUpon>202109222218424_AddShoppingCartAndClientToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222227241_removeSuppliersFromDBContext.cs" />
+    <Compile Include="Migrations\202109222227241_removeSuppliersFromDBContext.designer.cs">
+      <DependentUpon>202109222227241_removeSuppliersFromDBContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222236429_AddClientAndProductToReview.cs" />
+    <Compile Include="Migrations\202109222236429_AddClientAndProductToReview.designer.cs">
+      <DependentUpon>202109222236429_AddClientAndProductToReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222256451_DeleteClientFromShoppingCart.cs" />
+    <Compile Include="Migrations\202109222256451_DeleteClientFromShoppingCart.designer.cs">
+      <DependentUpon>202109222256451_DeleteClientFromShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222257244_AddClientToShoppingCart.cs" />
+    <Compile Include="Migrations\202109222257244_AddClientToShoppingCart.designer.cs">
+      <DependentUpon>202109222257244_AddClientToShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109222302078_DeleteClientPropertyFromShoppingCart.cs" />
+    <Compile Include="Migrations\202109222302078_DeleteClientPropertyFromShoppingCart.designer.cs">
+      <DependentUpon>202109222302078_DeleteClientPropertyFromShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109230857393_DeleteUserPersonalDataIdFromAdmin.cs" />
+    <Compile Include="Migrations\202109230857393_DeleteUserPersonalDataIdFromAdmin.designer.cs">
+      <DependentUpon>202109230857393_DeleteUserPersonalDataIdFromAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109230907408_AddUserPersonalDataIdToAdmin.cs" />
+    <Compile Include="Migrations\202109230907408_AddUserPersonalDataIdToAdmin.designer.cs">
+      <DependentUpon>202109230907408_AddUserPersonalDataIdToAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109230924287_DeleteClientIdFromShoppingCart.cs" />
+    <Compile Include="Migrations\202109230924287_DeleteClientIdFromShoppingCart.designer.cs">
+      <DependentUpon>202109230924287_DeleteClientIdFromShoppingCart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -144,6 +200,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109222126417_AddRelations.resx">
       <DependentUpon>202109222126417_AddRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\.resx">
+      <DependentUpon>.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222151112_resetRelationships3.resx">
+      <DependentUpon>202109222151112_resetRelationships3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222155450_deleteShoppingCartIdFormTransaction.resx">
+      <DependentUpon>202109222155450_deleteShoppingCartIdFormTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222158413_deleteClientIdFormTransaction.resx">
+      <DependentUpon>202109222158413_deleteClientIdFormTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222215593_AddShoppingCartIdAndClientIdToTransaction.resx">
+      <DependentUpon>202109222215593_AddShoppingCartIdAndClientIdToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222218424_AddShoppingCartAndClientToTransaction.resx">
+      <DependentUpon>202109222218424_AddShoppingCartAndClientToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222227241_removeSuppliersFromDBContext.resx">
+      <DependentUpon>202109222227241_removeSuppliersFromDBContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222236429_AddClientAndProductToReview.resx">
+      <DependentUpon>202109222236429_AddClientAndProductToReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222256451_DeleteClientFromShoppingCart.resx">
+      <DependentUpon>202109222256451_DeleteClientFromShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222257244_AddClientToShoppingCart.resx">
+      <DependentUpon>202109222257244_AddClientToShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109222302078_DeleteClientPropertyFromShoppingCart.resx">
+      <DependentUpon>202109222302078_DeleteClientPropertyFromShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109230857393_DeleteUserPersonalDataIdFromAdmin.resx">
+      <DependentUpon>202109230857393_DeleteUserPersonalDataIdFromAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109230907408_AddUserPersonalDataIdToAdmin.resx">
+      <DependentUpon>202109230907408_AddUserPersonalDataIdToAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109230924287_DeleteClientIdFromShoppingCart.resx">
+      <DependentUpon>202109230924287_DeleteClientIdFromShoppingCart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

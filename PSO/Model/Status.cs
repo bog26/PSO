@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class Status
+    public class Status
     {
         private string crtStatus;
         private List<string> crtStatusList;

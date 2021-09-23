@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class Transaction
+    public class Transaction
     {
         public int Id { get; set; }
         public DateTime TransactionStart { get; set; }
@@ -14,7 +14,9 @@ namespace PSO.Model
         public Status TransactionStatus { get; set; }
         public decimal TotalCost { get; set; }
         public int ClientId { get; set; }
+        public Client Client { get; set; }
         public int ShoppingCartId { get; set; }
+        public ShoppingCart ShoppingCart { get; set; }
 
     }
 }

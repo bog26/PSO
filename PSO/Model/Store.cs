@@ -14,7 +14,7 @@ namespace PSO.Model
         private List<Client> Clients;
         private List<Transaction> Transactions;
         private List<Review> ProductReviews;
-        private List<Supplier> Suppliers;
+        //private List<Supplier> Suppliers;
 
 
     }

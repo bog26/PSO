@@ -18,7 +18,10 @@ namespace PSO.Model
             if (InternalDBQueries.CheckForAdminRights(loggedUser))
             {
                 var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
+                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId); 
+                //pdata = psContext.UserPersonalDatas.Find(crtUser.UserInfo.Id); //not ok
+                
+
             }
             else 
             {

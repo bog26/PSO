@@ -19,3 +19,17 @@ F:\C#\projects\PSO\PSO\bin\Debug\EntityFramework.SqlServer.xml
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.csproj.CopyComplete
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.Reset.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddRelations.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.resetRelationships.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.resetRelationships3.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.deleteShoppingCartIdFormTransaction.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.deleteClientIdFormTransaction.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddShoppingCartIdAndClientIdToTransaction.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddShoppingCartAndClientToTransaction.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.removeSuppliersFromDBContext.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClientAndProductToReview.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientFromShoppingCart.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClientToShoppingCart.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientPropertyFromShoppingCart.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteUserPersonalDataIdFromAdmin.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserPersonalDataIdToAdmin.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientIdFromShoppingCart.resources

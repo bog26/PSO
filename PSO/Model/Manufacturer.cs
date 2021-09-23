@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class Manufacturer
+    public class Manufacturer
     {
         public int Id { get; set; }
         public string Name { get; set; }
