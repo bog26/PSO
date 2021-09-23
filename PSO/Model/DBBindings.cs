@@ -142,7 +142,7 @@ namespace PSO.Model
         }
 
 
-            public static BindingSource BindCrtUserAddressToGrid(string userName)
+        public static BindingSource BindCrtUserAddressToGrid(string userName)
         {
             psDBContext psContext = new psDBContext();
 
@@ -182,6 +182,16 @@ namespace PSO.Model
             {
                 binding.DataSource = queryClient.ToList();
             }
+            return binding;
+        }
+        public static BindingSource BindCategories()
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var queryCategory = from category in psContext.ProductCategories
+                                select category.Name;
+                                //{ category.Name };
+            binding.DataSource = queryCategory.ToList();
             return binding;
         }
     }

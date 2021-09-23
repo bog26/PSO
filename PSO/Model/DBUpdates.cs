@@ -125,19 +125,43 @@ namespace PSO.Model
         public static void CreateNewCategory(string category)
         {
             var psContext = new psDBContext();
-
-            /*
-            var existingCategory = psContext.ProductCategories.First(x => x.Name == category); //not ok
-            if(existingCategory == null)
+            var existingCategories = psContext.ProductCategories.Where(x => x.Name == category).ToList();
+            if(existingCategories.Count==0)
             {
                 var newCategory = new ProductCategory();
                 newCategory.Name = category;
                 psContext.ProductCategories.Add(newCategory);
             }
-            */
-            var newCategory = new ProductCategory();
-            newCategory.Name = category;
-            psContext.ProductCategories.Add(newCategory);
+
+            psContext.SaveChanges();
+        }
+
+        public static void CreateNewManufacturer(string manufacturer)
+        {
+            var psContext = new psDBContext();
+            var existingManufacturers = psContext.Manufacturers.Where(x => x.Name == manufacturer).ToList();
+            if (existingManufacturers.Count == 0)
+            {
+                var newManufacturer = new Manufacturer();
+                newManufacturer.Name = manufacturer;
+                psContext.Manufacturers.Add(newManufacturer);
+            }
+
+            psContext.SaveChanges();
+        }
+
+        public static void CreateNewSubCategory(string subCategory, string category)
+        {
+            var psContext = new psDBContext();
+            var Category = psContext.ProductCategories.First(x => x.Name == category);
+            var existingSubCategories = psContext.ProductSubCategories.Where(x => x.Name == subCategory).ToList();
+            if (existingSubCategories.Count == 0)
+            {
+                var newSubCategory = new ProductSubCategory();
+                newSubCategory.Name = subCategory;
+                newSubCategory.ProductCategoryId = Category.Id;
+                psContext.ProductSubCategories.Add(newSubCategory);
+            }
 
             psContext.SaveChanges();
         }

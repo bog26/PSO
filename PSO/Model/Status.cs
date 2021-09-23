@@ -22,6 +22,7 @@ namespace PSO.Model
             this.crtStatusList = this.successfulTransactionStatuses;
             this.crtStatus = this.successfulTransactionStatuses[0];
         }
+        
         public string CrtStatus
         { 
             get{ return this.crtStatus; }

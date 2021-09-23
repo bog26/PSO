@@ -27,6 +27,10 @@ namespace PSO.Model
         {
 
         }
+        public override string ToString()
+        {
+            return ProductName;
+        }
         public void increaseSellPrice(decimal priceIncrease)
         {
 

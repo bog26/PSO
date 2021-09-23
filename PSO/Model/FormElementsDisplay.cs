@@ -151,10 +151,28 @@ namespace PSO.Model
             Form.ActiveForm.Controls.Add(panel);
         }
 
+        public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name, BindingSource source)
+        //public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            listbox.FormattingEnabled = true;
+            listbox.Location = new Point(posX, posY);
+            listbox.Name = name;
+            listbox.Size = new Size(length, hight);
+            //listbox.DataSource = source;
+            panel.Controls.Add(listbox);
+        }
+
+
+
         public static void clearPanel(Panel panel)
         {
             panel.Controls.Clear();
         }
+       
 
         public static int ClaculateLabelLenght(string labelText)
         {

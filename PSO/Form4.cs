@@ -105,11 +105,12 @@ namespace PSO
         Button button22 = new Button();
         Button button23 = new Button();
         Button button24 = new Button();
+        Button button25 = new Button();
         TextBox textBox5 = new TextBox();
         TextBox textBox6 = new TextBox();
         TextBox textBox7 = new TextBox();
         TextBox textBox8 = new TextBox();
-
+        ListBox listBox1 = new ListBox();
 
 
         private void button4_Click(object sender, EventArgs e)
@@ -455,6 +456,8 @@ namespace PSO
 
 
 
+
+
             string label12Text = "Manufacturer";
             int xPosLabel12 = xPosLabel11 + sizeXLabel11 + xItemsSpace*4;
             int yPosLabel12 = yPosLabel11;
@@ -535,6 +538,17 @@ namespace PSO
                 { sizeXTextBox7, sizeYTextBox7 }, "new subcategory");
             textBox7.TextChanged += new EventHandler(textBox7_TextChanged);
 
+            string listBox1Text = "Select Category";
+            int xlistBox1 = xPosLabel15;
+            int ylistBox1 = yPosTextBox7;
+            int sizeXlistBox1 = 140;
+            int sizeYlistBox1 = 90; 
+            DisplayListBox(listBox1, panel6, new int[2] { xlistBox1, ylistBox1 }, new int[2]
+                { sizeXlistBox1, sizeYlistBox1 }, listBox1Text, BindCategories());
+            listBox1.DataSource = BindCategories();
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            
+
             int xPosButton24 = xPosTextBox7;
             int yPosButton24 = yPosTextBox7 + sizeYTextBox7 + yItemsSpace;
             int sizeXButton24 = 40;
@@ -544,6 +558,10 @@ namespace PSO
             button24.Click += new EventHandler(button24_Click);
 
 
+
+        }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 
@@ -579,12 +597,21 @@ namespace PSO
 
         private void button23_Click(object sender, EventArgs e)
         {
-
+            string newManufacturer = textBox6.Text;
+            if ((newManufacturer != string.Empty) && (newManufacturer != "new manufacturer"))
+            {
+                DBUpdates.CreateNewManufacturer(newManufacturer);
+            }
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-
+            string subCategory = textBox7.Text;
+            string category = listBox1.SelectedItem.ToString();
+            if ((subCategory != string.Empty) && (subCategory != "new subcategory"))
+            {
+                DBUpdates.CreateNewSubCategory(subCategory, category);
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
