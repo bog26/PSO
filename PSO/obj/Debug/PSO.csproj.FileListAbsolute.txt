@@ -33,3 +33,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientPropertyFromShopping
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteUserPersonalDataIdFromAdmin.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserPersonalDataIdToAdmin.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientIdFromShoppingCart.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddPropertiesToProduct.resources

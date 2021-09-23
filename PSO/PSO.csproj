@@ -150,6 +150,10 @@
     <Compile Include="Migrations\202109230924287_DeleteClientIdFromShoppingCart.designer.cs">
       <DependentUpon>202109230924287_DeleteClientIdFromShoppingCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109231215189_AddPropertiesToProduct.cs" />
+    <Compile Include="Migrations\202109231215189_AddPropertiesToProduct.designer.cs">
+      <DependentUpon>202109231215189_AddPropertiesToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -242,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109230924287_DeleteClientIdFromShoppingCart.resx">
       <DependentUpon>202109230924287_DeleteClientIdFromShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231215189_AddPropertiesToProduct.resx">
+      <DependentUpon>202109231215189_AddPropertiesToProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

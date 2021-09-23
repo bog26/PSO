@@ -17,7 +17,7 @@ namespace PSO.Model
             decimal cost = 0;
             foreach(KeyValuePair<Product, int> pair in this.cartItems)
             {
-                cost += pair.Key.crtClientPrice * pair.Value;
+                cost += pair.Key.crtSellPrice * pair.Value;
             }
             return cost;
         }

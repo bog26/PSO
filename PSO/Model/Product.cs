@@ -12,32 +12,38 @@ namespace PSO.Model
         public string ProductName { get; set; }
         public int ProductSubCategoryId { get; set; }
         ProductSubCategory SubCategory { get; set; }
-        //public string Category { get; set; }
-        //public string SubCategory { get; set; }
         public int ManufacturerId { get; set; }
         Manufacturer Manufacturer { get; set; }
-        //public string Manufacturer { get; set; }
 
         public string Model { get; set; }
 
         public int Stock { get; set; }
-        public List <decimal>  Prices { get; set; }
-        public decimal crtClientPrice { get; set; }
+        //public List <decimal>  Prices { get; set; }
+        public decimal crtSellPrice { get; set; }
 
+        public decimal crtManufacturerPrice { get; set; }
         public List<string> Reviews { get; set; }  //obj
         public Product()
         {
 
         }
-        public void increasePrice()
+        public void increaseSellPrice(decimal priceIncrease)
         {
 
         }
-        public void decreasePrice()
+        public void decreaseSellPrice(decimal priceDecrease)
         {
 
         }
-        
+        public void increaseStock(int nrOfProducts)
+        {
+            Stock += nrOfProducts;
+        }
+        public void decreaseStock(int nrOfProducts)
+        {
+            Stock -= nrOfProducts;
+        }
+
 
     }
 }
