@@ -160,6 +160,7 @@ namespace PSO.Model
                 var newSubCategory = new ProductSubCategory();
                 newSubCategory.Name = subCategory;
                 newSubCategory.ProductCategoryId = Category.Id;
+                //var prodCategory = psContext.ProductCategories.Find(newSubCategory.ProductCategoryId);
                 psContext.ProductSubCategories.Add(newSubCategory);
             }
 

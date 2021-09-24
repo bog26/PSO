@@ -194,5 +194,25 @@ namespace PSO.Model
             binding.DataSource = queryCategory.ToList();
             return binding;
         }
+        public static BindingSource BindManufacturers()
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var queryManufacturers = from manufacturer in psContext.Manufacturers
+                                select manufacturer.Name;
+            //{ category.Name };
+            binding.DataSource = queryManufacturers.ToList();
+            return binding;
+        }
+        public static BindingSource BindSubcategories()
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var querySubcategories = from subcategory in psContext.ProductSubCategories
+                                     select subcategory.Name;
+            binding.DataSource = querySubcategories.ToList();
+            return binding;
+        }
+
     }
 }

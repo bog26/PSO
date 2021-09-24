@@ -162,7 +162,7 @@ namespace PSO.Model
             listbox.Location = new Point(posX, posY);
             listbox.Name = name;
             listbox.Size = new Size(length, hight);
-            //listbox.DataSource = source;
+            listbox.DataSource = source;
             panel.Controls.Add(listbox);
         }
 
