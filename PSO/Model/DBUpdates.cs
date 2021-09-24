@@ -167,6 +167,36 @@ namespace PSO.Model
             psContext.SaveChanges();
         }
 
+        public static void CreateNewProduct(string[] productProperties, int initStock, decimal[] prices)
+        {
+            var psContext = new psDBContext();
+            string productName = productProperties[0];
+            string productModel = productProperties[1];
+            string productManufacturer = productProperties[2];
+            string productSubcategory = productProperties[3];
+            decimal sellPrice = prices[0];
+            decimal supplierPrice = prices[1];
+            var Manufacturer = psContext.Manufacturers.First(x => x.Name == productManufacturer);
+            var Subcategory = psContext.ProductSubCategories.First(x => x.Name == productSubcategory);
+
+            //check for existing productName
+            var existingProductName = psContext.Products.Where(x => x.ProductName == productName).ToList();
+            if(existingProductName.Count == 0)
+            {
+                var newProduct = new Product();
+                newProduct.ProductName = productName;
+                newProduct.Model = productModel;
+                newProduct.ManufacturerId = Manufacturer.Id;
+                newProduct.ProductSubCategoryId = Subcategory.Id;
+                newProduct.Stock = initStock;
+                newProduct.crtSellPrice = sellPrice;
+                newProduct.crtManufacturerPrice = supplierPrice;
+                psContext.Products.Add(newProduct);
+            }
+
+            psContext.SaveChanges();
+        }
+
 
 
     }

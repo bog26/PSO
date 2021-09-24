@@ -638,7 +638,7 @@ namespace PSO
                 { sizeXTextBox9, sizeYTextBox9 }, "Product model");
             //textBox9.TextChanged += new EventHandler(textBox9_TextChanged);
 
-            string label19Text = "Mnufacturer:";
+            string label19Text = "Manufacturer:";
             int xPosLabel19 = xPosLabel17;
             int yPosLabel19 = yPosTextBox8 + sizeYTextBox8 + yItemsSpace;
             int sizeXLabel19 = ClaculateLabelLenght(label19Text);
@@ -722,6 +722,15 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox12, panel6, new int[2] { xPosTextBox12, yPosTextBox12 }, new int[2]
                 { sizeXTextBox12, sizeYTextBox12 }, "Supplier price");
 
+            string Button25Text = "Add product to DB";
+            int xPosButton25 = xPosLabel16 + sizeXLabel16 + 3*xItemsSpace;
+            int yPosButton25 = yPosLabel16;
+            int sizeXButton25 = ClaculateLabelLenght(Button25Text)*2;
+            int sizeYButton25 = 24;
+            DisplayNewButtonOnPanel(button25, panel6, new int[2] { xPosButton25, yPosButton25 }, new int[2]
+                { sizeXButton25, sizeYButton25 }, "button25", Button25Text);
+            button25.Click += new EventHandler(button25_Click);
+            
 
 
         }
@@ -757,6 +766,49 @@ namespace PSO
                 DBUpdates.CreateNewSubCategory(subCategory, category);
             }
         }
+        private void button25_Click(object sender, EventArgs e)
+        {
+            
+
+            if (CheckNewProductDataInputCorrectness())
+            {
+                string[] productProperties = new string[4]
+                                { textBox8.Text, textBox9.Text,
+                                  listBox2.SelectedItem.ToString(),
+                                  listBox3.SelectedItem.ToString()};
+                int startingStock = int.Parse(textBox10.Text);
+                decimal sellPrice = decimal.Parse(textBox11.Text);
+                decimal supplierPrice = decimal.Parse(textBox12.Text);
+                decimal[] prices = new decimal[2] { sellPrice, supplierPrice };
+
+                DBUpdates.CreateNewProduct(productProperties, startingStock, prices);
+
+            }
+        }
+
+        private bool CheckNewProductDataInputCorrectness()
+        {
+            bool correctInputData = false;
+            int startingStock;
+            decimal sellPrice;
+            decimal supplierPrice;
+            if(   textBox8.Text != String.Empty
+               && textBox9.Text != String.Empty
+               && textBox10.Text != String.Empty
+               && textBox11.Text != String.Empty
+               && textBox12.Text != String.Empty
+               && textBox8.Text != "Product name"
+               && textBox9.Text != "Product model"
+               && int.TryParse(textBox10.Text, out startingStock)
+               && decimal.TryParse(textBox11.Text, out sellPrice)
+               && decimal.TryParse(textBox12.Text, out supplierPrice) )
+            {
+                correctInputData = true;
+            }
+
+            return correctInputData;
+        }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
