@@ -406,6 +406,7 @@ namespace PSO
 
             this.panel13 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
 
             //this.panel8.SuspendLayout();
             //this.SuspendLayout();
@@ -741,7 +742,7 @@ namespace PSO
                 { sizeXButton28, sizeYButton28 }, "button28", "Search");
             this.button28.Click += new System.EventHandler(this.button28_Click);
 
-            DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel13", true);
+            DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel13", true);
             this.Controls.Add(this.panel13);
             panel13.Hide();
 
@@ -752,6 +753,16 @@ namespace PSO
             int sizeYLabel25 = 24;
             DisplayNewLabelOnPanel(label25, panel13, new int[2] { xPosLabel25, yPosLabel25 }, new int[2]
                 { sizeXLabel25, sizeYLabel25 }, label25Text);
+
+            int xPosDataGridView3 = xPosLabel25;
+            int yPosDataGridView3 = yPosLabel25 + sizeYLabel25 + yItemsSpace;
+            int sizeXDataGridView3 = 600;
+            int sizeYDataGridView3 = 150;
+            DisplayNewDataGridViewOnPanel(dataGridView3, panel13, new int[2]
+                { xPosDataGridView3, yPosDataGridView3}, new int[2] { sizeXDataGridView3, sizeYDataGridView3 });
+            dataGridView3.DataSource = BindProductsToGrid();
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView3.CellContentClick += new DataGridViewCellEventHandler(dataGridView3_CellContentClick);
 
             /*
             
@@ -822,6 +833,7 @@ namespace PSO
 
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DataGridView dataGridView3;
 
         /*
         private System.Windows.Forms.DataGridView dataGridView1;

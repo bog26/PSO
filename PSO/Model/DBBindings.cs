@@ -35,7 +35,7 @@ namespace PSO.Model
 
         public static BindingSource BindCrtUserDataToGrid(string userName)
         {
-            
+
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
 
@@ -44,29 +44,29 @@ namespace PSO.Model
             //binding.DataSource = query;
             //new
 
-            
+
             var queryAdmin = from user in psContext.Admins
-                                         where user.UserName == userName
-                                         select new
-                                         {
-                                             UserName = user.UserName,
-                                             FirstName = user.UserInfo.FirstName,
-                                             LastName = user.UserInfo.LastName,
-                                             BirthDate = user.UserInfo.BirthDate,
-                                             email = user.UserInfo.Email,
-                                             Telephone = user.UserInfo.Telephone
-                                         };
-                        var queryClient = from user in psContext.Clients
-                                          where user.UserName == userName
-                                          select new
-                                          {
-                                              UserName = user.UserName,
-                                              FirstName = user.UserInfo.FirstName,
-                                              LastName = user.UserInfo.LastName,
-                                              BirthDate = user.UserInfo.BirthDate,
-                                              email = user.UserInfo.Email,
-                                              Telephone = user.UserInfo.Telephone
-                                          };
+                             where user.UserName == userName
+                             select new
+                             {
+                                 UserName = user.UserName,
+                                 FirstName = user.UserInfo.FirstName,
+                                 LastName = user.UserInfo.LastName,
+                                 BirthDate = user.UserInfo.BirthDate,
+                                 email = user.UserInfo.Email,
+                                 Telephone = user.UserInfo.Telephone
+                             };
+            var queryClient = from user in psContext.Clients
+                              where user.UserName == userName
+                              select new
+                              {
+                                  UserName = user.UserName,
+                                  FirstName = user.UserInfo.FirstName,
+                                  LastName = user.UserInfo.LastName,
+                                  BirthDate = user.UserInfo.BirthDate,
+                                  email = user.UserInfo.Email,
+                                  Telephone = user.UserInfo.Telephone
+                              };
 
             //BindingSource binding = new BindingSource();
             //var queryAdmin = UserQuery.UserDataQuery  //TBD
@@ -81,7 +81,7 @@ namespace PSO.Model
                 binding.DataSource = queryClient.ToList();
             }
             return binding;
-           
+
 
             /* //TBD
             var query = UserDataQuery(userName, psContext); // not ok
@@ -109,7 +109,7 @@ namespace PSO.Model
                 loggedUser = psContext.Clients.First(x => x.UserName == userName);
             }
 
-            
+
             var newData = new  //null obj
             {
                 UserName = loggedUser.UserName,
@@ -119,14 +119,14 @@ namespace PSO.Model
                 email = loggedUser.UserInfo.Email,
                 Telephone = loggedUser.UserInfo.Telephone
             };
-            
 
-            if (loggedUser.GetType() == typeof(Admin) )
+
+            if (loggedUser.GetType() == typeof(Admin))
             {
                 var query = from user in psContext.Admins
                             where user.UserName == userName
                             select newData
-                            ; 
+                            ;
 
                 return query;
             }
@@ -135,10 +135,10 @@ namespace PSO.Model
                 var query = from user in psContext.Clients
                             where user.UserName == userName
                             select newData;
-                         
+
                 return query;
             }
-           
+
         }
 
 
@@ -148,21 +148,9 @@ namespace PSO.Model
 
             BindingSource binding = new BindingSource();
             var queryAdmin = from user in psContext.Admins
-                        where user.UserName == userName
-                        select new
-
-                        {
-                            Street = user.UserAddress.Street,
-                            StreetNr = user.UserAddress.StreetNr,
-                            City = user.UserAddress.City,
-                            Region = user.UserAddress.Region,
-                            Country = user.UserAddress.Country,
-                            PostalCode = user.UserAddress.PostalCode
-                        };
-
-            var queryClient = from user in psContext.Clients
                              where user.UserName == userName
                              select new
+
                              {
                                  Street = user.UserAddress.Street,
                                  StreetNr = user.UserAddress.StreetNr,
@@ -171,6 +159,18 @@ namespace PSO.Model
                                  Country = user.UserAddress.Country,
                                  PostalCode = user.UserAddress.PostalCode
                              };
+
+            var queryClient = from user in psContext.Clients
+                              where user.UserName == userName
+                              select new
+                              {
+                                  Street = user.UserAddress.Street,
+                                  StreetNr = user.UserAddress.StreetNr,
+                                  City = user.UserAddress.City,
+                                  Region = user.UserAddress.Region,
+                                  Country = user.UserAddress.Country,
+                                  PostalCode = user.UserAddress.PostalCode
+                              };
 
 
 
@@ -190,7 +190,7 @@ namespace PSO.Model
             BindingSource binding = new BindingSource();
             var queryCategory = from category in psContext.ProductCategories
                                 select category.Name;
-                                //{ category.Name };
+            //{ category.Name };
             binding.DataSource = queryCategory.ToList();
             return binding;
         }
@@ -199,7 +199,7 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
             var queryManufacturers = from manufacturer in psContext.Manufacturers
-                                select manufacturer.Name;
+                                     select manufacturer.Name;
             //{ category.Name };
             binding.DataSource = queryManufacturers.ToList();
             return binding;
@@ -214,5 +214,26 @@ namespace PSO.Model
             return binding;
         }
 
+        public static BindingSource BindProductsToGrid()
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            var queryProducts = from product in psContext.Products
+                                select new
+                                {
+                                    Model = product.Model,
+                                    Category = product.ProductSubCategoryId,
+                                    Manufacturer = product.ManufacturerId,
+                                    Stock = product.Stock,
+                                    ManufPrice = product.crtManufacturerPrice,
+                                    SellPrice = product.crtSellPrice,
+                                };
+            binding.DataSource = queryProducts.ToList();
+
+            return binding;
+
+        }
     }
+
 }

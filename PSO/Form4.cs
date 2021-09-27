@@ -251,6 +251,18 @@ namespace PSO
             }
         }
 
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*
+            if (dataGridView2.Rows[0].Cells[e.ColumnIndex].Value != null)
+            {
+                string cellContent = dataGridView2.Rows[0].Cells[e.ColumnIndex].Value.ToString();
+                textBox2.Text = cellContent;
+                textBox2.Refresh();
+            }
+            */
+        }
+
         private void button14_Click(object sender, EventArgs e)
         {
             HideUserInformationFormElements();
