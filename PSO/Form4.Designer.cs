@@ -393,6 +393,20 @@ namespace PSO
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.button25 = new System.Windows.Forms.Button();
 
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
+
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+
             //this.panel8.SuspendLayout();
             //this.SuspendLayout();
             /*
@@ -662,10 +676,87 @@ namespace PSO
             DisplayNewButtonOnPanel(button25, panel10, new int[2] { xPosButton25, yPosButton25 }, new int[2]
                 { sizeXButton25, sizeYButton25 }, "button25", Button25Text);
             this.button25.Click += new System.EventHandler(this.button25_Click);
-            
+
+            DisplayNewPanel(panel11, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panel11", true);
+            this.Controls.Add(this.panel11);
+            panel11.Hide();
+
+            int xPosButton19 = origX;
+            int yPosButton19 = origY;
+            int sizeXButton19 = 140;
+            int sizeYButton19 = 24;
+            DisplayNewButtonOnPanel(button19, panel11, new int[2] { origX, origY }, new int[2] { sizeXButton19, sizeYButton19 },
+                "button19", "Add main characteristics");
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+
+            int xPosButton20 = xPosButton19;
+            int yPosButton20 = yPosButton19 + sizeYButton19 + yItemsSpace;
+            int sizeXButton20 = 140;
+            int sizeYButton20 = 24;
+            DisplayNewButtonOnPanel(button20, panel11, new int[2] { xPosButton20, yPosButton20 }, new int[2]
+                { sizeXButton20, sizeYButton20 }, "button20", "Add sec characteristics");
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+
+            int xPosButton21 = xPosButton19;
+            int yPosButton21 = yPosButton20 + sizeYButton20 + yItemsSpace;
+            int sizeXButton21 = 140;
+            int sizeYButton21 = 24;
+            DisplayNewButtonOnPanel(button21, panel11, new int[2] { xPosButton21, yPosButton21 }, new int[2]
+                { sizeXButton21, sizeYButton21 }, "button21", "Add product");
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+
+            int xPosButton26 = xPosButton19;
+            int yPosButton26 = yPosButton21 + sizeYButton21 + yItemsSpace;
+            int sizeXButton26 = 140;
+            int sizeYButton26 = 24;
+            DisplayNewButtonOnPanel(button26, panel11, new int[2] { xPosButton26, yPosButton26 }, new int[2]
+                { sizeXButton26, sizeYButton26 }, "button26", "Search products");
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+
+            DisplayNewPanel(panel12, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panel12", true);
+            this.Controls.Add(this.panel12);
+            panel12.Hide();
+
+            string label24Text = "Product search:";
+            int xPosLabel24 = xMargin;
+            int yPosLabel24 = yMargin;
+            int sizeXLabel24 = ClaculateLabelLenght(label24Text);
+            int sizeYLabel24 = 24;
+            DisplayNewLabelOnPanel(label24, panel12, new int[2] { xPosLabel24, yPosLabel24 }, new int[2]
+                { sizeXLabel24, sizeYLabel24 }, label24Text);
+
+            int xPosButton27 = xPosLabel24;
+            int yPosButton27 = yPosLabel24 + sizeYLabel24 + yItemsSpace;
+            int sizeXButton27 = 140;
+            int sizeYButton27 = 24;
+            DisplayNewButtonOnPanel(button27, panel12, new int[2] { xPosButton27, yPosButton27 }, new int[2]
+                { sizeXButton27, sizeYButton27 }, "button27", "Back");
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+
+            int xPosButton28 = xPosLabel24;
+            int yPosButton28 = yPosButton27 + sizeYButton27 + yItemsSpace;
+            int sizeXButton28 = 140;
+            int sizeYButton28 = 24;
+            DisplayNewButtonOnPanel(button28, panel12, new int[2] { xPosButton28, yPosButton28 }, new int[2]
+                { sizeXButton28, sizeYButton28 }, "button28", "Search");
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+
+            DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel13", true);
+            this.Controls.Add(this.panel13);
+            panel13.Hide();
+
+            string label25Text = "Products found:";
+            int xPosLabel25 = xMargin;
+            int yPosLabel25 = yMargin;
+            int sizeXLabel25 = ClaculateLabelLenght(label25Text);
+            int sizeYLabel25 = 24;
+            DisplayNewLabelOnPanel(label25, panel13, new int[2] { xPosLabel25, yPosLabel25 }, new int[2]
+                { sizeXLabel25, sizeYLabel25 }, label25Text);
 
             /*
+            
 
+            
             
              */
 
@@ -717,6 +808,20 @@ namespace PSO
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button button25;
+
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button26;
+
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label25;
 
         /*
         private System.Windows.Forms.DataGridView dataGridView1;

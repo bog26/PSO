@@ -94,21 +94,26 @@ namespace PSO
         TextBox textBox4 = new TextBox(); //new pass
         Button button18 = new Button();
         Panel panel5 = new Panel();
-        Button button19 = new Button();
-        Panel panel6 = new Panel();
-        Button button20 = new Button();
+        //Button button19 = new Button();
+        //Panel panel6 = new Panel();
+        //Button button20 = new Button();
         Panel panel7 = new Panel();
-        Button button21 = new Button();
-   
-        
+        //Button button21 = new Button();
+        //Button button26 = new Button();
+
+
 
         private void button4_Click(object sender, EventArgs e)
         {
-            panel5.Hide();
-            panel6.Hide();
+            //panel5.Hide();
+            panel11.Hide();
+            //panel6.Hide();
             panel8.Hide();
             panel9.Hide();
             panel10.Hide();
+            panel11.Hide();
+            panel12.Hide();
+            panel13.Hide();
             panel7.Show();
             DisplayNewPanel(panel7, new int[2] { 235, 46 }, new int[2] { 900, 350 }, "panel7", true);
             Form.ActiveForm.Controls.Add(panel7);
@@ -372,13 +377,15 @@ namespace PSO
             int yItemsSpace = 5;
 
             panel7.Hide();
-            panel5.Show();
+            panel13.Hide();
+            panel11.Show();
+            //panel5.Show();
       
-            DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 180, 350 }, "panel5", true);
-            Form.ActiveForm.Controls.Add(panel5);
-            DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel6", true);
-            Form.ActiveForm.Controls.Add(panel5);
-
+            //DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 180, 350 }, "panel5", true);
+            //Form.ActiveForm.Controls.Add(panel5);
+            //DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel6", true);
+            //Form.ActiveForm.Controls.Add(panel6);
+            /*
             int xPosButton19 = origX;
             int yPosButton19 = origY;
             int sizeXButton19 = 140;
@@ -400,9 +407,19 @@ namespace PSO
             int sizeXButton21 = 140;
             int sizeYButton21 = 24;
             DisplayNewButtonOnPanel(button21, panel5, new int[2] { xPosButton21, yPosButton21 }, new int[2]
-                { sizeXButton21, sizeYButton21 }, "button21", "Add Product");
+                { sizeXButton21, sizeYButton21 }, "button21", "Add product");
             button21.Click += new EventHandler(button21_Click);
 
+            */
+            /*
+            int xPosButton26 = xPosButton19;
+            int yPosButton26 = yPosButton21 + sizeYButton21 + yItemsSpace;
+            int sizeXButton26 = 140;
+            int sizeYButton26 = 24;
+            DisplayNewButtonOnPanel(button26, panel5, new int[2] { xPosButton26, yPosButton26 }, new int[2]
+                { sizeXButton26, sizeYButton26 }, "button26", "Search products");
+            button26.Click += new EventHandler(button26_Click);
+            */
 
         }
         private void button19_Click(object sender, EventArgs e)
@@ -417,8 +434,9 @@ namespace PSO
 
             panel7.Hide();
             panel10.Hide();
+            panel13.Hide();
             panel8.Show();
-            panel6.Show();
+            //panel6.Show();
 
         }
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -435,6 +453,7 @@ namespace PSO
             panel7.Hide();
             panel8.Hide();
             panel10.Hide();
+            panel13.Hide();
             panel9.Show();
 
         }
@@ -461,8 +480,44 @@ namespace PSO
             panel7.Hide();
             panel8.Hide();
             panel9.Hide();
+            panel13.Hide();
             panel10.Show();
             
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            panel7.Hide();
+            panel8.Hide();
+            panel9.Hide();
+            panel10.Hide();
+            panel11.Hide();
+            panel13.Hide();
+            panel12.Show();
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            panel7.Hide();
+            panel8.Hide();
+            panel9.Hide();
+            panel10.Hide();
+            panel12.Hide();
+            panel13.Hide();
+            panel11.Show();
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+
+            panel7.Hide();
+            panel8.Hide();
+            panel10.Hide();
+            panel9.Hide();
+            panel13.Show();
+
         }
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
