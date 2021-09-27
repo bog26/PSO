@@ -187,11 +187,14 @@ namespace PSO.Model
                 newProduct.ProductName = productName;
                 newProduct.Model = productModel;
                 newProduct.ManufacturerId = Manufacturer.Id;
-                newProduct.ProductSubCategoryId = Subcategory.Id;
+                newProduct.SubCategory = Subcategory;
+                //newProduct.ProductSubCategoryId = Subcategory.Id;
                 newProduct.Stock = initStock;
                 newProduct.crtSellPrice = sellPrice;
                 newProduct.crtManufacturerPrice = supplierPrice;
+                newProduct.Manufacturer = Manufacturer;
                 psContext.Products.Add(newProduct);
+                
             }
 
             psContext.SaveChanges();

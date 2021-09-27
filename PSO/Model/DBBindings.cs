@@ -219,16 +219,20 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
 
             BindingSource binding = new BindingSource();
+
             var queryProducts = from product in psContext.Products
                                 select new
                                 {
                                     Model = product.Model,
-                                    Category = product.ProductSubCategoryId,
-                                    Manufacturer = product.ManufacturerId,
+                                    Category = product.SubCategory.Category,
+                                    Subcategory = product.SubCategory,
+                                    Manufacturer = product.Manufacturer,
                                     Stock = product.Stock,
                                     ManufPrice = product.crtManufacturerPrice,
                                     SellPrice = product.crtSellPrice,
+
                                 };
+
             binding.DataSource = queryProducts.ToList();
 
             return binding;

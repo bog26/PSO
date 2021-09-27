@@ -34,3 +34,8 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteUserPersonalDataIdFromAdmi
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddUserPersonalDataIdToAdmin.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteClientIdFromShoppingCart.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddPropertiesToProduct.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddPublicManufacturerToProduct.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddPublicManufacturerToProduct1.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddSubCategoryToProduct1.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteManufacturerFromProducts.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteSubcategoryFromProducts.resources

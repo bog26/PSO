@@ -154,6 +154,26 @@
     <Compile Include="Migrations\202109231215189_AddPropertiesToProduct.designer.cs">
       <DependentUpon>202109231215189_AddPropertiesToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109271522269_AddPublicManufacturerToProduct.cs" />
+    <Compile Include="Migrations\202109271522269_AddPublicManufacturerToProduct.designer.cs">
+      <DependentUpon>202109271522269_AddPublicManufacturerToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109271533211_AddPublicManufacturerToProduct1.cs" />
+    <Compile Include="Migrations\202109271533211_AddPublicManufacturerToProduct1.designer.cs">
+      <DependentUpon>202109271533211_AddPublicManufacturerToProduct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109271552267_AddSubCategoryToProduct1.cs" />
+    <Compile Include="Migrations\202109271552267_AddSubCategoryToProduct1.designer.cs">
+      <DependentUpon>202109271552267_AddSubCategoryToProduct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109271601173_DeleteManufacturerFromProducts.cs" />
+    <Compile Include="Migrations\202109271601173_DeleteManufacturerFromProducts.designer.cs">
+      <DependentUpon>202109271601173_DeleteManufacturerFromProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109271602598_DeleteSubcategoryFromProducts.cs" />
+    <Compile Include="Migrations\202109271602598_DeleteSubcategoryFromProducts.designer.cs">
+      <DependentUpon>202109271602598_DeleteSubcategoryFromProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -249,6 +269,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109231215189_AddPropertiesToProduct.resx">
       <DependentUpon>202109231215189_AddPropertiesToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271522269_AddPublicManufacturerToProduct.resx">
+      <DependentUpon>202109271522269_AddPublicManufacturerToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271533211_AddPublicManufacturerToProduct1.resx">
+      <DependentUpon>202109271533211_AddPublicManufacturerToProduct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271552267_AddSubCategoryToProduct1.resx">
+      <DependentUpon>202109271552267_AddSubCategoryToProduct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271601173_DeleteManufacturerFromProducts.resx">
+      <DependentUpon>202109271601173_DeleteManufacturerFromProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109271602598_DeleteSubcategoryFromProducts.resx">
+      <DependentUpon>202109271602598_DeleteSubcategoryFromProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
