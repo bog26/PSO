@@ -219,7 +219,7 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
 
             BindingSource binding = new BindingSource();
-
+            
             var queryProducts = from product in psContext.Products
                                 select new
                                 {
@@ -236,8 +236,78 @@ namespace PSO.Model
             binding.DataSource = queryProducts.ToList();
 
             return binding;
-
         }
+        public static BindingSource BindProductsToGridPrototype() //ok
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            string productModel = "Iphone";
+            string category = "Mobile";
+            string subcategory = "IOS Smartphones";
+            string manufacturer = "Apple";
+            var queryProducts = from product in psContext.Products
+                                where
+                                      product.SubCategory.Name == subcategory &&
+                                      product.Manufacturer.Name == manufacturer
+                                select new
+                                {
+                                    Model = product.Model,
+                                    Category = product.SubCategory.Category,
+                                    Subcategory = product.SubCategory,
+                                    Manufacturer = product.Manufacturer,
+                                    Stock = product.Stock,
+                                    ManufPrice = product.crtManufacturerPrice,
+                                    SellPrice = product.crtSellPrice,
+                                };
+
+            binding.DataSource = queryProducts.ToList();
+            return binding;
+        }
+        public static BindingSource BindProductsToGridPrototype1() //WIP
+        {
+            psDBContext psContext = new psDBContext();
+
+            BindingSource binding = new BindingSource();
+            string productModel = "Iphone";
+            string category = "Mobile";
+            string subcategory = "IOS Smartphones";
+            string manufacturer = "Apple";
+            int minStock = 40;
+            decimal maxSellPrice = 300;
+            string searchWord1 = "5G";
+            string searchWord2 = "Android";
+            string searchWord3 = "Black";
+
+            var queryProducts = psContext.Products.Where(x=>x.ProductName!=" ");
+            //queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord3)); //ok
+            queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord1)); //ok
+            queryProducts = queryProducts.Where(x => x.crtSellPrice < maxSellPrice); //ok
+            //queryProducts = queryProducts.Where(x => x.Stock >= minStock);  //ok
+            //queryProducts = queryProducts.Where(x => x.SubCategory.Category.Name == category);    //ok
+            //queryProducts = queryProducts.Where(x => x.SubCategory.Name == subcategory);  //ok
+            //queryProducts = queryProducts.Where(x => x.Manufacturer.Name == manufacturer);    //ok
+
+            //var queryProducts = psContext.Products.Where( x =>x.SubCategory.Name == subcategory); //ok
+            //queryProducts = queryProducts.Where(x => x.Manufacturer.Name == manufacturer);  //ok
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
+
     }
 
 }

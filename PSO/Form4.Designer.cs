@@ -760,7 +760,10 @@ namespace PSO
             int sizeYDataGridView3 = 150;
             DisplayNewDataGridViewOnPanel(dataGridView3, panel13, new int[2]
                 { xPosDataGridView3, yPosDataGridView3}, new int[2] { sizeXDataGridView3, sizeYDataGridView3 });
-            dataGridView3.DataSource = BindProductsToGrid();
+            //dataGridView3.DataSource = BindProductsToGrid(); //ok
+            //dataGridView3.DataSource = BindProductsToGridPrototype(); //ok
+            dataGridView3.DataSource = BindProductsToGridPrototype1(); //WIP
+
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.CellContentClick += new DataGridViewCellEventHandler(dataGridView3_CellContentClick);
 
