@@ -528,8 +528,15 @@ namespace PSO
             panel8.Hide();
             panel10.Hide();
             panel9.Hide();
-            panel13.Show();
+            ProductsQuery();
+            //panel13.Show();
 
+        }
+        private void ProductsQuery()
+        {
+            //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text);
+            dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text);
+            panel13.Show();
         }
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {

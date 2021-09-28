@@ -36,7 +36,7 @@ namespace PSO.Model
             int length = size[0];
             int hight = size[1];
             label.AutoSize = true;
-            label.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             label.ForeColor = SystemColors.HotTrack;
             label.BackColor = Color.LightGray;
             label.Location = new Point(posX, posY);
@@ -44,8 +44,48 @@ namespace PSO.Model
             label.Size = new Size(length, hight);
             label.TabIndex = 0;
             label.Text = labelText;
+            panel.Controls.Add(label); 
+        }
+
+        //public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font, Color color)
+        public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            label.AutoSize = true;
+            //label.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            label.Font = font;
+            //label.ForeColor = SystemColors.HotTrack;
+            //label.BackColor = Color.LightGray;
+            //label.BackColor = color;
+            label.Location = new Point(posX, posY);
+            label.Name = labelText;
+            label.Size = new Size(length, hight);
+            label.TabIndex = 0;
+            label.Text = labelText;
             panel.Controls.Add(label);
-           
+        }
+
+        public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font, Color foreColor, Color backColor)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            label.AutoSize = true;
+            //label.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            label.Font = font;
+            label.ForeColor = foreColor;
+            label.BackColor = backColor;
+            //label.BackColor = color;
+            label.Location = new Point(posX, posY);
+            label.Name = labelText;
+            label.Size = new Size(length, hight);
+            label.TabIndex = 0;
+            label.Text = labelText;
+            panel.Controls.Add(label);
         }
 
 
@@ -91,6 +131,19 @@ namespace PSO.Model
             textBox.TabIndex = 0;
             textBox.Text = labelText;
             Form.ActiveForm.Controls.Add(textBox);
+        }
+        public static void DisplayNewTextBoxOnPanel(TextBox textBox, Panel panel, int[] position, int[] size)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            textBox.Location = new Point(posX, posY);
+            //textBox.Name = labelText;
+            textBox.Size = new Size(length, hight);
+            textBox.TabIndex = 0;
+            //textBox.Text = labelText;
+            panel.Controls.Add(textBox);
         }
         public static void DisplayNewTextBoxOnPanel(TextBox textBox, Panel panel, int[] position, int[] size, string labelText)
         {

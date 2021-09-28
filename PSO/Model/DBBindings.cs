@@ -237,6 +237,45 @@ namespace PSO.Model
 
             return binding;
         }
+        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            decimal minPrice;
+            decimal maxPrice;
+            
+
+            var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+            if(decimal.TryParse(minPriceStr, out minPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice > minPrice);
+            }
+            if (decimal.TryParse(maxPriceStr, out maxPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice < maxPrice);
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
         public static BindingSource BindProductsToGridPrototype() //ok
         {
             psDBContext psContext = new psDBContext();
@@ -264,8 +303,40 @@ namespace PSO.Model
             binding.DataSource = queryProducts.ToList();
             return binding;
         }
-        public static BindingSource BindProductsToGridPrototype1() //WIP
+
+        public static BindingSource BindProductsToGridPrototype1(string keyword) 
         {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
+
+
+            public static BindingSource BindProductsToGridPrototype1() //WIP
+        {
+            //DateTime startTime = DateTime.Now;
+
             psDBContext psContext = new psDBContext();
 
             BindingSource binding = new BindingSource();
@@ -280,10 +351,10 @@ namespace PSO.Model
             string searchWord3 = "Black";
 
             var queryProducts = psContext.Products.Where(x=>x.ProductName!=" ");
-            //queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord3)); //ok
+            queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord3)); //ok
             queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord1)); //ok
             queryProducts = queryProducts.Where(x => x.crtSellPrice < maxSellPrice); //ok
-            //queryProducts = queryProducts.Where(x => x.Stock >= minStock);  //ok
+            queryProducts = queryProducts.Where(x => x.Stock >= minStock);  //ok
             //queryProducts = queryProducts.Where(x => x.SubCategory.Category.Name == category);    //ok
             //queryProducts = queryProducts.Where(x => x.SubCategory.Name == subcategory);  //ok
             //queryProducts = queryProducts.Where(x => x.Manufacturer.Name == manufacturer);    //ok
@@ -305,6 +376,7 @@ namespace PSO.Model
                                       };
 
             binding.DataSource = queryProductsReturn.ToList();
+            //MessageBox.Show("Duration: " + (DateTime.Now - startTime));
             return binding;
         }
 

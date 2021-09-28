@@ -403,6 +403,12 @@ namespace PSO
             this.label24 = new System.Windows.Forms.Label();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
 
             this.panel13 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
@@ -742,6 +748,58 @@ namespace PSO
                 { sizeXButton28, sizeYButton28 }, "button28", "Search");
             this.button28.Click += new System.EventHandler(this.button28_Click);
 
+            string label26Text = "Key words:";
+            int xPosLabel26 = xPosButton28;
+            int yPosLabel26 = yPosButton28 + sizeYButton28 + yItemsSpace;
+            int sizeXLabel26 = ClaculateLabelLenght(label26Text);
+            int sizeYLabel26 = 24;
+            var label26Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //var label26BackColor = System.Drawing.Color.White;
+            DisplayNewLabelOnPanel(label26, panel12, new int[2] { xPosLabel26, yPosLabel26 }, new int[2]
+                { sizeXLabel26, sizeYLabel26 }, label26Text, label26Font);
+
+            int xPosTextBox13 = xPosLabel26 + sizeXLabel26 + xItemsSpace;
+            int yPosTextBox13 = yPosLabel26;
+            int sizeXTextBox13 = 70;
+            int sizeYTextBox13 = 24;
+            DisplayNewTextBoxOnPanel(textBox13, panel12, new int[2] { xPosTextBox13, yPosTextBox13 }, new int[2]
+                { sizeXTextBox13, sizeYTextBox13 });
+
+            string label27Text = "Min. price:";
+            int xPosLabel27 = xPosLabel26;
+            int yPosLabel27 = yPosLabel26 + sizeYLabel26 + yItemsSpace;
+            int sizeXLabel27 = ClaculateLabelLenght(label27Text);
+            int sizeYLabel27 = 24;
+            var label27Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //var label26BackColor = System.Drawing.Color.White;
+            DisplayNewLabelOnPanel(label27, panel12, new int[2] { xPosLabel27, yPosLabel27 }, new int[2]
+                { sizeXLabel27, sizeYLabel27 }, label27Text, label27Font);
+
+            string label28Text = "Max. price:";
+            int xPosLabel28 = xPosLabel27;
+            int yPosLabel28 = yPosLabel27 + sizeYLabel27 + yItemsSpace;
+            int sizeXLabel28 = ClaculateLabelLenght(label27Text);
+            int sizeYLabel28 = 24;
+            var label28Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //var label26BackColor = System.Drawing.Color.White;
+            DisplayNewLabelOnPanel(label28, panel12, new int[2] { xPosLabel28, yPosLabel28 }, new int[2]
+                { sizeXLabel28, sizeYLabel28 }, label28Text, label28Font);
+
+            int xPosTextBox14 = xPosLabel27 + sizeXLabel27 + xItemsSpace - 5;
+            int yPosTextBox14 = yPosLabel27;
+            int sizeXTextBox14 = 70;
+            int sizeYTextBox14 = 24;
+            DisplayNewTextBoxOnPanel(textBox14, panel12, new int[2] { xPosTextBox14, yPosTextBox14 }, new int[2]
+                { sizeXTextBox14, sizeYTextBox14 });
+
+            int xPosTextBox15 = xPosLabel28 + sizeXLabel28 + xItemsSpace -5;
+            int yPosTextBox15 = yPosLabel28;
+            int sizeXTextBox15 = 70;
+            int sizeYTextBox15 = 24;
+            DisplayNewTextBoxOnPanel(textBox15, panel12, new int[2] { xPosTextBox15, yPosTextBox15 }, new int[2]
+                { sizeXTextBox15, sizeYTextBox15 });
+
+
             DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel13", true);
             this.Controls.Add(this.panel13);
             panel13.Hide();
@@ -762,11 +820,15 @@ namespace PSO
                 { xPosDataGridView3, yPosDataGridView3}, new int[2] { sizeXDataGridView3, sizeYDataGridView3 });
             //dataGridView3.DataSource = BindProductsToGrid(); //ok
             //dataGridView3.DataSource = BindProductsToGridPrototype(); //ok
-            dataGridView3.DataSource = BindProductsToGridPrototype1(); //WIP
+
+            dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text); //WIP
+            
 
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.CellContentClick += new DataGridViewCellEventHandler(dataGridView3_CellContentClick);
 
+            //MessageBox.Show("cell column index:" + activeCellIndex);
+            //MessageBox.Show("search time");
             /*
             
 
@@ -833,6 +895,12 @@ namespace PSO
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox15;
 
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label25;
