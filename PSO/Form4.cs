@@ -473,6 +473,14 @@ namespace PSO
         {
 
         }
+        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
@@ -529,15 +537,29 @@ namespace PSO
             panel10.Hide();
             panel9.Hide();
             ProductsQuery();
-            //panel13.Show();
 
         }
         private void ProductsQuery()
         {
             //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text);
-            dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text);
+            //dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text);
+            string categorySelection = "";
+            string manufacturerSelection = "";
+
+            if (checkBox1.Checked == true)
+            {
+                categorySelection = listBox4.SelectedItem.ToString();
+            }
+            if (checkBox2.Checked == true)
+            {
+                manufacturerSelection = listBox5.SelectedItem.ToString();
+            }
+
+            //dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text, categorySelection);
+            dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text, categorySelection, manufacturerSelection);
             panel13.Show();
         }
+        //public void CheckBoxSelected
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 

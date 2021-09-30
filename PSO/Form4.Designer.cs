@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using static PSO.Model.FormElementsDisplay;
 using static PSO.Model.DBBindings;
+using System.Collections.Generic;
 
 namespace PSO
 {
@@ -409,6 +410,13 @@ namespace PSO
             this.label28 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
 
             this.panel13 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
@@ -433,27 +441,31 @@ namespace PSO
             int origY = panelItemsOriginCoord[1];
             int xMargin = 5;
             int yMargin = 5;
-            int xItemsSpace = 40;
-            int yItemsSpace = 15;
+            int xItemsSpace = 5; //40
+            int yItemsSpace = 5; //15
+            const int textSmall = 24;
+            const int longButtonX = 140;
+            const int StandardTextBox = 70;
+            var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             string label10Text = "Please add product main characteristics";
             int xPosLabel10 = 3 * xMargin;
             int yPosLabel10 = yMargin;
-            int sizeXLabel10 = ClaculateLabelLenght(label10Text);
+            int sizeXLabel10 = CalculateLabelLenght(label10Text);
             int sizeYLabel10 = 24;
             DisplayNewLabelOnPanel(label10, panel8, new int[2] { xPosLabel10, yPosLabel10 }, new int[2]
                 { sizeXLabel10, sizeYLabel10 }, label10Text);
 
             string label11Text = "Category";
             int xPosLabel11 = 3 * xMargin;
-            int yPosLabel11 = yPosLabel10 + sizeYLabel10 + 2 * yItemsSpace;
-            int sizeXLabel11 = ClaculateLabelLenght(label11Text);
+            int yPosLabel11 = yPosLabel10 + sizeYLabel10 + 6 * yItemsSpace;
+            int sizeXLabel11 = CalculateLabelLenght(label11Text);
             int sizeYLabel11 = 24;
             DisplayNewLabelOnPanel(label11, panel8, new int[2] { xPosLabel11, yPosLabel11 }, new int[2]
                 { sizeXLabel11, sizeYLabel11 }, label11Text);
 
             int xPosTextBox5 = xPosLabel11;
-            int yPosTextBox5 = yPosLabel11 + sizeYLabel11 + yItemsSpace;
+            int yPosTextBox5 = yPosLabel11 + sizeYLabel11 + 3*yItemsSpace;
             int sizeXTextBox5 = 120;
             int sizeYTextBox5 = 24;
             DisplayNewTextBoxOnPanel(textBox5, panel8, new int[2] { xPosTextBox5, yPosTextBox5 }, new int[2]
@@ -461,7 +473,7 @@ namespace PSO
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
 
             int xPosButton22 = xPosTextBox5;
-            int yPosButton22 = yPosTextBox5 + sizeYTextBox5 + yItemsSpace;
+            int yPosButton22 = yPosTextBox5 + sizeYTextBox5 + 3*yItemsSpace;
             int sizeXButton22 = 40;
             int sizeYButton22 = 24;
             DisplayNewButtonOnPanel(button22, panel8, new int[2] { xPosButton22, yPosButton22 }, new int[2]
@@ -470,15 +482,15 @@ namespace PSO
 
 
             string label12Text = "Manufacturer";
-            int xPosLabel12 = xPosLabel11 + sizeXLabel11 + xItemsSpace * 4;
+            int xPosLabel12 = xPosLabel11 + sizeXLabel11 + xItemsSpace * 32;
             int yPosLabel12 = yPosLabel11;
-            int sizeXLabel12 = ClaculateLabelLenght(label12Text);
+            int sizeXLabel12 = CalculateLabelLenght(label12Text);
             int sizeYLabel12 = 24;
             DisplayNewLabelOnPanel(label12, panel8, new int[2] { xPosLabel12, yPosLabel12 }, new int[2]
                 { sizeXLabel12, sizeYLabel12 }, label12Text);
 
             int xPosTextBox6 = xPosLabel12;
-            int yPosTextBox6 = yPosLabel12 + sizeYLabel12 + yItemsSpace;
+            int yPosTextBox6 = yPosLabel12 + sizeYLabel12 + yItemsSpace*3;
             int sizeXTextBox6 = 120;
             int sizeYTextBox6 = 24;
             DisplayNewTextBoxOnPanel(textBox6, panel8, new int[2] { xPosTextBox6, yPosTextBox6 }, new int[2]
@@ -486,7 +498,7 @@ namespace PSO
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
 
             int xPosButton23 = xPosTextBox6;
-            int yPosButton23 = yPosTextBox6 + sizeYTextBox6 + yItemsSpace;
+            int yPosButton23 = yPosTextBox6 + sizeYTextBox6 + yItemsSpace*3;
             int sizeXButton23 = 40;
             int sizeYButton23 = 24;
             DisplayNewButtonOnPanel(button23, panel8, new int[2] { xPosButton23, yPosButton23 }, new int[2]
@@ -501,29 +513,29 @@ namespace PSO
             string label14Text = "Please add product secondary characteristics";
             int xPosLabel14 = 3 * xMargin;
             int yPosLabel14 = yMargin;
-            int sizeXLabel14 = ClaculateLabelLenght(label14Text);
+            int sizeXLabel14 = CalculateLabelLenght(label14Text);
             int sizeYLabel14 = 24;
             DisplayNewLabelOnPanel(label14, panel9, new int[2] { xPosLabel14, yPosLabel14 }, new int[2]
                 { sizeXLabel14, sizeYLabel14 }, label14Text);
 
             string label13Text = "Subcategory";
             int xPosLabel13 = xPosLabel14;
-            int yPosLabel13 = yPosLabel14 + sizeYLabel14 + 2 * yItemsSpace;
-            int sizeXLabel13 = ClaculateLabelLenght(label13Text);
+            int yPosLabel13 = yPosLabel14 + sizeYLabel14 + 6 * yItemsSpace;
+            int sizeXLabel13 = CalculateLabelLenght(label13Text);
             int sizeYLabel13 = 24;
             DisplayNewLabelOnPanel(label13, panel9, new int[2] { xPosLabel13, yPosLabel13 }, new int[2]
                 { sizeXLabel13, sizeYLabel13 }, label13Text);
 
             string label15Text = "Category";
-            int xPosLabel15 = xPosLabel13 + sizeXLabel13 + 2 * xItemsSpace;
+            int xPosLabel15 = xPosLabel13 + sizeXLabel13 + 16 * xItemsSpace;
             int yPosLabel15 = yPosLabel13;
-            int sizeXLabel15 = ClaculateLabelLenght(label13Text);
+            int sizeXLabel15 = CalculateLabelLenght(label13Text);
             int sizeYLabel15 = 24;
             DisplayNewLabelOnPanel(label15, panel9, new int[2] { xPosLabel15, yPosLabel15 }, new int[2]
                 { sizeXLabel15, sizeYLabel15 }, label15Text);
 
             int xPosTextBox7 = xPosLabel13;
-            int yPosTextBox7 = yPosLabel13 + sizeYLabel13 + yItemsSpace;
+            int yPosTextBox7 = yPosLabel13 + sizeYLabel13 + 3*yItemsSpace;
             int sizeXTextBox7 = 120;
             int sizeYTextBox7 = 24;
             DisplayNewTextBoxOnPanel(textBox7, panel9, new int[2] { xPosTextBox7, yPosTextBox7 }, new int[2]
@@ -541,7 +553,7 @@ namespace PSO
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 
             int xPosButton24 = xPosTextBox7;
-            int yPosButton24 = yPosTextBox7 + sizeYTextBox7 + yItemsSpace;
+            int yPosButton24 = yPosTextBox7 + sizeYTextBox7 + 3*yItemsSpace;
             int sizeXButton24 = 40;
             int sizeYButton24 = 24;
             DisplayNewButtonOnPanel(button24, panel9, new int[2] { xPosButton24, yPosButton24 }, new int[2]
@@ -555,23 +567,23 @@ namespace PSO
             string label16Text = "Please fill all product fields";
             int xPosLabel16 = 3 * xMargin;
             int yPosLabel16 = yMargin;
-            int sizeXLabel16 = ClaculateLabelLenght(label16Text);
+            int sizeXLabel16 = CalculateLabelLenght(label16Text);
             int sizeYLabel16 = 24;
             DisplayNewLabelOnPanel(label16, panel10, new int[2] { xPosLabel16, yPosLabel16 }, new int[2]
                 { sizeXLabel16, sizeYLabel16 }, label16Text);
 
             string label17Text = "Product name:";
             int xPosLabel17 = xPosLabel16;
-            int yPosLabel17 = yPosLabel16 + sizeYLabel16 + 2 * yItemsSpace;
-            int sizeXLabel17 = ClaculateLabelLenght(label17Text);
+            int yPosLabel17 = yPosLabel16 + sizeYLabel16 + 6 * yItemsSpace;
+            int sizeXLabel17 = CalculateLabelLenght(label17Text);
             int sizeYLabel17 = 24;
             DisplayNewLabelOnPanel(label17, panel10, new int[2] { xPosLabel17, yPosLabel17 }, new int[2]
                 { sizeXLabel17, sizeYLabel17 }, label17Text);
 
             string label18Text = "Product model:";
-            int xPosLabel18 = xPosLabel17 + sizeXLabel17 + 4 * xItemsSpace;
+            int xPosLabel18 = xPosLabel17 + sizeXLabel17 + 32 * xItemsSpace;
             int yPosLabel18 = yPosLabel17;
-            int sizeXLabel18 = ClaculateLabelLenght(label17Text);
+            int sizeXLabel18 = CalculateLabelLenght(label17Text);
             int sizeYLabel18 = 24;
             DisplayNewLabelOnPanel(label18, panel10, new int[2] { xPosLabel18, yPosLabel18 }, new int[2]
                 { sizeXLabel18, sizeYLabel18 }, label18Text);
@@ -595,7 +607,7 @@ namespace PSO
             string label19Text = "Manufacturer:";
             int xPosLabel19 = xPosLabel17;
             int yPosLabel19 = yPosTextBox8 + sizeYTextBox8 + yItemsSpace;
-            int sizeXLabel19 = ClaculateLabelLenght(label19Text);
+            int sizeXLabel19 = CalculateLabelLenght(label19Text);
             int sizeYLabel19 = 24;
             DisplayNewLabelOnPanel(label19, panel10, new int[2] { xPosLabel19, yPosLabel19 }, new int[2]
                 { sizeXLabel19, sizeYLabel19 }, label19Text);
@@ -603,7 +615,7 @@ namespace PSO
             string label20Text = "Subcategory:";
             int xPosLabel20 = xPosLabel18;
             int yPosLabel20 = yPosTextBox9 + sizeYTextBox9 + yItemsSpace;
-            int sizeXLabel20 = ClaculateLabelLenght(label20Text);
+            int sizeXLabel20 = CalculateLabelLenght(label20Text);
             int sizeYLabel20 = 24;
             DisplayNewLabelOnPanel(label20, panel10, new int[2] { xPosLabel20, yPosLabel20 }, new int[2]
                 { sizeXLabel20, sizeYLabel20 }, label20Text);
@@ -631,29 +643,29 @@ namespace PSO
             string label21Text = "Starting stock:";
             int xPosLabel21 = xPosLabel19;
             int yPosLabel21 = ylistBox2 + sizeYlistBox2 + yItemsSpace;
-            int sizeXLabel21 = ClaculateLabelLenght(label21Text);
+            int sizeXLabel21 = CalculateLabelLenght(label21Text);
             int sizeYLabel21 = 24;
             DisplayNewLabelOnPanel(label21, panel10, new int[2] { xPosLabel21, yPosLabel21 }, new int[2]
                 { sizeXLabel21, sizeYLabel21 }, label21Text);
 
             string label22Text = "Sell price:";
-            int xPosLabel22 = xPosLabel21 + sizeXLabel21 + 2 * xItemsSpace;
+            int xPosLabel22 = xPosLabel21 + sizeXLabel21 + 16 * xItemsSpace;
             int yPosLabel22 = yPosLabel21;
-            int sizeXLabel22 = ClaculateLabelLenght(label22Text);
+            int sizeXLabel22 = CalculateLabelLenght(label22Text);
             int sizeYLabel22 = 24;
             DisplayNewLabelOnPanel(label22, panel10, new int[2] { xPosLabel22, yPosLabel22 }, new int[2]
                 { sizeXLabel22, sizeYLabel22 }, label22Text);
 
             string label23Text = "Supplier price:";
-            int xPosLabel23 = xPosLabel22 + sizeXLabel22 + 2 * xItemsSpace;
+            int xPosLabel23 = xPosLabel22 + sizeXLabel22 + 16 * xItemsSpace;
             int yPosLabel23 = yPosLabel21;
-            int sizeXLabel23 = ClaculateLabelLenght(label22Text);
+            int sizeXLabel23 = CalculateLabelLenght(label22Text);
             int sizeYLabel23 = 24;
             DisplayNewLabelOnPanel(label23, panel10, new int[2] { xPosLabel23, yPosLabel23 }, new int[2]
                 { sizeXLabel23, sizeYLabel23 }, label23Text);
 
             int xPosTextBox10 = xPosLabel21;
-            int yPosTextBox10 = yPosLabel21 + sizeYLabel21 + yItemsSpace;
+            int yPosTextBox10 = yPosLabel21 + sizeYLabel21 + 3*yItemsSpace;
             int sizeXTextBox10 = 70;
             int sizeYTextBox10 = 24;
             DisplayNewTextBoxOnPanel(textBox10, panel10, new int[2] { xPosTextBox10, yPosTextBox10 }, new int[2]
@@ -661,7 +673,7 @@ namespace PSO
             //textBox10.TextChanged += new EventHandler(textBox10_TextChanged);
 
             int xPosTextBox11 = xPosLabel22;
-            int yPosTextBox11 = yPosLabel22 + sizeYLabel22 + yItemsSpace;
+            int yPosTextBox11 = yPosLabel22 + sizeYLabel22 + 3*yItemsSpace;
             int sizeXTextBox11 = 70;
             int sizeYTextBox11 = 24;
             DisplayNewTextBoxOnPanel(textBox11, panel10, new int[2] { xPosTextBox11, yPosTextBox11 }, new int[2]
@@ -669,16 +681,16 @@ namespace PSO
             //textBox11.TextChanged += new EventHandler(textBox11_TextChanged);
 
             int xPosTextBox12 = xPosLabel23;
-            int yPosTextBox12 = yPosLabel23 + sizeYLabel22 + yItemsSpace;
+            int yPosTextBox12 = yPosLabel23 + sizeYLabel22 + 3*yItemsSpace;
             int sizeXTextBox12 = 70;
             int sizeYTextBox12 = 24;
             DisplayNewTextBoxOnPanel(textBox12, panel10, new int[2] { xPosTextBox12, yPosTextBox12 }, new int[2]
                 { sizeXTextBox12, sizeYTextBox12 }, "Supplier price");
 
             string Button25Text = "Add product to DB";
-            int xPosButton25 = xPosLabel16 + sizeXLabel16 + 3 * xItemsSpace;
+            int xPosButton25 = xPosLabel16 + sizeXLabel16 + 24 * xItemsSpace;
             int yPosButton25 = yPosLabel16;
-            int sizeXButton25 = ClaculateLabelLenght(Button25Text) * 2;
+            int sizeXButton25 = CalculateLabelLenght(Button25Text) * 2;
             int sizeYButton25 = 24;
             DisplayNewButtonOnPanel(button25, panel10, new int[2] { xPosButton25, yPosButton25 }, new int[2]
                 { sizeXButton25, sizeYButton25 }, "button25", Button25Text);
@@ -697,7 +709,7 @@ namespace PSO
             this.button19.Click += new System.EventHandler(this.button19_Click);
 
             int xPosButton20 = xPosButton19;
-            int yPosButton20 = yPosButton19 + sizeYButton19 + yItemsSpace;
+            int yPosButton20 = yPosButton19 + sizeYButton19 + 3*yItemsSpace;
             int sizeXButton20 = 140;
             int sizeYButton20 = 24;
             DisplayNewButtonOnPanel(button20, panel11, new int[2] { xPosButton20, yPosButton20 }, new int[2]
@@ -705,7 +717,7 @@ namespace PSO
             this.button20.Click += new System.EventHandler(this.button20_Click);
 
             int xPosButton21 = xPosButton19;
-            int yPosButton21 = yPosButton20 + sizeYButton20 + yItemsSpace;
+            int yPosButton21 = yPosButton20 + sizeYButton20 + 3*yItemsSpace;
             int sizeXButton21 = 140;
             int sizeYButton21 = 24;
             DisplayNewButtonOnPanel(button21, panel11, new int[2] { xPosButton21, yPosButton21 }, new int[2]
@@ -713,7 +725,7 @@ namespace PSO
             this.button21.Click += new System.EventHandler(this.button21_Click);
 
             int xPosButton26 = xPosButton19;
-            int yPosButton26 = yPosButton21 + sizeYButton21 + yItemsSpace;
+            int yPosButton26 = yPosButton21 + sizeYButton21 + 3*yItemsSpace;
             int sizeXButton26 = 140;
             int sizeYButton26 = 24;
             DisplayNewButtonOnPanel(button26, panel11, new int[2] { xPosButton26, yPosButton26 }, new int[2]
@@ -727,77 +739,101 @@ namespace PSO
             string label24Text = "Product search:";
             int xPosLabel24 = xMargin;
             int yPosLabel24 = yMargin;
-            int sizeXLabel24 = ClaculateLabelLenght(label24Text);
+            int sizeXLabel24 = CalculateLabelLenght(label24Text);
             int sizeYLabel24 = 24;
+            
             DisplayNewLabelOnPanel(label24, panel12, new int[2] { xPosLabel24, yPosLabel24 }, new int[2]
                 { sizeXLabel24, sizeYLabel24 }, label24Text);
 
-            int xPosButton27 = xPosLabel24;
-            int yPosButton27 = yPosLabel24 + sizeYLabel24 + yItemsSpace;
-            int sizeXButton27 = 140;
-            int sizeYButton27 = 24;
-            DisplayNewButtonOnPanel(button27, panel12, new int[2] { xPosButton27, yPosButton27 }, new int[2]
-                { sizeXButton27, sizeYButton27 }, "button27", "Back");
+            DisplayNewButtonOnPanel(button27, panel12, label24, new int[2] { 0, yItemsSpace }, new int[2]
+                { longButtonX, textSmall }, "Back", standardFont);
+
             this.button27.Click += new System.EventHandler(this.button27_Click);
 
-            int xPosButton28 = xPosLabel24;
-            int yPosButton28 = yPosButton27 + sizeYButton27 + yItemsSpace;
-            int sizeXButton28 = 140;
-            int sizeYButton28 = 24;
-            DisplayNewButtonOnPanel(button28, panel12, new int[2] { xPosButton28, yPosButton28 }, new int[2]
-                { sizeXButton28, sizeYButton28 }, "button28", "Search");
+            DisplayNewButtonOnPanel(button28, panel12, button27, new int[2] { 0, yItemsSpace }, new int[2]
+                { longButtonX, textSmall }, "Search", standardFont);
+
             this.button28.Click += new System.EventHandler(this.button28_Click);
 
             string label26Text = "Key words:";
-            int xPosLabel26 = xPosButton28;
-            int yPosLabel26 = yPosButton28 + sizeYButton28 + yItemsSpace;
-            int sizeXLabel26 = ClaculateLabelLenght(label26Text);
-            int sizeYLabel26 = 24;
-            var label26Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //var label26BackColor = System.Drawing.Color.White;
-            DisplayNewLabelOnPanel(label26, panel12, new int[2] { xPosLabel26, yPosLabel26 }, new int[2]
-                { sizeXLabel26, sizeYLabel26 }, label26Text, label26Font);
 
-            int xPosTextBox13 = xPosLabel26 + sizeXLabel26 + xItemsSpace;
-            int yPosTextBox13 = yPosLabel26;
-            int sizeXTextBox13 = 70;
-            int sizeYTextBox13 = 24;
-            DisplayNewTextBoxOnPanel(textBox13, panel12, new int[2] { xPosTextBox13, yPosTextBox13 }, new int[2]
-                { sizeXTextBox13, sizeYTextBox13 });
+            DisplayNewLabelOnPanel(label26, panel12, button28, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label26Text), textSmall }, label26Text, standardFont);
 
-            string label27Text = "Min. price:";
-            int xPosLabel27 = xPosLabel26;
-            int yPosLabel27 = yPosLabel26 + sizeYLabel26 + yItemsSpace;
-            int sizeXLabel27 = ClaculateLabelLenght(label27Text);
-            int sizeYLabel27 = 24;
-            var label27Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //var label26BackColor = System.Drawing.Color.White;
-            DisplayNewLabelOnPanel(label27, panel12, new int[2] { xPosLabel27, yPosLabel27 }, new int[2]
-                { sizeXLabel27, sizeYLabel27 }, label27Text, label27Font);
+            DisplayNewTextBoxOnPanel(textBox13, panel12, label26, new int[2] { xItemsSpace, 0 },
+                new int[2] { StandardTextBox, textSmall }, "");
+
+            string label27Text = "Min. price: ";
+            DisplayNewLabelOnPanel(label27, panel12, label26, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label27Text), textSmall }, label27Text, standardFont);
 
             string label28Text = "Max. price:";
-            int xPosLabel28 = xPosLabel27;
-            int yPosLabel28 = yPosLabel27 + sizeYLabel27 + yItemsSpace;
-            int sizeXLabel28 = ClaculateLabelLenght(label27Text);
-            int sizeYLabel28 = 24;
-            var label28Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //var label26BackColor = System.Drawing.Color.White;
-            DisplayNewLabelOnPanel(label28, panel12, new int[2] { xPosLabel28, yPosLabel28 }, new int[2]
-                { sizeXLabel28, sizeYLabel28 }, label28Text, label28Font);
+            DisplayNewLabelOnPanel(label28, panel12, label27, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label28Text), textSmall }, label28Text, standardFont);
 
-            int xPosTextBox14 = xPosLabel27 + sizeXLabel27 + xItemsSpace - 5;
-            int yPosTextBox14 = yPosLabel27;
-            int sizeXTextBox14 = 70;
-            int sizeYTextBox14 = 24;
-            DisplayNewTextBoxOnPanel(textBox14, panel12, new int[2] { xPosTextBox14, yPosTextBox14 }, new int[2]
-                { sizeXTextBox14, sizeYTextBox14 });
+            DisplayNewTextBoxOnPanel(textBox14, panel12,  new int[2] { textBox13.Location.X, label27.Location.Y },
+                new int[2] { StandardTextBox, textSmall }, "");
 
-            int xPosTextBox15 = xPosLabel28 + sizeXLabel28 + xItemsSpace -5;
-            int yPosTextBox15 = yPosLabel28;
-            int sizeXTextBox15 = 70;
-            int sizeYTextBox15 = 24;
-            DisplayNewTextBoxOnPanel(textBox15, panel12, new int[2] { xPosTextBox15, yPosTextBox15 }, new int[2]
-                { sizeXTextBox15, sizeYTextBox15 });
+            DisplayNewTextBoxOnPanel(textBox15, panel12, new int[2] { textBox13.Location.X, label28.Location.Y },
+                new int[2] { StandardTextBox, textSmall }, "");
+
+            /*
+            string label29Text = "Category";
+            DisplayNewLabelOnPanel(label29, panel12, label28, new int[2] { 0, yItemsSpace }, 
+                new int[2] { CalculateLabelLenght(label29Text), textSmall }, label29Text, standardFont);
+            */
+            
+            string checkBox1Text = "Category";
+            DisplayCheckBox(checkBox1, panel12, label28, new int[2] { 0, 2*yItemsSpace },
+                            new int[2] { CalculateLabelLenght(checkBox1Text), textSmall }, checkBox1Text, standardFont);
+            
+
+            List<int[]> SizeAndSpaceListBox4 = new List<int[]>();
+            int[] sizeListBox4 = {140, 60};
+            SizeAndSpaceListBox4.Add(sizeListBox4);
+            int[] spacersListBox4 = { 0, 3*yItemsSpace };
+            SizeAndSpaceListBox4.Add(spacersListBox4);
+            int[] spaceFactorListBox4 = { 1, 0 };
+            SizeAndSpaceListBox4.Add(spaceFactorListBox4);
+            DisplayListBox(listBox4, panel12, checkBox1, SizeAndSpaceListBox4, "Category", BindCategories());
+            //DisplayListBox(listBox4, panel12, label29, SizeAndSpaceListBox4, "Category", BindCategories());
+            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+
+            /*
+            string label30Text = "Manufacturer";
+            DisplayNewLabelOnPanel(label30, panel12, listBox4, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label30Text), textSmall }, label30Text, standardFont);
+            */
+            string checkBox2Text = "Manufacturer";
+            DisplayCheckBox(checkBox2, panel12, listBox4, new int[2] { 0, yItemsSpace },
+                            new int[2] { CalculateLabelLenght(checkBox2Text), textSmall }, checkBox2Text, standardFont);
+
+            List<int[]> SizeAndSpaceListBox5 = new List<int[]>();
+            int[] sizeListBox5 = { 140, 60 };
+            SizeAndSpaceListBox5.Add(sizeListBox5);
+            int[] spacersListBox5 = { 0, 3*yItemsSpace };
+            SizeAndSpaceListBox5.Add(spacersListBox5);
+            int[] spaceFactorListBox5 = { 1, 0 };
+            SizeAndSpaceListBox4.Add(spaceFactorListBox4);
+            DisplayListBox(listBox5, panel12, checkBox2, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers());
+            //DisplayListBox(listBox5, panel12, label30, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers());
+            //DisplayListBox(listBox5, panel12, label30, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers(), "--select--");
+
+            this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
+
+
+            /*
+            string listBox1Text = "Select Category";
+            int xlistBox1 = xPosLabel15;
+            int ylistBox1 = yPosTextBox7;
+            int sizeXlistBox1 = 140;
+            int sizeYlistBox1 = 90;
+            DisplayListBox(listBox1, panel9, new int[2] { xlistBox1, ylistBox1 }, new int[2]
+                { sizeXlistBox1, sizeYlistBox1 }, listBox1Text, BindCategories());
+            //listBox1.DataSource = BindCategories();
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+             
+            */
 
 
             DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel13", true);
@@ -807,13 +843,13 @@ namespace PSO
             string label25Text = "Products found:";
             int xPosLabel25 = xMargin;
             int yPosLabel25 = yMargin;
-            int sizeXLabel25 = ClaculateLabelLenght(label25Text);
+            int sizeXLabel25 = CalculateLabelLenght(label25Text);
             int sizeYLabel25 = 24;
             DisplayNewLabelOnPanel(label25, panel13, new int[2] { xPosLabel25, yPosLabel25 }, new int[2]
                 { sizeXLabel25, sizeYLabel25 }, label25Text);
 
             int xPosDataGridView3 = xPosLabel25;
-            int yPosDataGridView3 = yPosLabel25 + sizeYLabel25 + yItemsSpace;
+            int yPosDataGridView3 = yPosLabel25 + sizeYLabel25 + 3*yItemsSpace;
             int sizeXDataGridView3 = 600;
             int sizeYDataGridView3 = 150;
             DisplayNewDataGridViewOnPanel(dataGridView3, panel13, new int[2]
@@ -821,7 +857,7 @@ namespace PSO
             //dataGridView3.DataSource = BindProductsToGrid(); //ok
             //dataGridView3.DataSource = BindProductsToGridPrototype(); //ok
 
-            dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text); //WIP
+            //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text); //WIP
             
 
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -901,10 +937,18 @@ namespace PSO
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
 
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dataGridView3;
+        
 
         /*
         private System.Windows.Forms.DataGridView dataGridView1;

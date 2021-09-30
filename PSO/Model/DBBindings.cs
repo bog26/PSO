@@ -276,6 +276,151 @@ namespace PSO.Model
             binding.DataSource = queryProductsReturn.ToList();
             return binding;
         }
+        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr, string category, string manufacturer)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            decimal minPrice;
+            decimal maxPrice;
+            int maxAllowedResults =500;
+
+            //var queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            //var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+
+            //var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+            var queryProducts = psContext.Products.Where(x => x.ProductName != " ").Take(maxAllowedResults);
+
+            if (manufacturer != String.Empty)
+            {
+                queryProducts = psContext.Products.Where(x => x.Manufacturer.Name == manufacturer);
+            }
+
+            if (category != String.Empty)
+            {
+                queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            }
+
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+            if (decimal.TryParse(minPriceStr, out minPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice > minPrice);
+            }
+            if (decimal.TryParse(maxPriceStr, out maxPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice < maxPrice);
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            //binding.DataSource = queryProductsReturn.Take(4).ToList();
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
+
+        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr, string category)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            decimal minPrice;
+            decimal maxPrice;
+
+            //var queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            //var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+
+            var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+            if(category != String.Empty)
+            {
+                queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            }
+
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+            if (decimal.TryParse(minPriceStr, out minPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice > minPrice);
+            }
+            if (decimal.TryParse(maxPriceStr, out maxPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice < maxPrice);
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
+        /*
+        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr, string category, string Manufacturer)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            decimal minPrice;
+            decimal maxPrice;
+
+            var queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            //var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
+
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+            if (decimal.TryParse(minPriceStr, out minPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice > minPrice);
+            }
+            if (decimal.TryParse(maxPriceStr, out maxPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice < maxPrice);
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Stock = product.Stock,
+                                          ManufPrice = product.crtManufacturerPrice,
+                                          SellPrice = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
+        */
+
         public static BindingSource BindProductsToGridPrototype() //ok
         {
             psDBContext psContext = new psDBContext();

@@ -46,9 +46,37 @@ namespace PSO.Model
             label.Text = labelText;
             panel.Controls.Add(label); 
         }
+        //public static void DisplayNewLabelRelativeOnPanel(Label label, Panel panel, Control controlForRelativePosition, int[] spacers, int[] size, string labelText, Font font)
+        public static void DisplayNewLabelOnPanel(Label label, Panel panel, Control parentItem, int[] spacers,  int[] size, string labelText, Font font)
+        {
+           
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
 
-        //public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font, Color color)
-        public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font)
+            if(spacers[0] !=0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height+ spacers[1];
+            }
+
+            int[] pointPos = new int[2];
+            int length = size[0];
+            int hight = size[1];
+            label.AutoSize = true;
+            label.Font = font;
+            label.Location = new Point(posX, posY);
+            label.Name = labelText;
+            label.Size = new Size(length, hight);
+            label.TabIndex = 0;
+            label.Text = labelText;
+            panel.Controls.Add(label);
+        }
+
+            //public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font, Color color)
+            public static void DisplayNewLabelOnPanel(Label label, Panel panel, int[] position, int[] size, string labelText, Font font)
         {
             int posX = position[0];
             int posY = position[1];
@@ -159,6 +187,30 @@ namespace PSO.Model
             panel.Controls.Add(textBox);
         }
 
+        public static void DisplayNewTextBoxOnPanel(TextBox textBox, Panel panel, Control parentItem, int[] spacers, int[] size, string labelText)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+            if(labelText != String.Empty)
+            {
+                textBox.Name = labelText;
+                textBox.Text = labelText;
+            }
+            textBox.Location = new Point(posX, posY);
+            textBox.Size = new Size(size[0], size[1]);
+            panel.Controls.Add(textBox);
+            
+        }
+
         public static void DisplayNewButton(Button button, int[] position, int[] size, string name, string buttonText)
         {
             int posX = position[0];
@@ -187,23 +239,37 @@ namespace PSO.Model
             panel.Controls.Add(button);
         }
 
-        /*
-        public static void DisplayNewPanel(int[] position, int[] size, string name, bool withBorder)
+        //public static void DisplayNewLabelOnPanel(Label label, Panel panel, Control parentItem, int[] spacers,  int[] size, string labelText, Font font)
+        public static void DisplayNewButtonOnPanel(Button button, Panel panel, Control parentItem, int[] spacers, int[] size, string buttonText, Font font)
         {
-            int posX = position[0];
-            int posY = position[1];
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+
+            //int[] pointPos = new int[2];
             int length = size[0];
             int hight = size[1];
-            panel.Location = new Point(posX, posY);
-            panel.Name = name;
-            panel.Size = new Size(length, hight);
-            if(withBorder)
-            {
-                panel.BorderStyle = BorderStyle.FixedSingle;
-            }
-            //Form.ActiveForm.Controls.Add(panel);
+            button.AutoSize = true;
+            button.Font = font;
+            button.Location = new Point(posX, posY);
+            button.Name = buttonText;
+            button.Size = new Size(length, hight);
+            //button.TabIndex = 0;
+            button.Text = buttonText;
+            button.UseVisualStyleBackColor = true;
+            panel.Controls.Add(button);
+
         }
-        */
+
+   
 
         public static void DisplayNewPanel(Panel panel, int[] position, int[] size, string name, bool withBorder)
         {
@@ -236,15 +302,95 @@ namespace PSO.Model
             panel.Controls.Add(listbox);
         }
 
+        public static void DisplayListBox(ListBox listbox, Panel panel, Control parentItem, List <int[]>SizeAndSpace, string name, BindingSource source)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+            int[] size = SizeAndSpace[0];
+            int[] spacers = SizeAndSpace[1];
+            int[] spaceFactor = SizeAndSpace[2];
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0]* spaceFactor[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1]*spaceFactor[1];
+            }
+            listbox.FormattingEnabled = true;
+            listbox.Location = new Point(posX, posY);
+            listbox.Name = name;
+            listbox.Size = new Size(size[0], size[1]);
+            listbox.DataSource = source;
+            panel.Controls.Add(listbox);
+            
+        }
+
+        public static void DisplayListBox(ListBox listbox, Panel panel, Control parentItem, List<int[]> SizeAndSpace, string name, BindingSource source, string defaultText)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+            int[] size = SizeAndSpace[0];
+            int[] spacers = SizeAndSpace[1];
+            int[] spaceFactor = SizeAndSpace[2];
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0] * spaceFactor[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1] * spaceFactor[1];
+            }
+            listbox.SelectedItem = null;
+            listbox.SelectedIndex = -1;
+            //listbox.Text = defaultText;
+            listbox.FormattingEnabled = true;
+            listbox.Location = new Point(posX, posY);
+            listbox.Name = name;
+            listbox.Size = new Size(size[0], size[1]);
+
+            listbox.DataSource = source;
+            panel.Controls.Add(listbox);
+
+        }
+
+        public static void DisplayCheckBox(CheckBox checkbox, Panel panel, Control parentItem, int[] spacers, int[] size, string checkBoxText, Font font)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+            checkbox.AutoSize = true;
+            checkbox.Font = font;
+            checkbox.Location = new Point(posX, posY);
+            checkbox.Name = checkBoxText;
+            checkbox.Text = checkBoxText;
+            checkbox.Size = new Size(size[0], size[1]);
+            checkbox.UseVisualStyleBackColor = true;
+
+            panel.Controls.Add(checkbox);
+        }
 
 
-        public static void clearPanel(Panel panel)
+
+
+
+            public static void clearPanel(Panel panel)
         {
             panel.Controls.Clear();
         }
        
 
-        public static int ClaculateLabelLenght(string labelText)
+        public static int CalculateLabelLenght(string labelText)
         {
             int length = labelText.Length * 5;
             return length;
