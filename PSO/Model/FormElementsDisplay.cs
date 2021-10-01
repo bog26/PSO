@@ -287,6 +287,22 @@ namespace PSO.Model
             //Form.ActiveForm.Controls.Add(panel);
         }
 
+        public static void DisplayNewPanel(Panel panel, Panel parentPanel, int[] position, int[] size, string name, bool withBorder)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            panel.Location = new Point(posX, posY);
+            panel.Name = name;
+            panel.Size = new Size(length, hight);
+            if (withBorder)
+            {
+                panel.BorderStyle = BorderStyle.FixedSingle;
+            }
+            parentPanel.Controls.Add(panel);
+        }
+
         public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name, BindingSource source)
         //public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name)
         {

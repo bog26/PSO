@@ -417,10 +417,16 @@ namespace PSO
             this.label30 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.button29 = new System.Windows.Forms.Button();
 
             this.panel13 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.button30 = new System.Windows.Forms.Button();
 
             //this.panel8.SuspendLayout();
             //this.SuspendLayout();
@@ -443,9 +449,9 @@ namespace PSO
             int yMargin = 5;
             int xItemsSpace = 5; //40
             int yItemsSpace = 5; //15
-            const int textSmall = 24;
-            const int longButtonX = 140;
-            const int StandardTextBox = 70;
+            const int SMALLTEXT = 24;
+            const int STDTEXTBOX = 70;
+            const int LONGITEM = 140;
             var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             string label10Text = "Please add product main characteristics";
@@ -746,36 +752,36 @@ namespace PSO
                 { sizeXLabel24, sizeYLabel24 }, label24Text);
 
             DisplayNewButtonOnPanel(button27, panel12, label24, new int[2] { 0, yItemsSpace }, new int[2]
-                { longButtonX, textSmall }, "Back", standardFont);
+                { LONGITEM, SMALLTEXT }, "Back", standardFont);
 
             this.button27.Click += new System.EventHandler(this.button27_Click);
 
             DisplayNewButtonOnPanel(button28, panel12, button27, new int[2] { 0, yItemsSpace }, new int[2]
-                { longButtonX, textSmall }, "Search", standardFont);
+                { LONGITEM, SMALLTEXT }, "Search", standardFont);
 
             this.button28.Click += new System.EventHandler(this.button28_Click);
 
             string label26Text = "Key words:";
 
             DisplayNewLabelOnPanel(label26, panel12, button28, new int[2] { 0, yItemsSpace },
-                new int[2] { CalculateLabelLenght(label26Text), textSmall }, label26Text, standardFont);
+                new int[2] { CalculateLabelLenght(label26Text), SMALLTEXT }, label26Text, standardFont);
 
             DisplayNewTextBoxOnPanel(textBox13, panel12, label26, new int[2] { xItemsSpace, 0 },
-                new int[2] { StandardTextBox, textSmall }, "");
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
 
             string label27Text = "Min. price: ";
             DisplayNewLabelOnPanel(label27, panel12, label26, new int[2] { 0, yItemsSpace },
-                new int[2] { CalculateLabelLenght(label27Text), textSmall }, label27Text, standardFont);
+                new int[2] { CalculateLabelLenght(label27Text), SMALLTEXT }, label27Text, standardFont);
 
             string label28Text = "Max. price:";
             DisplayNewLabelOnPanel(label28, panel12, label27, new int[2] { 0, yItemsSpace },
-                new int[2] { CalculateLabelLenght(label28Text), textSmall }, label28Text, standardFont);
+                new int[2] { CalculateLabelLenght(label28Text), SMALLTEXT }, label28Text, standardFont);
 
             DisplayNewTextBoxOnPanel(textBox14, panel12,  new int[2] { textBox13.Location.X, label27.Location.Y },
-                new int[2] { StandardTextBox, textSmall }, "");
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
 
             DisplayNewTextBoxOnPanel(textBox15, panel12, new int[2] { textBox13.Location.X, label28.Location.Y },
-                new int[2] { StandardTextBox, textSmall }, "");
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
 
             /*
             string label29Text = "Category";
@@ -785,7 +791,7 @@ namespace PSO
             
             string checkBox1Text = "Category";
             DisplayCheckBox(checkBox1, panel12, label28, new int[2] { 0, 2*yItemsSpace },
-                            new int[2] { CalculateLabelLenght(checkBox1Text), textSmall }, checkBox1Text, standardFont);
+                            new int[2] { CalculateLabelLenght(checkBox1Text), SMALLTEXT }, checkBox1Text, standardFont);
             
 
             List<int[]> SizeAndSpaceListBox4 = new List<int[]>();
@@ -806,7 +812,7 @@ namespace PSO
             */
             string checkBox2Text = "Manufacturer";
             DisplayCheckBox(checkBox2, panel12, listBox4, new int[2] { 0, yItemsSpace },
-                            new int[2] { CalculateLabelLenght(checkBox2Text), textSmall }, checkBox2Text, standardFont);
+                            new int[2] { CalculateLabelLenght(checkBox2Text), SMALLTEXT }, checkBox2Text, standardFont);
 
             List<int[]> SizeAndSpaceListBox5 = new List<int[]>();
             int[] sizeListBox5 = { 140, 60 };
@@ -816,23 +822,12 @@ namespace PSO
             int[] spaceFactorListBox5 = { 1, 0 };
             SizeAndSpaceListBox4.Add(spaceFactorListBox4);
             DisplayListBox(listBox5, panel12, checkBox2, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers());
-            //DisplayListBox(listBox5, panel12, label30, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers());
-            //DisplayListBox(listBox5, panel12, label30, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers(), "--select--");
-
             this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
 
-
             /*
-            string listBox1Text = "Select Category";
-            int xlistBox1 = xPosLabel15;
-            int ylistBox1 = yPosTextBox7;
-            int sizeXlistBox1 = 140;
-            int sizeYlistBox1 = 90;
-            DisplayListBox(listBox1, panel9, new int[2] { xlistBox1, ylistBox1 }, new int[2]
-                { sizeXlistBox1, sizeYlistBox1 }, listBox1Text, BindCategories());
-            //listBox1.DataSource = BindCategories();
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-             
+            DisplayNewButtonOnPanel(button29, panel12, listBox5, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { longButtonX, textSmall }, "Enable Edit", standardFont);
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             */
 
 
@@ -854,34 +849,42 @@ namespace PSO
             int sizeYDataGridView3 = 150;
             DisplayNewDataGridViewOnPanel(dataGridView3, panel13, new int[2]
                 { xPosDataGridView3, yPosDataGridView3}, new int[2] { sizeXDataGridView3, sizeYDataGridView3 });
-            //dataGridView3.DataSource = BindProductsToGrid(); //ok
-            //dataGridView3.DataSource = BindProductsToGridPrototype(); //ok
-
-            //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text); //WIP
-            
 
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.CellContentClick += new DataGridViewCellEventHandler(dataGridView3_CellContentClick);
 
-            //MessageBox.Show("cell column index:" + activeCellIndex);
-            //MessageBox.Show("search time");
             /*
-            
-
-            
-            
-             */
-
-
-            //Form4
-            /*
-            this.Controls.Add(this.panel8);
-            this.Name = "Form4";
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            int xPosPanel14 = xPosDataGridView3;
+            int yPosPanel14 = yPosDataGridView3 + sizeYDataGridView3 + 3 * yItemsSpace;
+            int sizeXPanel14 = 300;
+            int sizeYPanel14 = 100;
+            DisplayNewPanel(panel14, panel13, new int[2] { xPosPanel14, yPosPanel14 }, 
+                            new int[2] { sizeXPanel14, sizeYPanel14 }, "panel14", true);
             */
+
+            //panel14.Hide();
+
+            string checkBox3Text = "Enable update";
+            DisplayCheckBox(checkBox3, panel13, dataGridView3, new int[2] { 0, 2*yItemsSpace },
+                            new int[2] { CalculateLabelLenght(checkBox3Text), SMALLTEXT }, checkBox3Text, standardFont);
+
+            DisplayNewButtonOnPanel(button30, panel13, checkBox3, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Update", standardFont);
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+
+            DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
+                new int[2] { LONGITEM, SMALLTEXT }, "value");
+            //DisplayNewTextBoxOnPanel(textBox16, panel13, button30, new int[2] { 2*xItemsSpace, 0 },
+            //    new int[2] { StandardTextBox, textSmall }, "value");
+
+
+
+            /*
+            DisplayNewButtonOnPanel(button30, panel13, new int[2] { 50, 80 }, new int[2]
+                { longButtonX, textSmall }, "button30", "Update");
+            this.button29.Click += new System.EventHandler(this.button30_Click);
+            */
+
 
         }
 
@@ -944,11 +947,17 @@ namespace PSO
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button button29;
 
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dataGridView3;
-        
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox textBox16;
+
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button button30;
+
 
         /*
         private System.Windows.Forms.DataGridView dataGridView1;

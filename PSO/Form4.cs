@@ -253,14 +253,31 @@ namespace PSO
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
-            if (dataGridView2.Rows[0].Cells[e.ColumnIndex].Value != null)
+            int columnHeadIndex = -1;
+            int[] allowedColumnIndexes = new int[4] {0,5,6,7};
+
+            if (e.RowIndex != columnHeadIndex)
             {
-                string cellContent = dataGridView2.Rows[0].Cells[e.ColumnIndex].Value.ToString();
-                textBox2.Text = cellContent;
-                textBox2.Refresh();
+                if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null
+                    && DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
+                {
+                    string cellContent = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    textBox16.Text = cellContent;
+                    textBox16.Refresh();
+                }
+            }
+            /*
+            if (e.RowIndex != columnHeadIndex)
+            {
+                if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    string cellContent = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    textBox16.Text = cellContent;
+                    textBox16.Refresh();
+                }
             }
             */
+
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -391,47 +408,7 @@ namespace PSO
             panel7.Hide();
             panel13.Hide();
             panel11.Show();
-            //panel5.Show();
-      
-            //DisplayNewPanel(panel5, new int[2] { 300, 82 }, new int[2] { 180, 350 }, "panel5", true);
-            //Form.ActiveForm.Controls.Add(panel5);
-            //DisplayNewPanel(panel6, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel6", true);
-            //Form.ActiveForm.Controls.Add(panel6);
-            /*
-            int xPosButton19 = origX;
-            int yPosButton19 = origY;
-            int sizeXButton19 = 140;
-            int sizeYButton19 = 24;
-            DisplayNewButtonOnPanel(button19, panel5, new int[2] { origX, origY }, new int[2] { sizeXButton19, sizeYButton19 },
-                "button19", "Add main characteristics");
-            button19.Click += new EventHandler(button19_Click);
-
-            int xPosButton20 = xPosButton19;
-            int yPosButton20 = yPosButton19 + sizeYButton19 + yItemsSpace;
-            int sizeXButton20 = 140;
-            int sizeYButton20 = 24;
-            DisplayNewButtonOnPanel(button20, panel5, new int[2] { xPosButton20, yPosButton20 }, new int[2] 
-                { sizeXButton20, sizeYButton20 }, "button20", "Add sec characteristics");
-            button20.Click += new EventHandler(button20_Click);
-
-            int xPosButton21 = xPosButton19;
-            int yPosButton21 = yPosButton20 + sizeYButton20 + yItemsSpace;
-            int sizeXButton21 = 140;
-            int sizeYButton21 = 24;
-            DisplayNewButtonOnPanel(button21, panel5, new int[2] { xPosButton21, yPosButton21 }, new int[2]
-                { sizeXButton21, sizeYButton21 }, "button21", "Add product");
-            button21.Click += new EventHandler(button21_Click);
-
-            */
-            /*
-            int xPosButton26 = xPosButton19;
-            int yPosButton26 = yPosButton21 + sizeYButton21 + yItemsSpace;
-            int sizeXButton26 = 140;
-            int sizeYButton26 = 24;
-            DisplayNewButtonOnPanel(button26, panel5, new int[2] { xPosButton26, yPosButton26 }, new int[2]
-                { sizeXButton26, sizeYButton26 }, "button26", "Search products");
-            button26.Click += new EventHandler(button26_Click);
-            */
+            
 
         }
         private void button19_Click(object sender, EventArgs e)
@@ -539,7 +516,34 @@ namespace PSO
             ProductsQuery();
 
         }
-        private void ProductsQuery()
+        private void button29_Click(object sender, EventArgs e)
+        {
+            if(button29.Text == "Disable edit")
+            {
+                button29.Text = "Enable edit";
+                //panel14.Hide();
+            }
+            else
+            {
+                button29.Text = "Disable edit";
+                //panel14.Hide();
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            string value = textBox16.Text;
+            int activeCellIndex = dataGridView3.CurrentCell.ColumnIndex;
+            string activeColumn = dataGridView3.Columns[activeCellIndex].Name;
+            //MessageBox.Show("cell column index:"+activeCellIndex);
+
+            //MessageBox.Show("updating " + activeColumn+" with "+ value);
+            //UpdateDataGridMessageBox(activeColumn, value);
+            //DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
+            //dataGridView3.Refresh();
+        }
+
+            private void ProductsQuery()
         {
             //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text);
             //dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text);

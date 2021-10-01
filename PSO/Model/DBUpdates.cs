@@ -200,6 +200,20 @@ namespace PSO.Model
             psContext.SaveChanges();
         }
 
+        public static bool DataGridViewAllowCustomExtraction(int cellIndex,int[] allowedColumnIndexes)
+        {
+            bool cellDataExtractionAllowed = false;
+            foreach(int allowedIndex in allowedColumnIndexes)
+            {
+                if (cellIndex == allowedIndex)
+                {
+                    cellDataExtractionAllowed = true;
+                }
+            }
+
+            return cellDataExtractionAllowed;
+        }
+
 
 
     }
