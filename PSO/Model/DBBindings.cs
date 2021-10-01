@@ -280,7 +280,7 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
-
+            
             decimal minPrice;
             decimal maxPrice;
             int maxAllowedResults =500;
@@ -313,6 +313,7 @@ namespace PSO.Model
             var queryProductsReturn = from product in queryProducts
                                       select new
                                       {
+                                          PID = product.Id,
                                           Name = product.ProductName,
                                           Model = product.Model,
                                           Category = product.SubCategory.Category,
@@ -360,6 +361,7 @@ namespace PSO.Model
             var queryProductsReturn = from product in queryProducts
                                       select new
                                       {
+                                          
                                           Name = product.ProductName,
                                           Model = product.Model,
                                           Category = product.SubCategory.Category,

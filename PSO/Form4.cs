@@ -254,7 +254,7 @@ namespace PSO
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int columnHeadIndex = -1;
-            int[] allowedColumnIndexes = new int[4] {0,5,6,7};
+            int[] allowedColumnIndexes = new int[4] {1,6,7,8};
 
             if (e.RowIndex != columnHeadIndex)
             {
@@ -266,17 +266,6 @@ namespace PSO
                     textBox16.Refresh();
                 }
             }
-            /*
-            if (e.RowIndex != columnHeadIndex)
-            {
-                if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-                {
-                    string cellContent = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    textBox16.Text = cellContent;
-                    textBox16.Refresh();
-                }
-            }
-            */
 
         }
 
@@ -530,20 +519,29 @@ namespace PSO
             }
         }
 
-        private void button30_Click(object sender, EventArgs e)
+        private void button30_Click(object sender, EventArgs e) 
         {
-            string value = textBox16.Text;
-            int activeCellIndex = dataGridView3.CurrentCell.ColumnIndex;
-            string activeColumn = dataGridView3.Columns[activeCellIndex].Name;
-            //MessageBox.Show("cell column index:"+activeCellIndex);
-
-            //MessageBox.Show("updating " + activeColumn+" with "+ value);
-            //UpdateDataGridMessageBox(activeColumn, value);
-            //DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
-            //dataGridView3.Refresh();
+            if( AllowProductUpdate() )
+            {
+                string value = textBox16.Text;
+                int activeCellIndex = dataGridView3.CurrentCell.ColumnIndex;
+                int activeColumn = dataGridView3.Columns[activeCellIndex].DisplayIndex;
+                int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
+                int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
+                DBUpdates.WriteProductDataToDB(crtProductId, activeColumn, value);
+            }
+        }
+        private bool AllowProductUpdate()
+        {
+            bool allowUpdate = false;
+            if (checkBox3.Checked == true)
+            {
+                allowUpdate = true;
+            }
+            return allowUpdate;
         }
 
-            private void ProductsQuery()
+        private void ProductsQuery()
         {
             //dataGridView3.DataSource = BindProductsToGridPrototype1(textBox13.Text);
             //dataGridView3.DataSource = BindProductsToGrid(textBox13.Text, textBox14.Text, textBox15.Text);

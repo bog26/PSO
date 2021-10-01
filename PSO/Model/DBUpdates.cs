@@ -19,9 +19,6 @@ namespace PSO.Model
             {
                 var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
                 pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId); 
-                //pdata = psContext.UserPersonalDatas.Find(crtUser.UserInfo.Id); //not ok
-                
-
             }
             else 
             {
@@ -213,6 +210,39 @@ namespace PSO.Model
 
             return cellDataExtractionAllowed;
         }
+        public static void WriteProductDataToDB(int productId, int column, string value )  
+        {
+            var psContext = new psDBContext();
+            var crtProd = psContext.Products.Find(productId);
+
+            if (column == 1)
+            {
+                crtProd.ProductName = value;
+            }
+            else if(column ==6)
+            {
+                if(int.TryParse(value,out int stock))
+                {
+                    crtProd.Stock = stock;
+                }
+            }
+            else if (column == 7)
+            {
+                if (decimal.TryParse(value, out decimal manufPrice))
+                {
+                    crtProd.crtManufacturerPrice = manufPrice;
+                }
+            }
+            else if (column == 8)
+            {
+                if (decimal.TryParse(value, out decimal sellPrice))
+                {
+                    crtProd.crtSellPrice = sellPrice;
+                }
+            }
+            psContext.SaveChanges();
+        }
+
 
 
 

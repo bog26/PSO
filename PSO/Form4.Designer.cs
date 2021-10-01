@@ -428,16 +428,6 @@ namespace PSO
             this.panel14 = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
 
-            //this.panel8.SuspendLayout();
-            //this.SuspendLayout();
-            /*
-             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.SuspendLayout();
-             */
-
 
             DisplayNewPanel(panel8, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel8", true);
             this.Controls.Add(this.panel8);
@@ -783,12 +773,7 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox15, panel12, new int[2] { textBox13.Location.X, label28.Location.Y },
                 new int[2] { STDTEXTBOX, SMALLTEXT }, "");
 
-            /*
-            string label29Text = "Category";
-            DisplayNewLabelOnPanel(label29, panel12, label28, new int[2] { 0, yItemsSpace }, 
-                new int[2] { CalculateLabelLenght(label29Text), textSmall }, label29Text, standardFont);
-            */
-            
+   
             string checkBox1Text = "Category";
             DisplayCheckBox(checkBox1, panel12, label28, new int[2] { 0, 2*yItemsSpace },
                             new int[2] { CalculateLabelLenght(checkBox1Text), SMALLTEXT }, checkBox1Text, standardFont);
@@ -802,14 +787,9 @@ namespace PSO
             int[] spaceFactorListBox4 = { 1, 0 };
             SizeAndSpaceListBox4.Add(spaceFactorListBox4);
             DisplayListBox(listBox4, panel12, checkBox1, SizeAndSpaceListBox4, "Category", BindCategories());
-            //DisplayListBox(listBox4, panel12, label29, SizeAndSpaceListBox4, "Category", BindCategories());
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
 
-            /*
-            string label30Text = "Manufacturer";
-            DisplayNewLabelOnPanel(label30, panel12, listBox4, new int[2] { 0, yItemsSpace },
-                new int[2] { CalculateLabelLenght(label30Text), textSmall }, label30Text, standardFont);
-            */
+
             string checkBox2Text = "Manufacturer";
             DisplayCheckBox(checkBox2, panel12, listBox4, new int[2] { 0, yItemsSpace },
                             new int[2] { CalculateLabelLenght(checkBox2Text), SMALLTEXT }, checkBox2Text, standardFont);
@@ -823,13 +803,6 @@ namespace PSO
             SizeAndSpaceListBox4.Add(spaceFactorListBox4);
             DisplayListBox(listBox5, panel12, checkBox2, SizeAndSpaceListBox4, "Manufacturer", BindManufacturers());
             this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
-
-            /*
-            DisplayNewButtonOnPanel(button29, panel12, listBox5, new int[2] { 0, 2*yItemsSpace }, new int[2]
-                { longButtonX, textSmall }, "Enable Edit", standardFont);
-            this.button29.Click += new System.EventHandler(this.button29_Click);
-            */
-
 
             DisplayNewPanel(panel13, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel13", true);
             this.Controls.Add(this.panel13);
@@ -853,17 +826,6 @@ namespace PSO
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.CellContentClick += new DataGridViewCellEventHandler(dataGridView3_CellContentClick);
 
-            /*
-            int xPosPanel14 = xPosDataGridView3;
-            int yPosPanel14 = yPosDataGridView3 + sizeYDataGridView3 + 3 * yItemsSpace;
-            int sizeXPanel14 = 300;
-            int sizeYPanel14 = 100;
-            DisplayNewPanel(panel14, panel13, new int[2] { xPosPanel14, yPosPanel14 }, 
-                            new int[2] { sizeXPanel14, sizeYPanel14 }, "panel14", true);
-            */
-
-            //panel14.Hide();
-
             string checkBox3Text = "Enable update";
             DisplayCheckBox(checkBox3, panel13, dataGridView3, new int[2] { 0, 2*yItemsSpace },
                             new int[2] { CalculateLabelLenght(checkBox3Text), SMALLTEXT }, checkBox3Text, standardFont);
@@ -874,21 +836,8 @@ namespace PSO
 
             DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
                 new int[2] { LONGITEM, SMALLTEXT }, "value");
-            //DisplayNewTextBoxOnPanel(textBox16, panel13, button30, new int[2] { 2*xItemsSpace, 0 },
-            //    new int[2] { StandardTextBox, textSmall }, "value");
-
-
-
-            /*
-            DisplayNewButtonOnPanel(button30, panel13, new int[2] { 50, 80 }, new int[2]
-                { longButtonX, textSmall }, "button30", "Update");
-            this.button29.Click += new System.EventHandler(this.button30_Click);
-            */
-
-
         }
 
-        //TBD:
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -958,59 +907,5 @@ namespace PSO
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button button30;
 
-
-        /*
-        private System.Windows.Forms.DataGridView dataGridView1;
-        DataGridView dataGridView2 = new DataGridView();
-        TextBox textBox1 = new TextBox();
-        Label label5 = new Label();
-        Label label6 = new Label();
-        Label label7 = new Label();
-        Button button15 = new Button();
-        Label label8 = new Label();
-        TextBox textBox2 = new TextBox();
-        Button button16 = new Button();
-        Label label9 = new Label();
-        Button button17 = new Button();
-        TextBox textBox3 = new TextBox(); //old pass
-        TextBox textBox4 = new TextBox(); //new pass
-        Button button18 = new Button();
-        Panel panel5 = new Panel();
-        Button button19 = new Button();
-        Panel panel6 = new Panel();
-        Button button20 = new Button();
-        Panel panel7 = new Panel();
-        Label label10 = new Label();
-        Label label11 = new Label();
-        Label label12 = new Label();
-        Label label13 = new Label();
-        Label label14 = new Label();
-        Label label15 = new Label();
-        Label label16 = new Label();
-        Label label17 = new Label();
-        Label label18 = new Label();
-        Label label19 = new Label();
-        Label label20 = new Label();
-        Label label21 = new Label();
-        Label label22 = new Label();
-        Label label23 = new Label();
-
-        Button button21 = new Button();
-        Button button22 = new Button();
-        Button button23 = new Button();
-        Button button24 = new Button();
-        Button button25 = new Button();
-        TextBox textBox5 = new TextBox();
-        TextBox textBox6 = new TextBox();
-        TextBox textBox7 = new TextBox();
-        TextBox textBox8 = new TextBox();
-        TextBox textBox9 = new TextBox();
-        TextBox textBox10 = new TextBox();
-        TextBox textBox11 = new TextBox();
-        TextBox textBox12 = new TextBox();
-        ListBox listBox1 = new ListBox();
-        ListBox listBox2 = new ListBox();
-        ListBox listBox3 = new ListBox();
-         */
     }
 }
