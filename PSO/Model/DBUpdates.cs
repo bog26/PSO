@@ -80,8 +80,18 @@ namespace PSO.Model
                     MessageBox.Show(choice + ": " + change);
                     break;
                 case "StreetNr":
-                    userAddress.StreetNr = int.Parse(change);
-                    MessageBox.Show(choice + ": " + change);
+                    int address;
+                    if(int.TryParse(change, out address))
+                    {
+                        userAddress.StreetNr = address;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong input!");
+                    }
+                    //userAddress.StreetNr = int.Parse(change);
+                    //MessageBox.Show(choice + ": " + change);
                     break;
                 case "City":
                     userAddress.City = change;
