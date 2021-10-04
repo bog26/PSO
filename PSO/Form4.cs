@@ -386,36 +386,16 @@ namespace PSO
 
         private void button7_Click(object sender, EventArgs e)
         {
-            int[] panelItemsOriginCoord = new int[2] { 20, 20 };
-            int origX = panelItemsOriginCoord[0];
-            int origY = panelItemsOriginCoord[1];
-            int xMargin = 5;
-            int yMargin = 5;
-            int xItemsSpace = 40;
-            int yItemsSpace = 5;
-
             panel7.Hide();
             panel13.Hide();
             panel11.Show();
-            
-
         }
         private void button19_Click(object sender, EventArgs e)
         {
-            int[] panelItemsOriginCoord = new int[2] { 20, 20 };
-            int origX = panelItemsOriginCoord[0];
-            int origY = panelItemsOriginCoord[1];
-            int xMargin = 5;
-            int yMargin = 5;
-            int xItemsSpace = 40;
-            int yItemsSpace = 15;
-
             panel7.Hide();
             panel10.Hide();
             panel13.Hide();
             panel8.Show();
-            //panel6.Show();
-
         }
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
@@ -455,13 +435,6 @@ namespace PSO
 
         private void button21_Click(object sender, EventArgs e)
         {
-            int[] panelItemsOriginCoord = new int[2] { 20, 20 };
-            int origX = panelItemsOriginCoord[0];
-            int origY = panelItemsOriginCoord[1];
-            int xMargin = 5;
-            int yMargin = 5;
-            int xItemsSpace = 40;
-            int yItemsSpace = 15;
 
             panel7.Hide();
             panel8.Hide();

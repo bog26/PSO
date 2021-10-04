@@ -199,6 +199,7 @@
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\UserAddress.cs" />
+    <Compile Include="Model\UserInputCheck.cs" />
     <Compile Include="Model\UserPersonalData.cs" />
     <Compile Include="Model\UserQuery.cs" />
     <Compile Include="Model\Warehouse.cs" />

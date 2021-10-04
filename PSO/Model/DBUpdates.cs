@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace PSO.Model
 {
@@ -34,23 +35,53 @@ namespace PSO.Model
             switch (choice)
             {
                 case "FirstName":
-                    userData.FirstName = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if(UserInputCheck.CheckName(change))
+                    {
+                        userData.FirstName = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("wrong name");
+                    }
                     break;
                 case "LastName":
-                    userData.LastName = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckName(change))
+                    {
+                        userData.LastName = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong name");
+                    }
                     break;
                 case "email":
-                    userData.Email = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckEmailAddress(change))
+                    {
+                        userData.Email = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong email address");
+                    }
+
                     break;
                 case "Telephone":
-                    userData.Telephone = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckNumber(change))
+                    {
+                        userData.Telephone = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong number");
+                    }
                     break;    
             }
         }
+   
 
         public static void WriteUserAddressToDB(string choice, string input)  
         {
@@ -76,8 +107,16 @@ namespace PSO.Model
             switch (choice)
             {
                 case "Street":
-                    userAddress.Street = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckMultiName(change))
+                    {
+                        userAddress.Street = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong street name");
+                    }
+                    
                     break;
                 case "StreetNr":
                     int address;
@@ -90,24 +129,51 @@ namespace PSO.Model
                     {
                         MessageBox.Show("wrong input!");
                     }
-                    //userAddress.StreetNr = int.Parse(change);
-                    //MessageBox.Show(choice + ": " + change);
                     break;
                 case "City":
-                    userAddress.City = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckMultiName(change))
+                    {
+                        userAddress.City = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong city name");
+                    }
                     break;
                 case "Region":
-                    userAddress.Region = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckMultiName(change))
+                    {
+                        userAddress.Region = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong region name");
+                    }
                     break;
                 case "Country":
-                    userAddress.Country = change;
-                    MessageBox.Show(choice + ": " + change);
+                    if (UserInputCheck.CheckMultiName(change))
+                    {
+                        userAddress.Country = change;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong country name");
+                    }
                     break;
                 case "PostalCode":
-                    userAddress.PostalCode = int.Parse(change);
-                    MessageBox.Show(choice + ": " + change);
+                    int code;
+                    if (int.TryParse(change, out code))
+                    {
+                        userAddress.PostalCode = code;
+                        MessageBox.Show(choice + ": " + change);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("wrong input!");
+                    }
                     break;
             }
         }
