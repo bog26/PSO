@@ -286,39 +286,45 @@ namespace PSO.Model
 
             return cellDataExtractionAllowed;
         }
-        public static void WriteProductDataToDB(int productId, int column, string value )  
+        
+        public static bool WriteProductDataToDB(int productId, int column, string value)
         {
+            bool writeToDBSuccessful = false;
             var psContext = new psDBContext();
             var crtProd = psContext.Products.Find(productId);
 
             if (column == 1)
             {
                 crtProd.ProductName = value;
+                writeToDBSuccessful = true;
             }
-            else if(column ==6)
+            else if (column == 6)
             {
-                if(int.TryParse(value,out int stock))
+                if (int.TryParse(value, out int stock)&& stock>=0)
                 {
                     crtProd.Stock = stock;
+                    writeToDBSuccessful = true;
                 }
             }
             else if (column == 7)
             {
-                if (decimal.TryParse(value, out decimal manufPrice))
+                if (decimal.TryParse(value, out decimal manufPrice) && manufPrice >= 0)
                 {
                     crtProd.crtManufacturerPrice = manufPrice;
+                    writeToDBSuccessful = true;
                 }
             }
             else if (column == 8)
             {
-                if (decimal.TryParse(value, out decimal sellPrice))
+                if (decimal.TryParse(value, out decimal sellPrice) && sellPrice >= 0)
                 {
                     crtProd.crtSellPrice = sellPrice;
+                    writeToDBSuccessful = true;
                 }
             }
             psContext.SaveChanges();
+            return writeToDBSuccessful;
         }
-
 
 
 

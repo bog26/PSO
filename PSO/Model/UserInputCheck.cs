@@ -34,8 +34,8 @@ namespace PSO.Model
         public static bool CheckMultiName(string name)
         {
             bool inputIsCorrect;
-            Regex rgx = new Regex(@"^[A-Z]{1}[a-z]{1,20}(\s[A-Z]{1}[a-z]{1,20}){0,3}(\s[A-Z]{1}[a-z]{1,20}){0,1}$");
-            //Regex rgx = new Regex(@"^([A-Z]{1}[a-z]{1,20}\s){0,3}([A-Z]{1}[a-z]{1,20}){0,1}$");
+            //Regex rgx = new Regex(@"^[A-Z]{1}[a-z]{1,20}(\s[A-Z]{1}[a-z]{1,20}){0,3}(\s[A-Z]{1}[a-z]{1,20}){0,1}$");
+            Regex rgx = new Regex(@"^[A-Z]{1}[a-z]{1,20}(\s[A-Z]{1}[a-z]{1,20}){0,3}$");
             inputIsCorrect = rgx.IsMatch(name);
             return inputIsCorrect;
         }

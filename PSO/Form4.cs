@@ -501,7 +501,16 @@ namespace PSO
                 int activeColumn = dataGridView3.Columns[activeCellIndex].DisplayIndex;
                 int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
                 int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
-                DBUpdates.WriteProductDataToDB(crtProductId, activeColumn, value);
+                bool successfulDBUpdate = DBUpdates.WriteProductDataToDB(crtProductId, activeColumn, value);
+                if(successfulDBUpdate)
+                {
+                    ProductsQuery();
+                    MessageBox.Show("DB updated");  
+                }
+                else 
+                {
+                    MessageBox.Show("DB update failed due to incorrect input data");
+                }
             }
         }
         private bool AllowProductUpdate()
