@@ -39,3 +39,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddPublicManufacturerToProduct1.
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddSubCategoryToProduct1.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteManufacturerFromProducts.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteSubcategoryFromProducts.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddMessages.resources

@@ -174,18 +174,24 @@
     <Compile Include="Migrations\202109271602598_DeleteSubcategoryFromProducts.designer.cs">
       <DependentUpon>202109271602598_DeleteSubcategoryFromProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110092219333_AddMessages.cs" />
+    <Compile Include="Migrations\202110092219333_AddMessages.designer.cs">
+      <DependentUpon>202110092219333_AddMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\ClientBalance.cs" />
     <Compile Include="Model\DBBindings.cs" />
     <Compile Include="Model\DBUpdates.cs" />
+    <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\FormElementsDisplay.cs" />
     <Compile Include="Model\IBalance.cs" />
     <Compile Include="Model\InternalDBQueries.cs" />
     <Compile Include="Model\IQuery.cs" />
     <Compile Include="Model\IUser.cs" />
     <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109271602598_DeleteSubcategoryFromProducts.resx">
       <DependentUpon>202109271602598_DeleteSubcategoryFromProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110092219333_AddMessages.resx">
+      <DependentUpon>202110092219333_AddMessages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
