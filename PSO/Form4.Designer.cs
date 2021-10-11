@@ -428,6 +428,28 @@ namespace PSO
             this.panel14 = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
 
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label35 = new System.Windows.Forms.Label();
+
 
             DisplayNewPanel(panel8, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel8", true);
             this.Controls.Add(this.panel8);
@@ -836,6 +858,102 @@ namespace PSO
 
             DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
                 new int[2] { LONGITEM, SMALLTEXT }, "value");
+
+            
+            DisplayNewPanel(panel15, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panel15", true);
+            this.Controls.Add(this.panel15);
+            panel15.Hide();
+            
+            int xPosButton31 = origX;
+            int yPosButton31 = origY;
+            int sizeXButton31 = 140;
+            int sizeYButton31 = 24;
+            DisplayNewButtonOnPanel(button31, panel15, new int[2] { origX, origY }, new int[2] { sizeXButton31, sizeYButton31 },
+                "button31", "Inbox");
+            button31.Font = standardFont;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+
+            DisplayNewButtonOnPanel(button32, panel15, button31, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Sent", standardFont);
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+
+            DisplayNewButtonOnPanel(button33, panel15, button32, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Deleted", standardFont);
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+
+            DisplayNewButtonOnPanel(button34, panel15, button33, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Spam", standardFont);
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+
+            DisplayNewButtonOnPanel(button35, panel15, button34, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Compose", standardFont);
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+
+            
+            DisplayNewPanel(panel16, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel16", true);
+            this.Controls.Add(this.panel16);
+            panel16.Hide();
+
+            
+            string label31Text = "Inbox";
+            int xPosLabel31 = xMargin;
+            int yPosLabel31 = yMargin;
+            int sizeXLabel31 = CalculateLabelLenght(label24Text);
+            int sizeYLabel31 = 24;
+            DisplayNewLabelOnPanel(label31, panel16, new int[2] { xPosLabel31, yPosLabel31 }, new int[2]
+                { sizeXLabel31, sizeYLabel31 }, label31Text);
+
+            DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
+            this.Controls.Add(this.panel17);
+            panel17.Hide();
+
+            string label32Text = "Sent";
+            int xPosLabel32 = xMargin;
+            int yPosLabel32 = yMargin;
+            int sizeXLabel32 = CalculateLabelLenght(label32Text);
+            int sizeYLabel32 = 24;
+            DisplayNewLabelOnPanel(label32, panel17, new int[2] { xPosLabel32, yPosLabel32 }, new int[2]
+                { sizeXLabel32, sizeYLabel32 }, label32Text);
+
+            DisplayNewPanel(panel18, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel18", true);
+            this.Controls.Add(this.panel18);
+            panel18.Hide();
+
+            string label33Text = "Deleted";
+            int xPosLabel33 = xMargin;
+            int yPosLabel33 = yMargin;
+            int sizeXLabel33 = CalculateLabelLenght(label33Text);
+            int sizeYLabel33 = 24;
+            DisplayNewLabelOnPanel(label33, panel18, new int[2] { xPosLabel33, yPosLabel33 }, new int[2]
+                { sizeXLabel33, sizeYLabel33 }, label33Text);
+
+            DisplayNewPanel(panel19, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel19", true);
+            this.Controls.Add(this.panel19);
+            panel19.Hide();
+
+            string label34Text = "Spam";
+            int xPosLabel34 = xMargin;
+            int yPosLabel34 = yMargin;
+            int sizeXLabel34 = CalculateLabelLenght(label34Text);
+            int sizeYLabel34 = 24;
+            DisplayNewLabelOnPanel(label34, panel19, new int[2] { xPosLabel34, yPosLabel34 }, new int[2]
+                { sizeXLabel34, sizeYLabel34 }, label34Text);
+
+
+            DisplayNewPanel(panel20, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel20", true);
+            this.Controls.Add(this.panel20);
+            panel20.Hide();
+
+            string label35Text = "Compose";
+            int xPosLabel35 = xMargin;
+            int yPosLabel35 = yMargin;
+            int sizeXLabel35 = CalculateLabelLenght(label34Text);
+            int sizeYLabel35 = 24;
+            DisplayNewLabelOnPanel(label35, panel20, new int[2] { xPosLabel35, yPosLabel35 }, new int[2]
+                { sizeXLabel35, sizeYLabel35 }, label35Text);
+
+
+
         }
 
         private System.Windows.Forms.Panel panel8;
@@ -907,5 +1025,26 @@ namespace PSO
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button button30;
 
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label31;
+
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label label32;
+
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label33;
+
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label label34;
+
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Label label35;
     }
 }

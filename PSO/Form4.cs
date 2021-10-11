@@ -44,7 +44,7 @@ namespace PSO
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            HideEmailPanels();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -114,6 +114,8 @@ namespace PSO
             panel11.Hide();
             panel12.Hide();
             panel13.Hide();
+            panel15.Hide();
+            HideEmailPanels();
             panel7.Show();
             DisplayNewPanel(panel7, new int[2] { 235, 46 }, new int[2] { 900, 350 }, "panel7", true);
             Form.ActiveForm.Controls.Add(panel7);
@@ -272,6 +274,16 @@ namespace PSO
         private void button14_Click(object sender, EventArgs e)
         {
             HideUserInformationFormElements();
+            panel11.Hide();
+            panel8.Hide();
+            panel9.Hide();
+            panel10.Hide();
+            panel11.Hide();
+            panel12.Hide();
+            panel13.Hide();
+            panel7.Hide();
+
+            panel15.Show();
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -347,7 +359,7 @@ namespace PSO
 
         private void button1_Click(object sender, EventArgs e)
         {
- 
+            HideEmailPanels();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -388,6 +400,8 @@ namespace PSO
         {
             panel7.Hide();
             panel13.Hide();
+            panel15.Hide();
+            HideEmailPanels();
             panel11.Show();
         }
         private void button19_Click(object sender, EventArgs e)
@@ -395,6 +409,7 @@ namespace PSO
             panel7.Hide();
             panel10.Hide();
             panel13.Hide();
+            panel15.Hide();
             panel8.Show();
         }
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -412,6 +427,7 @@ namespace PSO
             panel8.Hide();
             panel10.Hide();
             panel13.Hide();
+            panel15.Hide();
             panel9.Show();
 
         }
@@ -440,6 +456,7 @@ namespace PSO
             panel8.Hide();
             panel9.Hide();
             panel13.Hide();
+            panel15.Hide();
             panel10.Show();
             
         }
@@ -452,6 +469,7 @@ namespace PSO
             panel10.Hide();
             panel11.Hide();
             panel13.Hide();
+            panel15.Hide();
             panel12.Show();
 
         }
@@ -464,6 +482,7 @@ namespace PSO
             panel10.Hide();
             panel12.Hide();
             panel13.Hide();
+            panel15.Hide();
             panel11.Show();
 
         }
@@ -475,6 +494,7 @@ namespace PSO
             panel8.Hide();
             panel10.Hide();
             panel9.Hide();
+
             ProductsQuery();
 
         }
@@ -622,7 +642,45 @@ namespace PSO
 
             return correctInputData;
         }
+        
 
+        private void button31_Click(object sender, EventArgs e)
+        {
+            HideShowEmailPanels(panel16);
+        }
+        private void button32_Click(object sender, EventArgs e)
+        {
+            HideShowEmailPanels(panel17);
+        }
+        private void button33_Click(object sender, EventArgs e)
+        {
+            HideShowEmailPanels(panel18);
+        }
+        private void button34_Click(object sender, EventArgs e)
+        {
+            HideShowEmailPanels(panel19);
+        }
+        private void button35_Click(object sender, EventArgs e)
+        {
+            HideShowEmailPanels(panel20);
+        }
+        private void HideShowEmailPanels(Panel panel)
+        {
+            panel16.Hide();
+            panel17.Hide();
+            panel18.Hide();
+            panel19.Hide();
+            panel20.Hide();
+            panel.Show();
+        }
+        private void HideEmailPanels()
+        {
+            panel16.Hide();
+            panel17.Hide();
+            panel18.Hide();
+            panel19.Hide();
+            panel20.Hide();
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
