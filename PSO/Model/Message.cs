@@ -14,6 +14,7 @@ namespace PSO.Model
 
         public string MessageTitle { get; set; }
         public string MessageBody { get; set; }
+        public DateTime MessageTime { get; set; }
         /*
         public void MessageSend(string title, string body)
         {

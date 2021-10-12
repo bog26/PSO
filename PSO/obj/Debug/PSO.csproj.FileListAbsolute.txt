@@ -41,3 +41,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteManufacturerFromProducts.r
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.DeleteSubcategoryFromProducts.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddMessages.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.ChangeMessages.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddTimeToMessages.resources

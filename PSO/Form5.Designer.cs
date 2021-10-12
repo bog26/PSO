@@ -49,11 +49,12 @@ namespace PSO
             this.button10 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
-            this.clientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.clientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -255,14 +256,6 @@ namespace PSO
             this.button9.Text = "Status";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // clientBindingSource1
-            // 
-            this.clientBindingSource1.DataSource = typeof(PSO.Model.Client);
-            // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(PSO.Model.Client);
-            // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(338, 64);
@@ -291,6 +284,22 @@ namespace PSO
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // clientBindingSource1
+            // 
+            this.clientBindingSource1.DataSource = typeof(PSO.Model.Client);
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(PSO.Model.Client);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(358, 319);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(423, 122);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = "";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +308,7 @@ namespace PSO
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.treeView1);
@@ -354,5 +364,6 @@ namespace PSO
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

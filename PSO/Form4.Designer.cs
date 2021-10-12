@@ -449,6 +449,14 @@ namespace PSO
 
             this.panel20 = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+
 
 
             DisplayNewPanel(panel8, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel8", true);
@@ -462,6 +470,7 @@ namespace PSO
             int xItemsSpace = 5; //40
             int yItemsSpace = 5; //15
             const int SMALLTEXT = 24;
+            const int SHORTITEM = 140;
             const int STDTEXTBOX = 70;
             const int LONGITEM = 140;
             var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -952,6 +961,31 @@ namespace PSO
             DisplayNewLabelOnPanel(label35, panel20, new int[2] { xPosLabel35, yPosLabel35 }, new int[2]
                 { sizeXLabel35, sizeYLabel35 }, label35Text);
 
+            DisplayNewLabelOnPanel(label36, panel20, label35, new int[2] { xItemsSpace, yItemsSpace }, new int[2]
+                { SHORTITEM, SMALLTEXT }, "To:", standardFont);
+            DisplayNewLabelOnPanel(label37, panel20, label36, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { SHORTITEM, SMALLTEXT }, "Title:", standardFont);
+            DisplayNewLabelOnPanel(label38, panel20, label37, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { SHORTITEM, SMALLTEXT }, "Message:", standardFont);
+            DisplayNewTextBoxOnPanel(textBox17, panel20, new int[2] { label36.Location.X+ label38.Size.Width+ 2*xItemsSpace, 
+                label36.Location.Y }, new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+            DisplayNewTextBoxOnPanel(textBox18, panel20, textBox17, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { SHORTITEM, SMALLTEXT }, "");
+
+            this.richTextBox1.Location = new System.Drawing.Point(label38.Location.X + label38.Size.Width + 2 * xItemsSpace,
+                label38.Location.Y);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(400, 200);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = "";
+            panel20.Controls.Add(richTextBox1);
+
+
+            //DisplayNewTextBoxOnPanel(textBox19, panel20, textBox18, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+            //    { 200, 400 }, "");
+
+
+
 
 
         }
@@ -1046,5 +1080,13 @@ namespace PSO
 
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+
     }
 }
