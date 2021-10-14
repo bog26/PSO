@@ -396,11 +396,42 @@ namespace PSO.Model
             panel.Controls.Add(checkbox);
         }
 
+        public static void DisplayNewRichTextBoxOnPanel(RichTextBox rTextBox, Panel panel, int[] position, int[] size, string labelText)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            rTextBox.Location = new Point(posX, posY);
+            rTextBox.Name = labelText;
+            rTextBox.Size = new Size(length, hight);
+            //rTextBox.TabIndex = 0;
+            //rTextBox.Text = labelText;
+            panel.Controls.Add(rTextBox);
+        }
 
+        public static void DisplayNewRichTextBoxOnPanel(RichTextBox rTextBox, Panel panel, Control parentItem, int[] spacers, int[] size, string checkBoxText, Font font)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
 
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+            rTextBox.Font = font;
+            rTextBox.Location = new Point(posX, posY);
+            rTextBox.Name = checkBoxText;
+            rTextBox.Text = "";
+            rTextBox.Size = new Size(size[0], size[1]);
+            panel.Controls.Add(rTextBox);
+        }
 
-
-            public static void clearPanel(Panel panel)
+        public static void clearPanel(Panel panel)
         {
             panel.Controls.Clear();
         }

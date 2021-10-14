@@ -6,8 +6,19 @@ using System.Threading.Tasks;
 
 namespace PSO.Model
 {
-    class Messaging<IUser, Message>
+    //class Messaging<IUser, Message>
+    public class Messaging
     {
-
+        //public static Message CreateMessage(string sender, string receiver,string title, string body)
+        public static Message CreateMessage(string[] args)
+        {
+            Message newMessage = new Message();
+            newMessage.Sender = args[0];
+            newMessage.Receiver = args[1];
+            newMessage.MessageTitle = args[2];
+            newMessage.MessageBody = args[3];
+            newMessage.MessageTime = DateTime.Now;
+            return newMessage;
+        }
     }
 }

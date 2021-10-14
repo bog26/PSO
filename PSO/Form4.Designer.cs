@@ -456,6 +456,7 @@ namespace PSO
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button36 = new System.Windows.Forms.Button();
 
 
 
@@ -972,19 +973,12 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox18, panel20, textBox17, new int[2] { 0, 2 * yItemsSpace }, new int[2]
                 { SHORTITEM, SMALLTEXT }, "");
 
-            this.richTextBox1.Location = new System.Drawing.Point(label38.Location.X + label38.Size.Width + 2 * xItemsSpace,
-                label38.Location.Y);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(400, 200);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
-            panel20.Controls.Add(richTextBox1);
+            DisplayNewRichTextBoxOnPanel(richTextBox1, panel20, textBox18, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { 400, 200 }, "richTextBox1", standardFont);
 
-
-            //DisplayNewTextBoxOnPanel(textBox19, panel20, textBox18, new int[2] { 0, 2 * yItemsSpace }, new int[2]
-            //    { 200, 400 }, "");
-
-
+            DisplayNewButtonOnPanel(button36, panel20, richTextBox1, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Send", standardFont);
+            this.button36.Click += new System.EventHandler(this.button36_Click);
 
 
 
@@ -1087,6 +1081,7 @@ namespace PSO
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button36;
 
     }
 }

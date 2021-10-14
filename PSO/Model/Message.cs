@@ -15,6 +15,26 @@ namespace PSO.Model
         public string MessageTitle { get; set; }
         public string MessageBody { get; set; }
         public DateTime MessageTime { get; set; }
+
+        public string MessageStatus { get; set; }
+        public Message()
+        {
+            MessageStatus = "sent";
+        }
+        public void ReadMessage()
+        {
+            MessageStatus = "read";
+        }
+        public void DeleteMessage()
+        {
+            MessageStatus = "deleted";
+        }
+        public void SpamMessage()
+        {
+            MessageStatus = "spam";
+        }
+
+
         /*
         public void MessageSend(string title, string body)
         {

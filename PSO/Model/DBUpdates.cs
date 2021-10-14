@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
+
 namespace PSO.Model
 {
     public class DBUpdates
@@ -19,9 +20,9 @@ namespace PSO.Model
             if (InternalDBQueries.CheckForAdminRights(loggedUser))
             {
                 var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
-                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId); 
+                pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
             }
-            else 
+            else
             {
                 var crtUser = psContext.Clients.First(x => x.UserName == loggedUser);
                 pdata = psContext.UserPersonalDatas.Find(crtUser.UserPersonalDataId);
@@ -35,12 +36,12 @@ namespace PSO.Model
             switch (choice)
             {
                 case "FirstName":
-                    if(UserInputCheck.CheckName(change))
+                    if (UserInputCheck.CheckName(change))
                     {
                         userData.FirstName = change;
                         MessageBox.Show(choice + ": " + change);
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("wrong name");
                     }
@@ -78,12 +79,12 @@ namespace PSO.Model
                     {
                         MessageBox.Show("wrong number");
                     }
-                    break;    
+                    break;
             }
         }
-   
 
-        public static void WriteUserAddressToDB(string choice, string input)  
+
+        public static void WriteUserAddressToDB(string choice, string input)
         {
             var psContext = new psDBContext();
             string loggedUser = Form.ActiveForm.Text;
@@ -116,11 +117,11 @@ namespace PSO.Model
                     {
                         MessageBox.Show("wrong street name");
                     }
-                    
+
                     break;
                 case "StreetNr":
                     int address;
-                    if(int.TryParse(change, out address))
+                    if (int.TryParse(change, out address))
                     {
                         userAddress.StreetNr = address;
                         MessageBox.Show(choice + ": " + change);
@@ -170,7 +171,7 @@ namespace PSO.Model
                         userAddress.PostalCode = code;
                         MessageBox.Show(choice + ": " + change);
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("wrong input!");
                     }
@@ -199,7 +200,7 @@ namespace PSO.Model
         {
             var psContext = new psDBContext();
             var existingCategories = psContext.ProductCategories.Where(x => x.Name == category).ToList();
-            if(existingCategories.Count==0)
+            if (existingCategories.Count == 0)
             {
                 var newCategory = new ProductCategory();
                 newCategory.Name = category;
@@ -254,7 +255,7 @@ namespace PSO.Model
 
             //check for existing productName
             var existingProductName = psContext.Products.Where(x => x.ProductName == productName).ToList();
-            if(existingProductName.Count == 0)
+            if (existingProductName.Count == 0)
             {
                 var newProduct = new Product();
                 newProduct.ProductName = productName;
@@ -267,16 +268,16 @@ namespace PSO.Model
                 newProduct.crtManufacturerPrice = supplierPrice;
                 newProduct.Manufacturer = Manufacturer;
                 psContext.Products.Add(newProduct);
-                
+
             }
 
             psContext.SaveChanges();
         }
 
-        public static bool DataGridViewAllowCustomExtraction(int cellIndex,int[] allowedColumnIndexes)
+        public static bool DataGridViewAllowCustomExtraction(int cellIndex, int[] allowedColumnIndexes)
         {
             bool cellDataExtractionAllowed = false;
-            foreach(int allowedIndex in allowedColumnIndexes)
+            foreach (int allowedIndex in allowedColumnIndexes)
             {
                 if (cellIndex == allowedIndex)
                 {
@@ -286,7 +287,7 @@ namespace PSO.Model
 
             return cellDataExtractionAllowed;
         }
-        
+
         public static bool WriteProductDataToDB(int productId, int column, string value)
         {
             bool writeToDBSuccessful = false;
@@ -300,7 +301,7 @@ namespace PSO.Model
             }
             else if (column == 6)
             {
-                if (int.TryParse(value, out int stock)&& stock>=0)
+                if (int.TryParse(value, out int stock) && stock >= 0)
                 {
                     crtProd.Stock = stock;
                     writeToDBSuccessful = true;
@@ -326,7 +327,17 @@ namespace PSO.Model
             return writeToDBSuccessful;
         }
 
-
-
+        public static bool WriteMessageToDB(Message newMessage)
+        {
+            bool writeToDBSuccessful = false;
+            if(InternalDBQueries.CheckForExistingUser(newMessage.Receiver))
+            {
+                var psContext = new psDBContext();
+                psContext.Messages.Add(newMessage);
+                psContext.SaveChanges();
+                writeToDBSuccessful = true;
+            }
+            return writeToDBSuccessful;
+        }
     }
 }

@@ -664,6 +664,42 @@ namespace PSO
         {
             HideShowEmailPanels(panel20);
         }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            if(CheckIfEmailDataInputNotEmpty())
+            {
+                string[] messageFields = new string[] { Form.ActiveForm.Text, textBox17.Text, textBox18.Text, richTextBox1.Text };
+                var newMessage = Messaging.CreateMessage(messageFields);
+                if(DBUpdates.WriteMessageToDB(newMessage))
+                {
+                    MessageBox.Show("Message sent");
+                }
+                else 
+                {
+                    MessageBox.Show("Your message could not be sent. Check if receiver name is correct!");
+                }         
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all required fields");
+            }
+        }
+
+        private bool CheckIfEmailDataInputNotEmpty()
+        {
+            bool correctInputData = false;
+            
+            if (textBox17.Text != String.Empty
+               && textBox18.Text != String.Empty
+               && richTextBox1.Text != String.Empty)
+            {
+                correctInputData = true;
+            }
+
+            return correctInputData;
+        }
+
         private void HideShowEmailPanels(Panel panel)
         {
             panel16.Hide();
