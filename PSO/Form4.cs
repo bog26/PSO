@@ -19,6 +19,7 @@ namespace PSO
         public Form4()
         {
             InitializeComponent();
+            //ActiveForm.Text = "bol";  // change to external file
             InitializeManualAddedComponent();
         }
 
@@ -646,6 +647,7 @@ namespace PSO
 
         private void button31_Click(object sender, EventArgs e)
         {
+            listBox7.DataSource = BindReceivedMessages(crtUser);
             HideShowEmailPanels(panel16);
         }
         private void button32_Click(object sender, EventArgs e)
@@ -685,6 +687,11 @@ namespace PSO
                 MessageBox.Show("Please fill in all required fields");
             }
         }
+        public static string GetUser()
+        {
+            return ActiveForm.Text;
+            
+        }
 
         private bool CheckIfEmailDataInputNotEmpty()
         {
@@ -698,6 +705,16 @@ namespace PSO
             }
 
             return correctInputData;
+        }
+        private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //richTextBox2.Text = 
+            int selection = listBox7.SelectedIndex;
+            //richTextBox2.Text = DBUpdates.GetMessage(crtUser, selection);
+            List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
+            MessageBox.Show(selection.ToString());
+            richTextBox2.Text = inboxMessages[selection];
+            //panel16.Show();
         }
 
         private void HideShowEmailPanels(Panel panel)

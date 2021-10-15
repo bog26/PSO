@@ -437,6 +437,8 @@ namespace PSO
 
             this.panel16 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
+            this.listBox7 = new System.Windows.Forms.ListBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 
             this.panel17 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
@@ -903,7 +905,6 @@ namespace PSO
             DisplayNewPanel(panel16, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel16", true);
             this.Controls.Add(this.panel16);
             panel16.Hide();
-
             
             string label31Text = "Inbox";
             int xPosLabel31 = xMargin;
@@ -912,6 +913,15 @@ namespace PSO
             int sizeYLabel31 = 24;
             DisplayNewLabelOnPanel(label31, panel16, new int[2] { xPosLabel31, yPosLabel31 }, new int[2]
                 { sizeXLabel31, sizeYLabel31 }, label31Text);
+
+            //DisplayListBox(listBox7, panel16, label31, new int[2] {0, yItemsSpace}, new int[2] {100, 450}, "listBox7", BindReceivedMessages(GetUser()));
+            //DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 400 }, "listBox7", BindReceivedMessages("bol"));
+
+            DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 400 }, "listBox7", BindReceivedMessages(crtUser));
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
+
+            DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, listBox7, new int[2] { yItemsSpace , 0 }, new int[2]
+                { 400, 200 }, "richTextBox2", standardFont);
 
             DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
             this.Controls.Add(this.panel17);
@@ -1062,6 +1072,8 @@ namespace PSO
 
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ListBox listBox7;
+        private System.Windows.Forms.RichTextBox richTextBox2;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;
@@ -1082,6 +1094,7 @@ namespace PSO
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button36;
+        private string crtUser = Model.IOMethods.GetUserName();
 
     }
 }

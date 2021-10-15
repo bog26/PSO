@@ -339,5 +339,23 @@ namespace PSO.Model
             }
             return writeToDBSuccessful;
         }
+        public static string GetMessage(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var queryReceivedMessages = from message in psContext.Messages
+                                        where message.Receiver == user
+                                        select message.MessageBody;
+            string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            return messageToDisplay;
+        }
+        public static List<string> GetMessages(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            var queryReceivedMessages = from message in psContext.Messages
+                                        where message.Receiver == user
+                                        select message.MessageBody;
+            List<string> messages = queryReceivedMessages.ToList();
+            return messages;
+        }
     }
 }

@@ -201,6 +201,7 @@
     <Compile Include="Model\IBalance.cs" />
     <Compile Include="Model\ICommunication.cs" />
     <Compile Include="Model\InternalDBQueries.cs" />
+    <Compile Include="Model\IOMethods.cs" />
     <Compile Include="Model\IQuery.cs" />
     <Compile Include="Model\IUser.cs" />
     <Compile Include="Model\Manufacturer.cs" />

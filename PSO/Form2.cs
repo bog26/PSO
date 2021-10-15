@@ -43,6 +43,7 @@ namespace PSO
             if (userHasAdminRights)
             {
                 this.Hide();
+
                 Form4 f4 = new Form4();
                 //f4.Text = "Logged as: " + textBox1.Text;
                 f4.Text = textBox1.Text;
@@ -64,6 +65,7 @@ namespace PSO
             {
                 if(InternalDBQueries.CheckForExistingUser(textBox1.Text) && InternalDBQueries.CheckForCorrectPassword(textBox1.Text, textBox2.Text))
                 {
+                    IOMethods.SetUserFile(textBox1.Text);
                     OpenUserWindow(InternalDBQueries.CheckForAdminRights(textBox1.Text));
                 }
                 else
@@ -72,6 +74,7 @@ namespace PSO
                 }
             }
         }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
