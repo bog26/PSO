@@ -671,9 +671,24 @@ namespace PSO
         {
             if(CheckIfEmailDataInputNotEmpty())
             {
-                string[] messageFields = new string[] { Form.ActiveForm.Text, textBox17.Text, textBox18.Text, richTextBox1.Text };
+                //string[] messageFields = new string[] { Form.ActiveForm.Text, textBox17.Text, textBox18.Text, richTextBox1.Text};
+                string withEncryption = EncriptionRequested();
+                string messageBody;
+                if(withEncryption == "true")
+                {
+                    string crtUser = IOMethods.GetUserName();
+                    string key = InternalDBQueries.GetPassword(crtUser);
+                    string encryptedMessage = Encryption.StringEncrypt(richTextBox1.Text, key);
+                    messageBody = encryptedMessage;
+                }
+                else 
+                {
+                    messageBody = richTextBox1.Text;
+                }
+                string[] messageFields = new string[] { Form.ActiveForm.Text, textBox17.Text, textBox18.Text, messageBody, withEncryption };
+                //var newMessage = Messaging.CreateMessage(messageFields);
                 var newMessage = Messaging.CreateMessage(messageFields);
-                if(DBUpdates.WriteMessageToDB(newMessage))
+                if (DBUpdates.WriteMessageToDB(newMessage))
                 {
                     MessageBox.Show("Message sent");
                 }
@@ -708,22 +723,43 @@ namespace PSO
         }
         private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //richTextBox2.Text = 
-            //int selection = listBox7.SelectedIndex;
-            //richTextBox2.Text = DBUpdates.GetMessage(crtUser, selection);
-            //List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
-            //MessageBox.Show(selection.ToString());
-            //richTextBox2.Text = inboxMessages[selection];
-            //panel16.Show();
+
         }
         private void button37_Click(object sender, EventArgs e)
         {
             int selection = listBox7.SelectedIndex;
-            List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
-            richTextBox2.Text = inboxMessages[selection];
-            //MessageBox.Show(selection.ToString());
+
+            //List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
+            //string rawText = inboxMessages[selection];
+            //richTextBox2.Text = inboxMessages[selection];
+            string rawText = DBUpdates.GetMessage(crtUser, selection);
+
+            if(!DBUpdates.IsMessageEncrypted(crtUser, selection))
+            {
+                richTextBox2.Text = rawText;
+                MessageBox.Show("message not encrypted");
+            }
+            else
+            {
+                string key = InternalDBQueries.GetPassword(crtUser);
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox2.Text = decryptedMessage;
+                MessageBox.Show("decrypting message");
+            }
+            //richTextBox2.Text = rawText;
+
+
             panel16.Show();
 
+        }
+        private string EncriptionRequested()
+        {
+            string withEncryption = "false";
+            if(checkBox4.Checked)
+            {
+                withEncryption = "true";
+            }
+            return withEncryption;
         }
 
         private void HideShowEmailPanels(Panel panel)

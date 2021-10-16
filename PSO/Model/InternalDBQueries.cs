@@ -58,6 +58,13 @@ namespace PSO.Model
             return correctPassword;
         }
 
+        public static string GetPassword(string loggedUser)
+        {
+            var psContext = new psDBContext();
+            var crtUser = psContext.Admins.First(x => x.UserName == loggedUser);
+            return crtUser.Password;
+        }
+
 
         public static bool CheckForAdminRights(string userName)
         {

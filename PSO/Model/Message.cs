@@ -17,9 +17,23 @@ namespace PSO.Model
         public DateTime MessageTime { get; set; }
 
         public string MessageStatus { get; set; }
+        public bool IsEncrypted { get; set; }
         public Message()
         {
             MessageStatus = "sent";
+            IsEncrypted = false;
+        }
+        public Message(string encryption)
+        {
+            MessageStatus = "sent";
+            if(encryption == "true")
+            {
+                IsEncrypted = true;
+            }
+            else 
+            {
+                IsEncrypted = false;
+            }
         }
         public void ReadMessage()
         {

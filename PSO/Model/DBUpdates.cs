@@ -357,5 +357,18 @@ namespace PSO.Model
             List<string> messages = queryReceivedMessages.ToList();
             return messages;
         }
+        public static bool IsMessageEncrypted(string user, int messageIndex)
+        {
+            bool messageEncryption = false;
+            psDBContext psContext = new psDBContext();
+            var queryReceivedMessages = from message in psContext.Messages
+                                        where message.Receiver == user
+                                        select message.IsEncrypted;
+
+            messageEncryption = queryReceivedMessages.ToList()[messageIndex];
+            
+           
+            return messageEncryption;
+        }
     }
 }

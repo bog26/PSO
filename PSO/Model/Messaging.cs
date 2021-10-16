@@ -12,7 +12,7 @@ namespace PSO.Model
         //public static Message CreateMessage(string sender, string receiver,string title, string body)
         public static Message CreateMessage(string[] args)
         {
-            Message newMessage = new Message();
+            Message newMessage = new Message( args[4]);         
             newMessage.Sender = args[0];
             newMessage.Receiver = args[1];
             newMessage.MessageTitle = args[2];

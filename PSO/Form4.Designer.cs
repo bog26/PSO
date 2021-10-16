@@ -460,6 +460,7 @@ namespace PSO
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button36 = new System.Windows.Forms.Button();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
 
 
 
@@ -991,6 +992,11 @@ namespace PSO
             DisplayNewButtonOnPanel(button36, panel20, richTextBox1, new int[2] { 0, yItemsSpace }, new int[2]
                 { LONGITEM, SMALLTEXT }, "Send", standardFont);
             this.button36.Click += new System.EventHandler(this.button36_Click);
+           
+            string checkBox4Text = "encryption";
+            DisplayCheckBox(checkBox4, panel20, button36, new int[2] { 5*xItemsSpace, 0 },
+                            new int[2] { CalculateLabelLenght(checkBox1Text), SMALLTEXT }, checkBox4Text, standardFont);
+             
 
 
 
@@ -1098,6 +1104,7 @@ namespace PSO
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button36;
         private string crtUser = Model.IOMethods.GetUserName();
+        private System.Windows.Forms.CheckBox checkBox4;
 
     }
 }
