@@ -709,12 +709,21 @@ namespace PSO
         private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
             //richTextBox2.Text = 
-            int selection = listBox7.SelectedIndex;
+            //int selection = listBox7.SelectedIndex;
             //richTextBox2.Text = DBUpdates.GetMessage(crtUser, selection);
-            List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
-            MessageBox.Show(selection.ToString());
-            richTextBox2.Text = inboxMessages[selection];
+            //List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
+            //MessageBox.Show(selection.ToString());
+            //richTextBox2.Text = inboxMessages[selection];
             //panel16.Show();
+        }
+        private void button37_Click(object sender, EventArgs e)
+        {
+            int selection = listBox7.SelectedIndex;
+            List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
+            richTextBox2.Text = inboxMessages[selection];
+            //MessageBox.Show(selection.ToString());
+            panel16.Show();
+
         }
 
         private void HideShowEmailPanels(Panel panel)
