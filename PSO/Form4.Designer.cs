@@ -440,6 +440,7 @@ namespace PSO
             this.listBox7 = new System.Windows.Forms.ListBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
 
             this.panel17 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
@@ -477,6 +478,7 @@ namespace PSO
             const int SMALLTEXT = 24;
             const int SHORTITEM = 140;
             const int STDTEXTBOX = 70;
+            const int MEDIUMITEM = 70;
             const int LONGITEM = 140;
             var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
@@ -923,8 +925,12 @@ namespace PSO
                 { 400, 200 }, "richTextBox2", standardFont);
 
             DisplayNewButtonOnPanel(button37, panel16, label31, new int[2] { 10*xItemsSpace, 0 }, new int[2]
-                { LONGITEM, SMALLTEXT }, "Refresh", standardFont);
+                { MEDIUMITEM, SMALLTEXT }, "Refresh", standardFont);
             this.button37.Click += new System.EventHandler(this.button37_Click);
+
+            DisplayNewButtonOnPanel(button38, panel16, button37, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
+            this.button38.Click += new System.EventHandler(this.button38_Click);
 
             DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
             this.Controls.Add(this.panel17);
@@ -1083,6 +1089,7 @@ namespace PSO
         private System.Windows.Forms.ListBox listBox7;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;

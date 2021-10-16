@@ -343,7 +343,8 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             var queryReceivedMessages = from message in psContext.Messages
-                                        where message.Receiver == user
+                                        //where message.Receiver == user 
+                                        where message.Receiver == user && message.MessageStatus != "deleted"
                                         select message.MessageBody;
             string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
             return messageToDisplay;
@@ -362,7 +363,8 @@ namespace PSO.Model
             bool messageEncryption = false;
             psDBContext psContext = new psDBContext();
             var queryReceivedMessages = from message in psContext.Messages
-                                        where message.Receiver == user
+                                        //where message.Receiver == user
+                                        where message.Receiver == user && message.MessageStatus != "deleted"
                                         select message.IsEncrypted;
 
             messageEncryption = queryReceivedMessages.ToList()[messageIndex];
@@ -370,5 +372,16 @@ namespace PSO.Model
            
             return messageEncryption;
         }
+        public static void DeleteMessage(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var messages = psContext.Messages.Where(x => (x.Receiver == user)&&(x.MessageStatus=="sent"));
+            var messageToDelete = messages.ToList()[messageIndex];
+            messageToDelete.DeleteMessage();
+            psContext.SaveChanges();
+            
+
+        }
+
     }
 }

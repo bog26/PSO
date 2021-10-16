@@ -677,7 +677,8 @@ namespace PSO
                 if(withEncryption == "true")
                 {
                     string crtUser = IOMethods.GetUserName();
-                    string key = InternalDBQueries.GetPassword(crtUser);
+                    //string key = InternalDBQueries.GetPassword(crtUser);
+                    string key = "abracadabra";
                     string encryptedMessage = Encryption.StringEncrypt(richTextBox1.Text, key);
                     messageBody = encryptedMessage;
                 }
@@ -741,7 +742,8 @@ namespace PSO
             }
             else
             {
-                string key = InternalDBQueries.GetPassword(crtUser);
+                //string key = InternalDBQueries.GetPassword(crtUser);
+                string key = "abracadabra";
                 string decryptedMessage = Encryption.StringDecrypt(rawText, key);
                 richTextBox2.Text = decryptedMessage;
                 MessageBox.Show("decrypting message");
@@ -762,7 +764,13 @@ namespace PSO
             return withEncryption;
         }
 
-        private void HideShowEmailPanels(Panel panel)
+        private void button38_Click(object sender, EventArgs e)
+        {
+            int selection = listBox7.SelectedIndex;
+            DBUpdates.DeleteMessage(crtUser, selection);
+        }
+
+            private void HideShowEmailPanels(Panel panel)
         {
             panel16.Hide();
             panel17.Hide();

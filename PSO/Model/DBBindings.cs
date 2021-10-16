@@ -218,8 +218,9 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
             var queryReceivedMessages = from message in psContext.Messages
-                                where message.Receiver == user
-                                select message.MessageTitle;
+                                //where (message.Receiver == user)
+                                where (message.Receiver == user) && (message.MessageStatus == "sent")
+                                        select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
         }
