@@ -441,6 +441,8 @@ namespace PSO
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
+            this.textBox20 = new System.Windows.Forms.TextBox();
 
             this.panel17 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
@@ -925,7 +927,7 @@ namespace PSO
                 { 400, 200 }, "richTextBox2", standardFont);
 
             DisplayNewButtonOnPanel(button37, panel16, label31, new int[2] { 10*xItemsSpace, 0 }, new int[2]
-                { MEDIUMITEM, SMALLTEXT }, "Refresh", standardFont);
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
             this.button37.Click += new System.EventHandler(this.button37_Click);
 
             DisplayNewButtonOnPanel(button38, panel16, button37, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
@@ -935,6 +937,17 @@ namespace PSO
             DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
             this.Controls.Add(this.panel17);
             panel17.Hide();
+
+            DisplayNewButtonOnPanel(button39, panel16, listBox7, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { listBox7.Size.Width, SMALLTEXT }, "Search", standardFont);
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+
+            DisplayNewTextBoxOnPanel(textBox20, panel16, button39, new int[2] { 0, 2*xItemsSpace },
+              new int[2] { listBox7.Size.Width, SMALLTEXT }, "");
+
+
+            //DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
+            //    new int[2] { LONGITEM, SMALLTEXT }, "value");
 
             string label32Text = "Sent";
             int xPosLabel32 = xMargin;
@@ -1090,6 +1103,8 @@ namespace PSO
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.TextBox textBox20;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;

@@ -729,30 +729,71 @@ namespace PSO
         private void button37_Click(object sender, EventArgs e)
         {
             int selection = listBox7.SelectedIndex;
-
-            //List<string> inboxMessages = DBUpdates.GetMessages(crtUser);
-            //string rawText = inboxMessages[selection];
-            //richTextBox2.Text = inboxMessages[selection];
-            string rawText = DBUpdates.GetMessage(crtUser, selection);
-
-            if(!DBUpdates.IsMessageEncrypted(crtUser, selection))
+            MessageBox.Show($"index selected: {selection}");
+            //string rawText = DBUpdates.GetMessage(crtUser, selection);
+            string rawText;
+            bool encryption;
+            if (textBox20.Text != string.Empty)
             {
-                richTextBox2.Text = rawText;
+                rawText = DBUpdates.GetMessage(crtUser, selection, textBox20.Text);
+
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection, textBox20.Text))
+                {
+                    encryption = false;
+                }
+                else 
+                {
+                    encryption = true;
+                }
+                    //listBox7.DataSource = BindSearchMessages(textBox20.Text);
+                    //HideShowEmailPanels(panel16);
+                }
+            else 
+            {
+                rawText = DBUpdates.GetMessage(crtUser, selection);
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection))
+                {
+                    encryption = false;
+                }
+                else
+                {
+                    encryption = true;
+                }
+            }
+
+            if(!encryption)
+            {
                 MessageBox.Show("message not encrypted");
+                richTextBox2.Text = rawText;
+            }
+            else 
+            {
+                MessageBox.Show("decrypting message");
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox2.Text = decryptedMessage;
+            }
+
+            /*
+            if (!DBUpdates.IsMessageEncrypted(crtUser, selection))
+            {
+                MessageBox.Show("message not encrypted");
+                richTextBox2.Text = rawText;
+                //MessageBox.Show("message not encrypted");
             }
             else
             {
                 //string key = InternalDBQueries.GetPassword(crtUser);
+                MessageBox.Show("decrypting message");
                 string key = "abracadabra";
                 string decryptedMessage = Encryption.StringDecrypt(rawText, key);
                 richTextBox2.Text = decryptedMessage;
-                MessageBox.Show("decrypting message");
+                //MessageBox.Show("decrypting message");
             }
-            //richTextBox2.Text = rawText;
+            */
 
 
             panel16.Show();
-
         }
         private string EncriptionRequested()
         {
@@ -768,6 +809,18 @@ namespace PSO
         {
             int selection = listBox7.SelectedIndex;
             DBUpdates.DeleteMessage(crtUser, selection);
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            //listBox7.DataSource = BindReceivedMessages(crtUser);
+            //HideShowEmailPanels(panel16);
+            if(textBox20.Text!=string.Empty)
+            {
+                listBox7.DataSource = BindSearchMessages(textBox20.Text);
+                HideShowEmailPanels(panel16);
+            }
+            
         }
 
             private void HideShowEmailPanels(Panel panel)

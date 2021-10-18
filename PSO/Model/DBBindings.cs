@@ -224,6 +224,19 @@ namespace PSO.Model
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
         }
+        public static BindingSource BindSearchMessages(string searchword)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            //var queryMessages = psContext.Messages.Where(x=>x.MessageBody.Contains(searchword));
+            
+            var queryMessages = from message in psContext.Messages
+                                where message.MessageBody.Contains(searchword)
+                                select message.MessageTitle;
+            
+            binding.DataSource = queryMessages.ToList();
+            return binding;
+        }
 
         public static BindingSource BindProductsToGrid()
         {

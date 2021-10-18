@@ -36,6 +36,14 @@ namespace PSO.Model
         {
             string decryptedText;
             encryptedText = encryptedText.Replace(" ", "+");
+            //https://stackoverflow.com/questions/2925729/invalid-length-for-a-base-64-char-array
+            encryptedText = encryptedText.Replace("-", "+");
+            encryptedText = encryptedText.Replace("_", "+");
+            while(encryptedText.Length % 4 != 0)
+            {
+                encryptedText += '=';
+            }
+
             byte[] cipherBytes = Convert.FromBase64String(encryptedText);
             using (Aes encryptor = Aes.Create())
             {

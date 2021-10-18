@@ -344,7 +344,20 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             var queryReceivedMessages = from message in psContext.Messages
                                         //where message.Receiver == user 
-                                        where message.Receiver == user && message.MessageStatus != "deleted"
+                                        where message.Receiver == user 
+                                            && message.MessageStatus != "deleted"
+                                        select message.MessageBody;
+            string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            return messageToDisplay;
+        }
+        public static string GetMessage(string user, int messageIndex, string searchWord)
+        {
+            psDBContext psContext = new psDBContext();
+            var queryReceivedMessages = from message in psContext.Messages
+                                            
+                                        where message.Receiver == user 
+                                            && message.MessageStatus != "deleted"
+                                            && message.MessageBody.Contains(searchWord)
                                         select message.MessageBody;
             string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
             return messageToDisplay;
@@ -364,7 +377,8 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             var queryReceivedMessages = from message in psContext.Messages
                                         //where message.Receiver == user
-                                        where message.Receiver == user && message.MessageStatus != "deleted"
+                                        where message.Receiver == user &&
+                                              message.MessageStatus != "deleted"
                                         select message.IsEncrypted;
 
             messageEncryption = queryReceivedMessages.ToList()[messageIndex];
@@ -372,6 +386,23 @@ namespace PSO.Model
            
             return messageEncryption;
         }
+        public static bool IsMessageEncrypted(string user, int messageIndex, string searchWord)
+        {
+            bool messageEncryption = false;
+            psDBContext psContext = new psDBContext();
+            var queryReceivedMessages = from message in psContext.Messages
+                                            //where message.Receiver == user
+                                        where message.Receiver == user &&
+                                              message.MessageStatus != "deleted" &&
+                                              message.MessageBody.Contains(searchWord)
+                                        select message.IsEncrypted;
+
+            messageEncryption = queryReceivedMessages.ToList()[messageIndex];
+
+
+            return messageEncryption;
+        }
+
         public static void DeleteMessage(string user, int messageIndex)
         {
             psDBContext psContext = new psDBContext();
