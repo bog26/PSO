@@ -194,6 +194,10 @@
     <Compile Include="Migrations\202110161059388_AddIsEncryptedToMessage.designer.cs">
       <DependentUpon>202110161059388_AddIsEncryptedToMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110190939331_AddMessageSenderAndReceiverStatuses.cs" />
+    <Compile Include="Migrations\202110190939331_AddMessageSenderAndReceiverStatuses.designer.cs">
+      <DependentUpon>202110190939331_AddMessageSenderAndReceiverStatuses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -325,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110161059388_AddIsEncryptedToMessage.resx">
       <DependentUpon>202110161059388_AddIsEncryptedToMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110190939331_AddMessageSenderAndReceiverStatuses.resx">
+      <DependentUpon>202110190939331_AddMessageSenderAndReceiverStatuses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

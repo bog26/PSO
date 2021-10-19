@@ -44,3 +44,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.ChangeMessages.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddTimeToMessages.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddStatusToMessages.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddIsEncryptedToMessage.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddMessageSenderAndReceiverStatuses.resources

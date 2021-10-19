@@ -347,7 +347,12 @@ namespace PSO.Model
                                         where message.Receiver == user 
                                             && message.MessageStatus != "deleted"
                                         select message.MessageBody;
-            string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            string messageToDisplay = "";
+            if (messageIndex>=0)
+            {
+                messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            }
+            
             return messageToDisplay;
         }
         public static string GetMessage(string user, int messageIndex, string searchWord)
@@ -359,7 +364,11 @@ namespace PSO.Model
                                             && message.MessageStatus != "deleted"
                                             && message.MessageBody.Contains(searchWord)
                                         select message.MessageBody;
-            string messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            string messageToDisplay = "";
+            if (messageIndex >= 0)
+            {
+                messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+            }
             return messageToDisplay;
         }
         public static List<string> GetMessages(string user)
@@ -380,10 +389,10 @@ namespace PSO.Model
                                         where message.Receiver == user &&
                                               message.MessageStatus != "deleted"
                                         select message.IsEncrypted;
-
-            messageEncryption = queryReceivedMessages.ToList()[messageIndex];
-            
-           
+            if(messageIndex >=0)
+            {
+                messageEncryption = queryReceivedMessages.ToList()[messageIndex];
+            }
             return messageEncryption;
         }
         public static bool IsMessageEncrypted(string user, int messageIndex, string searchWord)
@@ -396,10 +405,10 @@ namespace PSO.Model
                                               message.MessageStatus != "deleted" &&
                                               message.MessageBody.Contains(searchWord)
                                         select message.IsEncrypted;
-
-            messageEncryption = queryReceivedMessages.ToList()[messageIndex];
-
-
+            if (messageIndex >= 0)
+            {
+                messageEncryption = queryReceivedMessages.ToList()[messageIndex];
+            }
             return messageEncryption;
         }
 
@@ -408,8 +417,11 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             var messages = psContext.Messages.Where(x => (x.Receiver == user)
                                                         &&((x.MessageStatus=="sent")||(x.MessageStatus == "read")));
-            var messageToDelete = messages.ToList()[messageIndex];
-            messageToDelete.DeleteMessage();
+            if (messageIndex >= 0)
+            {
+                var messageToDelete = messages.ToList()[messageIndex];
+                messageToDelete.DeleteMessage();
+            }
             psContext.SaveChanges();
         }
         public static void SpamMsg(string user, int messageIndex)
@@ -418,8 +430,12 @@ namespace PSO.Model
             var messages = psContext.Messages.Where(x => (x.Receiver == user) 
                                                      && (   (x.MessageStatus == "sent")
                                                         ||  (x.MessageStatus == "read")) );
-            var messageToSpam = messages.ToList()[messageIndex];
-            messageToSpam.SpamMessage();
+            if (messageIndex >= 0)
+            {
+                var messageToSpam = messages.ToList()[messageIndex];
+                messageToSpam.SpamMessage();
+            }
+
             psContext.SaveChanges();
         }
         public static void ReadMsg(string user, int messageIndex)
@@ -428,8 +444,13 @@ namespace PSO.Model
             var messages = psContext.Messages.Where(x => (x.Receiver == user)
                                                      && (  (x.MessageStatus == "sent") 
                                                         || (x.MessageStatus == "read")) );
-            var messageToRead = messages.ToList()[messageIndex];
-            messageToRead.ReadMessage();
+            if(messageIndex>=0)
+            {
+                var messageToRead = messages.ToList()[messageIndex];
+                messageToRead.ReadMessage();
+            }
+            
+            
             psContext.SaveChanges();
         }
 
