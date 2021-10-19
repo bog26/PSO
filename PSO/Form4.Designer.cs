@@ -443,6 +443,7 @@ namespace PSO
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.textBox20 = new System.Windows.Forms.TextBox();
+            this.button40 = new System.Windows.Forms.Button();
 
             this.panel17 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
@@ -945,6 +946,10 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox20, panel16, button39, new int[2] { 0, 2*xItemsSpace },
               new int[2] { listBox7.Size.Width, SMALLTEXT }, "");
 
+            DisplayNewButtonOnPanel(button40, panel16, button38, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Spam", standardFont);
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+
 
             //DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
             //    new int[2] { LONGITEM, SMALLTEXT }, "value");
@@ -1105,6 +1110,7 @@ namespace PSO
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.Button button40;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;

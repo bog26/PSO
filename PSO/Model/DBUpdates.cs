@@ -345,7 +345,9 @@ namespace PSO.Model
             var queryReceivedMessages = from message in psContext.Messages
                                         //where message.Receiver == user 
                                         where message.Receiver == user 
-                                            && message.MessageStatus != "deleted"
+                                            //&& message.MessageStatus != "deleted"
+                                            && message.MessageReceiverStatus != "deleted"
+                                            && message.MessageReceiverStatus != "spam"
                                         select message.MessageBody;
             string messageToDisplay = "";
             if (messageIndex>=0)
@@ -361,7 +363,8 @@ namespace PSO.Model
             var queryReceivedMessages = from message in psContext.Messages
                                             
                                         where message.Receiver == user 
-                                            && message.MessageStatus != "deleted"
+                                            //&& message.MessageStatus != "deleted"
+                                            && message.MessageReceiverStatus != "deleted"
                                             && message.MessageBody.Contains(searchWord)
                                         select message.MessageBody;
             string messageToDisplay = "";
@@ -371,6 +374,7 @@ namespace PSO.Model
             }
             return messageToDisplay;
         }
+        /*
         public static List<string> GetMessages(string user)
         {
             psDBContext psContext = new psDBContext();
@@ -380,6 +384,7 @@ namespace PSO.Model
             List<string> messages = queryReceivedMessages.ToList();
             return messages;
         }
+        */
         public static bool IsMessageEncrypted(string user, int messageIndex)
         {
             bool messageEncryption = false;
@@ -387,7 +392,9 @@ namespace PSO.Model
             var queryReceivedMessages = from message in psContext.Messages
                                         //where message.Receiver == user
                                         where message.Receiver == user &&
-                                              message.MessageStatus != "deleted"
+                                              //message.MessageStatus != "deleted"
+                                              message.MessageReceiverStatus != "deleted"
+                                              && message.MessageReceiverStatus != "spam"
                                         select message.IsEncrypted;
             if(messageIndex >=0)
             {
@@ -402,8 +409,10 @@ namespace PSO.Model
             var queryReceivedMessages = from message in psContext.Messages
                                             //where message.Receiver == user
                                         where message.Receiver == user &&
-                                              message.MessageStatus != "deleted" &&
-                                              message.MessageBody.Contains(searchWord)
+                                              //message.MessageStatus != "deleted" &&
+                                              message.MessageReceiverStatus != "deleted" 
+                                              && message.MessageReceiverStatus != "spam"
+                                              && message.MessageBody.Contains(searchWord)
                                         select message.IsEncrypted;
             if (messageIndex >= 0)
             {
@@ -411,7 +420,7 @@ namespace PSO.Model
             }
             return messageEncryption;
         }
-
+        /*
         public static void DeleteMsg(string user, int messageIndex)
         {
             psDBContext psContext = new psDBContext();
@@ -421,6 +430,36 @@ namespace PSO.Model
             {
                 var messageToDelete = messages.ToList()[messageIndex];
                 messageToDelete.DeleteMessage();
+                //messageToDelete.DeleteReceiverMessage();
+            }
+            psContext.SaveChanges();
+        }
+        */
+
+        public static void DeleteReceiverMsg(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var messages = psContext.Messages.Where(x => (x.Receiver == user)
+                                                        && (  (x.MessageReceiverStatus == "unread") 
+                                                           || (x.MessageReceiverStatus == "read")) );
+            if (messageIndex >= 0)
+            {
+                var messageToDelete = messages.ToList()[messageIndex];
+                //messageToDelete.DeleteMessage();
+                messageToDelete.DeleteReceiverMessage();
+            }
+            psContext.SaveChanges();
+        }
+        public static void DeleteSenderMsg(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var messages = psContext.Messages.Where(x => (x.Sender == user)
+                                                        && (x.MessageSenderStatus == "sent"));
+            if (messageIndex >= 0)
+            {
+                var messageToDelete = messages.ToList()[messageIndex];
+                //messageToDelete.DeleteMessage();
+                messageToDelete.DeleteSenderMessage();
             }
             psContext.SaveChanges();
         }
@@ -428,8 +467,8 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             var messages = psContext.Messages.Where(x => (x.Receiver == user) 
-                                                     && (   (x.MessageStatus == "sent")
-                                                        ||  (x.MessageStatus == "read")) );
+                                                     && ( (x.MessageReceiverStatus == "read") 
+                                                       || (x.MessageReceiverStatus == "unread") ) );
             if (messageIndex >= 0)
             {
                 var messageToSpam = messages.ToList()[messageIndex];
@@ -442,9 +481,11 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             var messages = psContext.Messages.Where(x => (x.Receiver == user)
-                                                     && (  (x.MessageStatus == "sent") 
-                                                        || (x.MessageStatus == "read")) );
-            if(messageIndex>=0)
+                                                       // && (  (x.MessageStatus == "sent") 
+                                                       //    || (x.MessageStatus == "read"))
+                                                       && ((x.MessageReceiverStatus == "read")
+                                                        || (x.MessageReceiverStatus == "unread"))  );
+            if (messageIndex>=0)
             {
                 var messageToRead = messages.ToList()[messageIndex];
                 messageToRead.ReadMessage();

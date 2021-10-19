@@ -219,8 +219,11 @@ namespace PSO.Model
             BindingSource binding = new BindingSource();
             var queryReceivedMessages = from message in psContext.Messages 
                                 where message.Receiver == user 
-                                    && message.MessageStatus != "deleted"
-                                    && message.MessageStatus != "spam"
+                                    //&& message.MessageStatus != "deleted"
+                                    //&& message.MessageStatus != "spam"
+                                    && message.MessageReceiverStatus != "deleted"
+                                    && message.MessageReceiverStatus != "spam"
+
                                         select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
@@ -231,11 +234,12 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
             var queryReceivedMessages = from message in psContext.Messages
-                                        where (message.Sender == user) && (message.MessageStatus != "deleted")
+                                        where (message.Sender == user) && (message.MessageSenderStatus != "deleted")
                                         select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
         }
+        /*
         public static BindingSource BindSearchMessages(string searchword) //searches in messages from all users
         {
             psDBContext psContext = new psDBContext();
@@ -251,6 +255,7 @@ namespace PSO.Model
             binding.DataSource = queryMessages.ToList();
             return binding;
         }
+        */
         public static BindingSource BindSearchMessages(string searchword, string user)
         {
             psDBContext psContext = new psDBContext();
@@ -259,7 +264,9 @@ namespace PSO.Model
 
             var queryMessages = from message in psContext.Messages
                                 where message.MessageBody.Contains(searchword)
-                                && message.MessageStatus != "deleted"
+                                //&& message.MessageStatus != "deleted"
+                                && message.MessageReceiverStatus != "deleted"
+                                && message.MessageReceiverStatus != "spam"
                                 && message.Receiver == user
                                 select message.MessageTitle;
 

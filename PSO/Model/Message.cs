@@ -22,14 +22,14 @@ namespace PSO.Model
         public bool IsEncrypted { get; set; }
         public Message()
         {
-            MessageStatus = "sent";
+            //MessageStatus = "sent";
             MessageSenderStatus = "sent";
             MessageReceiverStatus = "unread";
             IsEncrypted = false;
         }
         public Message(string encryption)
         {
-            MessageStatus = "sent";
+            //MessageStatus = "sent";
             MessageSenderStatus = "sent";
             MessageReceiverStatus = "unread";
             if (encryption == "true")
@@ -43,12 +43,12 @@ namespace PSO.Model
         }
         public void ReadMessage()
         {
-            MessageStatus = "read";
+            //MessageStatus = "read";
             MessageReceiverStatus = "read";
         }
         public void DeleteMessage()
         {
-            MessageStatus = "deleted";
+            //MessageStatus = "deleted";
         }
         public void DeleteSenderMessage()
         {
@@ -61,13 +61,15 @@ namespace PSO.Model
 
         public void SpamMessage()
         {
-            MessageStatus = "spam";
+            //MessageStatus = "spam";
+            MessageReceiverStatus = "spam";
         }
+        /*
         public void SpamReceiverMessage()
         {
             MessageReceiverStatus = "spam";
         }
-
+        */
 
         /*
         public void MessageSend(string title, string body)

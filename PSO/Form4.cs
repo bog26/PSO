@@ -789,7 +789,8 @@ namespace PSO
         private void button38_Click(object sender, EventArgs e)
         {
             int selection = listBox7.SelectedIndex;
-            DBUpdates.DeleteMsg(crtUser, selection);
+            DBUpdates.DeleteReceiverMsg(crtUser, selection);
+            //DBUpdates.DeleteMsg(crtUser, selection);
         }
 
         private void button39_Click(object sender, EventArgs e)
@@ -804,7 +805,14 @@ namespace PSO
             
         }
 
-            private void HideShowEmailPanels(Panel panel)
+        private void button40_Click(object sender, EventArgs e)
+        {
+            int selection = listBox7.SelectedIndex;
+            DBUpdates.SpamMsg(crtUser, selection);
+            //DBUpdates.DeleteMsg(crtUser, selection);
+        }
+
+        private void HideShowEmailPanels(Panel panel)
         {
             panel16.Hide();
             panel17.Hide();
