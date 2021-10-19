@@ -217,14 +217,13 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
-            var queryReceivedMessages = from message in psContext.Messages
-                                //where (message.Receiver == user)
-                                where (message.Receiver == user) && (message.MessageStatus == "sent")
+            var queryReceivedMessages = from message in psContext.Messages 
+                                where (message.Receiver == user) && (message.MessageStatus != "deleted")
                                         select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
         }
-        public static BindingSource BindSearchMessages(string searchword)
+        public static BindingSource BindSearchMessages(string searchword) //searches in messages from all users
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
@@ -232,8 +231,25 @@ namespace PSO.Model
             
             var queryMessages = from message in psContext.Messages
                                 where message.MessageBody.Contains(searchword)
+                                && message.MessageStatus != "deleted"
+                                //&& message.Receiver == user
                                 select message.MessageTitle;
             
+            binding.DataSource = queryMessages.ToList();
+            return binding;
+        }
+        public static BindingSource BindSearchMessages(string searchword, string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            //var queryMessages = psContext.Messages.Where(x=>x.MessageBody.Contains(searchword));
+
+            var queryMessages = from message in psContext.Messages
+                                where message.MessageBody.Contains(searchword)
+                                && message.MessageStatus != "deleted"
+                                && message.Receiver == user
+                                select message.MessageTitle;
+
             binding.DataSource = queryMessages.ToList();
             return binding;
         }
