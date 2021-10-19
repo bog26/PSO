@@ -218,7 +218,20 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
             var queryReceivedMessages = from message in psContext.Messages 
-                                where (message.Receiver == user) && (message.MessageStatus != "deleted")
+                                where message.Receiver == user 
+                                    && message.MessageStatus != "deleted"
+                                    && message.MessageStatus != "spam"
+                                        select message.MessageTitle;
+            binding.DataSource = queryReceivedMessages.ToList();
+            return binding;
+        }
+
+        public static BindingSource BindSentMessages(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var queryReceivedMessages = from message in psContext.Messages
+                                        where (message.Sender == user) && (message.MessageStatus != "deleted")
                                         select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;

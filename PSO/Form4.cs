@@ -772,6 +772,7 @@ namespace PSO
                 string decryptedMessage = Encryption.StringDecrypt(rawText, key);
                 richTextBox2.Text = decryptedMessage;
             }
+            DBUpdates.ReadMsg(crtUser, selection);
 
             panel16.Show();
         }
@@ -788,7 +789,7 @@ namespace PSO
         private void button38_Click(object sender, EventArgs e)
         {
             int selection = listBox7.SelectedIndex;
-            DBUpdates.DeleteMessage(crtUser, selection);
+            DBUpdates.DeleteMsg(crtUser, selection);
         }
 
         private void button39_Click(object sender, EventArgs e)

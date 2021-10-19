@@ -403,16 +403,37 @@ namespace PSO.Model
             return messageEncryption;
         }
 
-        public static void DeleteMessage(string user, int messageIndex)
+        public static void DeleteMsg(string user, int messageIndex)
         {
             psDBContext psContext = new psDBContext();
-            var messages = psContext.Messages.Where(x => (x.Receiver == user)&&(x.MessageStatus=="sent"));
+            var messages = psContext.Messages.Where(x => (x.Receiver == user)
+                                                        &&((x.MessageStatus=="sent")||(x.MessageStatus == "read")));
             var messageToDelete = messages.ToList()[messageIndex];
             messageToDelete.DeleteMessage();
             psContext.SaveChanges();
-            
-
         }
+        public static void SpamMsg(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var messages = psContext.Messages.Where(x => (x.Receiver == user) 
+                                                     && (   (x.MessageStatus == "sent")
+                                                        ||  (x.MessageStatus == "read")) );
+            var messageToSpam = messages.ToList()[messageIndex];
+            messageToSpam.SpamMessage();
+            psContext.SaveChanges();
+        }
+        public static void ReadMsg(string user, int messageIndex)
+        {
+            psDBContext psContext = new psDBContext();
+            var messages = psContext.Messages.Where(x => (x.Receiver == user)
+                                                     && (  (x.MessageStatus == "sent") 
+                                                        || (x.MessageStatus == "read")) );
+            var messageToRead = messages.ToList()[messageIndex];
+            messageToRead.ReadMessage();
+            psContext.SaveChanges();
+        }
+
+
 
     }
 }
