@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202110190939331_AddMessageSenderAndReceiverStatuses.designer.cs">
       <DependentUpon>202110190939331_AddMessageSenderAndReceiverStatuses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110191215222_RemoveMessageStatus.cs" />
+    <Compile Include="Migrations\202110191215222_RemoveMessageStatus.designer.cs">
+      <DependentUpon>202110191215222_RemoveMessageStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -332,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110190939331_AddMessageSenderAndReceiverStatuses.resx">
       <DependentUpon>202110190939331_AddMessageSenderAndReceiverStatuses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110191215222_RemoveMessageStatus.resx">
+      <DependentUpon>202110191215222_RemoveMessageStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

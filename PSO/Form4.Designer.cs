@@ -444,15 +444,28 @@ namespace PSO
             this.button39 = new System.Windows.Forms.Button();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.button40 = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
+            this.button44 = new System.Windows.Forms.Button();
+
 
             this.panel17 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
+            this.listBox8 = new System.Windows.Forms.ListBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.button41 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
 
             this.panel18 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
+            this.listBox9 = new System.Windows.Forms.ListBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.button45 = new System.Windows.Forms.Button();
 
             this.panel19 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
+            this.listBox10 = new System.Windows.Forms.ListBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.button46 = new System.Windows.Forms.Button();
 
             this.panel20 = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
@@ -922,6 +935,70 @@ namespace PSO
                 { sizeXLabel31, sizeYLabel31 }, label31Text);
 
             DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox7", BindReceivedMessages(crtUser));
+            this.listBox7.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
+
+            DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, listBox7, new int[2] { yItemsSpace , 0 }, new int[2]
+                { 400, 200 }, "richTextBox2", standardFont);
+
+            DisplayNewButtonOnPanel(button37, panel16, label31, new int[2] { 10*xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+
+            DisplayNewButtonOnPanel(button38, panel16, button37, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+
+            DisplayNewButtonOnPanel(button39, panel16, listBox7, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { listBox7.Size.Width, SMALLTEXT }, "Search", standardFont);
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+
+            DisplayNewTextBoxOnPanel(textBox20, panel16, button39, new int[2] { 0, 2*xItemsSpace },
+              new int[2] { listBox7.Size.Width, SMALLTEXT }, "");
+
+            DisplayNewButtonOnPanel(button40, panel16, button38, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Spam", standardFont);
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+
+            DisplayNewButtonOnPanel(button43, panel16, button40, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Reply", standardFont);
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+
+            DisplayNewButtonOnPanel(button44, panel16, button43, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "FWD", standardFont);
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+
+
+
+            //DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
+            //    new int[2] { LONGITEM, SMALLTEXT }, "value");
+
+            DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
+            this.Controls.Add(this.panel17);
+            panel17.Hide();
+
+            string label32Text = "Sent";
+            int xPosLabel32 = xMargin;
+            int yPosLabel32 = yMargin;
+            int sizeXLabel32 = CalculateLabelLenght(label32Text);
+            int sizeYLabel32 = 24;
+            DisplayNewLabelOnPanel(label32, panel17, new int[2] { xPosLabel32, yPosLabel32 }, new int[2]
+                { sizeXLabel32, sizeYLabel32 }, label32Text);
+
+            DisplayListBox(listBox8, panel17, label32, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox8", BindSentMessages(crtUser));
+            //this.listBox8.SelectedIndexChanged += new System.EventHandler(this.listBox8_SelectedIndexChanged);
+
+            DisplayNewRichTextBoxOnPanel(richTextBox3, panel17, listBox8, new int[2] { yItemsSpace, 0 }, new int[2]
+                { 400, 200 }, "richTextBox3", standardFont);
+
+            DisplayNewButtonOnPanel(button41, panel17, label32, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+
+            DisplayNewButtonOnPanel(button42, panel17, button41, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            /*
+             DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox7", BindReceivedMessages(crtUser));
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
 
             DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, listBox7, new int[2] { yItemsSpace , 0 }, new int[2]
@@ -935,32 +1012,13 @@ namespace PSO
                 { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
             this.button38.Click += new System.EventHandler(this.button38_Click);
 
-            DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
-            this.Controls.Add(this.panel17);
-            panel17.Hide();
-
             DisplayNewButtonOnPanel(button39, panel16, listBox7, new int[2] { 0, 2*yItemsSpace }, new int[2]
                 { listBox7.Size.Width, SMALLTEXT }, "Search", standardFont);
             this.button39.Click += new System.EventHandler(this.button39_Click);
 
             DisplayNewTextBoxOnPanel(textBox20, panel16, button39, new int[2] { 0, 2*xItemsSpace },
               new int[2] { listBox7.Size.Width, SMALLTEXT }, "");
-
-            DisplayNewButtonOnPanel(button40, panel16, button38, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
-                { MEDIUMITEM, SMALLTEXT }, "Spam", standardFont);
-            this.button40.Click += new System.EventHandler(this.button40_Click);
-
-
-            //DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
-            //    new int[2] { LONGITEM, SMALLTEXT }, "value");
-
-            string label32Text = "Sent";
-            int xPosLabel32 = xMargin;
-            int yPosLabel32 = yMargin;
-            int sizeXLabel32 = CalculateLabelLenght(label32Text);
-            int sizeYLabel32 = 24;
-            DisplayNewLabelOnPanel(label32, panel17, new int[2] { xPosLabel32, yPosLabel32 }, new int[2]
-                { sizeXLabel32, sizeYLabel32 }, label32Text);
+             */
 
             DisplayNewPanel(panel18, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel18", true);
             this.Controls.Add(this.panel18);
@@ -974,6 +1032,15 @@ namespace PSO
             DisplayNewLabelOnPanel(label33, panel18, new int[2] { xPosLabel33, yPosLabel33 }, new int[2]
                 { sizeXLabel33, sizeYLabel33 }, label33Text);
 
+            DisplayListBox(listBox9, panel18, label33, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox9", BindDeletedMessages(crtUser));
+
+            DisplayNewRichTextBoxOnPanel(richTextBox4, panel18, listBox9, new int[2] { yItemsSpace, 0 }, new int[2]
+                { 400, 200 }, "richTextBox4", standardFont);
+
+            DisplayNewButtonOnPanel(button45, panel18, label33, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+
             DisplayNewPanel(panel19, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel19", true);
             this.Controls.Add(this.panel19);
             panel19.Hide();
@@ -986,6 +1053,25 @@ namespace PSO
             DisplayNewLabelOnPanel(label34, panel19, new int[2] { xPosLabel34, yPosLabel34 }, new int[2]
                 { sizeXLabel34, sizeYLabel34 }, label34Text);
 
+            DisplayListBox(listBox10, panel19, label34, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox10", BindSpamMessages(crtUser));
+
+            DisplayNewRichTextBoxOnPanel(richTextBox5, panel19, listBox10, new int[2] { yItemsSpace, 0 }, new int[2]
+                { 400, 200 }, "richTextBox5", standardFont);
+
+            DisplayNewButtonOnPanel(button46, panel19, label34, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            this.button46.Click += new System.EventHandler(this.button46_Click);
+
+            /*
+             DisplayListBox(listBox9, panel18, label32, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox9", BindDeletedMessages(crtUser));
+
+            DisplayNewRichTextBoxOnPanel(richTextBox4, panel18, listBox9, new int[2] { yItemsSpace, 0 }, new int[2]
+                { 400, 200 }, "richTextBox4", standardFont);
+
+            DisplayNewButtonOnPanel(button45, panel18, label33, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            */
 
             DisplayNewPanel(panel20, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel20", true);
             this.Controls.Add(this.panel20);
@@ -1111,15 +1197,27 @@ namespace PSO
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Button button44;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ListBox listBox8;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button button42;
 
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ListBox listBox9;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.Button button45;
 
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.ListBox listBox10;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.Button button46;
 
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label label35;

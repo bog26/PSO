@@ -468,6 +468,6 @@ namespace PSO.Model
             int length = labelText.Length * 5;
             return length;
         }
-
+ 
     }
 }

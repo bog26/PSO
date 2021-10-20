@@ -219,11 +219,8 @@ namespace PSO.Model
             BindingSource binding = new BindingSource();
             var queryReceivedMessages = from message in psContext.Messages 
                                 where message.Receiver == user 
-                                    //&& message.MessageStatus != "deleted"
-                                    //&& message.MessageStatus != "spam"
                                     && message.MessageReceiverStatus != "deleted"
                                     && message.MessageReceiverStatus != "spam"
-
                                         select message.MessageTitle;
             binding.DataSource = queryReceivedMessages.ToList();
             return binding;
@@ -233,12 +230,43 @@ namespace PSO.Model
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
-            var queryReceivedMessages = from message in psContext.Messages
-                                        where (message.Sender == user) && (message.MessageSenderStatus != "deleted")
+            var querySentMessages = from message in psContext.Messages
+                                        where message.Sender == user 
+                                           && message.MessageSenderStatus != "deleted"
                                         select message.MessageTitle;
-            binding.DataSource = queryReceivedMessages.ToList();
+            binding.DataSource = querySentMessages.ToList();
             return binding;
         }
+
+        public static BindingSource BindDeletedMessages(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var queryDeletedMessages = from message in psContext.Messages
+                                    where message.Receiver == user
+                                      // && message.Sender == user
+                                       && message.MessageReceiverStatus == "deleted"
+                                       //&& message.MessageSenderStatus == "deleted"
+                                    select message.MessageTitle;
+            binding.DataSource = queryDeletedMessages.ToList();
+            return binding;
+        }
+
+        public static BindingSource BindSpamMessages(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var querySpamMessages = from message in psContext.Messages
+                                       where message.Receiver == user
+                                          //&& message.Sender == user
+                                          && message.MessageReceiverStatus == "spam"
+                                       //&& message.MessageSenderStatus == "deleted"
+                                       select message.MessageTitle;
+            binding.DataSource = querySpamMessages.ToList();
+            return binding;
+        }
+
+
         /*
         public static BindingSource BindSearchMessages(string searchword) //searches in messages from all users
         {

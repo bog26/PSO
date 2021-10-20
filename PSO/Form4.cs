@@ -652,6 +652,7 @@ namespace PSO
         }
         private void button32_Click(object sender, EventArgs e)
         {
+            listBox8.DataSource = BindSentMessages(crtUser);
             HideShowEmailPanels(panel17);
         }
         private void button33_Click(object sender, EventArgs e)
@@ -667,7 +668,7 @@ namespace PSO
             HideShowEmailPanels(panel20);
         }
 
-        private void button36_Click(object sender, EventArgs e)
+        private void button36_Click(object sender, EventArgs e) //"Send"
         {
             if(CheckIfEmailDataInputNotEmpty())
             {
@@ -703,6 +704,11 @@ namespace PSO
                 MessageBox.Show("Please fill in all required fields");
             }
         }
+
+        public static void ComposeMessage()
+        {
+
+        }
         public static string GetUser()
         {
             return ActiveForm.Text;
@@ -724,9 +730,10 @@ namespace PSO
         }
         private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //listBox7.DataSource = BindReceivedMessages(crtUser);
+            //HideShowEmailPanels(panel16);
         }
-        private void button37_Click(object sender, EventArgs e)
+        private void button37_Click(object sender, EventArgs e) //"Show"
         {
             int selection = listBox7.SelectedIndex;
             //MessageBox.Show($"index selected: {selection}");
@@ -744,8 +751,7 @@ namespace PSO
                 else 
                 {
                     encryption = true;
-                }
-                   
+                }           
             }
             else 
             {
@@ -759,7 +765,6 @@ namespace PSO
                     encryption = true;
                 }
             }
-
             if(!encryption)
             {
                 //MessageBox.Show("message not encrypted");
@@ -773,9 +778,66 @@ namespace PSO
                 richTextBox2.Text = decryptedMessage;
             }
             DBUpdates.ReadMsg(crtUser, selection);
-
             panel16.Show();
         }
+
+        private void button41_Click(object sender, EventArgs e) //show sent
+        {
+            int selection = listBox8.SelectedIndex;
+
+            string rawText = DBUpdates.GetSentMessage(crtUser, selection);
+            if (!DBUpdates.IsSentMessageEncrypted(crtUser, selection))
+            {
+                richTextBox3.Text = rawText;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox3.Text = decryptedMessage;
+            }
+            DBUpdates.ReadSentMsg(crtUser, selection);
+            panel17.Show();
+        }
+
+        private void button45_Click(object sender, EventArgs e) //show deleted
+        {
+            int selection = listBox9.SelectedIndex;
+
+            string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
+            if (!DBUpdates.IsDeletedMessageEncrypted(crtUser, selection))
+            {
+                richTextBox4.Text = rawText;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox4.Text = decryptedMessage;
+            }
+            DBUpdates.ReadDeletedMsg(crtUser, selection);
+            panel18.Show();
+        }
+
+        private void button46_Click(object sender, EventArgs e) //show spam
+        {
+            int selection = listBox10.SelectedIndex;
+
+            string rawText = DBUpdates.GetSpamMessage(crtUser, selection);
+            if (!DBUpdates.IsSpamMessageEncrypted(crtUser, selection))
+            {
+                richTextBox5.Text = rawText;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox5.Text = decryptedMessage;
+            }
+            DBUpdates.ReadSpamMsg(crtUser, selection);
+            panel19.Show();
+        }
+
         private string EncriptionRequested()
         {
             string withEncryption = "false";
@@ -790,6 +852,12 @@ namespace PSO
         {
             int selection = listBox7.SelectedIndex;
             DBUpdates.DeleteReceiverMsg(crtUser, selection);
+            //DBUpdates.DeleteMsg(crtUser, selection);
+        }
+        private void button42_Click(object sender, EventArgs e)
+        {
+            int selection = listBox8.SelectedIndex;
+            DBUpdates.DeleteSenderMsg(crtUser, selection);
             //DBUpdates.DeleteMsg(crtUser, selection);
         }
 
@@ -811,6 +879,64 @@ namespace PSO
             DBUpdates.SpamMsg(crtUser, selection);
             //DBUpdates.DeleteMsg(crtUser, selection);
         }
+        private void button43_Click(object sender, EventArgs e) //"Reply"
+        {
+            string[] messageFields = MessageReplyFieldsInit();
+
+            string receiver;
+            string title;
+            string message;
+
+            FillReplyMessage(messageFields, out receiver, out title, out message);
+            textBox17.Text = receiver;
+            textBox18.Text = title;
+            richTextBox1.Text = message;
+
+            HideShowEmailPanels(panel20);
+        }
+        private void button44_Click(object sender, EventArgs e) //"FWD"
+        {
+            
+        }
+        private string[] MessageReplyFieldsInit()
+        {
+            int selection = listBox7.SelectedIndex;
+            string receiverText = DBUpdates.GetReplyReceiver(crtUser, selection);
+            //string receiverText = "";
+            string titleText = "re: "+ DBUpdates.GetReplyTitle(crtUser, selection);
+            string messageText = richTextBox2.Text;
+            //string messageText = DBUpdates.GetReplyMessage(crtUser, selection);
+            string[] messageFields = new string[3] { receiverText, titleText, messageText };
+            return messageFields;
+        }
+
+        /*
+        private string GetReplyReceiver() //TBD : move to DBUpdates
+        {
+            string receiver = "";
+            int selection = listBox7.SelectedIndex;
+
+            return receiver;
+        }
+        */
+        
+
+        //private static string[] ReplyMessage(string receiver, string title, string message )
+        //private void FillReplyMessage(string[] messageFields, TextBox receiverBox, TextBox titleBox, RichTextBox messageBox)
+        private void FillReplyMessage(string[] messageFields, out string receiverBox, out string titleBox, out string messageBox)
+        {
+            receiverBox = messageFields[0];
+            titleBox = messageFields[1];
+            messageBox = messageFields[2];
+
+            //string[] messageFill = new string[3] { receiverBox.Text, titleBox.Text, messageBox.Text };
+            //return messageFill;
+        }
+        private void FowardMessage()
+        {
+
+        }
+
 
         private void HideShowEmailPanels(Panel panel)
         {

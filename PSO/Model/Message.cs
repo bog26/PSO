@@ -16,7 +16,7 @@ namespace PSO.Model
         public string MessageBody { get; set; }
         public DateTime MessageTime { get; set; }
 
-        public string MessageStatus { get; set; }
+        //public string MessageStatus { get; set; }
         public string MessageSenderStatus { get; set; }
         public string MessageReceiverStatus { get; set; }
         public bool IsEncrypted { get; set; }
