@@ -898,42 +898,50 @@ namespace PSO
         }
         private void button44_Click(object sender, EventArgs e) //"FWD"
         {
-            
+            string[] messageFields = MessageFWDFieldsInit();
+            string title;
+            string message;
+
+            FillFwdMessage(messageFields, out title, out message);
+            textBox18.Text = title;
+            richTextBox1.Text = message;
+            HideShowEmailPanels(panel20);
         }
         private string[] MessageReplyFieldsInit()
         {
             int selection = listBox7.SelectedIndex;
             string receiverText = DBUpdates.GetReplyReceiver(crtUser, selection);
-            //string receiverText = "";
             string titleText = "re: "+ DBUpdates.GetReplyTitle(crtUser, selection);
             string messageText = richTextBox2.Text;
-            //string messageText = DBUpdates.GetReplyMessage(crtUser, selection);
             string[] messageFields = new string[3] { receiverText, titleText, messageText };
             return messageFields;
         }
-
-        /*
-        private string GetReplyReceiver() //TBD : move to DBUpdates
+        private string[] MessageFWDFieldsInit()
         {
-            string receiver = "";
             int selection = listBox7.SelectedIndex;
-
-            return receiver;
+            StringBuilder title = new StringBuilder();
+            title.Append("Fwd: ");
+            title.Append(DBUpdates.GetReplyTitle(crtUser, selection));
+            string titleText = title.ToString();
+            string messageText = richTextBox2.Text;
+            string[] messageFields = new string[2] { titleText, messageText };
+            return messageFields;
         }
-        */
-        
 
-        //private static string[] ReplyMessage(string receiver, string title, string message )
-        //private void FillReplyMessage(string[] messageFields, TextBox receiverBox, TextBox titleBox, RichTextBox messageBox)
         private void FillReplyMessage(string[] messageFields, out string receiverBox, out string titleBox, out string messageBox)
         {
             receiverBox = messageFields[0];
             titleBox = messageFields[1];
             messageBox = messageFields[2];
-
-            //string[] messageFill = new string[3] { receiverBox.Text, titleBox.Text, messageBox.Text };
-            //return messageFill;
         }
+
+        private void FillFwdMessage(string[] messageFields, out string titleBox, out string messageBox)
+        {
+            titleBox = messageFields[0];
+            messageBox = messageFields[1];
+        }
+
+
         private void FowardMessage()
         {
 
