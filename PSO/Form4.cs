@@ -657,10 +657,12 @@ namespace PSO
         }
         private void button33_Click(object sender, EventArgs e)
         {
+            listBox9.DataSource = BindDeletedMessages(crtUser);
             HideShowEmailPanels(panel18);
         }
         private void button34_Click(object sender, EventArgs e)
         {
+            listBox10.DataSource = BindSpamMessages(crtUser);
             HideShowEmailPanels(panel19);
         }
         private void button35_Click(object sender, EventArgs e)

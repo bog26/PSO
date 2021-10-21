@@ -56,7 +56,7 @@ namespace PSO.Model
         }
         public void DeleteReceiverMessage()
         {
-            MessageReceiverStatus = "deleted";
+            MessageReceiverStatus = "deleted"; 
         }
 
         public void SpamMessage()
