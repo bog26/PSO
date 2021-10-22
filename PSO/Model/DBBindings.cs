@@ -522,7 +522,7 @@ namespace PSO.Model
         }
 
 
-            public static BindingSource BindProductsToGridPrototype1() //WIP
+        public static BindingSource BindProductsToGridPrototype1() //WIP
         {
             //DateTime startTime = DateTime.Now;
 
@@ -567,6 +567,27 @@ namespace PSO.Model
             binding.DataSource = queryProductsReturn.ToList();
             //MessageBox.Show("Duration: " + (DateTime.Now - startTime));
             return binding;
+        }
+        public static BindingSource BindInboxMessagesToGridView(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            var queryInboxMessages = from message in psContext.Messages
+                                        where message.Receiver == user
+                                            && message.MessageReceiverStatus != "deleted"
+                                            && message.MessageReceiverStatus != "spam"
+                                        select new
+                                        {
+                                            From = message.Sender,
+                                            Title = message.MessageTitle,
+                                            Time = message.MessageTime
+                                        };
+
+            binding.DataSource = queryInboxMessages.ToList();
+            return binding;
+
+
         }
 
     }

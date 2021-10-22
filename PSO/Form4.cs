@@ -513,7 +513,7 @@ namespace PSO
             }
         }
 
-        private void button30_Click(object sender, EventArgs e) 
+        private void button30_Click(object sender, EventArgs e) //Update
         {
             if( AllowProductUpdate() )
             {
@@ -648,7 +648,9 @@ namespace PSO
         private void button31_Click(object sender, EventArgs e)
         {
             listBox7.DataSource = BindReceivedMessages(crtUser);
+            dataGridView4.DataSource = BindInboxMessagesToGridView(crtUser);
             HideShowEmailPanels(panel16);
+            listBox7.Hide();
         }
         private void button32_Click(object sender, EventArgs e)
         {
@@ -783,6 +785,53 @@ namespace PSO
             panel16.Show();
         }
 
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            //MessageBox.Show($"row {selection} clicked"); // selection test ok
+            string rawText;
+            bool encryption;
+            if (textBox20.Text != string.Empty)
+            {
+                rawText = DBUpdates.GetMessage(crtUser, selection, textBox20.Text);
+
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection, textBox20.Text))
+                {
+                    encryption = false;
+                }
+                else
+                {
+                    encryption = true;
+                }
+            }
+            else
+            {
+                rawText = DBUpdates.GetMessage(crtUser, selection);
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection))
+                {
+                    encryption = false;
+                }
+                else
+                {
+                    encryption = true;
+                }
+            }
+            if (!encryption)
+            {
+                richTextBox2.Text = rawText;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox2.Text = decryptedMessage;
+            }
+            DBUpdates.ReadMsg(crtUser, selection);
+            panel16.Show();
+
+
+        }
+
         private void button41_Click(object sender, EventArgs e) //show sent
         {
             int selection = listBox8.SelectedIndex;
@@ -912,7 +961,7 @@ namespace PSO
             int selection = listBox7.SelectedIndex;
             string receiverText = DBUpdates.GetReplyReceiver(crtUser, selection);
             string titleText = "re: "+ DBUpdates.GetReplyTitle(crtUser, selection);
-            string messageText = richTextBox2.Text;
+            string messageText = "\n" + richTextBox2.Text;
             string[] messageFields = new string[3] { receiverText, titleText, messageText };
             return messageFields;
         }

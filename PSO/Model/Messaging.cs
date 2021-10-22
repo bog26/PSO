@@ -18,6 +18,8 @@ namespace PSO.Model
             newMessage.MessageTitle = args[2];
             newMessage.MessageBody = args[3];
             newMessage.MessageTime = DateTime.Now;
+            //newMessage.MessageTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+            //.ToString("MM/dd/yyyy hh:mm tt")
             return newMessage;
         }
     }

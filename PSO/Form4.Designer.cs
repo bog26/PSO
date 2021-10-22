@@ -355,10 +355,16 @@ namespace PSO
         private System.Windows.Forms.Button button1;
 
         //Form4 manual-added components //TBD
+        struct ControlDimensions
+        {
+            public int X;
+            public int Y;
+        }
+        
         private void InitializeManualAddedComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
-            
+
             this.panel8 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -446,6 +452,7 @@ namespace PSO
             this.button40 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
             this.button44 = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
 
 
             this.panel17 = new System.Windows.Forms.Panel();
@@ -479,11 +486,6 @@ namespace PSO
             this.button36 = new System.Windows.Forms.Button();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
 
-
-
-            DisplayNewPanel(panel8, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel8", true);
-            this.Controls.Add(this.panel8);
-            panel8.Hide();
             int[] panelItemsOriginCoord = new int[2] { 20, 20 };
             int origX = panelItemsOriginCoord[0];
             int origY = panelItemsOriginCoord[1];
@@ -496,7 +498,21 @@ namespace PSO
             const int STDTEXTBOX = 70;
             const int MEDIUMITEM = 70;
             const int LONGITEM = 140;
-            var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ControlDimensions LargeEmailPanel;
+            LargeEmailPanel.X = 610;
+            LargeEmailPanel.Y = 450;
+            ControlDimensions EmailBox;
+            EmailBox.X = LargeEmailPanel.X / 2 - 3 * xMargin;
+            EmailBox.Y = LargeEmailPanel.Y / 2 - 4 * yMargin - 20;
+
+            var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular,
+                                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            DisplayNewPanel(panel8, new int[2] { 550, 82 }, new int[2] { 500, 350 }, "panel8", true);
+            this.Controls.Add(this.panel8);
+            panel8.Hide();
+
+            
 
             string label10Text = "Please add product main characteristics";
             int xPosLabel10 = 3 * xMargin;
@@ -922,7 +938,7 @@ namespace PSO
             this.button35.Click += new System.EventHandler(this.button35_Click);
 
             
-            DisplayNewPanel(panel16, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel16", true);
+            DisplayNewPanel(panel16, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel16", true);
             this.Controls.Add(this.panel16);
             panel16.Hide();
             
@@ -937,8 +953,14 @@ namespace PSO
             DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox7", BindReceivedMessages(crtUser));
             this.listBox7.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
 
-            DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, listBox7, new int[2] { yItemsSpace , 0 }, new int[2]
-                { 400, 200 }, "richTextBox2", standardFont);
+            DisplayNewDataGridViewOnPanel(dataGridView4, panel16, new int[2]
+                                        { label31.Location.X, label31.Location.Y+label31.Size.Height + 2*yItemsSpace},
+                                         new int[2] { EmailBox.X, EmailBox.Y });
+            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView4.CellContentClick += new DataGridViewCellEventHandler(dataGridView4_CellContentClick);
+
+            DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, dataGridView4, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { EmailBox.X, EmailBox.Y }, "richTextBox2", standardFont);
 
             DisplayNewButtonOnPanel(button37, panel16, label31, new int[2] { 10*xItemsSpace, 0 }, new int[2]
                 { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
@@ -967,12 +989,7 @@ namespace PSO
                 { MEDIUMITEM, SMALLTEXT }, "FWD", standardFont);
             this.button44.Click += new System.EventHandler(this.button44_Click);
 
-
-
-            //DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
-            //    new int[2] { LONGITEM, SMALLTEXT }, "value");
-
-            DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel17", true);
+            DisplayNewPanel(panel17, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel17", true);
             this.Controls.Add(this.panel17);
             panel17.Hide();
 
@@ -997,30 +1014,8 @@ namespace PSO
             DisplayNewButtonOnPanel(button42, panel17, button41, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
                 { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
             this.button42.Click += new System.EventHandler(this.button42_Click);
-            /*
-             DisplayListBox(listBox7, panel16, label31, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox7", BindReceivedMessages(crtUser));
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
 
-            DisplayNewRichTextBoxOnPanel(richTextBox2, panel16, listBox7, new int[2] { yItemsSpace , 0 }, new int[2]
-                { 400, 200 }, "richTextBox2", standardFont);
-
-            DisplayNewButtonOnPanel(button37, panel16, label31, new int[2] { 10*xItemsSpace, 0 }, new int[2]
-                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
-            this.button37.Click += new System.EventHandler(this.button37_Click);
-
-            DisplayNewButtonOnPanel(button38, panel16, button37, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
-                { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
-            this.button38.Click += new System.EventHandler(this.button38_Click);
-
-            DisplayNewButtonOnPanel(button39, panel16, listBox7, new int[2] { 0, 2*yItemsSpace }, new int[2]
-                { listBox7.Size.Width, SMALLTEXT }, "Search", standardFont);
-            this.button39.Click += new System.EventHandler(this.button39_Click);
-
-            DisplayNewTextBoxOnPanel(textBox20, panel16, button39, new int[2] { 0, 2*xItemsSpace },
-              new int[2] { listBox7.Size.Width, SMALLTEXT }, "");
-             */
-
-            DisplayNewPanel(panel18, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel18", true);
+            DisplayNewPanel(panel18, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel18", true);
             this.Controls.Add(this.panel18);
             panel18.Hide();
 
@@ -1073,7 +1068,7 @@ namespace PSO
             this.button45.Click += new System.EventHandler(this.button45_Click);
             */
 
-            DisplayNewPanel(panel20, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panel20", true);
+            DisplayNewPanel(panel20, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel20", true);
             this.Controls.Add(this.panel20);
             panel20.Hide();
 
@@ -1199,6 +1194,7 @@ namespace PSO
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.DataGridView dataGridView4;
 
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label32;
