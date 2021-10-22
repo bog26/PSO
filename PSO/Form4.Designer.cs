@@ -1054,14 +1054,23 @@ namespace PSO
             DisplayNewLabelOnPanel(label34, panel19, new int[2] { xPosLabel34, yPosLabel34 }, new int[2]
                 { sizeXLabel34, sizeYLabel34 }, label34Text);
 
-            DisplayListBox(listBox10, panel19, label34, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox10", BindSpamMessages(crtUser));
+            DisplayNewDataGridViewOnPanel(dataGridView7, panel19, new int[2]
+                                        { label34.Location.X, label34.Location.Y+label34.Size.Height + 2*yItemsSpace},
+                                         new int[2] { EmailBox.X, EmailBox.Y });
+            dataGridView7.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView7.CellContentClick += new DataGridViewCellEventHandler(dataGridView7_CellContentClick);
 
-            DisplayNewRichTextBoxOnPanel(richTextBox5, panel19, listBox10, new int[2] { yItemsSpace, 0 }, new int[2]
-                { 400, 200 }, "richTextBox5", standardFont);
+            //DisplayListBox(listBox10, panel19, label34, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox10", BindSpamMessages(crtUser));
 
-            DisplayNewButtonOnPanel(button46, panel19, label34, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
-                { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
-            this.button46.Click += new System.EventHandler(this.button46_Click);
+            DisplayNewRichTextBoxOnPanel(richTextBox5, panel19, dataGridView7, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
+                { EmailBox.X, EmailBox.Y }, "richTextBox5", standardFont);
+
+            //DisplayNewRichTextBoxOnPanel(richTextBox5, panel19, listBox10, new int[2] { yItemsSpace, 0 }, new int[2]
+            //    { 400, 200 }, "richTextBox5", standardFont);
+
+            //DisplayNewButtonOnPanel(button46, panel19, label34, new int[2] { 10 * xItemsSpace, 0 }, new int[2]
+            //    { MEDIUMITEM, SMALLTEXT }, "Show", standardFont);
+            //this.button46.Click += new System.EventHandler(this.button46_Click);
 
             /*
              DisplayListBox(listBox9, panel18, label32, new int[2] { 0, yItemsSpace }, new int[2] { 100, 200 }, "listBox9", BindDeletedMessages(crtUser));

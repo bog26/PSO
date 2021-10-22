@@ -647,6 +647,25 @@ namespace PSO.Model
             return binding;
         }
 
+        public static BindingSource BindSpamMessagesToGridView(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            var queryDeletedMessages = from message in psContext.Messages
+                                       where message.Receiver == user
+                                           && message.MessageReceiverStatus == "spam"
+                                       select new
+                                       {
+                                           From = message.Sender,
+                                           Title = message.MessageTitle,
+                                           Time = message.MessageTime
+                                       };
+
+            binding.DataSource = queryDeletedMessages.ToList();
+            return binding;
+        }
+
     }
 
 }

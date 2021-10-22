@@ -668,7 +668,8 @@ namespace PSO
         }
         private void button34_Click(object sender, EventArgs e)
         {
-            listBox10.DataSource = BindSpamMessages(crtUser);
+            //listBox10.DataSource = BindSpamMessages(crtUser);
+            dataGridView7.DataSource = BindSpamMessagesToGridView(crtUser);
             HideShowEmailPanels(panel19);
         }
         private void button35_Click(object sender, EventArgs e)
@@ -862,6 +863,13 @@ namespace PSO
             int selection = e.RowIndex;
             string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
             DisplayClickedMessage(selection, richTextBox4, panel18, rawText, DBUpdates.IsDeletedMessageEncrypted, DBUpdates.ReadDeletedMsg);
+        }
+
+        private void dataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetSpamMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox5, panel19, rawText, DBUpdates.IsSpamMessageEncrypted, DBUpdates.ReadSpamMsg);
         }
 
         private void DisplayClickedMessage(int selection, RichTextBox MessagePage, Panel panel, string rawMessage, EcryptionCheck encryptionCheck, DBupdate update)
