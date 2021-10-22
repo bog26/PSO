@@ -645,21 +645,25 @@ namespace PSO
         }
         
 
-        private void button31_Click(object sender, EventArgs e)
+        private void button31_Click(object sender, EventArgs e) //Inbox
         {
-            listBox7.DataSource = BindReceivedMessages(crtUser);
+            //listBox7.DataSource = BindReceivedMessages(crtUser);
             dataGridView4.DataSource = BindInboxMessagesToGridView(crtUser);
             HideShowEmailPanels(panel16);
-            listBox7.Hide();
+            //listBox7.Hide();
         }
-        private void button32_Click(object sender, EventArgs e)
+        private void button32_Click(object sender, EventArgs e) //Sent
         {
-            listBox8.DataSource = BindSentMessages(crtUser);
+            //BindSentMessagesToGridView
+            dataGridView5.DataSource = BindSentMessagesToGridView(crtUser);
+            //listBox8.DataSource = BindSentMessages(crtUser);
             HideShowEmailPanels(panel17);
         }
-        private void button33_Click(object sender, EventArgs e)
+        private void button33_Click(object sender, EventArgs e) //Deleted
         {
-            listBox9.DataSource = BindDeletedMessages(crtUser);
+            //BindDeletedMessagesToGridView
+            //listBox9.DataSource = BindDeletedMessages(crtUser);
+            dataGridView6.DataSource = BindDeletedMessagesToGridView(crtUser);
             HideShowEmailPanels(panel18);
         }
         private void button34_Click(object sender, EventArgs e)
@@ -737,6 +741,8 @@ namespace PSO
             //listBox7.DataSource = BindReceivedMessages(crtUser);
             //HideShowEmailPanels(panel16);
         }
+
+        /*
         private void button37_Click(object sender, EventArgs e) //"Show"
         {
             int selection = listBox7.SelectedIndex;
@@ -784,7 +790,9 @@ namespace PSO
             DBUpdates.ReadMsg(crtUser, selection);
             panel16.Show();
         }
+        */
 
+        
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int selection = e.RowIndex;
@@ -828,8 +836,58 @@ namespace PSO
             }
             DBUpdates.ReadMsg(crtUser, selection);
             panel16.Show();
+        }
 
 
+        public delegate bool EcryptionCheck(string user, int selection);
+        public delegate void DBupdate(string user, int selection);
+
+        /*
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox3, panel17, rawText, DBUpdates.IsMessageEncrypted, DBUpdates.ReadMsg);
+        }*/
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetSentMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox3, panel17, rawText, DBUpdates.IsSentMessageEncrypted, DBUpdates.ReadSentMsg);
+        }
+
+        private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox4, panel18, rawText, DBUpdates.IsDeletedMessageEncrypted, DBUpdates.ReadDeletedMsg);
+        }
+
+        private void DisplayClickedMessage(int selection, RichTextBox MessagePage, Panel panel, string rawMessage, EcryptionCheck encryptionCheck, DBupdate update)
+        {
+            bool encryption;
+            if (!encryptionCheck(crtUser, selection))
+            {
+                encryption = false;
+            }
+            else
+            {
+                encryption = true;
+            }
+
+            if (!encryption)
+            {
+                MessagePage.Text = rawMessage;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawMessage, key);
+                MessagePage.Text = decryptedMessage;
+            }
+            update(crtUser, selection);
+            panel.Show();
         }
 
         private void button41_Click(object sender, EventArgs e) //show sent
@@ -850,6 +908,8 @@ namespace PSO
             DBUpdates.ReadSentMsg(crtUser, selection);
             panel17.Show();
         }
+
+        
 
         private void button45_Click(object sender, EventArgs e) //show deleted
         {
@@ -899,15 +959,15 @@ namespace PSO
             return withEncryption;
         }
 
-        private void button38_Click(object sender, EventArgs e)
+        private void button38_Click(object sender, EventArgs e) //Delete
         {
-            int selection = listBox7.SelectedIndex;
+            int selection = dataGridView4.CurrentCell.RowIndex; 
             DBUpdates.DeleteReceiverMsg(crtUser, selection);
-            //DBUpdates.DeleteMsg(crtUser, selection);
         }
         private void button42_Click(object sender, EventArgs e)
         {
-            int selection = listBox8.SelectedIndex;
+            //int selection = listBox8.SelectedIndex;
+            int selection = dataGridView5.CurrentCell.RowIndex;
             DBUpdates.DeleteSenderMsg(crtUser, selection);
             //DBUpdates.DeleteMsg(crtUser, selection);
         }
@@ -918,17 +978,17 @@ namespace PSO
             //HideShowEmailPanels(panel16);
             if(textBox20.Text!=string.Empty)
             {
-                listBox7.DataSource = BindSearchMessages(textBox20.Text, crtUser);
+                //listBox7.DataSource = BindSearchMessages(textBox20.Text, crtUser);
+                dataGridView4.DataSource = BindInboxSearchMessagesToGridView(crtUser, textBox20.Text); 
                 HideShowEmailPanels(panel16);
             }
             
         }
 
-        private void button40_Click(object sender, EventArgs e)
+        private void button40_Click(object sender, EventArgs e) //Spam
         {
-            int selection = listBox7.SelectedIndex;
+            int selection = dataGridView4.CurrentCell.RowIndex;
             DBUpdates.SpamMsg(crtUser, selection);
-            //DBUpdates.DeleteMsg(crtUser, selection);
         }
         private void button43_Click(object sender, EventArgs e) //"Reply"
         {
@@ -958,7 +1018,8 @@ namespace PSO
         }
         private string[] MessageReplyFieldsInit()
         {
-            int selection = listBox7.SelectedIndex;
+            //int selection = listBox7.SelectedIndex;
+            int selection = dataGridView4.CurrentCell.RowIndex;
             string receiverText = DBUpdates.GetReplyReceiver(crtUser, selection);
             string titleText = "re: "+ DBUpdates.GetReplyTitle(crtUser, selection);
             string messageText = "\n" + richTextBox2.Text;
@@ -967,7 +1028,8 @@ namespace PSO
         }
         private string[] MessageFWDFieldsInit()
         {
-            int selection = listBox7.SelectedIndex;
+            //int selection = listBox7.SelectedIndex;
+            int selection = dataGridView4.CurrentCell.RowIndex;
             StringBuilder title = new StringBuilder();
             title.Append("Fwd: ");
             title.Append(DBUpdates.GetReplyTitle(crtUser, selection));

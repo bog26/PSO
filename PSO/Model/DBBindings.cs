@@ -586,8 +586,65 @@ namespace PSO.Model
 
             binding.DataSource = queryInboxMessages.ToList();
             return binding;
+        }
 
+        public static BindingSource BindInboxSearchMessagesToGridView(string user, string searchword)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
 
+            var queryInboxMessages = from message in psContext.Messages
+                                     where message.Receiver == user
+                                         && message.MessageBody.Contains(searchword)
+                                         && message.MessageReceiverStatus != "deleted"
+                                         && message.MessageReceiverStatus != "spam"
+                                     select new
+                                     {
+                                         From = message.Sender,
+                                         Title = message.MessageTitle,
+                                         Time = message.MessageTime
+                                     };
+
+            binding.DataSource = queryInboxMessages.ToList();
+            return binding;
+        }
+
+        public static BindingSource BindSentMessagesToGridView(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            var querySentMessages = from message in psContext.Messages
+                                     where message.Sender == user
+                                         && message.MessageSenderStatus != "deleted"
+                                    select new
+                                     {
+                                         From = message.Sender,
+                                         Title = message.MessageTitle,
+                                         Time = message.MessageTime
+                                     };
+
+            binding.DataSource = querySentMessages.ToList();
+            return binding;
+        }
+
+        public static BindingSource BindDeletedMessagesToGridView(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            var queryDeletedMessages = from message in psContext.Messages
+                                    where message.Receiver == user
+                                        && message.MessageReceiverStatus == "deleted"
+                                    select new
+                                    {
+                                        From = message.Sender,
+                                        Title = message.MessageTitle,
+                                        Time = message.MessageTime
+                                    };
+
+            binding.DataSource = queryDeletedMessages.ToList();
+            return binding;
         }
 
     }
