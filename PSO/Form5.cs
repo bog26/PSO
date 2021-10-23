@@ -18,6 +18,7 @@ namespace PSO
         public Form5()
         {
             InitializeComponent();
+            InitializeManualAddedComponent();
         }
 
 
@@ -55,6 +56,7 @@ namespace PSO
 
         }
 
+        /*
         Label label5 = new Label();
         Label label6 = new Label();
         Label label7 = new Label();
@@ -70,9 +72,11 @@ namespace PSO
         Button button12 = new Button();
         Button button13 = new Button();
         Button button14 = new Button();
+        */
 
         private void button3_Click(object sender, EventArgs e)
         {
+            /*
             ShoWUserInformationFormElements();
             string loggedUser = ActiveForm.Text;
             DisplayNewLabel(label5, new int[2] { 230, 50 }, new int[2] { 168, 24 }, "Personal info");
@@ -107,80 +111,74 @@ namespace PSO
             DisplayNewLabel(label9, new int[2] { 230, 270 }, new int[2] { 168, 24 }, "Password");
             DisplayNewButton(button13, new int[2] { 230, 300 }, new int[2] { 120, 23 }, "button13", "Change Password");
             button13.Click += new EventHandler(button13_Click);
+            */
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex >= 1)
+            int selection = e.RowIndex;
+            //MessageBox.Show($"row {selection} clicked"); // selection test ok
+            string rawText;
+            bool encryption;
+            if (textBox1.Text != string.Empty)
             {
-                string cellContent = dataGridView1.Rows[0].Cells[e.ColumnIndex].Value.ToString();
-                textBox1.Text = cellContent;
-                textBox1.Refresh();
+                rawText = DBUpdates.GetMessage(crtUser, selection, textBox1.Text);
+
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection, textBox1.Text))
+                {
+                    encryption = false;
+                }
+                else
+                {
+                    encryption = true;
+                }
             }
+            else
+            {
+                rawText = DBUpdates.GetMessage(crtUser, selection);
+                if (!DBUpdates.IsMessageEncrypted(crtUser, selection))
+                {
+                    encryption = false;
+                }
+                else
+                {
+                    encryption = true;
+                }
+            }
+            if (!encryption)
+            {
+                richTextBox1.Text = rawText;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
+                richTextBox1.Text = decryptedMessage;
+            }
+            DBUpdates.ReadMsg(crtUser, selection);
+            panelInbox1.Show();
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView2.Rows[0].Cells[e.ColumnIndex].Value != null)
-            {
-                string cellContent = dataGridView2.Rows[0].Cells[e.ColumnIndex].Value.ToString();
-                textBox2.Text = cellContent;
-                textBox2.Refresh();
-            }
-        }
+        
 
         private void button11_Click(object sender, EventArgs e)
         {
-            string value = textBox1.Text;
-            int activeCellIndex = dataGridView1.CurrentCell.ColumnIndex;
-            string activeColumn = dataGridView1.Columns[activeCellIndex].Name;
-            //MessageBox.Show("cell column index:"+activeCellIndex);
-
-            MessageBox.Show("updating " + activeColumn + " with " + value);
-            DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
-            dataGridView1.Refresh();
+       
         }
         private void button12_Click(object sender, EventArgs e)
         {
-            string value = textBox2.Text;
-            int activeCellIndex = dataGridView2.CurrentCell.ColumnIndex;
-            string activeColumn = dataGridView2.Columns[activeCellIndex].Name;
-
-            MessageBox.Show("updating " + activeColumn + " with " + value);
-            DBUpdates.WriteUserAddressToDB(activeColumn, value);
-            dataGridView2.Refresh();
+     
         }
         private void button13_Click(object sender, EventArgs e)
         {
-            textBox3.Show();
-            textBox4.Show();
-            button13.Show();
-            DisplayNewTextBox(textBox3, new int[2] { 390, 270 }, new int[2] { 120, 24 }, "old password");
-            textBox3.TextChanged += new EventHandler(textBox3_TextChanged);
-            DisplayNewTextBox(textBox4, new int[2] { 390, 300 }, new int[2] { 120, 24 }, "new password");
-            textBox4.TextChanged += new EventHandler(textBox4_TextChanged);
-
-            DisplayNewButton(button14, new int[2] { 520, 270 }, new int[2] { 100, 22 }, "button14", "Update Password");
-            button14.Click += new EventHandler(button14_Click);
-
+      
 
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            if (InternalDBQueries.CheckForCorrectPassword(Form.ActiveForm.Text, textBox3.Text))
-            {
-                //MessageBox.Show("correct password");
-                string newPassVal = textBox4.Text;
-                DBUpdates.WriteNewPassToDB(newPassVal);
-                MessageBox.Show("password changed");
-            }
-            else
-            {
-                MessageBox.Show("wrong password");
-            }
-
+       
         }
-
+    /*
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -197,9 +195,10 @@ namespace PSO
         {
 
         }
-
+    */
         private void ShoWUserInformationFormElements()
         {
+        /*
             label5.Show();
             dataGridView1.Show();
             textBox1.Show();
@@ -212,14 +211,17 @@ namespace PSO
             label9.Show();
             button12.Show();
             button13.Show();
+        */
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            HideUserInformationFormElements();
+            //HideUserInformationFormElements();
+            panelMessage1.Show();
         }
         private void HideUserInformationFormElements()
         {
+        /*
             dataGridView1.Hide();
             dataGridView2.Hide();
             textBox1.Hide();
@@ -235,10 +237,10 @@ namespace PSO
             button12.Hide();
             button13.Hide();
             button14.Hide();
-            
+            */
             
         }
-
+    /*
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -252,6 +254,211 @@ namespace PSO
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+    */
+        private void HideShowEmailPanels(Panel panel)
+        {
+            panelInbox1.Hide();
+            panelSent1.Hide();
+            panelDeleted1.Hide();
+            panelSpam1.Hide();
+            panelCompose1.Hide();
+            panel.Show();
+        }
+
+        private void button16_Click(object sender, EventArgs e) //Inbox
+        {
+            dataGridView1.DataSource = BindInboxMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelInbox1);
+        }
+        private void button17_Click(object sender, EventArgs e) //Sent
+        {
+            dataGridView2.DataSource = BindSentMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelSent1);
+        }
+
+        private void button18_Click(object sender, EventArgs e) //Deleted
+        {
+            dataGridView3.DataSource = BindDeletedMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelDeleted1);
+        }
+        private void button19_Click(object sender, EventArgs e) //spam
+        {
+            dataGridView4.DataSource = BindSpamMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelSpam1);
+        }
+        private void button20_Click(object sender, EventArgs e) //compose
+        {
+            HideShowEmailPanels(panelCompose1);
+        }
+
+        private void button21_Click(object sender, EventArgs e) //Delete
+        {
+            int selection = dataGridView1.CurrentCell.RowIndex;
+            DBUpdates.DeleteReceiverMsg(crtUser, selection);
+        }
+
+        private void button22_Click(object sender, EventArgs e) //Spam
+        {
+            int selection = dataGridView1.CurrentCell.RowIndex;
+            DBUpdates.SpamMsg(crtUser, selection);
+        }
+        private void button23_Click(object sender, EventArgs e) //"Reply"
+        {
+            string[] messageFields = MessageReplyFieldsInit();
+
+            string receiver;
+            string title;
+            string message;
+
+            FillReplyMessage(messageFields, out receiver, out title, out message);
+            textBox2.Text = receiver;
+            textBox3.Text = title;
+            richTextBox5.Text = message;
+
+            HideShowEmailPanels(panelCompose1);
+        }
+        private void button24_Click(object sender, EventArgs e) //"FWD"
+        {
+            string[] messageFields = MessageFWDFieldsInit();
+            string title;
+            string message;
+
+            FillFwdMessage(messageFields, out title, out message);
+            textBox2.Text = "";
+            textBox3.Text = title;
+            richTextBox1.Text = message;
+            HideShowEmailPanels(panelCompose1);
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+ 
+            if (textBox1.Text != string.Empty)
+            {
+                dataGridView4.DataSource = BindInboxSearchMessagesToGridView(crtUser, textBox1.Text);
+                HideShowEmailPanels(panelInbox1);
+            }
+
+        }
+
+        private string[] MessageReplyFieldsInit()
+        {
+            //int selection = listBox7.SelectedIndex;
+            int selection = dataGridView1.CurrentCell.RowIndex;
+            string receiverText = DBUpdates.GetReplyReceiver(crtUser, selection);
+            string titleText = "re: " + DBUpdates.GetReplyTitle(crtUser, selection);
+            string messageText = "\n" + richTextBox1.Text;
+            string[] messageFields = new string[3] { receiverText, titleText, messageText };
+            return messageFields;
+        }
+        private string[] MessageFWDFieldsInit()
+        {
+            //int selection = listBox7.SelectedIndex;
+            int selection = dataGridView1.CurrentCell.RowIndex;
+            StringBuilder title = new StringBuilder();
+            title.Append("Fwd: ");
+            title.Append(DBUpdates.GetReplyTitle(crtUser, selection));
+            string titleText = title.ToString();
+            string messageText = richTextBox1.Text;
+            string[] messageFields = new string[2] { titleText, messageText };
+            return messageFields;
+        }
+
+        private void FillReplyMessage(string[] messageFields, out string receiverBox, out string titleBox, out string messageBox)
+        {
+            receiverBox = messageFields[0];
+            titleBox = messageFields[1];
+            messageBox = messageFields[2];
+        }
+        private void FillFwdMessage(string[] messageFields, out string titleBox, out string messageBox)
+        {
+            titleBox = messageFields[0];
+            messageBox = messageFields[1];
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetSentMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox2, panelSent1, rawText, DBUpdates.IsSentMessageEncrypted, DBUpdates.ReadSentMsg, crtUser);
+        }
+        private void button26_Click(object sender, EventArgs e)
+        {
+            int selection = dataGridView2.CurrentCell.RowIndex;
+            DBUpdates.DeleteSenderMsg(crtUser, selection);
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox3, panelDeleted1, rawText, DBUpdates.IsDeletedMessageEncrypted, DBUpdates.ReadDeletedMsg, crtUser);
+        }
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selection = e.RowIndex;
+            string rawText = DBUpdates.GetSpamMessage(crtUser, selection);
+            DisplayClickedMessage(selection, richTextBox4, panelSpam1, rawText, DBUpdates.IsSpamMessageEncrypted, DBUpdates.ReadSpamMsg, crtUser);
+        }
+
+        private void button27_Click(object sender, EventArgs e) //"Send"
+        {
+            if (CheckIfEmailDataInputNotEmpty())
+            {
+                
+                string withEncryption = EncriptionRequested();
+                string messageBody;
+                if (withEncryption == "true")
+                {
+                    string crtUser = IOMethods.GetUserName();
+                    string key = "abracadabra";
+                    string encryptedMessage = Encryption.StringEncrypt(richTextBox1.Text, key);
+                    messageBody = encryptedMessage;
+                }
+                else
+                {
+                    messageBody = richTextBox1.Text;
+                }
+                string[] messageFields = new string[] { Form.ActiveForm.Text, textBox2.Text, textBox3.Text, messageBody, withEncryption };
+                var newMessage = Messaging.CreateMessage(messageFields);
+                if (DBUpdates.WriteMessageToDB(newMessage))
+                {
+                    MessageBox.Show("Message sent");
+                }
+                else
+                {
+                    MessageBox.Show("Your message could not be sent. Check if receiver name is correct!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all required fields");
+            }
+        }
+
+        private string EncriptionRequested()
+        {
+            string withEncryption = "false";
+            if (checkBox1.Checked)
+            {
+                withEncryption = "true";
+            }
+            return withEncryption;
+        }
+
+        private bool CheckIfEmailDataInputNotEmpty()
+        {
+            bool correctInputData = false;
+
+            if (textBox2.Text != String.Empty
+               && textBox3.Text != String.Empty
+               && richTextBox5.Text != String.Empty)
+            {
+                correctInputData = true;
+            }
+
+            return correctInputData;
         }
     }
 }

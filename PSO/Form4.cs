@@ -647,28 +647,21 @@ namespace PSO
 
         private void button31_Click(object sender, EventArgs e) //Inbox
         {
-            //listBox7.DataSource = BindReceivedMessages(crtUser);
             dataGridView4.DataSource = BindInboxMessagesToGridView(crtUser);
             HideShowEmailPanels(panel16);
-            //listBox7.Hide();
         }
         private void button32_Click(object sender, EventArgs e) //Sent
         {
-            //BindSentMessagesToGridView
             dataGridView5.DataSource = BindSentMessagesToGridView(crtUser);
-            //listBox8.DataSource = BindSentMessages(crtUser);
             HideShowEmailPanels(panel17);
         }
         private void button33_Click(object sender, EventArgs e) //Deleted
         {
-            //BindDeletedMessagesToGridView
-            //listBox9.DataSource = BindDeletedMessages(crtUser);
             dataGridView6.DataSource = BindDeletedMessagesToGridView(crtUser);
             HideShowEmailPanels(panel18);
         }
         private void button34_Click(object sender, EventArgs e)
         {
-            //listBox10.DataSource = BindSpamMessages(crtUser);
             dataGridView7.DataSource = BindSpamMessagesToGridView(crtUser);
             HideShowEmailPanels(panel19);
         }
@@ -743,56 +736,6 @@ namespace PSO
             //HideShowEmailPanels(panel16);
         }
 
-        /*
-        private void button37_Click(object sender, EventArgs e) //"Show"
-        {
-            int selection = listBox7.SelectedIndex;
-            //MessageBox.Show($"index selected: {selection}");
-            //string rawText = DBUpdates.GetMessage(crtUser, selection);
-            string rawText;
-            bool encryption;
-            if (textBox20.Text != string.Empty)
-            {
-                rawText = DBUpdates.GetMessage(crtUser, selection, textBox20.Text);
-
-                if (!DBUpdates.IsMessageEncrypted(crtUser, selection, textBox20.Text))
-                {
-                    encryption = false;
-                }
-                else 
-                {
-                    encryption = true;
-                }           
-            }
-            else 
-            {
-                rawText = DBUpdates.GetMessage(crtUser, selection);
-                if (!DBUpdates.IsMessageEncrypted(crtUser, selection))
-                {
-                    encryption = false;
-                }
-                else
-                {
-                    encryption = true;
-                }
-            }
-            if(!encryption)
-            {
-                //MessageBox.Show("message not encrypted");
-                richTextBox2.Text = rawText;
-            }
-            else 
-            {
-                //MessageBox.Show("decrypting message");
-                string key = "abracadabra";
-                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
-                richTextBox2.Text = decryptedMessage;
-            }
-            DBUpdates.ReadMsg(crtUser, selection);
-            panel16.Show();
-        }
-        */
-
         
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -855,106 +798,21 @@ namespace PSO
         {
             int selection = e.RowIndex;
             string rawText = DBUpdates.GetSentMessage(crtUser, selection);
-            DisplayClickedMessage(selection, richTextBox3, panel17, rawText, DBUpdates.IsSentMessageEncrypted, DBUpdates.ReadSentMsg);
+            DisplayClickedMessage(selection, richTextBox3, panel17, rawText, DBUpdates.IsSentMessageEncrypted, DBUpdates.ReadSentMsg, crtUser);
         }
 
         private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int selection = e.RowIndex;
             string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
-            DisplayClickedMessage(selection, richTextBox4, panel18, rawText, DBUpdates.IsDeletedMessageEncrypted, DBUpdates.ReadDeletedMsg);
+            DisplayClickedMessage(selection, richTextBox4, panel18, rawText, DBUpdates.IsDeletedMessageEncrypted, DBUpdates.ReadDeletedMsg, crtUser);
         }
 
         private void dataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int selection = e.RowIndex;
             string rawText = DBUpdates.GetSpamMessage(crtUser, selection);
-            DisplayClickedMessage(selection, richTextBox5, panel19, rawText, DBUpdates.IsSpamMessageEncrypted, DBUpdates.ReadSpamMsg);
-        }
-
-        private void DisplayClickedMessage(int selection, RichTextBox MessagePage, Panel panel, string rawMessage, EcryptionCheck encryptionCheck, DBupdate update)
-        {
-            bool encryption;
-            if (!encryptionCheck(crtUser, selection))
-            {
-                encryption = false;
-            }
-            else
-            {
-                encryption = true;
-            }
-
-            if (!encryption)
-            {
-                MessagePage.Text = rawMessage;
-            }
-            else
-            {
-                string key = "abracadabra";
-                string decryptedMessage = Encryption.StringDecrypt(rawMessage, key);
-                MessagePage.Text = decryptedMessage;
-            }
-            update(crtUser, selection);
-            panel.Show();
-        }
-
-        private void button41_Click(object sender, EventArgs e) //show sent
-        {
-            int selection = listBox8.SelectedIndex;
-
-            string rawText = DBUpdates.GetSentMessage(crtUser, selection);
-            if (!DBUpdates.IsSentMessageEncrypted(crtUser, selection))
-            {
-                richTextBox3.Text = rawText;
-            }
-            else
-            {
-                string key = "abracadabra";
-                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
-                richTextBox3.Text = decryptedMessage;
-            }
-            DBUpdates.ReadSentMsg(crtUser, selection);
-            panel17.Show();
-        }
-
-        
-
-        private void button45_Click(object sender, EventArgs e) //show deleted
-        {
-            int selection = listBox9.SelectedIndex;
-
-            string rawText = DBUpdates.GetDeletedMessage(crtUser, selection);
-            if (!DBUpdates.IsDeletedMessageEncrypted(crtUser, selection))
-            {
-                richTextBox4.Text = rawText;
-            }
-            else
-            {
-                string key = "abracadabra";
-                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
-                richTextBox4.Text = decryptedMessage;
-            }
-            DBUpdates.ReadDeletedMsg(crtUser, selection);
-            panel18.Show();
-        }
-
-        private void button46_Click(object sender, EventArgs e) //show spam
-        {
-            int selection = listBox10.SelectedIndex;
-
-            string rawText = DBUpdates.GetSpamMessage(crtUser, selection);
-            if (!DBUpdates.IsSpamMessageEncrypted(crtUser, selection))
-            {
-                richTextBox5.Text = rawText;
-            }
-            else
-            {
-                string key = "abracadabra";
-                string decryptedMessage = Encryption.StringDecrypt(rawText, key);
-                richTextBox5.Text = decryptedMessage;
-            }
-            DBUpdates.ReadSpamMsg(crtUser, selection);
-            panel19.Show();
+            DisplayClickedMessage(selection, richTextBox5, panel19, rawText, DBUpdates.IsSpamMessageEncrypted, DBUpdates.ReadSpamMsg, crtUser);
         }
 
         private string EncriptionRequested()
@@ -1020,6 +878,7 @@ namespace PSO
             string message;
 
             FillFwdMessage(messageFields, out title, out message);
+            textBox17.Text = "";
             textBox18.Text = title;
             richTextBox1.Text = message;
             HideShowEmailPanels(panel20);

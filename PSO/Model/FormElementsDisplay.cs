@@ -468,6 +468,33 @@ namespace PSO.Model
             int length = labelText.Length * 5;
             return length;
         }
- 
+        public delegate bool EcryptionCheck(string user, int selection);
+        public delegate void DBupdate(string user, int selection);
+        public static void DisplayClickedMessage(int selection, RichTextBox MessagePage, Panel panel, string rawMessage, EcryptionCheck encryptionCheck, DBupdate update, string crtUser)
+        {
+            bool encryption;
+            if (!encryptionCheck(crtUser, selection))
+            {
+                encryption = false;
+            }
+            else
+            {
+                encryption = true;
+            }
+
+            if (!encryption)
+            {
+                MessagePage.Text = rawMessage;
+            }
+            else
+            {
+                string key = "abracadabra";
+                string decryptedMessage = Encryption.StringDecrypt(rawMessage, key);
+                MessagePage.Text = decryptedMessage;
+            }
+            update(crtUser, selection);
+            panel.Show();
+        }
+
     }
 }
