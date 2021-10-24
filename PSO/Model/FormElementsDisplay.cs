@@ -222,7 +222,23 @@ namespace PSO.Model
             button.Size = new Size(length, hight);
             button.Text = buttonText;
             button.UseVisualStyleBackColor = true;
-            Form.ActiveForm.Controls.Add(button);
+            //
+            //this.Controls.Add(this.button1);
+            //Form.ActiveForm.Controls.Add(button);
+        }
+        public static void DisplayNewButton(Button button, int[] position, int[] size, string name, string buttonText, Font font)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            button.Location = new Point(posX, posY);
+            button.Name = name;
+            button.Size = new Size(length, hight);
+            button.Text = buttonText;
+            button.UseVisualStyleBackColor = true;
+            //this.Controls.Add(this.button1);
+            //Form.ActiveForm.Controls.Add(button);
         }
 
         public static void DisplayNewButtonOnPanel(Button button, Panel panel, int[] position, int[] size, string name, string buttonText)

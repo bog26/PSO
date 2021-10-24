@@ -279,6 +279,7 @@ namespace PSO
             panelSpam1.Hide();
             panelCompose1.Hide();
             panelUserInfo.Hide();
+            panelProducts.Hide();
             panel.Show();
         }
 
@@ -505,7 +506,6 @@ namespace PSO
             DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
             dataGridView5.DataSource = BindCrtUserDataToGrid(crtUser);
             HideShowAllPanels(panelUserInfo);
-            //dataGridView5.Refresh();
         }
 
         private void button29_Click(object sender, EventArgs e) //"update"
@@ -517,7 +517,6 @@ namespace PSO
             DBUpdates.WriteUserAddressToDB(activeColumn, value);
             dataGridView6.DataSource = BindCrtUserAddressToGrid(crtUser);
             HideShowAllPanels(panelUserInfo);
-            //dataGridView5.Refresh();
         }
 
         private void button30_Click(object sender, EventArgs e) //"Change Password"
@@ -533,7 +532,6 @@ namespace PSO
         {
             if (InternalDBQueries.CheckForCorrectPassword(Form.ActiveForm.Text, textBox6.Text))
             {
-                //MessageBox.Show("correct password");
                 string newPassVal = textBox7.Text;
                 DBUpdates.WriteNewPassToDB(newPassVal);
                 MessageBox.Show("password changed");
@@ -550,6 +548,21 @@ namespace PSO
         private void UpdateDataGridMessageBox(string column, string value)
         {
             MessageBox.Show("updating " + column + " with " + value);
+        }
+
+        private void button6_Click(object sender, EventArgs e) //"Products"
+        {
+            HideShowAllPanels(panelProducts);
+        }
+
+        private void button32_Click(object sender, EventArgs e) //"Search"
+        {
+
+        }
+
+            private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

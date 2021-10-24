@@ -93,10 +93,11 @@ namespace PSO
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(28, 59);
+            this.panel1.Location = new System.Drawing.Point(28, 68);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(190, 51);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
             // 
@@ -116,7 +117,7 @@ namespace PSO
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(28, 106);
+            this.panel3.Location = new System.Drawing.Point(28, 115);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(190, 96);
             this.panel3.TabIndex = 3;
@@ -162,7 +163,7 @@ namespace PSO
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.button5);
-            this.panel2.Location = new System.Drawing.Point(28, 202);
+            this.panel2.Location = new System.Drawing.Point(28, 211);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(190, 195);
             this.panel2.TabIndex = 4;
@@ -206,6 +207,7 @@ namespace PSO
             this.button6.TabIndex = 2;
             this.button6.Text = "Products";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label3
             // 
@@ -234,7 +236,7 @@ namespace PSO
             this.panel4.Controls.Add(this.button10);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.button9);
-            this.panel4.Location = new System.Drawing.Point(28, 386);
+            this.panel4.Location = new System.Drawing.Point(28, 392);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(190, 113);
             this.panel4.TabIndex = 5;
@@ -254,7 +256,7 @@ namespace PSO
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(28, 14);
+            this.label4.Location = new System.Drawing.Point(28, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 16);
             this.label4.TabIndex = 1;
@@ -323,10 +325,15 @@ namespace PSO
         {
             public int X;
             public int Y;
+            public int PosX;
+            public int PosY;
         }
         private void InitializeManualAddedComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+
+            this.buttonShoppingCart1 = new System.Windows.Forms.Button();
+
             this.panelMessage1 = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -389,6 +396,28 @@ namespace PSO
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
 
+            this.panelProducts = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+
+
 
             int[] panelItemsOriginCoord = new int[2] { 20, 20 };
             int origX = panelItemsOriginCoord[0];
@@ -405,6 +434,15 @@ namespace PSO
             ControlDimensions LargeEmailPanel;
             LargeEmailPanel.X = 610;
             LargeEmailPanel.Y = 450;
+            LargeEmailPanel.PosX = 500;
+            LargeEmailPanel.PosY = 68;
+
+            ControlDimensions StandardPanel;
+            StandardPanel.X = 900;
+            StandardPanel.Y = 360;
+            StandardPanel.PosX = 235;
+            StandardPanel.PosY = 68;
+
             ControlDimensions EmailBox;
             EmailBox.X = LargeEmailPanel.X / 2 - 3 * xMargin;
             EmailBox.Y = LargeEmailPanel.Y / 2 - 4 * yMargin - 20;
@@ -412,7 +450,13 @@ namespace PSO
             var standardFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular,
                                                         System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
-            DisplayNewPanel(panelMessage1, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panelMessage1", true);
+            
+            this.Controls.Add(this.buttonShoppingCart1);
+            DisplayNewButton(buttonShoppingCart1, new int[2] { 910,10}, new int[2] { 160, 35 }, "Shopping Cart", "Shopping Cart");
+            this.buttonShoppingCart1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //buttonShoppingCart1.ForeColor = System.Drawing.Color.Red;
+
+            DisplayNewPanel(panelMessage1, new int[2] { 300, 68 }, new int[2] { 180, 200 }, "panelMessage1", true);
             this.Controls.Add(this.panelMessage1);
             panelMessage1.Hide();
 
@@ -441,7 +485,7 @@ namespace PSO
                 { LONGITEM, SMALLTEXT }, "Compose", standardFont);
             this.button20.Click += new System.EventHandler(this.button20_Click);
 
-            DisplayNewPanel(panelInbox1, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelInbox1", true);
+            DisplayNewPanel(panelInbox1, new int[2] { LargeEmailPanel.PosX, LargeEmailPanel.PosY }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelInbox1", true);
             this.Controls.Add(this.panelInbox1);
             panelInbox1.Hide();
 
@@ -486,7 +530,7 @@ namespace PSO
             DisplayNewTextBoxOnPanel(textBox1, panelInbox1, button25, new int[2] { 0, 2 * xItemsSpace },
               new int[2] { MEDIUMITEM, SMALLTEXT }, "");
             
-            DisplayNewPanel(panelSent1, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelSent1", true);
+            DisplayNewPanel(panelSent1, new int[2] { LargeEmailPanel.PosX, LargeEmailPanel.PosY }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelSent1", true);
             this.Controls.Add(this.panelSent1);
             panelSent1.Hide();
             
@@ -511,7 +555,7 @@ namespace PSO
                 { MEDIUMITEM, SMALLTEXT }, "Delete", standardFont);
             this.button26.Click += new System.EventHandler(this.button26_Click);
 
-            DisplayNewPanel(panelDeleted1, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelDeleted1", true);
+            DisplayNewPanel(panelDeleted1, new int[2] { LargeEmailPanel.PosX, LargeEmailPanel.PosY }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panelDeleted1", true);
             this.Controls.Add(this.panelDeleted1);
             panelDeleted1.Hide();
 
@@ -532,7 +576,7 @@ namespace PSO
             DisplayNewRichTextBoxOnPanel(richTextBox3, panelDeleted1, dataGridView3, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
                 { EmailBox.X, EmailBox.Y }, "richTextBox3", standardFont);
 
-            DisplayNewPanel(panelSpam1, new int[2] { 550, 82 }, new int[2] { 610, 450 }, "panelSpam1", true);
+            DisplayNewPanel(panelSpam1, new int[2] { LargeEmailPanel.PosX, LargeEmailPanel.PosY }, new int[2] { 610, 450 }, "panelSpam1", true);
             this.Controls.Add(this.panelSpam1);
             panelSpam1.Hide();
 
@@ -553,7 +597,7 @@ namespace PSO
             DisplayNewRichTextBoxOnPanel(richTextBox4, panelSpam1, dataGridView4, new int[2] { 2 * xItemsSpace, 0 }, new int[2]
                 { EmailBox.X, EmailBox.Y }, "richTextBox4", standardFont);
 
-            DisplayNewPanel(panelCompose1, new int[2] { 550, 82 }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel20", true);
+            DisplayNewPanel(panelCompose1, new int[2] { LargeEmailPanel.PosX, LargeEmailPanel.PosY }, new int[2] { LargeEmailPanel.X, LargeEmailPanel.Y }, "panel20", true);
             this.Controls.Add(this.panelCompose1);
             panelCompose1.Hide();
 
@@ -587,7 +631,8 @@ namespace PSO
             DisplayCheckBox(checkBox1, panelCompose1, button27, new int[2] { 5 * xItemsSpace, 0 },
                             new int[2] { CalculateLabelLenght(checkBox1Text), SMALLTEXT }, checkBox1Text, standardFont);
 
-            DisplayNewPanel(panelUserInfo, new int[2] { 235, 46 }, new int[2] { 900, 360 }, "panelUserInfo", true);
+            DisplayNewPanel(panelUserInfo, new int[2] { StandardPanel.PosX, StandardPanel.PosY }, 
+                            new int[2] { StandardPanel.X, StandardPanel.Y }, "panelUserInfo", true);
             this.Controls.Add(this.panelUserInfo);
             panelUserInfo.Hide();
 
@@ -655,6 +700,38 @@ namespace PSO
                                      new int[2] { 120, SMALLTEXT }, "new password");
             textBox7.Hide();
 
+            DisplayNewPanel(panelProducts, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
+                            new int[2] { StandardPanel.X, StandardPanel.Y }, "panelProducts", true);
+            this.Controls.Add(this.panelProducts);
+            panelProducts.Hide();
+
+            DisplayNewLabelOnPanel(label19, panelProducts, new int[2] { xMargin, yMargin }, new int[2]
+                { CalculateLabelLenght(label19.Text), SMALLTEXT }, "Product search:");
+
+            DisplayNewButtonOnPanel(button32, panelProducts, label19, new int[2] { 0, yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Search", standardFont);
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+
+            DisplayNewLabelOnPanel(label20, panelProducts, button32, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght("Key words:"), SMALLTEXT }, "Key words:", standardFont);
+
+            DisplayNewTextBoxOnPanel(textBox8, panelProducts, label20, new int[2] { xItemsSpace, 0 },
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+
+            string label21Text = "Min. price: ";
+            DisplayNewLabelOnPanel(label21, panelProducts, label20, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label21Text), SMALLTEXT }, label21Text, standardFont);
+
+            string label22Text = "Max. price:";
+            DisplayNewLabelOnPanel(label22, panelProducts, label21, new int[2] { 0, yItemsSpace },
+                new int[2] { CalculateLabelLenght(label22Text), SMALLTEXT }, label22Text, standardFont);
+
+            DisplayNewTextBoxOnPanel(textBox9, panelProducts, new int[2] { textBox8.Location.X, label21.Location.Y },
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+
+            DisplayNewTextBoxOnPanel(textBox10, panelProducts, new int[2] { textBox9.Location.X, label22.Location.Y },
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+
         }
       
         
@@ -682,6 +759,8 @@ namespace PSO
         private System.Windows.Forms.NotifyIcon notifyIcon1;
 
         private string crtUser = Model.IOMethods.GetUserName();
+
+        private System.Windows.Forms.Button buttonShoppingCart1;
 
         private System.Windows.Forms.Panel panelMessage1;
         private System.Windows.Forms.Button button16;
@@ -744,6 +823,28 @@ namespace PSO
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button31;
+
+        private System.Windows.Forms.Panel panelProducts;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.DataGridView dataGridView7;
+
 
 
     }
