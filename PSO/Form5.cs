@@ -76,6 +76,10 @@ namespace PSO
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dataGridView5.DataSource = BindCrtUserDataToGrid(crtUser);
+            dataGridView6.DataSource = BindCrtUserAddressToGrid(crtUser);
+            HideShowAllPanels(panelUserInfo);
+
             /*
             ShoWUserInformationFormElements();
             string loggedUser = ActiveForm.Text;
@@ -159,103 +163,104 @@ namespace PSO
             panelInbox1.Show();
         }
 
-        
+
 
         private void button11_Click(object sender, EventArgs e)
         {
-       
+
         }
         private void button12_Click(object sender, EventArgs e)
         {
-     
+
         }
         private void button13_Click(object sender, EventArgs e)
         {
-      
+
 
         }
         private void button14_Click(object sender, EventArgs e)
         {
-       
-        }
-    /*
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+        /*
+            private void textBox1_TextChanged(object sender, EventArgs e)
+            {
 
-        }
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
+            }
+            private void textBox2_TextChanged(object sender, EventArgs e)
+            {
 
-        }
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
+            }
+            private void textBox3_TextChanged(object sender, EventArgs e)
+            {
 
-        }
-    */
+            }
+            private void textBox4_TextChanged(object sender, EventArgs e)
+            {
+
+            }
+        */
         private void ShoWUserInformationFormElements()
         {
-        /*
-            label5.Show();
-            dataGridView1.Show();
-            textBox1.Show();
-            textBox2.Show();
-            label6.Show();
-            dataGridView2.Show();
-            label7.Show();
-            label8.Show();
-            button11.Show();
-            label9.Show();
-            button12.Show();
-            button13.Show();
-        */
+            /*
+                label5.Show();
+                dataGridView1.Show();
+                textBox1.Show();
+                textBox2.Show();
+                label6.Show();
+                dataGridView2.Show();
+                label7.Show();
+                label8.Show();
+                button11.Show();
+                label9.Show();
+                button12.Show();
+                button13.Show();
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //HideUserInformationFormElements();
-            panelMessage1.Show();
+            //panelMessage1.Show();
+            HideShowAllPanels(panelMessage1);
         }
         private void HideUserInformationFormElements()
         {
+            /*
+                dataGridView1.Hide();
+                dataGridView2.Hide();
+                textBox1.Hide();
+                textBox2.Hide();
+                textBox3.Hide();
+                textBox4.Hide();
+                label5.Hide();
+                label6.Hide();
+                label7.Hide();
+                label8.Hide();
+                label9.Hide();
+                button11.Hide();
+                button12.Hide();
+                button13.Hide();
+                button14.Hide();
+                */
+
+        }
         /*
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            textBox1.Hide();
-            textBox2.Hide();
-            textBox3.Hide();
-            textBox4.Hide();
-            label5.Hide();
-            label6.Hide();
-            label7.Hide();
-            label8.Hide();
-            label9.Hide();
-            button11.Hide();
-            button12.Hide();
-            button13.Hide();
-            button14.Hide();
-            */
-            
-        }
-    /*
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
+            private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+            {
 
-        }
+            }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+            {
 
-        }
+            }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
+            private void checkBox1_CheckedChanged(object sender, EventArgs e)
+            {
 
-        }
-    */
+            }
+        */
         private void HideShowEmailPanels(Panel panel)
         {
             panelInbox1.Hide();
@@ -263,6 +268,17 @@ namespace PSO
             panelDeleted1.Hide();
             panelSpam1.Hide();
             panelCompose1.Hide();
+            panel.Show();
+        }
+        private void HideShowAllPanels(Panel panel)
+        {
+            panelMessage1.Hide();
+            panelInbox1.Hide();
+            panelSent1.Hide();
+            panelDeleted1.Hide();
+            panelSpam1.Hide();
+            panelCompose1.Hide();
+            panelUserInfo.Hide();
             panel.Show();
         }
 
@@ -333,7 +349,7 @@ namespace PSO
 
         private void button25_Click(object sender, EventArgs e)
         {
- 
+
             if (textBox1.Text != string.Empty)
             {
                 dataGridView4.DataSource = BindInboxSearchMessagesToGridView(crtUser, textBox1.Text);
@@ -406,7 +422,7 @@ namespace PSO
         {
             if (CheckIfEmailDataInputNotEmpty())
             {
-                
+
                 string withEncryption = EncriptionRequested();
                 string messageBody;
                 if (withEncryption == "true")
@@ -459,6 +475,81 @@ namespace PSO
             }
 
             return correctInputData;
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView5.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex >= 1)
+            {
+                string cellContent = dataGridView5.Rows[0].Cells[e.ColumnIndex].Value.ToString();
+                textBox4.Text = cellContent;
+                textBox4.Refresh();
+            }
+        }
+        private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView6.Rows[0].Cells[e.ColumnIndex].Value != null && e.ColumnIndex >= 1)
+            {
+                string cellContent = dataGridView6.Rows[0].Cells[e.ColumnIndex].Value.ToString();
+                textBox5.Text = cellContent;
+                textBox5.Refresh();
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e) //"update"
+        {
+            string value = textBox4.Text;
+            int activeCellIndex = dataGridView5.CurrentCell.ColumnIndex;
+            string activeColumn = dataGridView5.Columns[activeCellIndex].Name;
+            UpdateDataGridMessageBox(activeColumn, value);
+            DBUpdates.WriteUserPersonalDataToDB(activeColumn, value);
+            dataGridView5.DataSource = BindCrtUserDataToGrid(crtUser);
+            HideShowAllPanels(panelUserInfo);
+            //dataGridView5.Refresh();
+        }
+
+        private void button29_Click(object sender, EventArgs e) //"update"
+        {
+            string value = textBox5.Text;
+            int activeCellIndex = dataGridView6.CurrentCell.ColumnIndex;
+            string activeColumn = dataGridView6.Columns[activeCellIndex].Name;
+            UpdateDataGridMessageBox(activeColumn, value);
+            DBUpdates.WriteUserAddressToDB(activeColumn, value);
+            dataGridView6.DataSource = BindCrtUserAddressToGrid(crtUser);
+            HideShowAllPanels(panelUserInfo);
+            //dataGridView5.Refresh();
+        }
+
+        private void button30_Click(object sender, EventArgs e) //"Change Password"
+        {
+            textBox6.Text = "old password";
+            textBox7.Text = "new password";
+            textBox6.Show();
+            textBox7.Show();
+            button31.Show();
+        }
+
+        private void button31_Click(object sender, EventArgs e) //"Update Password"
+        {
+            if (InternalDBQueries.CheckForCorrectPassword(Form.ActiveForm.Text, textBox6.Text))
+            {
+                //MessageBox.Show("correct password");
+                string newPassVal = textBox7.Text;
+                DBUpdates.WriteNewPassToDB(newPassVal);
+                MessageBox.Show("password changed");
+            }
+            else
+            {
+                MessageBox.Show("wrong password");
+            }
+            textBox6.Hide();
+            textBox7.Hide();
+            button31.Hide();
+        }
+
+        private void UpdateDataGridMessageBox(string column, string value)
+        {
+            MessageBox.Show("updating " + column + " with " + value);
         }
     }
 }

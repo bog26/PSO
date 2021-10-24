@@ -82,7 +82,7 @@ namespace PSO
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(1070, 20);
+            this.button1.Location = new System.Drawing.Point(1070, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 35);
             this.button1.TabIndex = 1;
@@ -372,6 +372,22 @@ namespace PSO
             this.button27 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
 
+            this.panelUserInfo = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button31 = new System.Windows.Forms.Button();
 
 
             int[] panelItemsOriginCoord = new int[2] { 20, 20 };
@@ -570,6 +586,75 @@ namespace PSO
             string checkBox1Text = "encryption";
             DisplayCheckBox(checkBox1, panelCompose1, button27, new int[2] { 5 * xItemsSpace, 0 },
                             new int[2] { CalculateLabelLenght(checkBox1Text), SMALLTEXT }, checkBox1Text, standardFont);
+
+            DisplayNewPanel(panelUserInfo, new int[2] { 235, 46 }, new int[2] { 900, 360 }, "panelUserInfo", true);
+            this.Controls.Add(this.panelUserInfo);
+            panelUserInfo.Hide();
+
+            DisplayNewLabelOnPanel(label14, panelUserInfo, new int[2] { origX + xMargin, origY + yMargin }, new int[2]
+                                    { 168, 24 }, "Personal info");
+
+            DisplayNewDataGridViewOnPanel(dataGridView5, panelUserInfo, new int[2]
+                { label14.Location.X, label14.Location.Y + label14.Size.Height +4*yItemsSpace}, new int[2] { 650, 45 });
+            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView5.CellContentClick += new DataGridViewCellEventHandler(dataGridView5_CellContentClick);
+
+            DisplayNewLabelOnPanel(label15, panelUserInfo, new int[2] { origX + xMargin, 
+                                    dataGridView5.Location.Y + dataGridView5.Size.Height + 4 * yItemsSpace }, 
+                                    new int[2] { 168, 24 }, "Address");
+
+            DisplayNewDataGridViewOnPanel(dataGridView6, panelUserInfo, new int[2]
+                { label15.Location.X, label15.Location.Y + label15.Size.Height +4*yItemsSpace}, new int[2] { 650, 45 });
+            dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView6.CellContentClick += new DataGridViewCellEventHandler(dataGridView6_CellContentClick);
+
+            int label16PosX = dataGridView5.Location.X + dataGridView5.Size.Width + 4 * xItemsSpace;
+            DisplayNewLabelOnPanel(label16, panelUserInfo, new int[2] { label16PosX, dataGridView5.Location.Y },
+                                    new int[2] { 168, 24 }, "Value");
+
+            int textBox4PosY = label16.Location.Y + label16.Size.Height ;
+            DisplayNewTextBoxOnPanel(textBox4, panelUserInfo, new int[2] { label16PosX, textBox4PosY }, 
+                                     new int[2]{ 60, SMALLTEXT }, "Value");
+
+            DisplayNewButtonOnPanel(button28, panelUserInfo, label16, new int[2] { 4 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Update", standardFont);
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+
+            int label17PosX = dataGridView6.Location.X + dataGridView6.Size.Width + 4 * xItemsSpace;
+            DisplayNewLabelOnPanel(label17, panelUserInfo, new int[2] { label17PosX, dataGridView6.Location.Y },
+                                    new int[2] { 168, 24 }, "Value");
+
+            int textBox5PosY = label17.Location.Y + label17.Size.Height;
+            DisplayNewTextBoxOnPanel(textBox5, panelUserInfo, new int[2] { label17PosX, textBox5PosY },
+                                     new int[2] { 60, SMALLTEXT }, "Value");
+
+            DisplayNewButtonOnPanel(button29, panelUserInfo, label17, new int[2] { 4 * xItemsSpace, 0 }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Update", standardFont);
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+
+            DisplayNewLabelOnPanel(label18, panelUserInfo, new int[2] { origX + xMargin,
+                                    dataGridView6.Location.Y + dataGridView6.Size.Height + 4 * yItemsSpace },
+                                    new int[2] { 168, 24 }, "Password");
+
+            DisplayNewButtonOnPanel(button30, panelUserInfo, label18, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Change Password", standardFont);
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+
+            int textBox6PosX = button30.Location.X + button30.Size.Width + 4 * xItemsSpace;
+            DisplayNewTextBoxOnPanel(textBox6, panelUserInfo, new int[2] { textBox6PosX, button30.Location.Y },
+                                     new int[2] { 120, SMALLTEXT }, "old password");
+            textBox6.Hide();
+
+            DisplayNewButtonOnPanel(button31, panelUserInfo, button30, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { MEDIUMITEM, SMALLTEXT }, "Update Password", standardFont);
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            button31.Hide();
+
+            int textBox7PosX = button31.Location.X + button31.Size.Width + 4 * xItemsSpace;
+            DisplayNewTextBoxOnPanel(textBox7, panelUserInfo, new int[2] { textBox6PosX, button31.Location.Y },
+                                     new int[2] { 120, SMALLTEXT }, "new password");
+            textBox7.Hide();
+
         }
       
         
@@ -642,5 +727,24 @@ namespace PSO
         private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.CheckBox checkBox1;
+
+        private System.Windows.Forms.Panel panelUserInfo;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+
+
     }
 }
