@@ -46,3 +46,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddStatusToMessages.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddIsEncryptedToMessage.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddMessageSenderAndReceiverStatuses.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemoveMessageStatus.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddProductSpecification.resources

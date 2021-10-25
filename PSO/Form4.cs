@@ -257,12 +257,13 @@ namespace PSO
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int columnHeadIndex = -1;
-            int[] allowedColumnIndexes = new int[4] {1,6,7,8};
+            int[] allowedColumnIndexes = new int[5] {1,6,7,8,9};
 
             if (e.RowIndex != columnHeadIndex)
             {
-                if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null
-                    && DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
+                //if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null
+                //    && DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
+                if (DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
                 {
                     string cellContent = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     textBox16.Text = cellContent;

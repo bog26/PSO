@@ -322,29 +322,26 @@ namespace PSO.Model
                     crtProd.crtSellPrice = sellPrice;
                     writeToDBSuccessful = true;
                 }
+
+            }
+            if (column == 9)
+            {
+                crtProd.ProductSpecification = value;
+                writeToDBSuccessful = true;
             }
             psContext.SaveChanges();
             return writeToDBSuccessful;
         }
-        /*
-        public static string GetProductSpec(string user, int productIndex)
+        
+        public static string GetProductSpec(int productID)
         {
             psDBContext psContext = new psDBContext();
-            var queryproducts = from message in psContext.Messages
-                                            //where message.Receiver == user 
-                                        where message.Receiver == user
-                                            //&& message.MessageStatus != "deleted"
-                                            && message.MessageReceiverStatus != "deleted"
-                                            && message.MessageReceiverStatus != "spam"
-                                        select message.MessageBody;
-            string specToDisplay = "";
-            if (messageIndex >= 0)
-            {
-                specToDisplay = queryproducts.ToList()[messageIndex];
-            }
-
-            return messageToDisplay;
-        }*/
+            var queryproducts = from product in psContext.Products
+                                        where product.Id == productID
+                                        select product.ProductSpecification;
+            string specToDisplay = queryproducts.ToList()[0];
+            return specToDisplay;
+        }
 
         public static bool WriteMessageToDB(Message newMessage)
         {

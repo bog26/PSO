@@ -202,6 +202,10 @@
     <Compile Include="Migrations\202110191215222_RemoveMessageStatus.designer.cs">
       <DependentUpon>202110191215222_RemoveMessageStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110251330283_AddProductSpecification.cs" />
+    <Compile Include="Migrations\202110251330283_AddProductSpecification.designer.cs">
+      <DependentUpon>202110251330283_AddProductSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110191215222_RemoveMessageStatus.resx">
       <DependentUpon>202110191215222_RemoveMessageStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251330283_AddProductSpecification.resx">
+      <DependentUpon>202110251330283_AddProductSpecification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

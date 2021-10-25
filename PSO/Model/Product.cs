@@ -22,6 +22,8 @@ namespace PSO.Model
         public decimal crtSellPrice { get; set; }
 
         public decimal crtManufacturerPrice { get; set; }
+
+        public string ProductSpecification { get; set; }
         public List<string> Reviews { get; set; }  //obj
         public Product()
         {

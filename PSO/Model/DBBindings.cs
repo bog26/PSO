@@ -410,6 +410,7 @@ namespace PSO.Model
                                           Stock = product.Stock,
                                           ManufPrice = product.crtManufacturerPrice,
                                           SellPrice = product.crtSellPrice,
+                                          Spec = product.ProductSpecification
                                       };
 
             binding.DataSource = queryProductsReturn.ToList();
