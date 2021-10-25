@@ -415,6 +415,55 @@ namespace PSO.Model
             binding.DataSource = queryProductsReturn.ToList();
             return binding;
         }
+        public static BindingSource BindProductsToGridForClient(string keyword, string minPriceStr, string maxPriceStr, string category, string manufacturer)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            decimal minPrice;
+            decimal maxPrice;
+            int maxAllowedResults = 500;
+
+            var queryProducts = psContext.Products.Where(x => x.ProductName != " ").Take(maxAllowedResults);
+
+            if (manufacturer != string.Empty)
+            {
+                queryProducts = psContext.Products.Where(x => x.Manufacturer.Name == manufacturer);
+            }
+
+            if (category != string.Empty)
+            {
+                queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
+            }
+
+            if (keyword != string.Empty)
+            {
+                queryProducts = queryProducts.Where(x => x.ProductName.Contains(keyword));
+            }
+            if (decimal.TryParse(minPriceStr, out minPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice > minPrice);
+            }
+            if (decimal.TryParse(maxPriceStr, out maxPrice))
+            {
+                queryProducts = queryProducts.Where(x => x.crtSellPrice < maxPrice);
+            }
+
+            var queryProductsReturn = from product in queryProducts
+                                      select new
+                                      {
+                                          PID = product.Id,
+                                          Name = product.ProductName,
+                                          Model = product.Model,
+                                          Category = product.SubCategory.Category,
+                                          Subcategory = product.SubCategory,
+                                          Manufacturer = product.Manufacturer,
+                                          Price = product.crtSellPrice,
+                                      };
+
+            binding.DataSource = queryProductsReturn.ToList();
+            return binding;
+        }
 
         public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr, string category)
         {

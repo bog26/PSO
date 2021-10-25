@@ -557,10 +557,51 @@ namespace PSO
 
         private void button32_Click(object sender, EventArgs e) //"Search"
         {
-
+            ProductsQuery();
+            panelProducts.Show();
         }
 
-            private void panel1_Paint(object sender, PaintEventArgs e)
+        private void ProductsQuery()
+        {
+            
+            string categorySelection = "";
+            string manufacturerSelection = "";
+
+            if (checkBox2.Checked == true)
+            {
+                categorySelection = listBox1.SelectedItem.ToString();
+            }
+            if (checkBox3.Checked == true)
+            {
+                manufacturerSelection = listBox2.SelectedItem.ToString();
+            }
+            dataGridView7.DataSource = BindProductsToGridForClient(textBox8.Text, textBox9.Text, textBox10.Text, categorySelection, manufacturerSelection);
+        }
+
+        private void dataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            int columnHeadIndex = -1;
+            //int[] allowedColumnIndexes = new int[4] { 1, 6, 7, 8 };
+
+            if (e.RowIndex != columnHeadIndex)
+            {
+                if (dataGridView7.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    //string cellContent = dataGridView7.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    string cellContent = dataGridView7.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    richTextBox6.Text = cellContent;
+                    //MessageBox.Show(cellContent);
+                    richTextBox6.Refresh();
+                    panelProducts.Show();
+                }
+                
+            }
+            
+            //int selection = e.RowIndex;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

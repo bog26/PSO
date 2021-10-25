@@ -416,7 +416,9 @@ namespace PSO
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
-
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
 
 
             int[] panelItemsOriginCoord = new int[2] { 20, 20 };
@@ -731,6 +733,44 @@ namespace PSO
 
             DisplayNewTextBoxOnPanel(textBox10, panelProducts, new int[2] { textBox9.Location.X, label22.Location.Y },
                 new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+            
+            string checkBox2Text = "Category";
+            DisplayCheckBox(checkBox2, panelProducts, label22, new int[2] { 0, 2 * yItemsSpace },
+                            new int[2] { CalculateLabelLenght(checkBox2Text), SMALLTEXT }, checkBox2Text, standardFont);
+
+            DisplayListBox(listBox1, panelProducts, checkBox2, new int[2] { 0, 2 * yItemsSpace },
+                        new int[2] { 140, 60 },"Category", BindCategories());
+
+            string checkBox3Text = "Manufacturer";
+            DisplayCheckBox(checkBox3, panelProducts, listBox1, new int[2] { 0, 2 * yItemsSpace },
+                            new int[2] { CalculateLabelLenght(checkBox2Text), SMALLTEXT }, checkBox3Text, standardFont);
+
+            DisplayListBox(listBox2, panelProducts, checkBox3, new int[2] { 0, 2 * yItemsSpace },
+                        new int[2] { 140, 60 }, "Manufacturer", BindManufacturers());
+
+            int label23PosX = label19.Location.X + label19.Size.Width + 20 * yItemsSpace;
+            int label23PosY = label19.Location.Y;
+            string label23Text = "Product found:";
+            DisplayNewLabelOnPanel(label23, panelProducts, new int[2] { label23PosX, label23PosY }, new int[2]
+                { CalculateLabelLenght(label23Text), SMALLTEXT }, label23Text);
+
+            int dataGridView7PosX = label23.Location.X;
+            int dataGridView7PosY = label23.Location.Y + label23.Size.Height + 4 * yItemsSpace;
+            DisplayNewDataGridViewOnPanel(dataGridView7, panelProducts, new int[2]
+                { dataGridView7PosX, dataGridView7PosY}, new int[2] { 650, 150 });
+            dataGridView7.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView7.CellContentClick += new DataGridViewCellEventHandler(dataGridView7_CellContentClick);
+
+            int label24PosX = dataGridView7.Location.X ;
+            int label24PosY = dataGridView7.Location.Y + dataGridView7.Size.Height + 2 * yItemsSpace;
+            string label24Text = "Product specification:";
+            DisplayNewLabelOnPanel(label24, panelProducts, new int[2] { label24PosX, label24PosY }, new int[2]
+                { CalculateLabelLenght(label24Text), SMALLTEXT }, label24Text);
+
+            DisplayNewRichTextBoxOnPanel(richTextBox6, panelProducts, label24, new int[2] { 0, yItemsSpace }, new int[2]
+                { label24.Size.Width, 100}, "richTextBox6", standardFont);
+            this.richTextBox6.ReadOnly = true;
+
 
         }
       
@@ -844,6 +884,9 @@ namespace PSO
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.RichTextBox richTextBox6;
 
 
 
