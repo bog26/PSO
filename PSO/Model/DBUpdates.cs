@@ -332,6 +332,18 @@ namespace PSO.Model
             psContext.SaveChanges();
             return writeToDBSuccessful;
         }
+
+        public static void SaveProductToWishlist(string user, int productID)
+        {
+            var psContext = new psDBContext();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            var crtList = crtUser.WishList.ToList();
+            if(!crtList.Contains(productID))
+            {
+                crtUser.WishList.Add(productID);
+            }
+            psContext.SaveChanges();
+        }
         
         public static string GetProductSpec(int productID)
         {

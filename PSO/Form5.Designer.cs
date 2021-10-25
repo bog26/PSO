@@ -177,6 +177,8 @@ namespace PSO
             this.button15.TabIndex = 5;
             this.button15.Text = "Wish list";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+
             // 
             // button8
             // 
@@ -419,6 +421,10 @@ namespace PSO
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+
+            this.panelWishList = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+
 
 
             int[] panelItemsOriginCoord = new int[2] { 20, 20 };
@@ -771,6 +777,21 @@ namespace PSO
                 { label24.Size.Width, 100}, "richTextBox6", standardFont);
             this.richTextBox6.ReadOnly = true;
 
+            DisplayNewButtonOnPanel(button33, panelProducts, richTextBox6, new int[2] { 4 * xItemsSpace, 0 }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Add to cart", standardFont);
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+
+            DisplayNewButtonOnPanel(button34, panelProducts, button33, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Add to wishlist", standardFont);
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+
+            DisplayNewTextBoxOnPanel(textBox11, panelProducts, button33, new int[2] { 2*xItemsSpace, 0 },
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+
+            DisplayNewPanel(panelWishList, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
+                            new int[2] { StandardPanel.X, StandardPanel.Y }, "panelProducts", true);
+            this.Controls.Add(this.panelWishList);
+            panelWishList.Hide();
 
         }
       
@@ -887,6 +908,9 @@ namespace PSO
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.RichTextBox richTextBox6;
+
+        private System.Windows.Forms.Panel panelWishList;
+        private System.Windows.Forms.Label label27;
 
 
 

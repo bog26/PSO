@@ -280,10 +280,16 @@ namespace PSO
             panelCompose1.Hide();
             panelUserInfo.Hide();
             panelProducts.Hide();
+            panelWishList.Hide();
             panel.Show();
         }
 
-        private void button16_Click(object sender, EventArgs e) //Inbox
+        private void button15_Click(object sender, EventArgs e) //Wish list
+        {
+            HideShowAllPanels(panelWishList);
+        }
+
+            private void button16_Click(object sender, EventArgs e) //Inbox
         {
             dataGridView1.DataSource = BindInboxMessagesToGridView(crtUser);
             HideShowEmailPanels(panelInbox1);
@@ -583,31 +589,23 @@ namespace PSO
             
             int columnHeadIndex = -1;
             int rowSelection = e.RowIndex;
-            int productID = Int32.Parse( dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            //int[] allowedColumnIndexes = new int[4] { 1, 6, 7, 8 };
+            int productID = Int32.Parse( dataGridView7.Rows[rowSelection].Cells[0].Value.ToString());
 
             if (e.RowIndex != columnHeadIndex)
             {
-                /*
-                if (dataGridView7.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-                {
-                    //string cellContent = dataGridView7.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    string cellContent = dataGridView7.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    richTextBox6.Text = cellContent;
-                    //MessageBox.Show(cellContent);
-                    richTextBox6.Refresh();
-                    panelProducts.Show();
-
-                }*/
+                
                 richTextBox6.Text = DBUpdates.GetProductSpec(productID);
                 richTextBox6.Refresh();
                 panelProducts.Show();
-
-
             }
-            
-            //int selection = e.RowIndex;
+        }
+        private void button33_Click(object sender, EventArgs e) //"Add to cart"
+        {
+            MessageBox.Show("Added to cart");
+        }
+        private void button34_Click(object sender, EventArgs e) //"Add to wishlist"
+        {
+            MessageBox.Show("Added to wishlist");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -47,3 +47,5 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddIsEncryptedToMessage.resource
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddMessageSenderAndReceiverStatuses.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemoveMessageStatus.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddProductSpecification.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClientId.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddWishListToClient.resources

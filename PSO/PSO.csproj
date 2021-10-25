@@ -206,6 +206,14 @@
     <Compile Include="Migrations\202110251330283_AddProductSpecification.designer.cs">
       <DependentUpon>202110251330283_AddProductSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110252118174_AddClientId.cs" />
+    <Compile Include="Migrations\202110252118174_AddClientId.designer.cs">
+      <DependentUpon>202110252118174_AddClientId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110252126281_AddWishListToClient.cs" />
+    <Compile Include="Migrations\202110252126281_AddWishListToClient.designer.cs">
+      <DependentUpon>202110252126281_AddWishListToClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -346,6 +354,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110251330283_AddProductSpecification.resx">
       <DependentUpon>202110251330283_AddProductSpecification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110252118174_AddClientId.resx">
+      <DependentUpon>202110252118174_AddClientId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110252126281_AddWishListToClient.resx">
+      <DependentUpon>202110252126281_AddWishListToClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
