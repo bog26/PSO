@@ -15,11 +15,9 @@ namespace PSO
 {
     public partial class Form4 : Form
     {
-        //private psDBContext psContext;
         public Form4()
         {
             InitializeComponent();
-            //ActiveForm.Text = "bol";  // change to external file
             InitializeManualAddedComponent();
         }
 

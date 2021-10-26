@@ -350,7 +350,7 @@ namespace PSO
             FillFwdMessage(messageFields, out title, out message);
             textBox2.Text = "";
             textBox3.Text = title;
-            richTextBox1.Text = message;
+            richTextBox5.Text = message;
             HideShowEmailPanels(panelCompose1);
         }
 
