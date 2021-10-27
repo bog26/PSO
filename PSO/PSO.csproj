@@ -226,6 +226,26 @@
     <Compile Include="Migrations\202110272115023_RemoveClientFromWishList.designer.cs">
       <DependentUpon>202110272115023_RemoveClientFromWishList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110272123346_AddWishProductsToWishList.cs" />
+    <Compile Include="Migrations\202110272123346_AddWishProductsToWishList.designer.cs">
+      <DependentUpon>202110272123346_AddWishProductsToWishList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110272134153_RemovedWishListIdFromClient.cs" />
+    <Compile Include="Migrations\202110272134153_RemovedWishListIdFromClient.designer.cs">
+      <DependentUpon>202110272134153_RemovedWishListIdFromClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110272139342_AddClientNameToWishList.cs" />
+    <Compile Include="Migrations\202110272139342_AddClientNameToWishList.designer.cs">
+      <DependentUpon>202110272139342_AddClientNameToWishList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110272230347_RemovedWishProductsFromWishList.cs" />
+    <Compile Include="Migrations\202110272230347_RemovedWishProductsFromWishList.designer.cs">
+      <DependentUpon>202110272230347_RemovedWishProductsFromWishList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110272249057_AddStringPIDsToWishList.cs" />
+    <Compile Include="Migrations\202110272249057_AddStringPIDsToWishList.designer.cs">
+      <DependentUpon>202110272249057_AddStringPIDsToWishList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -382,6 +402,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110272115023_RemoveClientFromWishList.resx">
       <DependentUpon>202110272115023_RemoveClientFromWishList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110272123346_AddWishProductsToWishList.resx">
+      <DependentUpon>202110272123346_AddWishProductsToWishList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110272134153_RemovedWishListIdFromClient.resx">
+      <DependentUpon>202110272134153_RemovedWishListIdFromClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110272139342_AddClientNameToWishList.resx">
+      <DependentUpon>202110272139342_AddClientNameToWishList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110272230347_RemovedWishProductsFromWishList.resx">
+      <DependentUpon>202110272230347_RemovedWishProductsFromWishList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110272249057_AddStringPIDsToWishList.resx">
+      <DependentUpon>202110272249057_AddStringPIDsToWishList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -52,3 +52,8 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddWishListToClient.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddWishClass.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddWishListChange.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemoveClientFromWishList.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddWishProductsToWishList.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemovedWishListIdFromClient.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClientNameToWishList.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemovedWishProductsFromWishList.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddStringPIDsToWishList.resources

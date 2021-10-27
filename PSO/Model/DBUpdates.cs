@@ -339,8 +339,9 @@ namespace PSO.Model
             var psContext = new psDBContext();
             var crtUser = psContext.Clients.First(x => x.UserName == user);
 
-            //var crtWishList = psContext.WishLists.First(x => x.ClientName == user);
-            
+            var crtWishList = psContext.WishLists.First(x => x.ClientName == user);
+            crtWishList.AddPID(PID);
+
             /*
             if(crtWishList.WishPIDs.Count ==0)
             {

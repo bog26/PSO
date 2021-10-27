@@ -83,6 +83,16 @@ namespace PSO.Model
             return isAdmin;
         }
 
+        public static int GetWishListSize(string clientName)
+        {
+            var psContext = new psDBContext();
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            var crtWishList = psContext.WishLists.First(x => x.ClientName == clientName);
+            int[] PIDArray = crtWishList.getPIDs();
+            //var wishList = crtClient.WishList.WishPIDs;
+            return PIDArray.Length;
+        }
+
         /*
         public static int GetWishListSize(string clientName)
         {
@@ -134,6 +144,9 @@ namespace PSO.Model
             return wishListStr;
 
         }
+
+
+
     */
 
         /*

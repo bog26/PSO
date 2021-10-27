@@ -15,8 +15,10 @@ namespace PSO.Model
         public string Password { get; set; }
         public int UserPersonalDataId { get; set; }
         public int UserAddressId { get; set; }
+
         //public int WishListId { get; set; }
         public WishList WishList { get; set; }
+        //public int WishListId { get; set; }
         //public int WishListId  { get; set; }
         //public List<int> WishList { get; set; }
         private UserPersonalData userInfo;

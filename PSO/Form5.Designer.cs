@@ -798,8 +798,8 @@ namespace PSO
             DisplayNewLabelOnPanel(label27, panelWishList, new int[2] { xMargin, yMargin }, new int[2]
                 { CalculateLabelLenght(label27.Text), SMALLTEXT }, "Wish list");
 
-            //DisplayListBox(listBox3, panelWishList, label27, new int[2] { 0, 2 * yItemsSpace },
-            //            new int[2] { 140, 60 }, "listBox3", BindWishListProducts(crtUser));
+            DisplayListBox(listBox3, panelWishList, label27, new int[2] { 0, 2 * yItemsSpace },
+                        new int[2] { 140, 60 }, "listBox3", BindWishListProducts(crtUser));
 
             DisplayNewButtonOnPanel(button36, panelWishList, label27, new int[2] { 8 * xItemsSpace, 0 }, new int[2]
                 { LONGITEM, SMALLTEXT }, "Show wish List", standardFont);

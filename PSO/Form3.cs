@@ -136,7 +136,7 @@ namespace PSO
             newClient.UserInfo = userPersonalData;
 
             newClient.UserAddress = userAddress;
-            //newClient.WishList = new WishList(newClient.UserName);
+            newClient.WishList = new WishList(newClient.UserName);
             //newClient.WishList.WishProducts = new List<Product>();
             //WishProducts = new List<Product>();
             //WishList = new WishList(UserName);

@@ -610,7 +610,7 @@ namespace PSO
             {
                 int rowIndex = Int32.Parse(dataGridView7.CurrentCell.RowIndex.ToString());
                 int productID = Int32.Parse(dataGridView7.Rows[rowIndex].Cells[0].Value.ToString());
-                //DBUpdates.SaveProductToWishlist(crtUser, productID);
+                DBUpdates.SaveProductToWishlist(crtUser, productID);
                 //DBUpdates.SaveProductToWishlist(crtUser, productID);
                 MessageBox.Show($"product with PID {productID} added to wishlist");
                 
@@ -619,7 +619,7 @@ namespace PSO
             {
                 MessageBox.Show("please select a product");
             }
-            //MessageBox.Show($"size of wish list: {InternalDBQueries.GetWishListSize(crtUser)} ");
+            MessageBox.Show($"size of wish list: {InternalDBQueries.GetWishListSize(crtUser)} ");
 
         }
 
