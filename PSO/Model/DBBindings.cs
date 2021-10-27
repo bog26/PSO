@@ -325,7 +325,46 @@ namespace PSO.Model
 
             return binding;
         }
-        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr)
+
+  /*      
+        public static BindingSource BindWishListProducts(string clientName)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            List<int> wishListPIDs = new List<int>();
+            List<Product> wishListProducts = new List<Product>();
+            List<string> wishListProductsSpecs = new List<string>();
+
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            wishListPIDs = crtClient.WishList;
+
+            /*
+            foreach (int PID in wishListPIDs)
+            {
+                Product product = psContext.Products.First(x => x.Id == PID);
+                //string productSpec = psContext.Products. First(x => x.Id == PID);
+                string productSpec = product.ProductSpecification;
+                wishListProductsSpecs.Add(productSpec);
+
+            } //
+
+            foreach (int PID in wishListPIDs)
+            {
+                Product product = psContext.Products.First(x => x.Id == PID);
+                wishListProducts.Add(product);
+            }
+            var querySpecs = from prod in wishListProducts
+                             select prod.ProductName;
+
+            //binding.DataSource = wishListProductsSpecs;
+            //binding.DataSource = querySpecs.ToList();
+            binding.DataSource = wishListPIDs;
+            return binding;
+        }
+
+*/
+            public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr)
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
@@ -572,52 +611,7 @@ namespace PSO.Model
         }
 
 
-        public static BindingSource BindProductsToGridPrototype1() //WIP
-        {
-            //DateTime startTime = DateTime.Now;
-
-            psDBContext psContext = new psDBContext();
-
-            BindingSource binding = new BindingSource();
-            string productModel = "Iphone";
-            string category = "Mobile";
-            string subcategory = "IOS Smartphones";
-            string manufacturer = "Apple";
-            int minStock = 40;
-            decimal maxSellPrice = 300;
-            string searchWord1 = "5G";
-            string searchWord2 = "Android";
-            string searchWord3 = "Black";
-
-            var queryProducts = psContext.Products.Where(x=>x.ProductName!=" ");
-            queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord3)); //ok
-            queryProducts = queryProducts.Where(x => x.ProductName.Contains(searchWord1)); //ok
-            queryProducts = queryProducts.Where(x => x.crtSellPrice < maxSellPrice); //ok
-            queryProducts = queryProducts.Where(x => x.Stock >= minStock);  //ok
-            //queryProducts = queryProducts.Where(x => x.SubCategory.Category.Name == category);    //ok
-            //queryProducts = queryProducts.Where(x => x.SubCategory.Name == subcategory);  //ok
-            //queryProducts = queryProducts.Where(x => x.Manufacturer.Name == manufacturer);    //ok
-
-            //var queryProducts = psContext.Products.Where( x =>x.SubCategory.Name == subcategory); //ok
-            //queryProducts = queryProducts.Where(x => x.Manufacturer.Name == manufacturer);  //ok
-
-            var queryProductsReturn = from product in queryProducts
-                                      select new
-                                      {
-                                          Name = product.ProductName,
-                                          Model = product.Model,
-                                          Category = product.SubCategory.Category,
-                                          Subcategory = product.SubCategory,
-                                          Manufacturer = product.Manufacturer,
-                                          Stock = product.Stock,
-                                          ManufPrice = product.crtManufacturerPrice,
-                                          SellPrice = product.crtSellPrice,
-                                      };
-
-            binding.DataSource = queryProductsReturn.ToList();
-            //MessageBox.Show("Duration: " + (DateTime.Now - startTime));
-            return binding;
-        }
+       
         public static BindingSource BindInboxMessagesToGridView(string user)
         {
             psDBContext psContext = new psDBContext();

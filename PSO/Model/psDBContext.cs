@@ -23,6 +23,7 @@ namespace PSO.Model
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
 
     }
 }

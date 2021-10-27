@@ -605,7 +605,27 @@ namespace PSO
         }
         private void button34_Click(object sender, EventArgs e) //"Add to wishlist"
         {
-            MessageBox.Show("Added to wishlist");
+
+            if (dataGridView7.CurrentCell != null)
+            {
+                int rowIndex = Int32.Parse(dataGridView7.CurrentCell.RowIndex.ToString());
+                int productID = Int32.Parse(dataGridView7.Rows[rowIndex].Cells[0].Value.ToString());
+                //DBUpdates.SaveProductToWishlist(crtUser, productID);
+                //DBUpdates.SaveProductToWishlist(crtUser, productID);
+                MessageBox.Show($"product with PID {productID} added to wishlist");
+                
+            }
+            else 
+            {
+                MessageBox.Show("please select a product");
+            }
+            //MessageBox.Show($"size of wish list: {InternalDBQueries.GetWishListSize(crtUser)} ");
+
+        }
+
+        private void button36_Click(object sender, EventArgs e) //"Add to cart"
+        {
+            //MessageBox.Show(InternalDBQueries.GetWishListStr(crtUser));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

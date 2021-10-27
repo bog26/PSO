@@ -424,6 +424,8 @@ namespace PSO
 
             this.panelWishList = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.button36 = new System.Windows.Forms.Button();
 
 
 
@@ -793,6 +795,16 @@ namespace PSO
             this.Controls.Add(this.panelWishList);
             panelWishList.Hide();
 
+            DisplayNewLabelOnPanel(label27, panelWishList, new int[2] { xMargin, yMargin }, new int[2]
+                { CalculateLabelLenght(label27.Text), SMALLTEXT }, "Wish list");
+
+            //DisplayListBox(listBox3, panelWishList, label27, new int[2] { 0, 2 * yItemsSpace },
+            //            new int[2] { 140, 60 }, "listBox3", BindWishListProducts(crtUser));
+
+            DisplayNewButtonOnPanel(button36, panelWishList, label27, new int[2] { 8 * xItemsSpace, 0 }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Show wish List", standardFont);
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+
         }
       
         
@@ -911,6 +923,8 @@ namespace PSO
 
         private System.Windows.Forms.Panel panelWishList;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Button button36;
 
 
 

@@ -333,17 +333,41 @@ namespace PSO.Model
             return writeToDBSuccessful;
         }
 
-        public static void SaveProductToWishlist(string user, int productID)
+        
+        public static void SaveProductToWishlist(string user, int PID)
         {
             var psContext = new psDBContext();
             var crtUser = psContext.Clients.First(x => x.UserName == user);
-            var crtList = crtUser.WishList.ToList();
-            if(!crtList.Contains(productID))
+
+            //var crtWishList = psContext.WishLists.First(x => x.ClientName == user);
+            
+            /*
+            if(crtWishList.WishPIDs.Count ==0)
             {
-                crtUser.WishList.Add(productID);
+                crtWishList.WishPIDs = new List<int>();
+                crtWishList.WishPIDs.Add(PID);
             }
+            else
+            {
+                crtWishList.WishPIDs.Add(PID);
+            }*/
+
+
+            //crtWishList.WishPIDs.Add(PID);  //System.NullReferenceException: 'Object reference not set to an instance of an object.'
+
+
+            /*
+            if(!crtWishList.WishProducts.Contains(product))  //'Object reference not set to an instance of an object.'
+
+            {
+                crtWishList.WishProducts.Add(product);
+            }
+            */
+
             psContext.SaveChanges();
         }
+       
+        
         
         public static string GetProductSpec(int productID)
         {
@@ -354,6 +378,9 @@ namespace PSO.Model
             string specToDisplay = queryproducts.ToList()[0];
             return specToDisplay;
         }
+
+        //public static string Get
+            
 
         public static bool WriteMessageToDB(Message newMessage)
         {

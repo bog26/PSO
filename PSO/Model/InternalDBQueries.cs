@@ -83,6 +83,63 @@ namespace PSO.Model
             return isAdmin;
         }
 
+        /*
+        public static int GetWishListSize(string clientName)
+        {
+            var psContext = new psDBContext();
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            var crtWishList = psContext.WishLists.First(x => x.ClientName == clientName);
+
+            //var wishList = crtClient.WishList.WishPIDs;
+            return crtWishList.WishPIDs.Count();
+        }
+        */
+
+
+        /*
+        public static List<int> GetWishList(string clientName)
+        {
+            List<int> wishList = new List<int>();
+            var psContext = new psDBContext();
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            wishList = crtClient.WishList;
+            return wishList;
+        }
+        */
+        /*
+        public static string GetWishListStr(string clientName)
+        {
+            string wishListStr = "";
+
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            List<int> wishListPIDs = new List<int>();
+            List<Product> wishListProducts = new List<Product>();
+            List<string> wishListProductsSpecs = new List<string>();
+
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            wishListPIDs = crtClient.WishList;
+
+            /*
+            foreach (int PID in wishListPIDs)
+            {
+                Product product = psContext.Products.First(x => x.Id == PID);
+                wishListProducts.Add(product);
+                wishListStr = wishListStr + product.ProductName +"\n";
+            }
+            //Product product = psContext.Products.First(x => x.Id == wishListPIDs[0]);
+            // wishListStr = product.ProductName.ToString();
+            wishListStr = wishListPIDs.Count().ToString();
+            return wishListStr;
+
+        }
+    */
+
+        /*
+         
+          */
+
 
     }
 }
