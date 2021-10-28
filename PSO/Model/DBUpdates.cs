@@ -342,29 +342,6 @@ namespace PSO.Model
             var crtWishList = psContext.WishLists.First(x => x.ClientName == user);
             crtWishList.AddPID(PID);
 
-            /*
-            if(crtWishList.WishPIDs.Count ==0)
-            {
-                crtWishList.WishPIDs = new List<int>();
-                crtWishList.WishPIDs.Add(PID);
-            }
-            else
-            {
-                crtWishList.WishPIDs.Add(PID);
-            }*/
-
-
-            //crtWishList.WishPIDs.Add(PID);  //System.NullReferenceException: 'Object reference not set to an instance of an object.'
-
-
-            /*
-            if(!crtWishList.WishProducts.Contains(product))  //'Object reference not set to an instance of an object.'
-
-            {
-                crtWishList.WishProducts.Add(product);
-            }
-            */
-
             psContext.SaveChanges();
         }
        
@@ -379,9 +356,7 @@ namespace PSO.Model
             string specToDisplay = queryproducts.ToList()[0];
             return specToDisplay;
         }
-
-        //public static string Get
-            
+    
 
         public static bool WriteMessageToDB(Message newMessage)
         {
@@ -525,17 +500,7 @@ namespace PSO.Model
             return ReplyMessage;
         }
 
-        /*
-        public static List<string> GetMessages(string user)
-        {
-            psDBContext psContext = new psDBContext();
-            var queryReceivedMessages = from message in psContext.Messages
-                                        where message.Receiver == user
-                                        select message.MessageBody;
-            List<string> messages = queryReceivedMessages.ToList();
-            return messages;
-        }
-        */
+
         public static bool IsMessageEncrypted(string user, int messageIndex)
         {
             bool messageEncryption = false;
@@ -613,21 +578,6 @@ namespace PSO.Model
             }
             return messageEncryption;
         }
-        /*
-        public static void DeleteMsg(string user, int messageIndex)
-        {
-            psDBContext psContext = new psDBContext();
-            var messages = psContext.Messages.Where(x => (x.Receiver == user)
-                                                        &&((x.MessageStatus=="sent")||(x.MessageStatus == "read")));
-            if (messageIndex >= 0)
-            {
-                var messageToDelete = messages.ToList()[messageIndex];
-                messageToDelete.DeleteMessage();
-                //messageToDelete.DeleteReceiverMessage();
-            }
-            psContext.SaveChanges();
-        }
-        */
 
         public static void DeleteReceiverMsg(string user, int messageIndex)
         {
