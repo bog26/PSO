@@ -326,7 +326,7 @@ namespace PSO.Model
             return binding;
         }
 
-        public static BindingSource BindWishListProducts(string clientName)
+        public static BindingSource BindWishListPIDs(string clientName)
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
@@ -343,47 +343,32 @@ namespace PSO.Model
             return binding;
 
         }
+        public static BindingSource BindWishListProducts(string clientName)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+
+            List<int> wishListPIDs = new List<int>();
+            List<string> wishListProducts = new List<string>();
+            var crtWishList = psContext.WishLists.First(x => x.ClientName == clientName);
+            int[] crtWishListArr;
+            crtWishListArr = crtWishList.getPIDs();
+            
+            for (int i = 0; i < crtWishListArr.Count(); i++)
+            {
+                int crtProductID = crtWishListArr[i];
+                var queryProduct = psContext.Products.First(x => x.Id == crtProductID);
+                string productModel = queryProduct.ProductName;
+                wishListProducts.Add(productModel);
+            }
+
+            binding.DataSource = wishListProducts;
+            return binding;
+
+        }
 
 
-            /*      
-                  public static BindingSource BindWishListProducts(string clientName)
-                  {
-                      psDBContext psContext = new psDBContext();
-                      BindingSource binding = new BindingSource();
-
-                      List<int> wishListPIDs = new List<int>();
-                      List<Product> wishListProducts = new List<Product>();
-                      List<string> wishListProductsSpecs = new List<string>();
-
-                      var crtClient = psContext.Clients.First(x => x.UserName == clientName);
-                      wishListPIDs = crtClient.WishList;
-
-                      /*
-                      foreach (int PID in wishListPIDs)
-                      {
-                          Product product = psContext.Products.First(x => x.Id == PID);
-                          //string productSpec = psContext.Products. First(x => x.Id == PID);
-                          string productSpec = product.ProductSpecification;
-                          wishListProductsSpecs.Add(productSpec);
-
-                      } //
-
-                      foreach (int PID in wishListPIDs)
-                      {
-                          Product product = psContext.Products.First(x => x.Id == PID);
-                          wishListProducts.Add(product);
-                      }
-                      var querySpecs = from prod in wishListProducts
-                                       select prod.ProductName;
-
-                      //binding.DataSource = wishListProductsSpecs;
-                      //binding.DataSource = querySpecs.ToList();
-                      binding.DataSource = wishListPIDs;
-                      return binding;
-                  }
-
-          */
-            public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr)
+        public static BindingSource BindProductsToGrid(string keyword, string minPriceStr, string maxPriceStr)
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();

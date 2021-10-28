@@ -53,9 +53,7 @@ namespace PSO.Model
 
         public int[] getPIDs()
         {
-            //string[] textArr = StringPIDs.Split(',');
 
-            //string[] PIDsStringArr = new string[] { };
             int[] PIDsIntArr = new int[] { };
 
             if (StringPIDs!=string.Empty)
@@ -65,7 +63,7 @@ namespace PSO.Model
                 PIDsIntArr = new int[PIDsStringArr.Length];
                 for (int i = 0; i < PIDsStringArr.Length; i++)
                 {
-                    PIDsIntArr[i] = int.Parse(PIDsStringArr[i]);  //System.FormatException: 'Input string was not in a correct format.'
+                    PIDsIntArr[i] = int.Parse(PIDsStringArr[i]);  
 
                 }
             }
