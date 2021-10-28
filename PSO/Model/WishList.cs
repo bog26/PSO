@@ -15,7 +15,7 @@ namespace PSO.Model
         public int Id { get; set; }
         //public int WishListId { get; set; }
         public string ClientName { get; set; }
-        public string StringPIDs { get; set; } = "";
+        public string StringPIDs { get; set; } = string.Empty;
         //public int ClientId { get; set; }
         //[Required]
         //public Client Client { get; set; }
@@ -53,12 +53,23 @@ namespace PSO.Model
 
         public int[] getPIDs()
         {
-            string[] PIDsStringArr = StringPIDs.Split(',');
-            int[] PIDsIntArr = new int[PIDsStringArr.Length];
-            for(int i=0; i< PIDsStringArr.Length; i++)
+            //string[] textArr = StringPIDs.Split(',');
+
+            //string[] PIDsStringArr = new string[] { };
+            int[] PIDsIntArr = new int[] { };
+
+            if (StringPIDs!=string.Empty)
             {
-                PIDsIntArr[i] = int.Parse(PIDsStringArr[i]);
+                string[] PIDsStringArr = StringPIDs.Split(',');
+
+                PIDsIntArr = new int[PIDsStringArr.Length];
+                for (int i = 0; i < PIDsStringArr.Length; i++)
+                {
+                    PIDsIntArr[i] = int.Parse(PIDsStringArr[i]);  //System.FormatException: 'Input string was not in a correct format.'
+
+                }
             }
+            
             return PIDsIntArr;
         }
 
