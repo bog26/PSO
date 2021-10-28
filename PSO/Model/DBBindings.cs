@@ -39,12 +39,6 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
 
-            //new
-            //var query = UserDataQuery(userName, psContext); // not ok
-            //binding.DataSource = query;
-            //new
-
-
             var queryAdmin = from user in psContext.Admins
                              where user.UserName == userName
                              select new
@@ -68,9 +62,6 @@ namespace PSO.Model
                                   Telephone = user.UserInfo.Telephone
                               };
 
-            //BindingSource binding = new BindingSource();
-            //var queryAdmin = UserQuery.UserDataQuery  //TBD
-
 
             if (InternalDBQueries.CheckForAdminRights(userName))
             {
@@ -81,18 +72,6 @@ namespace PSO.Model
                 binding.DataSource = queryClient.ToList();
             }
             return binding;
-
-
-            /* //TBD
-            var query = UserDataQuery(userName, psContext); // not ok
-            binding.DataSource = query;
-
-            return binding;
-            */
-
-            //new
-            //return binding;
-            //new
 
         }
 
@@ -267,28 +246,10 @@ namespace PSO.Model
         }
 
 
-        /*
-        public static BindingSource BindSearchMessages(string searchword) //searches in messages from all users
-        {
-            psDBContext psContext = new psDBContext();
-            BindingSource binding = new BindingSource();
-            //var queryMessages = psContext.Messages.Where(x=>x.MessageBody.Contains(searchword));
-            
-            var queryMessages = from message in psContext.Messages
-                                where message.MessageBody.Contains(searchword)
-                                && message.MessageStatus != "deleted"
-                                //&& message.Receiver == user
-                                select message.MessageTitle;
-            
-            binding.DataSource = queryMessages.ToList();
-            return binding;
-        }
-        */
         public static BindingSource BindSearchMessages(string searchword, string user)
         {
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
-            //var queryMessages = psContext.Messages.Where(x=>x.MessageBody.Contains(searchword));
 
             var queryMessages = from message in psContext.Messages
                                 where message.MessageBody.Contains(searchword)
@@ -516,9 +477,6 @@ namespace PSO.Model
 
             decimal minPrice;
             decimal maxPrice;
-
-            //var queryProducts = psContext.Products.Where(x => x.SubCategory.Category.Name == category);
-            //var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
 
             var queryProducts = psContext.Products.Where(x => x.ProductName != " ");
             if(category != String.Empty)

@@ -436,12 +436,12 @@ namespace PSO
                 {
                     string crtUser = IOMethods.GetUserName();
                     string key = "abracadabra";
-                    string encryptedMessage = Encryption.StringEncrypt(richTextBox1.Text, key);
+                    string encryptedMessage = Encryption.StringEncrypt(richTextBox5.Text, key);
                     messageBody = encryptedMessage;
                 }
                 else
                 {
-                    messageBody = richTextBox1.Text;
+                    messageBody = richTextBox5.Text;
                 }
                 string[] messageFields = new string[] { Form.ActiveForm.Text, textBox2.Text, textBox3.Text, messageBody, withEncryption };
                 var newMessage = Messaging.CreateMessage(messageFields);
