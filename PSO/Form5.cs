@@ -167,6 +167,7 @@ namespace PSO
             panelUserInfo.Hide();
             panelProducts.Hide();
             panelWishList.Hide();
+            panelShoppingCart.Hide();
             panel.Show();
         }
 
@@ -518,5 +519,25 @@ namespace PSO
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            HideShowAllPanels(panelShoppingCart);
+        }
+        private void buttonShoppingCart1_Click(object sender, EventArgs e)
+        {
+            HideShowAllPanels(panelShoppingCart);
+        }
+
     }
 }

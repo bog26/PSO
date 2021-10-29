@@ -55,9 +55,9 @@ namespace PSO
             this.button10 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.clientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -178,7 +178,6 @@ namespace PSO
             this.button15.Text = "Wish list";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
-
             // 
             // button8
             // 
@@ -232,6 +231,7 @@ namespace PSO
             this.button5.TabIndex = 0;
             this.button5.Text = "Shopping cart";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // panel4
             // 
@@ -274,6 +274,11 @@ namespace PSO
             this.button9.Text = "Status";
             this.button9.UseVisualStyleBackColor = true;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // clientBindingSource1
             // 
             this.clientBindingSource1.DataSource = typeof(PSO.Model.Client);
@@ -281,11 +286,6 @@ namespace PSO
             // clientBindingSource
             // 
             this.clientBindingSource.DataSource = typeof(PSO.Model.Client);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
             // 
             // Form5
             // 
@@ -421,11 +421,18 @@ namespace PSO
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 
             this.panelWishList = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.button36 = new System.Windows.Forms.Button();
+
+            this.panelShoppingCart = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+
+            //panelShoppingCart
 
 
 
@@ -464,6 +471,7 @@ namespace PSO
             this.Controls.Add(this.buttonShoppingCart1);
             DisplayNewButton(buttonShoppingCart1, new int[2] { 910,10}, new int[2] { 160, 35 }, "Shopping Cart", "Shopping Cart");
             this.buttonShoppingCart1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonShoppingCart1.Click += new System.EventHandler(this.buttonShoppingCart1_Click);
             //buttonShoppingCart1.ForeColor = System.Drawing.Color.Red;
 
             DisplayNewPanel(panelMessage1, new int[2] { 300, 68 }, new int[2] { 180, 200 }, "panelMessage1", true);
@@ -787,8 +795,11 @@ namespace PSO
                 { LONGITEM, SMALLTEXT }, "Add to wishlist", standardFont);
             this.button34.Click += new System.EventHandler(this.button34_Click);
 
-            DisplayNewTextBoxOnPanel(textBox11, panelProducts, button33, new int[2] { 2*xItemsSpace, 0 },
-                new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+            //DisplayNewTextBoxOnPanel(textBox11, panelProducts, button33, new int[2] { 2*xItemsSpace, 0 },
+            //    new int[2] { STDTEXTBOX, SMALLTEXT }, "");
+            DisplayNumericUpDownOnPanel(numericUpDown1, panelProducts, button33, new int[2] { 2 * xItemsSpace, 0 },
+                new int[2] { STDTEXTBOX, SMALLTEXT }, "", standardFont);
+            
 
             DisplayNewPanel(panelWishList, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
                             new int[2] { StandardPanel.X, StandardPanel.Y }, "panelProducts", true);
@@ -808,6 +819,16 @@ namespace PSO
                 { LONGITEM, SMALLTEXT }, "Show wish List", standardFont);
             this.button36.Click += new System.EventHandler(this.button36_Click);
             button36.Hide();
+
+            DisplayNewPanel(panelShoppingCart, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
+                            new int[2] { StandardPanel.X, StandardPanel.Y }, "panelShoppingCart", true);
+            this.Controls.Add(this.panelShoppingCart);
+            panelShoppingCart.Hide();
+
+            DisplayNewLabelOnPanel(label28, panelShoppingCart, new int[2] { xMargin, yMargin }, new int[2]
+                { STDTEXTBOX, SMALLTEXT }, "Shopping Cart");
+
+
 
         }
       
@@ -924,13 +945,15 @@ namespace PSO
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.RichTextBox richTextBox6;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
 
         private System.Windows.Forms.Panel panelWishList;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button button36;
 
-
-
+        private System.Windows.Forms.Panel panelShoppingCart;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DataGridView dataGridView8;
     }
 }

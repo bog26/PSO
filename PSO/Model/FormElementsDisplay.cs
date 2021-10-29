@@ -512,5 +512,40 @@ namespace PSO.Model
             panel.Show();
         }
 
+        public static void DisplayNumericUpDownOnPanel(NumericUpDown numUpDown, Panel panel, int[] position, int[] size, string labelText)
+        {
+            int posX = position[0];
+            int posY = position[1];
+            int length = size[0];
+            int hight = size[1];
+            numUpDown.Location = new Point(posX, posY);
+            numUpDown.Name = labelText;
+            numUpDown.Size = new Size(length, hight);
+            //rTextBox.TabIndex = 0;
+            //rTextBox.Text = labelText;
+            panel.Controls.Add(numUpDown);
+        }
+
+        public static void DisplayNumericUpDownOnPanel(NumericUpDown numUpDown, Panel panel, Control parentItem, int[] spacers, int[] size, string numUpDownText, Font font)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+            numUpDown.Font = font;
+            numUpDown.Location = new Point(posX, posY);
+            numUpDown.Name = numUpDownText;
+            numUpDown.Text = "";
+            numUpDown.Size = new Size(size[0], size[1]);
+            panel.Controls.Add(numUpDown);
+        }
+
     }
 }
