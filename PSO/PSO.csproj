@@ -246,6 +246,14 @@
     <Compile Include="Migrations\202110272249057_AddStringPIDsToWishList.designer.cs">
       <DependentUpon>202110272249057_AddStringPIDsToWishList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110312235340_AddShoppingCartItem.cs" />
+    <Compile Include="Migrations\202110312235340_AddShoppingCartItem.designer.cs">
+      <DependentUpon>202110312235340_AddShoppingCartItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110312241331_AddAmountToShoppingCartItem.cs" />
+    <Compile Include="Migrations\202110312241331_AddAmountToShoppingCartItem.designer.cs">
+      <DependentUpon>202110312241331_AddAmountToShoppingCartItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -270,6 +278,7 @@
     <Compile Include="Model\psDBContext.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="Model\ShoppingCart.cs" />
+    <Compile Include="Model\ShoppingCartItem.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\Store.cs" />
     <Compile Include="Model\StoreBalance.cs" />
@@ -417,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110272249057_AddStringPIDsToWishList.resx">
       <DependentUpon>202110272249057_AddStringPIDsToWishList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110312235340_AddShoppingCartItem.resx">
+      <DependentUpon>202110312235340_AddShoppingCartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110312241331_AddAmountToShoppingCartItem.resx">
+      <DependentUpon>202110312241331_AddAmountToShoppingCartItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -676,6 +676,19 @@ namespace PSO.Model
             psContext.SaveChanges();
         }
 
+        public static void CreateNewShoppingCartItem(string user, int PID, int amount)
+        {
+            psDBContext psContext = new psDBContext();
+            ShoppingCartItem Item = new ShoppingCartItem();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            Item.ClientId = crtUser.Id;
+            Item.ProductId = PID;
+            Item.Amount = amount;
+            psContext.ShoppingCartItems.Add(Item);
+            psContext.SaveChanges();
+
+        }
+
 
 
     }

@@ -24,6 +24,7 @@ namespace PSO.Model
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<WishList> WishLists { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
     }
 }

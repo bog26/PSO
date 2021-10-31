@@ -93,66 +93,19 @@ namespace PSO.Model
             return PIDArray.Length;
         }
 
-        /*
-        public static int GetWishListSize(string clientName)
+        public static bool IsProductInCart(string user, int PID)
         {
+            bool productinCart = false;
             var psContext = new psDBContext();
-            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
-            var crtWishList = psContext.WishLists.First(x => x.ClientName == clientName);
+            var crtClient = psContext.Clients.First(x => x.UserName == user);
+            var item = psContext.ShoppingCartItems.Where(x => (x.ProductId == PID) && (x.ClientId == crtClient.Id)).ToList();
 
-            //var wishList = crtClient.WishList.WishPIDs;
-            return crtWishList.WishPIDs.Count();
-        }
-        */
-
-
-        /*
-        public static List<int> GetWishList(string clientName)
-        {
-            List<int> wishList = new List<int>();
-            var psContext = new psDBContext();
-            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
-            wishList = crtClient.WishList;
-            return wishList;
-        }
-        */
-        /*
-        public static string GetWishListStr(string clientName)
-        {
-            string wishListStr = "";
-
-            psDBContext psContext = new psDBContext();
-            BindingSource binding = new BindingSource();
-
-            List<int> wishListPIDs = new List<int>();
-            List<Product> wishListProducts = new List<Product>();
-            List<string> wishListProductsSpecs = new List<string>();
-
-            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
-            wishListPIDs = crtClient.WishList;
-
-            /*
-            foreach (int PID in wishListPIDs)
+            if(item.Count>0)
             {
-                Product product = psContext.Products.First(x => x.Id == PID);
-                wishListProducts.Add(product);
-                wishListStr = wishListStr + product.ProductName +"\n";
+                productinCart = true;
             }
-            //Product product = psContext.Products.First(x => x.Id == wishListPIDs[0]);
-            // wishListStr = product.ProductName.ToString();
-            wishListStr = wishListPIDs.Count().ToString();
-            return wishListStr;
-
+            return productinCart;
         }
-
-
-
-    */
-
-        /*
-         
-          */
-
 
     }
 }

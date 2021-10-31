@@ -57,3 +57,5 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemovedWishListIdFromClient.reso
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddClientNameToWishList.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.RemovedWishProductsFromWishList.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddStringPIDsToWishList.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddShoppingCartItem.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddAmountToShoppingCartItem.resources
