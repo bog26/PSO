@@ -799,7 +799,6 @@ namespace PSO
             //    new int[2] { STDTEXTBOX, SMALLTEXT }, "");
             DisplayNumericUpDownOnPanel(numericUpDown1, panelProducts, button33, new int[2] { 2 * xItemsSpace, 0 },
                 new int[2] { STDTEXTBOX, SMALLTEXT }, "", standardFont);
-            
 
             DisplayNewPanel(panelWishList, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
                             new int[2] { StandardPanel.X, StandardPanel.Y }, "panelProducts", true);

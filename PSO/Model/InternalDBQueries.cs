@@ -107,5 +107,16 @@ namespace PSO.Model
             return productinCart;
         }
 
+        public static int GetMaxAmount(int PID)
+        {
+            int amount;
+            var psContext = new psDBContext();
+            Product productQuery = psContext.Products.First(x => x.Id == PID);
+            amount = productQuery.Stock;
+            return amount;
+
+        }
+      
+
     }
 }

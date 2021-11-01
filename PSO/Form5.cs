@@ -482,6 +482,7 @@ namespace PSO
             {
                 
                 richTextBox6.Text = DBUpdates.GetProductSpec(productID);
+                numericUpDown1.Maximum = InternalDBQueries.GetMaxAmount(productID);
                 richTextBox6.Refresh();
                 panelProducts.Show();
             }
