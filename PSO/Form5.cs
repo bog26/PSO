@@ -246,7 +246,7 @@ namespace PSO
 
             if (textBox1.Text != string.Empty)
             {
-                dataGridView4.DataSource = BindInboxSearchMessagesToGridView(crtUser, textBox1.Text);
+                dataGridView1.DataSource = BindInboxSearchMessagesToGridView(crtUser, textBox1.Text);
                 HideShowEmailPanels(panelInbox1);
             }
 

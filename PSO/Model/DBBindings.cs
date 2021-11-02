@@ -346,15 +346,10 @@ namespace PSO.Model
             psDBContext psContext = new psDBContext();
             BindingSource binding = new BindingSource();
             var crtClient = psContext.Clients.First(x => x.UserName == clientName);
-            //var productsQuery = psContext.ShoppingCartItems.Where(x => x.ClientId == crtClient.Id);
             var productsQuery = from shoppingCart in psContext.ShoppingCartItems
                                 where shoppingCart.ClientId == crtClient.Id
                                 select shoppingCart.ProductId;
-
-
             return productsQuery.ToList();
-
-
         }
 
 
