@@ -688,6 +688,14 @@ namespace PSO.Model
             psContext.SaveChanges();
 
         }
+        public static void DeleteCartItem(string user, int itemSelection)
+        {
+            psDBContext psContext = new psDBContext();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            var cartItem = psContext.ShoppingCartItems.Where(x => x.ClientId == crtUser.Id).ToList()[itemSelection];
+            psContext.ShoppingCartItems.Remove(cartItem);
+            psContext.SaveChanges();
+        }
 
 
 

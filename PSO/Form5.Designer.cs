@@ -431,6 +431,7 @@ namespace PSO
             this.panelShoppingCart = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
+            this.button37 = new System.Windows.Forms.Button();
 
 
             //panelShoppingCart
@@ -830,8 +831,10 @@ namespace PSO
 
             DisplayListBox(listBox4, panelShoppingCart, label28, new int[2] { 0, 2 * yItemsSpace },
                        new int[2] { 200, 100 }, "listBox4", BindCartProducts(crtUser));
-            //BindCartProducts
 
+            DisplayNewButtonOnPanel(button37, panelShoppingCart, listBox4, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Remove selection", standardFont);
+            this.button37.Click += new System.EventHandler(this.button37_Click);
 
         }
 
@@ -958,5 +961,6 @@ namespace PSO
         private System.Windows.Forms.Panel panelShoppingCart;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.Button button37;
     }
 }

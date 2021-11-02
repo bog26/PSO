@@ -541,10 +541,20 @@ namespace PSO
 
         private void button5_Click_1(object sender, EventArgs e)
         {
+            listBox4.DataSource = BindCartProducts(crtUser);
             HideShowAllPanels(panelShoppingCart);
         }
         private void buttonShoppingCart1_Click(object sender, EventArgs e)
         {
+            listBox4.DataSource = BindCartProducts(crtUser);
+            HideShowAllPanels(panelShoppingCart);
+        }
+
+        private void button37_Click(object sender, EventArgs e) //Remove selection
+        {
+            int selection = listBox4.SelectedIndex;
+            DBUpdates.DeleteCartItem(crtUser, selection);
+            listBox4.DataSource = BindCartProducts(crtUser);
             HideShowAllPanels(panelShoppingCart);
         }
 
