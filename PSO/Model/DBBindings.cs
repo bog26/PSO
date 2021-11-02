@@ -325,6 +325,35 @@ namespace PSO.Model
 
             binding.DataSource = wishListProducts;
             return binding;
+        }
+
+        public static BindingSource BindCartProducts(string clientName)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            List<string> cartProductNames = new List<string>();
+            List<int> CartProductIDs = GetCartProductIDs(clientName);
+            foreach (var PID in CartProductIDs)
+            {
+                Product product = psContext.Products.First(x => x.Id == PID);
+                cartProductNames.Add(product.ProductName);
+            }
+            binding.DataSource = cartProductNames;
+            return binding;
+        }
+        public static List<int> GetCartProductIDs(string clientName)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var crtClient = psContext.Clients.First(x => x.UserName == clientName);
+            //var productsQuery = psContext.ShoppingCartItems.Where(x => x.ClientId == crtClient.Id);
+            var productsQuery = from shoppingCart in psContext.ShoppingCartItems
+                                where shoppingCart.ClientId == crtClient.Id
+                                select shoppingCart.ProductId;
+
+
+            return productsQuery.ToList();
+
 
         }
 

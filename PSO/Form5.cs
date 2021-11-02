@@ -480,7 +480,6 @@ namespace PSO
 
             if (e.RowIndex != columnHeadIndex)
             {
-                
                 richTextBox6.Text = DBUpdates.GetProductSpec(productID);
                 numericUpDown1.Maximum = InternalDBQueries.GetMaxAmount(productID);
                 richTextBox6.Refresh();

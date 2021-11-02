@@ -430,7 +430,8 @@ namespace PSO
 
             this.panelShoppingCart = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+
 
             //panelShoppingCart
 
@@ -827,11 +828,14 @@ namespace PSO
             DisplayNewLabelOnPanel(label28, panelShoppingCart, new int[2] { xMargin, yMargin }, new int[2]
                 { STDTEXTBOX, SMALLTEXT }, "Shopping Cart");
 
+            DisplayListBox(listBox4, panelShoppingCart, label28, new int[2] { 0, 2 * yItemsSpace },
+                       new int[2] { 200, 100 }, "listBox4", BindCartProducts(crtUser));
+            //BindCartProducts
 
 
         }
-      
-        
+
+
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource clientBindingSource;
@@ -953,6 +957,6 @@ namespace PSO
 
         private System.Windows.Forms.Panel panelShoppingCart;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.DataGridView dataGridView8;
+        private System.Windows.Forms.ListBox listBox4;
     }
 }
