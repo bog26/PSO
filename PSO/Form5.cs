@@ -168,6 +168,7 @@ namespace PSO
             panelProducts.Hide();
             panelWishList.Hide();
             panelShoppingCart.Hide();
+            panelTransactions.Hide();
             panel.Show();
         }
 
@@ -206,12 +207,17 @@ namespace PSO
         {
             int selection = dataGridView1.CurrentCell.RowIndex;
             DBUpdates.DeleteReceiverMsg(crtUser, selection);
+            dataGridView1.DataSource = BindInboxMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelInbox1);
+
         }
 
         private void button22_Click(object sender, EventArgs e) //Spam
         {
             int selection = dataGridView1.CurrentCell.RowIndex;
             DBUpdates.SpamMsg(crtUser, selection);
+            dataGridView1.DataSource = BindInboxMessagesToGridView(crtUser);
+            HideShowEmailPanels(panelInbox1);
         }
         private void button23_Click(object sender, EventArgs e) //"Reply"
         {
@@ -558,5 +564,9 @@ namespace PSO
             HideShowAllPanels(panelShoppingCart);
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            HideShowAllPanels(panelTransactions);
+        }
     }
 }

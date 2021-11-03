@@ -383,7 +383,7 @@ namespace PSO.Model
             string messageToDisplay = "";
             if (messageIndex>=0)
             {
-                messageToDisplay = queryReceivedMessages.ToList()[messageIndex];
+                messageToDisplay = queryReceivedMessages.ToList()[messageIndex]; // System.ArgumentOutOfRangeException: 'Index was out of range. 
             }
             
             return messageToDisplay;

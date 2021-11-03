@@ -320,7 +320,6 @@ namespace PSO.Model
         }
 
         public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name, BindingSource source)
-        //public static void DisplayListBox(ListBox listbox, Panel panel, int[] position, int[] size, string name)
         {
             int posX = position[0];
             int posY = position[1];

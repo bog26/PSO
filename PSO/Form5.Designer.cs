@@ -198,6 +198,7 @@ namespace PSO
             this.button7.TabIndex = 3;
             this.button7.Text = "Transactions";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -433,7 +434,8 @@ namespace PSO
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.button37 = new System.Windows.Forms.Button();
 
-
+            this.panelTransactions = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
             //panelShoppingCart
 
 
@@ -836,6 +838,14 @@ namespace PSO
                 { LONGITEM, SMALLTEXT }, "Remove selection", standardFont);
             this.button37.Click += new System.EventHandler(this.button37_Click);
 
+            DisplayNewPanel(panelTransactions, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
+                            new int[2] { StandardPanel.X, StandardPanel.Y }, "panelTransactions", true);
+            this.Controls.Add(this.panelTransactions);
+            panelTransactions.Hide();
+
+            DisplayNewLabelOnPanel(label29, panelTransactions, new int[2] { xMargin, yMargin }, new int[2]
+                { STDTEXTBOX, SMALLTEXT }, "Transactions");
+
         }
 
 
@@ -962,5 +972,8 @@ namespace PSO
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Button button37;
+
+        private System.Windows.Forms.Panel panelTransactions;
+        private System.Windows.Forms.Label label29;
     }
 }
