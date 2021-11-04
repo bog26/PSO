@@ -696,8 +696,74 @@ namespace PSO.Model
             psContext.ShoppingCartItems.Remove(cartItem);
             psContext.SaveChanges();
         }
+        public static void DeleteCartItem(string user, ShoppingCartItem item)
+        {
 
+        }
+        public static void CheckoutCartItems(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            Transaction crtTransaction = GetCrtTransaction(user);
+            List<ShoppingCartItem> CartItems = GetCartItems(user);
+            foreach(ShoppingCartItem item in CartItems)
+            {
+                TransactionItem newItem = new TransactionItem();
+                decimal price = psContext.Products.First(x => x.Id == item.ProductId).crtSellPrice;
+                newItem.TransactionId = crtTransaction.Id;
+                newItem.ClientId = item.ClientId;
+                newItem.ProductId = item.ProductId;
+                newItem.Amount = item.Amount;
+                newItem.Cost = item.Amount * price;
+                newItem.TransactionTime = crtTransaction.TransactionTime;
+                psContext.TransactionItems.Add(newItem);
 
+                ShoppingCartItem crtItem = psContext.ShoppingCartItems.First(x => (x.ClientId == item.ClientId) 
+                                                                            &&(x.ProductId == item.ProductId));
+                psContext.ShoppingCartItems.Remove(crtItem);
+                psContext.SaveChanges();
+            }
+
+        }
+
+        public static TransactionItem CreateNewTransactionItem()
+        {
+            psDBContext psContext = new psDBContext();
+            TransactionItem item = new TransactionItem();
+            //psContext.SaveChanges();
+            return item;
+
+        }
+        public static Transaction GetCrtTransaction(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            Transaction newTransaction = new Transaction();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            newTransaction.ClientId = crtUser.Id;
+            psContext.Transactions.Add(newTransaction);
+            psContext.SaveChanges();
+            return newTransaction;
+
+        }
+
+        public static void TransactionInit(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            Transaction newTransaction = new Transaction();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            newTransaction.ClientId = crtUser.Id;
+            psContext.Transactions.Add(newTransaction);
+            psContext.SaveChanges();
+        }
+
+        public static List<ShoppingCartItem> GetCartItems(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            List<int> cartItemsList = new List<int>(); 
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            var cartItem = psContext.ShoppingCartItems.Where(x => x.ClientId == crtUser.Id).ToList();
+
+            return cartItem;
+        }
 
     }
 }

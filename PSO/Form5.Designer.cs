@@ -433,6 +433,7 @@ namespace PSO
             this.label28 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
 
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
@@ -838,6 +839,10 @@ namespace PSO
                 { LONGITEM, SMALLTEXT }, "Remove selection", standardFont);
             this.button37.Click += new System.EventHandler(this.button37_Click);
 
+            DisplayNewButtonOnPanel(button38, panelShoppingCart, button37, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Checkout", standardFont);
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+
             DisplayNewPanel(panelTransactions, new int[2] { StandardPanel.PosX, StandardPanel.PosY },
                             new int[2] { StandardPanel.X, StandardPanel.Y }, "panelTransactions", true);
             this.Controls.Add(this.panelTransactions);
@@ -972,6 +977,7 @@ namespace PSO
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
 
         private System.Windows.Forms.Panel panelTransactions;
         private System.Windows.Forms.Label label29;

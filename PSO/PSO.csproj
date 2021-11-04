@@ -254,6 +254,18 @@
     <Compile Include="Migrations\202110312241331_AddAmountToShoppingCartItem.designer.cs">
       <DependentUpon>202110312241331_AddAmountToShoppingCartItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111041506297_ChangeTransaction.cs" />
+    <Compile Include="Migrations\202111041506297_ChangeTransaction.designer.cs">
+      <DependentUpon>202111041506297_ChangeTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111041511441_ChangeTransaction1.cs" />
+    <Compile Include="Migrations\202111041511441_ChangeTransaction1.designer.cs">
+      <DependentUpon>202111041511441_ChangeTransaction1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111041625130_AddedTransactionItemsTable.cs" />
+    <Compile Include="Migrations\202111041625130_AddedTransactionItemsTable.designer.cs">
+      <DependentUpon>202111041625130_AddedTransactionItemsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -284,6 +296,7 @@
     <Compile Include="Model\StoreBalance.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\TransactionItem.cs" />
     <Compile Include="Model\UserAddress.cs" />
     <Compile Include="Model\UserInputCheck.cs" />
     <Compile Include="Model\UserPersonalData.cs" />
@@ -432,6 +445,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110312241331_AddAmountToShoppingCartItem.resx">
       <DependentUpon>202110312241331_AddAmountToShoppingCartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111041506297_ChangeTransaction.resx">
+      <DependentUpon>202111041506297_ChangeTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111041511441_ChangeTransaction1.resx">
+      <DependentUpon>202111041511441_ChangeTransaction1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111041625130_AddedTransactionItemsTable.resx">
+      <DependentUpon>202111041625130_AddedTransactionItemsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

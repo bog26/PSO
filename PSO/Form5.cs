@@ -564,6 +564,13 @@ namespace PSO
             HideShowAllPanels(panelShoppingCart);
         }
 
+        private void button38_Click(object sender, EventArgs e) //Checkout
+        {
+            //DBUpdates.TransactionInit(crtUser);
+            //CheckoutCartItems
+            DBUpdates.CheckoutCartItems(crtUser);
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
             HideShowAllPanels(panelTransactions);
