@@ -569,11 +569,19 @@ namespace PSO
             //DBUpdates.TransactionInit(crtUser);
             //CheckoutCartItems
             DBUpdates.CheckoutCartItems(crtUser);
+            listBox4.DataSource = BindCartProducts(crtUser);
+            HideShowAllPanels(panelShoppingCart);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             HideShowAllPanels(panelTransactions);
+            dataGridView8.DataSource = BindTransactionsToGrid(crtUser);
+        }
+
+        private void dataGridView8_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

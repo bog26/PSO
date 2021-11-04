@@ -437,7 +437,7 @@ namespace PSO
 
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
-            //panelShoppingCart
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
 
 
 
@@ -851,6 +851,13 @@ namespace PSO
             DisplayNewLabelOnPanel(label29, panelTransactions, new int[2] { xMargin, yMargin }, new int[2]
                 { STDTEXTBOX, SMALLTEXT }, "Transactions");
 
+            int dataGridView8PosX = label29.Location.X;
+            int dataGridView8PosY = label9.Location.Y + label9.Size.Height + 4 * yItemsSpace;
+            DisplayNewDataGridViewOnPanel(dataGridView8, panelTransactions, new int[2]
+                { dataGridView8PosX, dataGridView8PosY}, new int[2] { 350, 150 });
+            dataGridView8.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView8.CellContentClick += new DataGridViewCellEventHandler(dataGridView8_CellContentClick);
+
         }
 
 
@@ -981,5 +988,6 @@ namespace PSO
 
         private System.Windows.Forms.Panel panelTransactions;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DataGridView dataGridView8;
     }
 }

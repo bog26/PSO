@@ -696,6 +696,24 @@ namespace PSO.Model
             return binding;
         }
 
+        public static BindingSource BindTransactionsToGrid(string user)
+        {
+            psDBContext psContext = new psDBContext();
+            BindingSource binding = new BindingSource();
+            var crtUser = psContext.Clients.First(x => x.UserName == user);
+            var queryTransactions = from transaction in psContext.Transactions
+                                    where transaction.ClientId == crtUser.Id
+                                    select new
+                                    {
+                                        ID = transaction.Id,
+                                        Time = transaction.TransactionTime,
+                                        Amount = transaction.TotalCost
+                                    };
+            binding.DataSource = queryTransactions.ToList();
+            return binding;
+        }
+
+
     }
 
 }

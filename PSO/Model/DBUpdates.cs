@@ -707,31 +707,29 @@ namespace PSO.Model
             List<ShoppingCartItem> CartItems = GetCartItems(user);
             foreach(ShoppingCartItem item in CartItems)
             {
-                TransactionItem newItem = new TransactionItem();
-                decimal price = psContext.Products.First(x => x.Id == item.ProductId).crtSellPrice;
-                newItem.TransactionId = crtTransaction.Id;
-                newItem.ClientId = item.ClientId;
-                newItem.ProductId = item.ProductId;
-                newItem.Amount = item.Amount;
-                newItem.Cost = item.Amount * price;
-                newItem.TransactionTime = crtTransaction.TransactionTime;
+                TransactionItem newItem = CreateNewTransactionItem(item, crtTransaction);
                 psContext.TransactionItems.Add(newItem);
-
                 ShoppingCartItem crtItem = psContext.ShoppingCartItems.First(x => (x.ClientId == item.ClientId) 
                                                                             &&(x.ProductId == item.ProductId));
                 psContext.ShoppingCartItems.Remove(crtItem);
+                psContext.Transactions.First(x => x.Id == crtTransaction.Id).TotalCost += newItem.Cost;
                 psContext.SaveChanges();
             }
 
         }
 
-        public static TransactionItem CreateNewTransactionItem()
+        public static TransactionItem CreateNewTransactionItem(ShoppingCartItem cartItem, Transaction transaction)
         {
             psDBContext psContext = new psDBContext();
-            TransactionItem item = new TransactionItem();
-            //psContext.SaveChanges();
-            return item;
-
+            TransactionItem newItem = new TransactionItem();
+            decimal price = psContext.Products.First(x => x.Id == cartItem.ProductId).crtSellPrice;
+            newItem.TransactionId = transaction.Id;
+            newItem.ClientId = cartItem.ClientId;
+            newItem.ProductId = cartItem.ProductId;
+            newItem.Amount = cartItem.Amount;
+            newItem.Cost = cartItem.Amount * price;
+            newItem.TransactionTime = transaction.TransactionTime;
+            return newItem;
         }
         public static Transaction GetCrtTransaction(string user)
         {
