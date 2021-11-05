@@ -134,7 +134,28 @@ namespace PSO.Model
             string itemName = psContext.Products.First(x => x.Id == itemId).ProductName;
             return itemName;
         }
-      
+        public static int GetAmountOfSameTransItems(string user, int transId, int itemIndex)
+        {
+            var psContext = new psDBContext();
+            int crtClientId = psContext.Clients.First(x => x.UserName == user).Id;
+            int itemId = psContext.TransactionItems.Where(x => (x.ClientId == crtClientId)
+                                                                  && (x.TransactionId == transId)
+                                                                  ).ToList()[itemIndex].ProductId;
+            int transItemsNr = psContext.TransactionItems.First(x => x.ProductId == itemId).Amount;
+            return transItemsNr;
+        }
+        public static decimal GetTransactionItemPrice(string user, int transId, int itemIndex)
+        {
+            decimal itemPrice = 0;
+            var psContext = new psDBContext();
+            int crtClientId = psContext.Clients.First(x => x.UserName == user).Id;
+            int itemId = psContext.TransactionItems.Where(x => (x.ClientId == crtClientId)
+                                                                  && (x.TransactionId == transId)
+                                                                  ).ToList()[itemIndex].ProductId;
+            itemPrice = psContext.TransactionItems.First(x => x.ProductId == itemId).Cost;
+            return itemPrice;
+        }
 
-    }
+
+        }
 }

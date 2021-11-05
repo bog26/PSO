@@ -608,9 +608,11 @@ namespace PSO
             transInfo = nrOfItems.ToString() + " " + "different products in total" + "\n";
             for(int i=0; i<nrOfItems; i++)
             {
-                transInfo = transInfo + $"Item {i}:"+ "\n";
+                int amount = InternalDBQueries.GetAmountOfSameTransItems(crtUser, transId, i);
+                decimal cost = InternalDBQueries.GetTransactionItemPrice(crtUser, transId, i)/ amount;
+                transInfo = transInfo + $"Item {i} "+ $" - {amount} Pcs. " + $"Cost/Item: {cost} €" +"\n";
                 transInfo = transInfo + InternalDBQueries.GetTransactionItemName(crtUser, transId, i) + "\n";
-                
+                transInfo = transInfo + "\n";
             }
 
             return transInfo;
