@@ -438,6 +438,7 @@ namespace PSO
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
 
 
 
@@ -858,6 +859,12 @@ namespace PSO
             dataGridView8.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView8.CellContentClick += new DataGridViewCellEventHandler(dataGridView8_CellContentClick);
 
+
+            DisplayNewRichTextBoxOnPanel(richTextBox7, panelTransactions, dataGridView8, new int[2] { 4*xItemsSpace, 0 }, new int[2]
+                { dataGridView8.Size.Width, dataGridView8.Size.Height}, "richTextBox7", standardFont);
+            this.richTextBox7.ReadOnly = true;
+
+
         }
 
 
@@ -989,5 +996,6 @@ namespace PSO
         private System.Windows.Forms.Panel panelTransactions;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.DataGridView dataGridView8;
+        private System.Windows.Forms.RichTextBox richTextBox7;
     }
 }

@@ -581,7 +581,39 @@ namespace PSO
 
         private void dataGridView8_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //richTextBox7.Text = "Transaction info";
 
+            int columnHeadIndex = -1;
+            int rowSelection = e.RowIndex;
+            int transId = Int32.Parse(dataGridView8.Rows[rowSelection].Cells[0].Value.ToString());
+
+            if (e.RowIndex != columnHeadIndex)
+            {
+                richTextBox7.Text = ConstructTransactionInfo(transId);
+                //richTextBox6.Text = DBUpdates.GetProductSpec(productID);
+                //richTextBox7.Refresh();
+                //panelProducts.Show();
+
+            }
+
+
+            richTextBox7.Refresh();
+            panelTransactions.Show();
+        }
+
+        private string ConstructTransactionInfo(int transId) //use StringBuider()!!
+        {
+            string transInfo = string.Empty;
+            int nrOfItems = InternalDBQueries.GetNrOfTransItems(crtUser, transId);
+            transInfo = nrOfItems.ToString() + " " + "different products in total" + "\n";
+            for(int i=0; i<nrOfItems; i++)
+            {
+                transInfo = transInfo + $"Item {i}:"+ "\n";
+                transInfo = transInfo + InternalDBQueries.GetTransactionItemName(crtUser, transId, i) + "\n";
+                
+            }
+
+            return transInfo;
         }
     }
 }

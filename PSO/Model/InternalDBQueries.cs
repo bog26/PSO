@@ -114,7 +114,25 @@ namespace PSO.Model
             Product productQuery = psContext.Products.First(x => x.Id == PID);
             amount = productQuery.Stock;
             return amount;
-
+        }
+        public static int GetNrOfTransItems(string user, int transId)
+        {
+            var psContext = new psDBContext();
+            var crtClient = psContext.Clients.First(x => x.UserName == user);
+            int transItemsNr = psContext.TransactionItems.Where(x => (x.ClientId == crtClient.Id) 
+                                                                  && (x.TransactionId == transId) ).ToList().Count;
+            return transItemsNr;
+        }
+        public static string GetTransactionItemName(string user, int transId, int itemIndex)
+        {
+            var psContext = new psDBContext();
+            int crtClientId = psContext.Clients.First(x => x.UserName == user).Id;
+            //string itemName = string.Empty;
+            int itemId = psContext.TransactionItems.Where(x => (x.ClientId == crtClientId)
+                                                                  &&(x.TransactionId == transId) 
+                                                                  ).ToList()[itemIndex].ProductId;
+            string itemName = psContext.Products.First(x => x.Id == itemId).ProductName;
+            return itemName;
         }
       
 
