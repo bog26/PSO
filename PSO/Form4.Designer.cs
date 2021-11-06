@@ -437,6 +437,8 @@ namespace PSO
             this.button49 = new System.Windows.Forms.Button();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button50 = new System.Windows.Forms.Button();
 
             this.panel14 = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
@@ -931,11 +933,17 @@ namespace PSO
             this.button48.Click += new System.EventHandler(this.button48_Click);
 
             DisplayNewButtonOnPanel(button49, panel13, button48, new int[2] { 0, 2 * yItemsSpace }, new int[2]
-                { LONGITEM, SMALLTEXT }, "Show file content", standardFont);
+                { LONGITEM, SMALLTEXT }, "Upload spec sheet", standardFont);
             this.button49.Click += new System.EventHandler(this.button49_Click);
 
-            DisplayPicture(pictureBox1, panel13, textBox16, new int[2] { 2*xItemsSpace, 0 }, new int[2]
+            DisplayNewButtonOnPanel(button50, panel13, button49, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Download spec sheet", standardFont);
+            this.button50.Click += new System.EventHandler(this.button50_Click);
+
+            DisplayPicture(pictureBox1, panel13, textBox16, new int[2] { 5*xItemsSpace, 0 }, new int[2]
                 { 200, 200 });
+
+            this.saveFileDialog1.FileName = "DataSheet.pdf";
 
 
             DisplayNewPanel(panel15, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panel15", true);
@@ -1193,6 +1201,9 @@ namespace PSO
         private System.Windows.Forms.Button button49;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button50;
+
 
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button button30;

@@ -605,8 +605,49 @@ namespace PSO
 
         }
 
-        private void button49_Click(object sender, EventArgs e) //Show file content
+        private void button49_Click(object sender, EventArgs e) //Upload spec sheet
         {
+            int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
+            int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string specFileName = openFileDialog1.FileName;
+                DBUpdates.SaveProductSpecToDB(crtProductId, specFileName);
+                MessageBox.Show("File saved to DB");
+            }
+        }
+
+        private void button50_Click(object sender, EventArgs e) //Download spec sheet
+        {
+            int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
+            int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string specFileName = saveFileDialog1.FileName;
+                byte[] specData = DBUpdates.GetSpecData(crtProductId);
+
+                var bw = new BinaryWriter(File.Open(specFileName, FileMode.OpenOrCreate));
+                using(bw)
+                {
+                    bw.Write(specData);
+                }
+
+                /*
+                 var bw = new BinaryWriter(File.Open("path",FileMode.OpenOrCreate);
+                 bw.Write(byteArray); 
+                 **/
+
+                /*
+                 Writer = new BinaryWriter(File.OpenWrite(Name));
+                 Writer.Write(Data);
+                 Writer.Flush();
+                 Writer.Close();
+                 */
+
+
+            }
 
         }
 

@@ -270,6 +270,10 @@
     <Compile Include="Migrations\202111061225325_AddedProductPicturesTable.designer.cs">
       <DependentUpon>202111061225325_AddedProductPicturesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111062251583_AddedProductSpecificationsTable.cs" />
+    <Compile Include="Migrations\202111062251583_AddedProductSpecificationsTable.designer.cs">
+      <DependentUpon>202111062251583_AddedProductSpecificationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -291,6 +295,7 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
     <Compile Include="Model\ProductPicture.cs" />
+    <Compile Include="Model\ProductSpecification.cs" />
     <Compile Include="Model\ProductSubCategory.cs" />
     <Compile Include="Model\psDBContext.cs" />
     <Compile Include="Model\Review.cs" />
@@ -462,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111061225325_AddedProductPicturesTable.resx">
       <DependentUpon>202111061225325_AddedProductPicturesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111062251583_AddedProductSpecificationsTable.resx">
+      <DependentUpon>202111062251583_AddedProductSpecificationsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

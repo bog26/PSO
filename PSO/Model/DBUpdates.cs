@@ -385,6 +385,30 @@ namespace PSO.Model
             return pictureData;
         }
 
+        public static void SaveProductSpecToDB(int PID, string fileName)
+        {
+            psDBContext psContext = new psDBContext();
+            ProductSpecification spec = new ProductSpecification();
+            spec.ProductId = PID;
+            spec.CreateSpec(fileName);
+            psContext.ProductSpecifications.Add(spec);
+            psContext.SaveChanges();
+        }
+        public static byte[] GetSpecData(int PID)
+        {
+            psDBContext psContext = new psDBContext();
+            byte[] specData = new byte[] { };
+            try
+            {
+                specData = psContext.ProductSpecifications.First(x => x.ProductId == PID).SpecData;
+            }
+            catch (InvalidOperationException e)
+            {
+
+            }
+            return specData;
+        }
+
         public static bool WriteMessageToDB(Message newMessage)
         {
             bool writeToDBSuccessful = false;

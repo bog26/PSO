@@ -27,6 +27,7 @@ namespace PSO.Model
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<TransactionItem> TransactionItems { get; set; }
         public DbSet<ProductPicture> ProductPictures { get; set; }
+        public DbSet<ProductSpecification> ProductSpecifications { get; set; }
 
     }
 }
