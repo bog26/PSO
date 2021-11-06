@@ -26,7 +26,7 @@ namespace PSO.Model
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<TransactionItem> TransactionItems { get; set; }
-        
+        public DbSet<ProductPicture> ProductPictures { get; set; }
 
     }
 }

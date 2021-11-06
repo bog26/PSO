@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using static PSO.Model.FormElementsDisplay;
 using static PSO.Model.DBBindings;
 using PSO.Model;
+using System.IO;
 
 namespace PSO
 {
@@ -259,13 +260,28 @@ namespace PSO
 
             if (e.RowIndex != columnHeadIndex)
             {
-                //if (dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null
-                //    && DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
+
                 if (DBUpdates.DataGridViewAllowCustomExtraction(e.ColumnIndex, allowedColumnIndexes))
                 {
                     string cellContent = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     textBox16.Text = cellContent;
                     textBox16.Refresh();
+
+                    int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
+                    int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
+                    try
+                    {
+                        byte[] pictureData = DBUpdates.GetPictureData(crtProductId);
+                        Bitmap picture = GetBitmap(pictureData);
+                        pictureBox1.Image = picture;
+                        pictureBox1.Show();
+                        panel13.Show();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    
                 }
             }
 
@@ -564,6 +580,36 @@ namespace PSO
             panel13.Show();
         }
         //public void CheckBoxSelected
+
+        private void button47_Click(object sender, EventArgs e) //Select file
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var sr = new StreamReader(openFileDialog1.FileName);
+                textBox21.Text = sr.ReadToEnd();
+            }
+                
+        }
+
+        private void button48_Click(object sender, EventArgs e) //Save to DB
+        {
+            int crtRowIndex = dataGridView3.CurrentCell.RowIndex;
+            int crtProductId = int.Parse(dataGridView3.Rows[crtRowIndex].Cells[0].Value.ToString());
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string imgFileName = openFileDialog1.FileName;
+                DBUpdates.SaveProductImgToDB(crtProductId, imgFileName);
+                MessageBox.Show("Image saved to DB");
+            }
+
+        }
+
+        private void button49_Click(object sender, EventArgs e) //Show file content
+        {
+
+        }
+
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 

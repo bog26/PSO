@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -544,6 +545,46 @@ namespace PSO.Model
             numUpDown.Text = "";
             numUpDown.Size = new Size(size[0], size[1]);
             panel.Controls.Add(numUpDown);
+        }
+
+        public static Bitmap GetBitmap(byte[] pData)
+        {
+            MemoryStream mStream = new MemoryStream();
+            Bitmap bm = null;
+            try
+            {
+                mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                bm = new Bitmap(mStream, false);
+            }
+            catch(ArgumentException e)
+            {
+                MessageBox.Show("no picture");
+            }
+
+            mStream.Dispose();
+            return bm;
+        }
+
+        public static void DisplayPicture(PictureBox pictureBox, Panel panel, Control parentItem, int[] spacers, int[] size)
+        {
+            int posX = parentItem.Location.X;
+            int posY = parentItem.Location.Y;
+
+            if (spacers[0] != 0)
+            {
+                posX += parentItem.Width + spacers[0];
+            }
+            if (spacers[1] != 0)
+            {
+                posY += parentItem.Height + spacers[1];
+            }
+            
+            pictureBox.Location = new Point(posX, posY);
+            pictureBox.Size = new Size(size[0], size[1]);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            panel.Controls.Add(pictureBox);
+
+
         }
 
     }

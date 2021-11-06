@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-
+using System.Drawing;
+using System.IO;
 
 namespace PSO.Model
 {
@@ -356,7 +357,33 @@ namespace PSO.Model
             string specToDisplay = queryproducts.ToList()[0];
             return specToDisplay;
         }
-    
+
+        public static void SaveProductImgToDB(int PID, string fileName)
+        {
+            psDBContext psContext = new psDBContext();
+            ProductPicture picture = new ProductPicture();
+            picture.ProductId = PID;
+            picture.CreateImage(fileName);
+            psContext.ProductPictures.Add(picture);
+            psContext.SaveChanges();
+        }
+        public static byte[] GetPictureData(int PID)
+        {
+            psDBContext psContext = new psDBContext();
+            byte[] pictureData = new byte[] { };
+            try
+            {
+                pictureData = psContext.ProductPictures.First(x => x.ProductId == PID).ImageData;
+
+            }
+            catch(InvalidOperationException e)
+            {
+                
+            }
+            //System.InvalidOperationException
+           
+            return pictureData;
+        }
 
         public static bool WriteMessageToDB(Message newMessage)
         {

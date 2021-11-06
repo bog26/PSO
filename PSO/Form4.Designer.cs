@@ -430,6 +430,13 @@ namespace PSO
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.button47 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button48 = new System.Windows.Forms.Button();
+            this.button49 = new System.Windows.Forms.Button();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
 
             this.panel14 = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
@@ -903,14 +910,34 @@ namespace PSO
             DisplayCheckBox(checkBox3, panel13, dataGridView3, new int[2] { 0, 2*yItemsSpace },
                             new int[2] { CalculateLabelLenght(checkBox3Text), SMALLTEXT }, checkBox3Text, standardFont);
 
-            DisplayNewButtonOnPanel(button30, panel13, checkBox3, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+            DisplayNewButtonOnPanel(button30, panel13, checkBox3, new int[2] { 0, 2*yItemsSpace }, new int[2]
                 { LONGITEM, SMALLTEXT }, "Update", standardFont);
             this.button30.Click += new System.EventHandler(this.button30_Click);
 
             DisplayNewTextBoxOnPanel(textBox16, panel13, new int[2] { button30.Location.X + button30.Width + xItemsSpace, button30.Location.Y + 3 },
                 new int[2] { LONGITEM, SMALLTEXT }, "value");
 
-            
+            DisplayNewButtonOnPanel(button47, panel13, button30, new int[2] { 0, 2*yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Select file", standardFont);
+            this.button47.Click += new System.EventHandler(this.button47_Click);
+
+            DisplayNewTextBoxOnPanel(textBox21, panel13, new int[2] { button47.Location.X + button30.Width + xItemsSpace, button47.Location.Y + 3 },
+                new int[2] { LONGITEM, SMALLTEXT }, "file content");
+
+            this.openFileDialog1.FileName = "openFileDialog1";
+
+            DisplayNewButtonOnPanel(button48, panel13, button47, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Upload image", standardFont);
+            this.button48.Click += new System.EventHandler(this.button48_Click);
+
+            DisplayNewButtonOnPanel(button49, panel13, button48, new int[2] { 0, 2 * yItemsSpace }, new int[2]
+                { LONGITEM, SMALLTEXT }, "Show file content", standardFont);
+            this.button49.Click += new System.EventHandler(this.button49_Click);
+
+            DisplayPicture(pictureBox1, panel13, textBox16, new int[2] { 2*xItemsSpace, 0 }, new int[2]
+                { 200, 200 });
+
+
             DisplayNewPanel(panel15, new int[2] { 300, 82 }, new int[2] { 180, 450 }, "panel15", true);
             this.Controls.Add(this.panel15);
             panel15.Hide();
@@ -1159,6 +1186,13 @@ namespace PSO
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.TextBox textBox21;
+        private OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button48;
+        private System.Windows.Forms.Button button49;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button button30;

@@ -266,6 +266,10 @@
     <Compile Include="Migrations\202111041625130_AddedTransactionItemsTable.designer.cs">
       <DependentUpon>202111041625130_AddedTransactionItemsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111061225325_AddedProductPicturesTable.cs" />
+    <Compile Include="Migrations\202111061225325_AddedProductPicturesTable.designer.cs">
+      <DependentUpon>202111061225325_AddedProductPicturesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Client.cs" />
@@ -286,6 +290,7 @@
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ProductPicture.cs" />
     <Compile Include="Model\ProductSubCategory.cs" />
     <Compile Include="Model\psDBContext.cs" />
     <Compile Include="Model\Review.cs" />
@@ -455,6 +460,9 @@
     <EmbeddedResource Include="Migrations\202111041625130_AddedTransactionItemsTable.resx">
       <DependentUpon>202111041625130_AddedTransactionItemsTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111061225325_AddedProductPicturesTable.resx">
+      <DependentUpon>202111061225325_AddedProductPicturesTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -463,6 +471,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PSO.Model.Client.datasource" />
@@ -481,6 +490,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -58,6 +58,7 @@ namespace PSO
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.clientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -287,6 +288,10 @@ namespace PSO
             // clientBindingSource
             // 
             this.clientBindingSource.DataSource = typeof(PSO.Model.Client);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form5
             // 
@@ -997,5 +1002,6 @@ namespace PSO
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.DataGridView dataGridView8;
         private System.Windows.Forms.RichTextBox richTextBox7;
+        private OpenFileDialog openFileDialog1;
     }
 }

@@ -62,3 +62,4 @@ F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddAmountToShoppingCartItem.reso
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.ChangeTransaction.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.ChangeTransaction1.resources
 F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddedTransactionItemsTable.resources
+F:\C#\projects\PSO\PSO\obj\Debug\PSO.Migrations.AddedProductPicturesTable.resources
